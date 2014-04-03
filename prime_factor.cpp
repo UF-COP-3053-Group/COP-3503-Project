@@ -1,7 +1,9 @@
 #include <iostream>
+#include <vector>
+
+#define NUM 30
 using namespace std;
 
-const unsigned long  upperBound =  6008;
  
 
 bool isPrime(int n)
@@ -19,15 +21,20 @@ bool isPrime(int n)
 int main()
 {
 	int i = 2;
-	int max;	
-	while(i < upperBound)
+	vector<int> factors;
+	while(i < NUM)
 	{
-		if((0 == upperBound % i ) and isPrime(i)) 
+		if((0 == NUM% i ) and isPrime(i)) 
 		{
-			max = i;
+			factors.push_back(i);
 		}
 		i++;
 	}	
-	cout<<max<<endl;
+	
+	for(int i = 0; i < factors.size(); ++i)
+	{
+		cout<<factors[i]<<endl;
+		
+	}
 	return 0;
 }

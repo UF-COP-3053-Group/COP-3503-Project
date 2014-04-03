@@ -1,7 +1,7 @@
 /*
 * Author: HA
 * This program implements the sieve of erastones to find primes numbers from
-* 2 to n.  It writes the results to a text file//
+* 2 to n.//
 *
 */
 
@@ -53,8 +53,17 @@ vector<int> primes(int n)
 
 int main()
 {
-	vector<int> myvect = primes(110000);
-	cout<<myvect.size()<<endl;
+
+	//vector that holds first 100 primes
+	vector<int> myvect = primes(1000);
+	
+	for(int i = 0; i < myvect.size(); ++i)
+	{
+		cout<<myvect[i]<<endl;
+
+	}
+
+	//Uncomment to write primes to a file.
 	/*
 	ofstream myfile;
 	myfile.open("primeNums.txt");
@@ -66,18 +75,6 @@ int main()
 	myfile.close();
 //	cout<<myvect[10000]<<endl;
 	*/
-
-	int sum = 0;
-	for(int i = 0; i <= myvect.size(); ++i)
-	{
-		sum+=myvect[i];
-	}
-
-	cout<<myvect[10000]<<endl;
-
-
-
-	cout<<sum<<endl;
 
 
 	return 0;	
