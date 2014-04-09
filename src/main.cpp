@@ -7,7 +7,7 @@
 //
 
 #include "main.h"
-
+//I think I can edit now
 int main(int argc, const char * argv[])
 {
 	// TODO: Everything
