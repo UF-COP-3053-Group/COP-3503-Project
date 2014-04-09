@@ -11,16 +11,19 @@
 
 #include <iostream>
 #include <string>
+#include "Number.h"
+
 
 using namespace std;
 
-class Constant
+class Constant : public Number
 {
 public:
 	Constant(string name);
 	bool isKnown(string name);
 	double getValue();
 	string getName();
+	// need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
 	
 private:
 	string name;
