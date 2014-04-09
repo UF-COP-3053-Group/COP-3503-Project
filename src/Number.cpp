@@ -7,7 +7,7 @@
  */
 
 #include "Number.h"
-using namespace std;
+
 
 Number::Number() {
 
