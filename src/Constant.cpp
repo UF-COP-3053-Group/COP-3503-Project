@@ -6,6 +6,7 @@
 //
 //
 
+
 #include "Constant.h"
 #include <stdexcept>
 
@@ -21,7 +22,7 @@ Constant::Constant(string name)
 	// If we don't know the constant, throw an exception
 	if (!isKnown(name))
 	{
-		throw invalid_argment(name + " is not a known constant.")
+		throw invalid_argument(name + " is not a known constant.");
 	}
 	
 	// Set the name of the constant
