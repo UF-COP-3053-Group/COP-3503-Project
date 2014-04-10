@@ -23,13 +23,20 @@ void printMenu();
 // For testing purposes only.
 // TODO: Replace with actual expression testing once the calulator is implemented
 void tests();
-
+void rational_test();
 int main(int argc, const char * argv[])
 {
 	// If the third arg is test, run the tests. Note that strcmp == 0 if true.
 	if ( argc > 1 && !strcmp(argv[1], "test") )
 	{
 		tests();
+	}
+
+	// a test for creating and simplifying rationals
+	if( argc > 1 && !strcmp(argv[1] , "rational"))
+	{
+		rational_test();
+
 	}
 	
 	// TODO: Everything
@@ -74,4 +81,29 @@ void tests()
 	
 	cout << "Adding a Log" << endl;
 	myconst.add(mylog);
+
+		
+}
+
+void rational_test()
+{
+	int num , den;
+	cout << "Enter numerator: " <<endl;
+	cin >> num;
+
+	cout << "Enter denominator: " <<endl;
+	cin >> den;	
+
+	cout << "Creating Rational" <<endl;
+	Rational *r = new Rational(num,den);
+	cout << "Numerator: " << r->getNum() <<endl;
+	cout << "Denominator: " << r->getDen() << endl;
+	cout << "GCD: " << r->gcd(r->getNum() , r->getDen()) << endl;
+	cout << "Simplifying" <<endl;
+	r->simplify();
+	cout << "Numerator: " << r->getNum() <<endl;
+	cout << "Denominator: " << r->getDen() << endl;
+
+
+	delete r;
 }
