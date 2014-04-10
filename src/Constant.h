@@ -10,8 +10,12 @@
 #define __COP_3503_Project__Constant__
 
 #include <iostream>
-#include "Number.h"
 #include <string>
+#include <stdexcept>
+// Allow M_PI and M_E defines to be accessed on platforms that provide the definitions.
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #include "Number.h"
 
 

@@ -8,11 +8,21 @@
 
 
 #include "Constant.h"
-#include <stdexcept>
+
+// Check the definitions of our constants
+// pi
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+// e
+#ifndef M_E
+#define M_E 2.7182818284590452354
+#endif
+
 
 /**
- *	Constructor
- *  Args: <string> name: The name of the constant, e.g. pi or e
+ * Constructor
+ * Args: <string> name: The name of the constant, e.g. pi or e
  */
 Constant::Constant(string name)
 {
@@ -36,19 +46,15 @@ Constant::Constant(string name)
  */
 bool Constant::isKnown(string name)
 {
-	switch (name)
-	{
-		case "pi":
-			return true;
-			break;
-		
-		case "e":
-			return true;
-			break;
-		
-		case default:
-			return false;
-	}
+	// C++ doesn't allow string switching, so a chain of if - else if is used instead.
+	if (name == "pi")
+		return true;
+	
+	else if (name == "e")
+		return true;
+	
+	else
+		return false;
 }
 
 /**
@@ -57,20 +63,20 @@ bool Constant::isKnown(string name)
  */
 double Constant::getValue()
 {
-	switch (this->name)
-	{
-		case "pi":
-			return 0.1;
-			break;
-			
-		case "e":
-			return 0.1;
-			break;
-			
-		// Should never be encountered, as we check if the constant is known during construction
-		case default:
-			throw runtime_error("How did we get here? Error getting the value of constant: " + this->name);
-	}
+	/*
+	 C++ doesn't allow string switching, so a chain of if - else if is used instead.
+	 Each constant first trys to return the value as defined by the platform's math.h, 
+	 and then reverts to a hard-coded 32-bit double definition if not found.
+	 */
+	if (name == "pi")
+		return M_PI;
+	
+	else if (name == "e")
+		return M_E;
+	
+	// Should never be encountered, as we check if the constant is known during construction
+	else
+		throw runtime_error("How did we get here? Error getting the value of constant: " + this->name);
 }
 
 string Constant::getName()
