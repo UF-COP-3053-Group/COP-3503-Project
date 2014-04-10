@@ -93,15 +93,17 @@ string Constant::getName()
 void Constant::add(Number num)
 {
 	cout << "Successfully caught a generic Number" << endl;
+	// Will catch types where there are no special rules
 }
 void Constant::add(Integer num)
 {
 	cout << "Successfully recognized an Integer" << endl;
-	// const + int, no change.
+	// testing only
 }
 void Constant::add(Radical num)
 {
 	cout << "Successfully recognized a Radical" << endl;
+	// testing only
 }
 
 void Constant::add(Constant num)
@@ -111,15 +113,29 @@ void Constant::add(Constant num)
 	// else, don't
 }
 
-void Constant::add(Rational num)
-{
-	cout << "Successfully recognized a Rational" << endl;
-	// no change - Constant + Rational. Can the superclass handle this?
-}
 
 void Constant::subtract(Number num)
 {
-	cout << "Successfully recognized subtracting a Number" << endl; //write tests for all methods?
+	cout << "Successfully recognized subtracting a generic Number" << endl;
 	// no change
 }
 
+void Constant::subtract(Constant num)
+{
+	cout << "Successfully recognized subtracting a Constant" << endl;
+	// If Constants are the same, subtract coefficients
+	// Else, do nothing
+}
+
+void Constant::multiply(Number num)
+{
+	cout << "Successfully recognized multiplying a generic Number" << endl;
+	//no change
+}
+
+void Constant::multiply(Constant num)
+{
+	cout << "Successfully recognized multiplying a constant" << endl;
+	// If same constant, multiply coefficients
+	// else, do nothing
+}
