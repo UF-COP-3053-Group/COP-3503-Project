@@ -7,6 +7,8 @@
 //
 
 #include "Rational.h"
+#include <stdexcept>
+using namespace std;
 
 /**
  * Constructor
@@ -33,7 +35,7 @@ int Rational::gcd(int a , int b)
 {
 	// Check for invalid b
 	if (b == 0)
-		throw invaid_argument("Can't devide by 0");
+		throw invalid_argument("Can't devide by 0");
 	
 	int top = a >= b ? a : b;
 	int bot = a <= b ? a : b;
