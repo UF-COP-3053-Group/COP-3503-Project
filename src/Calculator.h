@@ -11,4 +11,15 @@
 
 #include <iostream>
 
+class Calculator
+{
+public:
+	Calculator();
+	~Calculator();
+	void calculate(string input);
+	void parseInput(string input);
+	
+	
+};
+
 #endif /* defined(__COP_3503_Project__Calculator__) */

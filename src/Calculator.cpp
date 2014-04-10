@@ -16,7 +16,29 @@ struct node
 {
 	char op;
 	Number num;
-	//type left;
-	//type right;
+	node* left;
+	node* right;
 };
 
+
+/**
+ * The main calculator function that takes an input and simplifies it.
+ * Will store the answer for later retrieval.
+ */
+Calculator::calculate(string input)
+{
+	// First, we need to parse the input
+	parseInput(input);
+	
+	// 
+}
+
+
+/**
+ * Parses the input by first combining like terms over additon and subtraction,
+ * then building a tree from the resulting (somewhat simplified) string.
+ */
+Calculator::parseInput(string& input)
+{
+	
+}
