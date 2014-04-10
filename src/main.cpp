@@ -6,7 +6,11 @@
 //
 //
 
-#include "main.h"
+#include "Constant.h"
+
+// Define all functions used in the main
+void printMenu();
+
 
 int main(int argc, const char * argv[])
 {

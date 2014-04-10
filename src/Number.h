@@ -9,6 +9,8 @@
 #ifndef NUMBER_H_
 #define NUMBER_H_
 
+#include <iostream>
+
 using namespace std;
 
 
@@ -20,6 +22,6 @@ class Number {
 		virtual void Subtract() = 0;
 		virtual void Multiply() = 0;
 		virtual void Divide() = 0;
-}
+};
 
 #endif /* NUMBER_H_ */

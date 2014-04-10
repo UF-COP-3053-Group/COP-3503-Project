@@ -10,11 +10,12 @@
 #define __COP_3503_Project__Constant__
 
 #include <iostream>
+#include "Number.h"
 #include <string>
 
 using namespace std;
 
-class Constant
+class Constant: public Number
 {
 public:
 	Constant(string name);
