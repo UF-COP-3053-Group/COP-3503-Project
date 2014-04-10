@@ -9,7 +9,7 @@
 
 #include "Constant.h"
 
-//I needed to add this to get it to compile.  
+// Needed for std::transform
 #include <algorithm>
 // Check the definitions of our constants
 // pi
@@ -98,12 +98,12 @@ void Constant::add(Number num)
 void Constant::add(Integer num)
 {
 	cout << "Successfully recognized an Integer" << endl;
-	// testing only
+	// testing only, in real life should just go to add(Number num)
 }
 void Constant::add(Radical num)
 {
 	cout << "Successfully recognized a Radical" << endl;
-	// testing only
+	// testing only, in real life should just go to add(Number num)
 }
 
 void Constant::add(Constant num)
@@ -137,5 +137,17 @@ void Constant::multiply(Constant num)
 {
 	cout << "Successfully recognized multiplying a constant" << endl;
 	// If same constant, multiply coefficients
+	// else, do nothing
+}
+
+void Constant::divide(Number num)
+{
+	cout << "Successfully recognized dividing a generic Number" << endl;
+}
+
+void Constant::divide(Constant num)
+{
+	cout << "Successfully recognized dividing a Constant" << endl;
+	// If same constant, divide coefficients
 	// else, do nothing
 }
