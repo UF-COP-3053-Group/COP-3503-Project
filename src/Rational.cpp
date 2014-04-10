@@ -35,11 +35,7 @@ int Rational::gcd(int a , int b)
 {
 	// Check for invalid b
 	if (b == 0)
-<<<<<<< HEAD
 		throw invalid_argument("Can't devide by 0");
-=======
-		throw invalid_argument("Can't divide by 0");
->>>>>>> FETCH_HEAD
 	
 	int top = a >= b ? a : b;
 	int bot = a <= b ? a : b;
