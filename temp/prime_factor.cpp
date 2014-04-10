@@ -4,7 +4,7 @@
 #define NUM 30
 using namespace std;
 
- 
+
 
 bool isPrime(int n)
 {
