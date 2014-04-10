@@ -5,7 +5,7 @@
 //  Created by Justin on 4/9/14.
 //
 //
-
+#include <stdexcept>
 #include <iostream>
 #include <string.h>
 // Test includes

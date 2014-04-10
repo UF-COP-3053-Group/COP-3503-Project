@@ -92,16 +92,50 @@ string Constant::getName()
 
 void Constant::add(Number num)
 {
-	cout << "Successfuly caught a generic Number" << endl;
+	cout << "Successfully caught a generic Number" << endl;
+	// Will catch types where there are no special rules
 }
 void Constant::add(Integer num)
 {
 	cout << "Successfully recognized an Integer" << endl;
+	// testing only
 }
 void Constant::add(Radical num)
 {
 	cout << "Successfully recognized a Radical" << endl;
+	// testing only
+}
+
+void Constant::add(Constant num)
+{
+	cout << "Successfully recognized a Constant" << endl;
+	// If the Constants are the same (ie both pi), add coefficients
+	// else, don't
 }
 
 
+void Constant::subtract(Number num)
+{
+	cout << "Successfully recognized subtracting a generic Number" << endl;
+	// no change
+}
 
+void Constant::subtract(Constant num)
+{
+	cout << "Successfully recognized subtracting a Constant" << endl;
+	// If Constants are the same, subtract coefficients
+	// Else, do nothing
+}
+
+void Constant::multiply(Number num)
+{
+	cout << "Successfully recognized multiplying a generic Number" << endl;
+	//no change
+}
+
+void Constant::multiply(Constant num)
+{
+	cout << "Successfully recognized multiplying a constant" << endl;
+	// If same constant, multiply coefficients
+	// else, do nothing
+}
