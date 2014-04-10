@@ -10,6 +10,9 @@
 #define __COP_3503_Project__Calculator__
 
 #include <iostream>
+#include "Number.h"
+
+using namespace std;
 
 class Calculator
 {
@@ -17,7 +20,7 @@ public:
 	Calculator();
 	~Calculator();
 	void calculate(string input);
-	void parseInput(string input);
+	void parseInput(string& input);
 	
 	
 };

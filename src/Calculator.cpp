@@ -7,9 +7,7 @@
 //
 
 #include "Calculator.h"
-#include "Number.h"
 
-using namespace std;
 
 // The main tree node structure used to store data
 struct node
@@ -25,12 +23,12 @@ struct node
  * The main calculator function that takes an input and simplifies it.
  * Will store the answer for later retrieval.
  */
-Calculator::calculate(string input)
+void Calculator::calculate(string input)
 {
 	// First, we need to parse the input
 	parseInput(input);
 	
-	// 
+	//
 }
 
 
@@ -38,7 +36,7 @@ Calculator::calculate(string input)
  * Parses the input by first combining like terms over additon and subtraction,
  * then building a tree from the resulting (somewhat simplified) string.
  */
-Calculator::parseInput(string& input)
+void Calculator::parseInput(string& input)
 {
 	
 }
