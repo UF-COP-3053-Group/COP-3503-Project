@@ -31,6 +31,10 @@ Rational::~Rational()
 //negative numbers yet... or divide by 0 errors
 int Rational::gcd(int a , int b)
 {
+	// Check for invalid b
+	if (b == 0)
+		throw invaid_argument("Can't devide by 0");
+	
 	int top = a >= b ? a : b;
 	int bot = a <= b ? a : b;
 
@@ -44,7 +48,8 @@ int Rational::gcd(int a , int b)
 		gcd(bot, r);	
 	}
 
-
+	// Should never reach this far, but if
+	throw logic_error("gcd not found for this rational");
 }
 
 void Rational::simplify()
