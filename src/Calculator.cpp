@@ -9,14 +9,22 @@
 #include "Calculator.h"
 
 
-// The main tree node structure used to store data
-struct node
+/**
+ * Constructor
+ */
+Calculator::Calculator()
 {
-	char op;
-	Number num;
-	node* left;
-	node* right;
-};
+	
+}
+
+
+/**
+ * Destructor
+ */
+Calculator::~Calculator()
+{
+	
+}
 
 
 /**
@@ -28,15 +36,36 @@ void Calculator::calculate(string input)
 	// First, we need to parse the input
 	parseInput(input);
 	
-	//
+	// Next, take the tree
 }
 
 
 /**
  * Parses the input by first combining like terms over additon and subtraction,
  * then building a tree from the resulting (somewhat simplified) string.
+ * Returns: a pointer to the root node of the tree
  */
-void Calculator::parseInput(string& input)
+node* Calculator::parseInput(string& input)
 {
+	// Before building the tree, lets try to collect any simple like terms
+	input = collectTerms(input);
 	
+	// Now, create the tree from the given input
+	node* tree = createTree(input);
+	
+	
+	return tree; // Yes?
+}
+
+string Calculator::collectTerms(string& input)
+{
+	// First, break up the string into a vector split over each plus and minus
+	
+	
+	return input;
+}
+
+node* Calculator::createTree(string input)
+{
+	return new node;
 }
