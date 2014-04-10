@@ -21,7 +21,7 @@ public:
 	Radical();
 	
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
-	void add(Number);
+	/*void add(Number);
 	void add(Constant);
 	void add(Exponent);
 	void add(Integer);
@@ -51,7 +51,7 @@ public:
 	void divide(Integer);
 	void divide(Log);
 	void divide(Radical);
-	void divide(Rational);
+	void divide(Rational);*/
 };
 
 #endif /* defined(__COP_3503_Project__Radical__) */

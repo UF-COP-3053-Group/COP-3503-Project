@@ -15,7 +15,7 @@ Integer::Integer()
 {
 	// TODO: Create the constructor
 }
-
+/*
 void Integer::add(Number num)
 {
 	cout << "Successfully recognized adding a generic Number to this Integer" << endl; //all outputs here are for testing only
@@ -64,3 +64,4 @@ void Integer::divide(Integer num)
 	cout << "Successfully recognized dividing this Integer by an Integer" << endl;
 	// divide
 }
+*/
