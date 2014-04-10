@@ -9,7 +9,7 @@
 
 #include "Constant.h"
 
-//I needed to add this to get it to compile.  
+// Needed for std::transform
 #include <algorithm>
 // Check the definitions of our constants
 // pi
