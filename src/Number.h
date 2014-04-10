@@ -16,12 +16,12 @@ using namespace std;
 
 class Number {
 	public:
-		Number(); // Not sure if we need
-		virtual ~Number();
-		virtual void Add() = 0; // void since actual returns should be subclasses
-		virtual void Subtract() = 0;
-		virtual void Multiply() = 0;
-		virtual void Divide() = 0;
+		// Commented out for working purposes.
+		//We can't create objects that don't define all of these functions and we need to for testing.
+		//virtual void add() = 0; // void since actual returns should be subclasses
+		//virtual void subtract() = 0;
+		//virtual void multiply() = 0;
+		//virtual void divide() = 0;
 };
 
 #endif /* NUMBER_H_ */

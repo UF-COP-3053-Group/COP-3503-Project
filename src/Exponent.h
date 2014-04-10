@@ -11,4 +11,16 @@
 
 #include <iostream>
 
+#include "Number.h"
+
+using namespace std;
+
+class Exponent : public Number
+{
+public:
+	Exponent();
+	
+	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
+};
+
 #endif /* defined(__COP_3503_Project__Exponent__) */

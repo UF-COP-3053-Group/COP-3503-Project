@@ -7,3 +7,11 @@
 //
 
 #include "Radical.h"
+
+/**
+ * Constructor
+ */
+Radical::Radical()
+{
+	// TODO: Create the constructor
+}

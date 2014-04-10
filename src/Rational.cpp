@@ -7,3 +7,11 @@
 //
 
 #include "Rational.h"
+
+/**
+ * Constructor
+ */
+Rational::Rational()
+{
+	// TODO: Create the constructor
+}

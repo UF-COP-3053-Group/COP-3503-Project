@@ -17,7 +17,11 @@
 #include <math.h>
 
 #include "Number.h"
-
+#include "Exponent.h"
+#include "Integer.h"
+#include "Log.h"
+#include "Radical.h"
+#include "Rational.h"
 
 using namespace std;
 
@@ -28,7 +32,12 @@ public:
 	bool isKnown(string name);
 	double getValue();
 	string getName();
+	
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
+	void add(Number num);
+	void add(Integer num);
+	void add(Radical num);
+
 	
 private:
 	string name;

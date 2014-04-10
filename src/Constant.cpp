@@ -79,7 +79,27 @@ double Constant::getValue()
 		throw runtime_error("How did we get here? Error getting the value of constant: " + this->name);
 }
 
+/**
+ * Returns the name of this constant, e.g. pi or e
+ * return: <string> name
+ */
 string Constant::getName()
 {
 	return this->name;
 }
+
+void Constant::add(Number num)
+{
+	cout << "Successfuly caught a generic Number" << endl;
+}
+void Constant::add(Integer num)
+{
+	cout << "Successfully recognized an Integer" << endl;
+}
+void Constant::add(Radical num)
+{
+	cout << "Successfully recognized a Radical" << endl;
+}
+
+
+

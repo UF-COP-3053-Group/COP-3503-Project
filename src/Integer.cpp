@@ -7,3 +7,11 @@
 //
 
 #include "Integer.h"
+
+/**
+ * Constructor
+ */
+Integer::Integer()
+{
+	// TODO: Create the constructor
+}

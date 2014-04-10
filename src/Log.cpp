@@ -7,3 +7,11 @@
 //
 
 #include "Log.h"
+
+/**
+ * Constructor
+ */
+Log::Log()
+{
+	// TODO: Create the constructor
+}
