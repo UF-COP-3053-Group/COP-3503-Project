@@ -92,16 +92,34 @@ string Constant::getName()
 
 void Constant::add(Number num)
 {
-	cout << "Successfuly caught a generic Number" << endl;
+	cout << "Successfully caught a generic Number" << endl;
 }
 void Constant::add(Integer num)
 {
 	cout << "Successfully recognized an Integer" << endl;
+	// const + int, no change.
 }
 void Constant::add(Radical num)
 {
 	cout << "Successfully recognized a Radical" << endl;
 }
 
+void Constant::add(Constant num)
+{
+	cout << "Successfully recognized a Constant" << endl;
+	// If the Constants are the same (ie both pi), add coefficients
+	// else, don't
+}
 
+void Constant::add(Rational num)
+{
+	cout << "Successfully recognized a Rational" << endl;
+	// no change - Constant + Rational. Can the superclass handle this?
+}
+
+void Constant::subtract(Number num)
+{
+	cout << "Successfully recognized subtracting a Number" << endl; //write tests for all methods?
+	// no change
+}
 
