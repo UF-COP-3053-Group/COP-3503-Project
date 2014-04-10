@@ -24,6 +24,7 @@ void printMenu();
 // TODO: Replace with actual expression testing once the calulator is implemented
 void tests();
 void rational_test();
+
 int main(int argc, const char * argv[])
 {
 	// If the third arg is test, run the tests. Note that strcmp == 0 if true.
@@ -36,7 +37,6 @@ int main(int argc, const char * argv[])
 	if( argc > 1 && !strcmp(argv[1] , "rational"))
 	{
 		rational_test();
-
 	}
 	
 	// TODO: Everything
