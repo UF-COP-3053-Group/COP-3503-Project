@@ -39,15 +39,70 @@ int main(int argc, const char * argv[])
 		rational_test();
 	}
 	
+	else {
+		printMenu(); // Default behavior
+	}
+
 	// TODO: Everything
 }
 
 /**
  * Prints a menu to stdout
+ * The code isn't super sexy or using lots of escape characters,
+ * but it works and everything is lined up, at least on Ubuntu.
+ * None of the expressions are set in stone, let me know
+ * if they need to be changed. - Kyle
  */
 void printMenu()
 {
-	//TODO: Make it print a menu. Duh.
+	string userInput; //should it be declared here or elsewhere?
+	bool menuLoop = true;
+	//TODO: Print second part of menu and pass input to parser
+	//      Throw errors for bad input
+	while(menuLoop != false || menuLoop != false)
+	{
+		cout << "################################################################################" << endl;
+		cout << "################################################################################" << endl;
+		cout << "## Welcome to The Best Calculator You Will Ever Use 			      ##" << endl;
+		cout << "## (TBCYWEU, pronounced TibKeyWoo)  					      ##" << endl;
+		cout << "## The following operators are allowed:                                       ##" << endl;
+		cout << "## + add 								      ##" << endl;
+		cout << "## - subtract							      	      ##" << endl;
+		cout << "## * multiply								      ##" << endl;
+		cout << "## / divide 								      ##" << endl;
+		cout << "##                              					      ##" << endl;
+		cout << "##                                                                            ##" << endl;
+		cout << "## The following expressions are allowed: 				      ##" << endl;
+		cout << "## e - Euler's number							      ##" << endl;
+		cout << "## pi - 3.141592653589793238462643383279502884197136939937510582097494	      ##" << endl;
+		cout << "## log - logarithm. Example: log3(3) - log base 3 of 3			      ##" << endl;
+		cout << "## rad - radical. Example: rad3(9) - cubic root of 9			      ##" << endl;
+		cout << "## ^ - exponent. Example 2^3 - 2 to the power of 3			      ##" << endl;
+		cout << "## () - Grouping							      ##" << endl;
+		cout << "##									      ##" << endl;
+		cout << "################################################################################" << endl;
+		cout << "################################################################################" << endl;
+		cout << endl;
+		cout << "Press 'q' to quit or 'c' to continue: " << endl;
+		cin >> userInput;
+		if(userInput == "Q" || userInput == "q")
+		{
+			menuLoop = false;
+		}
+		// check for correct input
+		cout << "################################################################################" << endl;
+		cout << "## Continuing...							      ##" << endl;
+		cout << "##                                                                            ##" << endl;
+		cout << "## Please enter your expression below, or 'q' to quit: 			      ##" << endl;
+		cin >> userInput;
+		if(userInput == "Q" || userInput == "q")
+		{
+			menuLoop = false;
+		}
+	}
+	// Test that exit works
+	//cout << "Exiting" << endl;
+	// Works!
 }
 
 
