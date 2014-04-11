@@ -36,10 +36,10 @@ void Integer::add(Number num)
 
 void Integer::add(Integer num)
 {
-	cout << "Successfully recognized adding an Integer to this Integer" << endl;
-	// Add integers. Easy. Depending on how we handle output blah blah blah
-	int answer = this->getInt() + num.getInt();
-	cout << answer;
+	// needs to return answer, figure out format first. May affect above line (answer may need to be Integer).
+	// same goes for other implemented methods.
+	int answer = this->getInt() + num.getInt(); //works
+	// cout << answer << endl;
 }
 
 void Integer::subtract(Number num)
@@ -50,8 +50,8 @@ void Integer::subtract(Number num)
 
 void Integer::subtract(Integer num)
 {
-	cout << "Successfully recognized subtracting an Integer from this Integer" << endl;
-	// Subtract integers
+	int answer = this->getInt() - num.getInt(); //works
+//	cout << answer << endl;
 }
 
 void Integer::multiply(Number num)
@@ -63,19 +63,22 @@ void Integer::multiply(Number num)
 
 void Integer::multiply(Integer num)
 {
+	//this one is funny, should return 25, returns 1073676289
 	cout << "Successfully recognized multiplying an Integer and this Integer" << endl;
-	// Go forth and multiply!
+	int answer = (this->getInt()) * (num.getInt());
+	cout << answer << endl;
 }
 
 void Integer::divide(Number num)
 {
 	cout << "Successfully recognized dividing this Integer by a generic Number. Or vice versa" << endl;
-	// divide coefficients. Will num be the divisor?
 }
 
 void Integer::divide(Integer num)
 {
 	cout << "Successfully recognized dividing this Integer by an Integer" << endl;
-	// divide
+	// This implementation assumes 'num' is the divisor
+	int answer = this->getInt() / num.getInt(); //works
+//	cout << answer << endl;
 }
 
