@@ -31,6 +31,18 @@ Rational::~Rational()
 
 }
 
+
+void Rational::divide(Rational r)
+{
+
+	//Again, this had the side effect of changin r.
+	
+	int temp = r.getNum();
+	r.setNum(r.getDen());
+	r.setDen(temp);
+
+	Rational::multiply(r);
+}
 void Rational::setNum(int n)
 {
 	num = n;	
@@ -51,6 +63,14 @@ void Rational::add(Constant n)
 {
 
 	cout << "Successfully recognized a constant" <<endl;
+}
+
+
+
+void add(Integer)
+{
+	//TODO 
+
 }
 
 void Rational::subtract(Rational r)
@@ -136,12 +156,12 @@ void Rational::simplify()
 	int gcd = Rational::gcd(this->num , this->den);
 	if(num == 0)
 	{
-		;//should return an integer, = 0;
+		Rational::rationalToInt(0);//should return an integer, = 0;
 	}
 
 	if(den == 1)
 	{
-		;//should return an integer, = num
+		Rational::rationalToInt(num);//should return an integer, = num
 
 	}
 
@@ -155,6 +175,12 @@ void Rational::simplify()
 
 }
 
+//Will we need this? 
+Integer *Rational::rationalToInt(int n)
+{
+	cout << "Created new Integer, " << n <<endl;
+	return new Integer(n);
+}
 int Rational::getNum()
 {
 	return num;

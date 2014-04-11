@@ -24,7 +24,6 @@ void printMenu();
 // TODO: Replace with actual expression testing once the calulator is implemented
 void tests();
 void rational_test();
-
 int main(int argc, const char * argv[])
 {
 	// If the third arg is test, run the tests. Note that strcmp == 0 if true.
@@ -216,5 +215,46 @@ void rational_test()
 		delete a;
 
 	}
+	cout << "Would you like to test multiplication?" <<endl;
+	cin >> response; 
+
+	if(response == 'y')
+	{
+		int _num , _den;
+		cout << "Enter numerator: " <<endl;
+		cin >> _num;	
+		cout << "Enter denominator: " <<endl;
+		cin >> _den;
+		Rational *a = new Rational(_num , _den);
+		r->multiply(*a);
+		delete a;
+
+	}
+
+	cout << "Would you like to test division?" << endl;
+	cin >> response;	
+	if(response == 'y')
+	{
+		int _num , _den;
+		cout << "Enter numerator: " <<endl;
+		cin >> _num;	
+		cout << "Enter denominator: " <<endl;
+		cin >> _den;
+		Rational *a = new Rational(_num , _den);
+		r->divide(*a);
+		delete a;
+
+	}
+
+
 	delete r;
 }
+
+
+
+
+
+
+
+
+
