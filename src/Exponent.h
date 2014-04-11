@@ -32,10 +32,10 @@ public:
 	void add(Constant);
      
 	void add(Exponent);
-    //convert both to integer, add
+    //if Integer base, convert both to integer, add
      
 	void add(Integer);
-     //convert to integer, add
+     //convert to Integer, add
      
 	void add(Log);
     //simplyify log, combine
@@ -51,10 +51,10 @@ public:
 	void subtract(Constant);
      
 	void subtract(Exponent);
-    //convert both to integers, subtract
+    //if Integer base, convert both to integers, subtract
      
 	void subtract(Integer);
-    //convert to integer, subtract
+    //convert to Integer, subtract
      
 	void subtract(Log);
      
@@ -72,7 +72,7 @@ public:
      //add pow
      
 	void multiply(Integer);
-    //convert to integer, multiply
+    //convert to Integer, multiply
      
 	void multiply(Log);
     //combine
@@ -84,7 +84,6 @@ public:
     //multiply by denominator
      
 
-	void divide(Number);
      
 	void divide(Constant);
     //create fraction
