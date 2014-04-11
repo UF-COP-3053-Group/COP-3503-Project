@@ -25,6 +25,9 @@ public:
 	int getNum();
 	int getDen();	
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
+
+	//should this return a new Rational number? If so, how will we overload ? 
+	void add(Rational);
 	/*void add(Number);
 	void add(Constant);
 	void add(Exponent);
