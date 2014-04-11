@@ -3,17 +3,23 @@
 //  COP-3503-Project
 //
 //  Created by Justin on 4/9/14.
+//  Editied by Tylor on 4/11/2014.
 //
-//
+
+
+//TODO: Add pseudocode for coefficients
+
 
 #include "Radical.h"
 
 /**
  * Constructor
  */
-Radical::Radical()
+Radical::Radical(/*int base, Number* radicand*/)
 {
 	// TODO: Create the constructor
+	//int base;
+	//Number* radicand;
 }
 
 void Radical::add(Number* in)
@@ -105,36 +111,51 @@ void Radical::subtract(Rational* in)
 
 void Radical::multiply(Number* in)
 {
+	//Do nothing
 	cout << "Successfully recognized multiplying a Generic Number to a Radical" << endl;
 }
 
 void Radical::multiply(Constant* in)
 {
+	//Constant*Radical, no actual multiplication
 	cout << "Successfully recognized multiplying a Constant to a Radical" << endl;
 }
 
 void Radical::multiply(Exponent* in)
 {
+	//Exponent*Radical, no actual multiplication
 	cout << "Successfully recognized multiplying a Exponent to a Radical" << endl;
 }
 
 void Radical::multiply(Integer* in)
 {
+	//Integer*Radical, no actual multiplication
 	cout << "Successfully recognized multiplying a integer to a Radical" << endl;
 }
 
 void Radical::multiply(Log* in)
 {
+	//Log*Radical, no actual multiplication
 	cout << "Successfully recognized multiplying a Logarithm to a Radical" << endl;
 }
 
 void Radical::multiply(Radical* in)
 {
+	//Radical*Radical, (IFF Bases are the same)
+	//Factor each radicand and see if there are common factors. 
+	//Each pair of factors gets pulled out as one integer. 
+	//Integers get multiplied together and the leftover factors get multiplied together.
+	//The result should be: Radical* r = new Radical(this->base, factors);
+	//r->multiply(integers);
+	//(If different Bases)
+	//No multiplication
+	
 	cout << "Successfully recognized multiplying a Radical to a Radical" << endl;
 }
 
 void Radical::multiply(Rational* in)
 {
+	//Radical*Rational, Rational.num = this->multiply(Radical.num) This gives a rational with the radical in the numerator
 	cout << "Successfully recognized multiplying a Rational to a Radical" << endl;
 }
 
