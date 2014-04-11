@@ -12,11 +12,12 @@
 //#include <iostream>
 
 #include "Number.h"
-
+#include "Integer.h"
 //WARNING: circular dependency?
 #include "Constant.h"
 
 class Constant;
+
 using namespace std;
 
 class Rational : public Number
@@ -29,18 +30,22 @@ public:
 	int getNum();
 	int getDen();
 	void setNum(int n);
-	void setDen(int n);	
+	void setDen(int n);
+	Integer *rationalToInt(int);	
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
 
 	//should this return a new Rational number? If so, how will we overload ? 
 	void add(Rational);
 	void add(Number);
-	void add(Constant);	
+	void add(Constant);
+	void add(Integer);	
 
 	void subtract(Rational);
-
+	
 
 	void multiply(Rational);
+
+	void divide(Rational);
 	/*void add(Number);
 	void add(Constant);
 	void add(Exponent);
