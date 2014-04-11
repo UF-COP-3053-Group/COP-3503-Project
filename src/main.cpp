@@ -152,19 +152,19 @@ void tests()
 	myint.subtract(myrad);
 
 	cout << "Subtracting an Integer" << endl;
-	myint.subtract(myint);
+	myint2.subtract(myint2);
 
 	cout << "Multiplying a Radical (generic Number)" << endl;
 	myint.multiply(myrad);
 
 	cout << "Multiplying an Integer" << endl;
-	myint.multiply(myint);
+	myint2.multiply(myint2);
 
 	cout << "Dividing a Radical (generic Number)" << endl;
 	myint.divide(myrad);
 
 	cout << "Dividing an Integer" << endl;
-	myint.divide(myint);
+	myint2.divide(myint2);
 
 		
 }

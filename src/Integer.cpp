@@ -39,7 +39,7 @@ void Integer::add(Integer num)
 	// needs to return answer, figure out format first. May affect above line (answer may need to be Integer).
 	// same goes for other implemented methods.
 	int answer = this->getInt() + num.getInt(); //works
-	// cout << answer << endl;
+	 cout << answer << endl; //testing
 }
 
 void Integer::subtract(Number num)
@@ -51,7 +51,7 @@ void Integer::subtract(Number num)
 void Integer::subtract(Integer num)
 {
 	int answer = this->getInt() - num.getInt(); //works
-//	cout << answer << endl;
+	cout << answer << endl; // testing
 }
 
 void Integer::multiply(Number num)
@@ -63,10 +63,9 @@ void Integer::multiply(Number num)
 
 void Integer::multiply(Integer num)
 {
-	//this one is funny, should return 25, returns 1073676289
 	cout << "Successfully recognized multiplying an Integer and this Integer" << endl;
-	int answer = (this->getInt()) * (num.getInt());
-	cout << answer << endl;
+	int answer = (this->getInt()) * (num.getInt()); //works
+	cout << answer << endl; // testing
 }
 
 void Integer::divide(Number num)
@@ -79,6 +78,6 @@ void Integer::divide(Integer num)
 	cout << "Successfully recognized dividing this Integer by an Integer" << endl;
 	// This implementation assumes 'num' is the divisor
 	int answer = this->getInt() / num.getInt(); //works
-//	cout << answer << endl;
+	cout << answer << endl; // testing
 }
 
