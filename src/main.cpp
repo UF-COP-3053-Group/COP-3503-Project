@@ -82,6 +82,31 @@ void tests()
 	cout << "Adding a Log" << endl;
 	myconst.add(mylog);
 
+	cout << "Integer tests" << endl;
+	cout << "Adding a constant (generic Number)" << endl;
+	myint.add(myconst);
+
+	cout << "Adding an Integer" << endl;
+	myint.add(myint);
+
+	cout << "Subtracting a Radical (generic Number)" << endl;
+	myint.subtract(myrad);
+
+	cout << "Subtracting an Integer" << endl;
+	myint.subtract(myint);
+
+	cout << "Multiplying a Radical (generic Number)" << endl;
+	myint.multiply(myrad);
+
+	cout << "Multiplying an Integer" << endl;
+	myint.multiply(myint);
+
+	cout << "Dividing a Radical (generic Number)" << endl;
+	myint.divide(myrad);
+
+	cout << "Dividing an Integer" << endl;
+	myint.divide(myint);
+
 		
 }
 

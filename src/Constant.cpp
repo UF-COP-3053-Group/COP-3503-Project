@@ -151,4 +151,3 @@ void Constant::divide(Constant num)
 	// If same constant, divide coefficients
 	// else, do nothing
 }
-*/
