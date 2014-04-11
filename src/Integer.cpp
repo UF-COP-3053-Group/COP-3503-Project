@@ -8,12 +8,18 @@
 
 #include "Integer.h"
 
+Integer::Integer()
+{
+	// Default constructor for testing
+}
+
 /**
  * Constructor
  */
-Integer::Integer()
+Integer::Integer(int num)
 {
-	// TODO: Create the constructor
+	// TODO: Parser should take care of input and push it to correct class.
+	this->num = num;
 }
 
 

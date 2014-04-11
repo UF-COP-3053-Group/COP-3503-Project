@@ -18,7 +18,8 @@ using namespace std;
 class Integer : public Number
 {
 public:
-	Integer();
+	Integer(); // default constructor for testing
+	Integer(int);
 	
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
 	void add(Number);
@@ -32,6 +33,9 @@ public:
 
 	void divide(Number);
 	void divide(Integer);
+
+private:
+	int num;
 };
 
 #endif /* defined(__COP_3503_Project__Integer__) */
