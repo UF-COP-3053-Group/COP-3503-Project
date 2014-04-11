@@ -31,15 +31,18 @@ int main(int argc, const char * argv[])
 	if ( argc > 1 && !strcmp(argv[1], "test") )
 	{
 		tests();
+		return 0;
 	}
 
 	// a test for creating and simplifying rationals
 	if( argc > 1 && !strcmp(argv[1] , "rational"))
 	{
 		rational_test();
+		return 0;
 	}
 	
-	else {
+	else
+	{
 		printMenu(); // Default behavior
 	}
 
@@ -85,7 +88,7 @@ void printMenu()
 		cout << endl;
 		cout << "Press 'q' to quit or 'c' to continue: " << endl;
 		cin >> userInput;
-		if(userInput == "Q" || userInput == "q")
+		if(userInput == "Q" || userInput == "q")  //this stopped working...
 		{
 			menuLoop = false;
 		}
@@ -119,8 +122,9 @@ void tests()
 	cout << "Creating a Constant" << endl;
 	Constant myconst = Constant("pi");
 	
-	cout << "Creating an Integer" << endl;
+	cout << "Creating an empty Integer and 'real' Integer" << endl;
 	Integer myint = Integer();
+	Integer myint2 = Integer(5);
 	
 	cout << "Creating a Radical" << endl;
 	Radical myrad = Radical();
@@ -141,8 +145,9 @@ void tests()
 	cout << "Adding a constant (generic Number)" << endl;
 	myint.add(myconst);
 
-	cout << "Adding an Integer" << endl;
-	myint.add(myint);
+	cout << "Adding an actual Integer" << endl;
+	myint2.add(myint2);
+
 
 	cout << "Subtracting a Radical (generic Number)" << endl;
 	myint.subtract(myrad);

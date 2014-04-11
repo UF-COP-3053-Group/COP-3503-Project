@@ -34,8 +34,11 @@ public:
 	void divide(Number);
 	void divide(Integer);
 
+	int getInt();
+
 private:
 	int num;
+	int inputNum;
 };
 
 #endif /* defined(__COP_3503_Project__Integer__) */

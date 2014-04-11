@@ -16,10 +16,15 @@ Integer::Integer()
 /**
  * Constructor
  */
-Integer::Integer(int num)
+Integer::Integer(int inputNum)
 {
 	// TODO: Parser should take care of input and push it to correct class.
-	this->num = num;
+	this->inputNum = inputNum;
+}
+
+int Integer::getInt()
+{
+	return inputNum;
 }
 
 
@@ -33,6 +38,8 @@ void Integer::add(Integer num)
 {
 	cout << "Successfully recognized adding an Integer to this Integer" << endl;
 	// Add integers. Easy. Depending on how we handle output blah blah blah
+	int answer = this->getInt() + num.getInt();
+	cout << answer;
 }
 
 void Integer::subtract(Number num)
