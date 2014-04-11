@@ -66,11 +66,12 @@ void Rational::add(Constant n)
 }
 
 
-
-void add(Integer)
+//add the value of the Integer of to the Rational
+void Rational::add(Integer i)
 {
-	//TODO 
-
+//	num  = num + i * den;
+	
+			
 }
 
 void Rational::subtract(Rational r)
