@@ -16,10 +16,15 @@ Integer::Integer()
 /**
  * Constructor
  */
-Integer::Integer(int num)
+Integer::Integer(int inputNum)
 {
 	// TODO: Parser should take care of input and push it to correct class.
-	this->num = num;
+	this->inputNum = inputNum;
+}
+
+int Integer::getInt()
+{
+	return inputNum;
 }
 
 
@@ -31,8 +36,10 @@ void Integer::add(Number num)
 
 void Integer::add(Integer num)
 {
-	cout << "Successfully recognized adding an Integer to this Integer" << endl;
-	// Add integers. Easy. Depending on how we handle output blah blah blah
+	// needs to return answer, figure out format first. May affect above line (answer may need to be Integer).
+	// same goes for other implemented methods.
+	int answer = this->getInt() + num.getInt(); //works
+	 cout << answer << endl; //testing
 }
 
 void Integer::subtract(Number num)
@@ -43,8 +50,8 @@ void Integer::subtract(Number num)
 
 void Integer::subtract(Integer num)
 {
-	cout << "Successfully recognized subtracting an Integer from this Integer" << endl;
-	// Subtract integers
+	int answer = this->getInt() - num.getInt(); //works
+	cout << answer << endl; // testing
 }
 
 void Integer::multiply(Number num)
@@ -57,18 +64,20 @@ void Integer::multiply(Number num)
 void Integer::multiply(Integer num)
 {
 	cout << "Successfully recognized multiplying an Integer and this Integer" << endl;
-	// Go forth and multiply!
+	int answer = (this->getInt()) * (num.getInt()); //works
+	cout << answer << endl; // testing
 }
 
 void Integer::divide(Number num)
 {
 	cout << "Successfully recognized dividing this Integer by a generic Number. Or vice versa" << endl;
-	// divide coefficients. Will num be the divisor?
 }
 
 void Integer::divide(Integer num)
 {
 	cout << "Successfully recognized dividing this Integer by an Integer" << endl;
-	// divide
+	// This implementation assumes 'num' is the divisor
+	int answer = this->getInt() / num.getInt(); //works
+	cout << answer << endl; // testing
 }
 
