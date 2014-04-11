@@ -184,6 +184,7 @@ void rational_test()
 	cout << "Numerator: " << r->getNum() <<endl;
 	cout << "Denominator: " << r->getDen() << endl;
 
-
+	Rational *a = new Rational(1,2);
+	r->add(*a);
 	delete r;
 }

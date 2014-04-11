@@ -16,6 +16,9 @@ using namespace std;
 Rational::Rational(int num , int den)
 {
 
+	if(den == 0)
+		throw invalid_argument("Can't divide by zero");
+
 	this->num = num;
 	this->den = den;
 	// TODO: Create the constructor
@@ -29,34 +32,86 @@ Rational::~Rational()
 }
 
 
-//Need stricter checking of params, doesn't work for
-//negative numbers yet... or divide by 0 errors
+//perhaps this should eventually return a new Rational number?
+void Rational::add(Rational r)
+{
+	int ans_num = num * r.getDen() + den * r.getNum();
+	int ans_den = den * r.getDen();
+
+	Rational *n = new Rational(ans_num , ans_den);
+	n->simplify();
+	
+	cout<<"Numerator: " << n->getNum()<<endl;
+	cout<<"Denominator: " << n->getDen() <<endl; 	
+	
+	// ? 
+	delete n;
+	
+}
+
+
+//handling of divide by 0 is done by constructor, 
+//negative numbers should work now.
 int Rational::gcd(int a , int b)
 {
-	// Check for invalid b
-	if (b == 0)
-		throw invalid_argument("Can't devide by 0");
-	
+
+	bool flip = false;
+	if(b < 0 && a > 0)
+	{
+		a *= -1;
+		b *= -1;
+	}
+
+	if(b < 0 && a < 0)
+	{
+		a *= -1;
+		b *= -1;
+	}
+
+	if(a < 0)
+	{
+		flip = true;	
+		a *= -1;
+	}
 	int top = a >= b ? a : b;
 	int bot = a <= b ? a : b;
 
 	int r = top % bot;
 
 	if(r == 0)
-		return bot;
-
+	{
+		if(flip)
+			return -1 *bot;
+		return bot;	
+	}
 	else
 	{
 		gcd(bot, r);	
 	}
 
 	// Should never reach this far, but if
-	throw logic_error("gcd not found for this rational");
+//	throw logic_error("gcd not found for this rational");
 }
 
 void Rational::simplify()
 {
 	int gcd = Rational::gcd(this->num , this->den);
+	if(num == 0)
+	{
+		;//should return an integer, = 0;
+	}
+
+	if(den == 1)
+	{
+		;//should return an integer, = num
+
+	}
+
+	if(num < 0 && den < 0)
+	{
+		num *= -1;
+		den *= -1;
+	}
 	num = num / gcd;
 	den = den / gcd;	
 
