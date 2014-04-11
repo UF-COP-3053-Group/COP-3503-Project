@@ -89,8 +89,6 @@ int Rational::gcd(int a , int b)
 		gcd(bot, r);	
 	}
 
-	// Should never reach this far, but if
-//	throw logic_error("gcd not found for this rational");
 }
 
 void Rational::simplify()

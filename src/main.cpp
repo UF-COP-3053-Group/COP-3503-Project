@@ -168,6 +168,7 @@ void tests()
 void rational_test()
 {
 	int num , den;
+	char response;
 	cout << "Enter numerator: " <<endl;
 	cin >> num;
 
@@ -181,10 +182,23 @@ void rational_test()
 	cout << "GCD: " << r->gcd(r->getNum() , r->getDen()) << endl;
 	cout << "Simplifying" <<endl;
 	r->simplify();
+
 	cout << "Numerator: " << r->getNum() <<endl;
 	cout << "Denominator: " << r->getDen() << endl;
 
-	Rational *a = new Rational(1,2);
-	r->add(*a);
+	cout << "Would you like to test addition? (y/n)" << endl;
+	cin >> response;
+	if(response == 'y')	
+	{
+		int _num , _den;
+		cout << "Enter numerator" <<endl;
+		cin >> _num;
+		cout << "Enter denominator" << endl;
+		cin >> _den;
+		Rational *a = new Rational(_num,_den);
+		r->add(*a);
+		delete a;
+
+	}	
 	delete r;
 }
