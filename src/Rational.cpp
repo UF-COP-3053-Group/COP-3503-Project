@@ -31,7 +31,34 @@ Rational::~Rational()
 
 }
 
+void Rational::setNum(int n)
+{
+	num = n;	
+}
 
+void Rational::setDen(int n)
+{
+	den = n;
+}
+
+void Rational::add(Number n)
+{
+	cout << "Successfully caught a number" << endl;	
+
+}
+
+void Rational::add(Constant n)
+{
+
+	cout << "Successfully recognized a constant" <<endl;
+}
+
+void Rational::subtract(Rational r)
+{
+	//WARNING: this has the undesired side-effect of changing r...fix later.
+	r.setNum(-1 * r.getNum());
+	Rational::add(r);
+}
 //perhaps this should eventually return a new Rational number?
 void Rational::add(Rational r)
 {
@@ -49,7 +76,20 @@ void Rational::add(Rational r)
 	
 }
 
+void Rational::multiply(Rational r)
+{
+	int ans_num = num * r.getNum();
+	int ans_den = den * r.getDen();
+	
+	Rational *n = new Rational(ans_num , ans_den);
+	n->simplify();
 
+	cout << "Numerator: " << n->getNum()<<endl;
+	cout << "Denominator: " <<n->getDen() << endl;
+	
+	delete n;
+	
+}
 //handling of divide by 0 is done by constructor, 
 //negative numbers should work now.
 int Rational::gcd(int a , int b)

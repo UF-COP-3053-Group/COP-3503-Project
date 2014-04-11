@@ -199,6 +199,22 @@ void rational_test()
 		r->add(*a);
 		delete a;
 
-	}	
+		
+	}
+
+	cout << "Would you like to test subtraction? (y/n)" << endl;	
+	cin >> response;
+	if(response == 'y')
+	{
+		int _num , _den;
+		cout << "Enter numerator: " <<endl;
+		cin >> _num;	
+		cout << "Enter denominator: " <<endl;
+		cin >> _den;
+		Rational *a = new Rational(_num , _den);
+		r->subtract(*a);
+		delete a;
+
+	}
 	delete r;
 }
