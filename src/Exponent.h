@@ -13,6 +13,10 @@
 
 #include "Number.h"
 
+//fwd declaration, so that the code compiles. 
+//might need to be changed later. 
+class Rational;
+
 using namespace std;
 
 class Exponent : public Number
