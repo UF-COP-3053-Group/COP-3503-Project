@@ -23,10 +23,13 @@ public:
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
 	void add(Number);
 	void add(Integer);
+
 	void subtract(Number);
 	void subtract(Integer);
+
 	void multiply(Number);
 	void multiply(Integer);
+
 	void divide(Number);
 	void divide(Integer);
 };

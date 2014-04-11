@@ -105,7 +105,7 @@ void Constant::add(Radical num)
 	cout << "Successfully recognized a Radical" << endl;
 	// testing only, in real life should just go to add(Number num)
 }
-/*
+
 void Constant::add(Constant num)
 {
 	cout << "Successfully recognized a Constant" << endl;

@@ -34,41 +34,19 @@ public:
 	string getName();
 	
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
-	void add(Number num);
-	void add(Integer num);
-	void add(Radical num);
-	/*void add(Number);
-	void add(Constant);
-	void add(Exponent);
+	void add(Number);
 	void add(Integer);
-	void add(Log);
 	void add(Radical);
-	void add(Rational);
+	void add(Constant);
 
 	void subtract(Number);
 	void subtract(Constant);
-	void subtract(Exponent);
-	void subtract(Integer);
-	void subtract(Log);
-	void subtract(Radical);
-	void subtract(Rational);
 
 	void multiply(Number);
 	void multiply(Constant);
-	void multiply(Exponent);
-	void multiply(Integer);
-	void multiply(Log);
-	void multiply(Radical);
-	void multiply(Rational);
 
 	void divide(Number);
 	void divide(Constant);
-	void divide(Exponent);
-	void divide(Integer);
-	void divide(Log);
-	void divide(Radical);
-	void divide(Rational);*/
-
 	
 private:
 	string name;
