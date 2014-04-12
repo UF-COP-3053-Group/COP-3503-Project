@@ -77,7 +77,12 @@ void Integer::divide(Integer num)
 {
 	cout << "Successfully recognized dividing this Integer by an Integer" << endl;
 	// This implementation assumes 'num' is the divisor
-	int answer = this->getInt() / num.getInt(); //works
+
+	double answer = this->getInt() / num.getInt(); //works
 	cout << answer << endl; // testing
+	// Alternative implementation: returning a Rational:
+
+//	Rational *ratAnswer = new Rational(getInt(), num.getInt());
+//	cout << ratAnswer->getNum() << "/" << ratAnswer->getDen() << endl;
 }
 

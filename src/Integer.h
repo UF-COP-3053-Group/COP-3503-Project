@@ -12,6 +12,8 @@
 #include <iostream>
 
 #include "Number.h"
+//#include "Rational.h"
+//WARNING: Circular dependency?
 
 using namespace std;
 

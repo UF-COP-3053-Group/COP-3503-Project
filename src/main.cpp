@@ -120,10 +120,12 @@ void tests()
 	cout << "Running overloaded addition test:" << endl;
 	cout << "Creating a Constant" << endl;
 	Constant myconst = Constant("pi");
+	Constant myconst2 = Constant("e");
 	
 	cout << "Creating an empty Integer and 'real' Integer" << endl;
 	Integer myint = Integer();
 	Integer myint2 = Integer(5);
+	Integer myint3 = Integer(3);
 	
 	cout << "Creating a Radical" << endl;
 	Radical myrad = Radical();
@@ -140,6 +142,12 @@ void tests()
 	cout << "Adding a Log" << endl;
 	myconst.add(mylog);
 
+	cout << "Adding two Constants" << endl;
+	myconst.add(myconst);
+
+	cout << "Adding two different Constants" << endl;
+	myconst.add(myconst2);
+
 	cout << "Integer tests" << endl;
 	cout << "Adding a constant (generic Number)" << endl;
 	myint.add(myconst);
@@ -153,6 +161,8 @@ void tests()
 
 	cout << "Subtracting an Integer" << endl;
 	myint2.subtract(myint2);
+	myint2.subtract(myint3);
+	myint3.subtract(myint2);
 
 	cout << "Multiplying a Radical (generic Number)" << endl;
 	myint.multiply(myrad);
@@ -165,6 +175,8 @@ void tests()
 
 	cout << "Dividing an Integer" << endl;
 	myint2.divide(myint2);
+	myint2.divide(myint3);
+	myint3.divide(myint2);
 
 		
 }
