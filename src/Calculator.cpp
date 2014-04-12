@@ -27,7 +27,8 @@ Calculator::~Calculator()
 	for (int i = 0; i < previousAnswers.size(); i++)
 	{
 		// Delete all of the nodes in the tree, including the root
-		deleteExpressionTree( previousAnswers[i] );
+		// The root node will recursivly delete all child nodes
+		delete previousAnswers[i];
 	}
 }
 
@@ -103,24 +104,3 @@ Expression* Calculator::createTree(string input)
 	return new Expression;
 }
 
-
-/**
- * Recursively deletes the given expression tree, freeing memory to prevent memory leaks.
- */
-void Calculator::deleteExpressionTree(Expression* node)
-{
-	// If the left node has an expression, delete it
-	if (node->left != nullptr)
-	{
-		deleteExpressionTree(node->left);
-	}
-	
-	// If the right node has an expression, delete it
-	if (node->right != nullptr)
-	{
-		deleteExpressionTree(node->right);
-	}
-	
-	// Finally, delete this node itself
-	delete node;
-}

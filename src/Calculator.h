@@ -29,7 +29,6 @@ public:
 	Expression* parseInput(string& input);
 	string collectTerms(string& input);
 	Expression* createTree(string input);
-	void deleteExpressionTree(Expression* node);
 
 private:
 	vector<Expression*> previousAnswers;

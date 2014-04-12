@@ -14,12 +14,16 @@
  * Stores a root and pointers to the left hand side and right hand side of an expression,
  * both of which are expressions themselves.
  */
-struct Expression
+class Expression
 {
+public:
+	void deleteExpressionTree(Expression* node);
+	
+private:
 	char op;
 	Number num;
-	Expression* left = nullptr;
-	Expression* right = nullptr;
+	Expression* left;
+	Expression* right;
 };
 
 #endif
