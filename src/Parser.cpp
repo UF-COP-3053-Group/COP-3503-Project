@@ -13,8 +13,10 @@
  */
 void addNode(stack<Expression*> stack, char op)
 {
-	Expression* rightNode = stack.pop();
-	Expression* leftNode = stack.pop();
+	Expression* rightNode = stack.top();
+	stack.pop();
+	Expression* leftNode = stack.top();
+	stack.pop();
 	stack.push(new Expression(op, leftNode, rightNode));
 }
 
@@ -47,7 +49,11 @@ Expression* Parser::createAST(string input)
 				char popOp;
 				while( !operatorStack.empty() )
 				{
-					popOp = operatorStack.pop();
+					// Pop off the top operator
+					popOp = operatorStack.top();
+					operatorStack.pop();
+					
+					// Check it
 					if( '(' == popOp )
 					{
 						// Continuet the outer for loop
