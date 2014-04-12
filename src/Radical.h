@@ -12,6 +12,7 @@
 #include <iostream>
 
 #include "Number.h"
+#include <string>
 
 using namespace std;
 
@@ -24,9 +25,15 @@ class Rational;
 class Radical : public Number
 {
 public:
+	Radical(int,Number*);
 	Radical();
 	
 	// TODO: All implemented, need to finish adding rules for multiply and divide. 
+	string getSymValue();
+	string getRadicand(Number* radicand);
+	void simplify();
+	int getBase();
+	
 	void add(Number*);
 	void add(Constant*);
 	void add(Exponent*);
@@ -58,6 +65,11 @@ public:
 	void divide(Log*);
 	void divide(Radical*);
 	void divide(Rational*);
+	
+private:
+	int base;
+	Number* radicand;
+	
 };
 
 #endif /* defined(__COP_3503_Project__Radical__) */

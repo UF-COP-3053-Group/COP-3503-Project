@@ -15,13 +15,49 @@
 /**
  * Constructor
  */
-Radical::Radical(/*int base, Number* radicand*/)
+Radical::Radical()
 {
-	// TODO: Create the constructor
-	//int base;
-	//Number* radicand;
+
 }
 
+Radical::Radical(int base, Number* radicand)
+{
+	this->base = base;
+	this->radicand = radicand;
+}
+
+string Radical::getSymValue()
+{
+	string o = "sqrt(" + getRadicand(radicand) + ")";
+	return o;
+}
+
+string Radical::getRadicand(Number* radicand)
+{
+	return "Radicand";//radicand.getValue();
+}
+int Radical::getBase()
+{
+	return base;
+}
+
+void Radical::simplify()
+{
+	if(/*radicand is an integer*/0)
+	{
+		/*factorize the radicand, if a factor is repeated this->base times, pull out the factor. When done multiply the pulled out factors together and then call this->multiply(pulled factors)*/
+	}
+	else if(/*radicand is an exponent*/0)
+	{
+		/*divide the exponent by the radicand. the result is the new exponent.*/
+	}
+	else if(/*radicand is a rational*/0)
+	{
+		/*sqrt(a/b)==sqrt(a)/sqrt(b)*/
+	}
+	//If statements have a 0 for testing and compilation purposes. This way this method does nothing but cout a message.
+}
+//couts are only for testing
 void Radical::add(Number* in)
 {
 	//Do nothing
@@ -149,7 +185,10 @@ void Radical::multiply(Radical* in)
 	//r->multiply(integers);
 	//(If different Bases)
 	//No multiplication
-	
+	if(in->getBase() != base)
+	{
+		//multiply(Number in);
+	}
 	cout << "Successfully recognized multiplying a Radical to a Radical" << endl;
 }
 
