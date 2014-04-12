@@ -10,7 +10,11 @@
 #define __COP_3503_Project__Parser__
 
 #include <iostream>
+#include <stdexcept>
+#include <stack>
 #include "Expression.h"
+
+using namespace std;
 
 /**
  * This parser class implements the shunting yard algorithm as a way to obtain

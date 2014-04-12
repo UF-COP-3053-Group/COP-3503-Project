@@ -78,7 +78,7 @@ Expression* Calculator::parseInput(string& input)
 	input = collectTerms(input);
 	
 	// Now, create the tree from the given input with the parser class
-	Parser parser = Parser();
+	Parser parser;
 	Expression* root = parser.createAST(input);
 	
 	
