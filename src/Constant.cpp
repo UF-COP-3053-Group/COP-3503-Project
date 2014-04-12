@@ -30,13 +30,13 @@ Constant::Constant(string name)
 {
 	// First, convert name string to lowercase
 	transform(name.begin(), name.end(), name.begin(), ::tolower);
-	
+
 	// If we don't know the constant, throw an exception
 	if (!isKnown(name))
 	{
 		throw invalid_argument(name + " is not a known constant.");
 	}
-	
+
 	// Set the name of the constant
 	this->name = name;
 }
@@ -51,10 +51,10 @@ bool Constant::isKnown(string name)
 	// C++ doesn't allow string switching, so a chain of if - else if is used instead.
 	if (name == "pi")
 		return true;
-	
+
 	else if (name == "e")
 		return true;
-	
+
 	else
 		return false;
 }
@@ -72,10 +72,10 @@ double Constant::getValue()
 	 */
 	if (name == "pi")
 		return M_PI;
-	
+
 	else if (name == "e")
 		return M_E;
-	
+
 	// Should never be encountered, as we check if the constant is known during construction
 	else
 		throw runtime_error("How did we get here? Error getting the value of constant: " + this->name);
@@ -108,9 +108,20 @@ void Constant::add(Radical num)
 
 void Constant::add(Constant num)
 {
+	// This implementation assumes that a coefficient will result in that many separate constant objects.
+	// Further implementation requires knowledge of parser inputs and outputs.
+	// Alternatively, we could use something along these lines and return 2 Numbers (one for coefficient, one for constant):
+	// void Constant:add(Constant num, Integer& coefficient, Constant& constant);
 	cout << "Successfully recognized a Constant" << endl;
-	// If the Constants are the same (ie both pi), add coefficients
-	// else, don't
+	if(getName() == num.getName()) {
+		// return Number (2 * e) ?
+		cout << "2 * " << num.getName() << endl; // testing
+	}
+	else {
+		// do nothing...?
+		cout << getName() << "+" << num.getName() << endl;
+	}
+
 }
 
 
@@ -123,8 +134,14 @@ void Constant::subtract(Number num)
 void Constant::subtract(Constant num)
 {
 	cout << "Successfully recognized subtracting a Constant" << endl;
-	// If Constants are the same, subtract coefficients
-	// Else, do nothing
+	if(getName() == num.getName()) {
+		// return Integer 0? Will depend on parser and how we will return values to it
+		cout << "0" << endl; // testing if statement
+	}
+	else {
+		// do nothing...?
+		cout << getName() << "-" << num.getName() << endl;
+	}
 }
 
 void Constant::multiply(Number num)
@@ -136,8 +153,15 @@ void Constant::multiply(Number num)
 void Constant::multiply(Constant num)
 {
 	cout << "Successfully recognized multiplying a constant" << endl;
-	// If same constant, multiply coefficients
-	// else, do nothing
+
+	if(getName() == num.getName()) {
+		// return Exponent?
+		cout << num.getName() << "^2" << endl; // testing if statement
+	}
+	else {
+		// do nothing...?
+		cout << getName() << "*" << num.getName()  << endl; //testing if statement
+	}
 }
 
 void Constant::divide(Number num)
@@ -148,6 +172,12 @@ void Constant::divide(Number num)
 void Constant::divide(Constant num)
 {
 	cout << "Successfully recognized dividing a Constant" << endl;
-	// If same constant, divide coefficients
-	// else, do nothing
+	if(getName() == num.getName()) {
+		// return Integer 1?
+		cout << "1" << endl; // testing if statement
+	}
+	else {
+		// do nothing...?
+		cout << getName() << "/" << num.getName()  << endl; //testing if statement
+	}
 }

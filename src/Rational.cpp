@@ -32,6 +32,54 @@ Rational::~Rational()
 }
 
 
+void Rational::divide(Rational r)
+{
+
+	//Again, this had the side effect of changin r.
+	
+	int temp = r.getNum();
+	r.setNum(r.getDen());
+	r.setDen(temp);
+
+	Rational::multiply(r);
+}
+void Rational::setNum(int n)
+{
+	num = n;	
+}
+
+void Rational::setDen(int n)
+{
+	den = n;
+}
+
+void Rational::add(Number n)
+{
+	cout << "Successfully caught a number" << endl;	
+
+}
+
+void Rational::add(Constant n)
+{
+
+	cout << "Successfully recognized a constant" <<endl;
+}
+
+
+//add the value of the Integer of to the Rational
+void Rational::add(Integer i)
+{
+//	num  = num + i * den;
+	
+			
+}
+
+void Rational::subtract(Rational r)
+{
+	//WARNING: this has the undesired side-effect of changing r...fix later.
+	r.setNum(-1 * r.getNum());
+	Rational::add(r);
+}
 //perhaps this should eventually return a new Rational number?
 void Rational::add(Rational r)
 {
@@ -49,7 +97,20 @@ void Rational::add(Rational r)
 	
 }
 
+void Rational::multiply(Rational r)
+{
+	int ans_num = num * r.getNum();
+	int ans_den = den * r.getDen();
+	
+	Rational *n = new Rational(ans_num , ans_den);
+	n->simplify();
 
+	cout << "Numerator: " << n->getNum()<<endl;
+	cout << "Denominator: " <<n->getDen() << endl;
+	
+	delete n;
+	
+}
 //handling of divide by 0 is done by constructor, 
 //negative numbers should work now.
 int Rational::gcd(int a , int b)
@@ -89,8 +150,6 @@ int Rational::gcd(int a , int b)
 		gcd(bot, r);	
 	}
 
-	// Should never reach this far, but if
-//	throw logic_error("gcd not found for this rational");
 }
 
 void Rational::simplify()
@@ -98,12 +157,12 @@ void Rational::simplify()
 	int gcd = Rational::gcd(this->num , this->den);
 	if(num == 0)
 	{
-		;//should return an integer, = 0;
+		Rational::rationalToInt(0);//should return an integer, = 0;
 	}
 
 	if(den == 1)
 	{
-		;//should return an integer, = num
+		Rational::rationalToInt(num);//should return an integer, = num
 
 	}
 
@@ -117,6 +176,12 @@ void Rational::simplify()
 
 }
 
+//Will we need this? 
+Integer *Rational::rationalToInt(int n)
+{
+	cout << "Created new Integer, " << n <<endl;
+	return new Integer(n);
+}
 int Rational::getNum()
 {
 	return num;
