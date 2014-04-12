@@ -9,6 +9,7 @@
 #ifndef COP_3503_Project_Expression_h
 #define COP_3503_Project_Expression_h
 
+#include <iostream>
 #include "Number.h"
 
 /**

@@ -77,8 +77,9 @@ Expression* Calculator::parseInput(string& input)
 	// Before building the tree, lets try to collect any simple like terms
 	input = collectTerms(input);
 	
-	// Now, create the tree from the given input
-	Expression* root = createTree(input);
+	// Now, create the tree from the given input with the parser class
+	Parser parser = Parser();
+	Expression* root = parser.createAST(input);
 	
 	
 	return root;
@@ -98,9 +99,3 @@ string Calculator::collectTerms(string& input)
 	//TODO: Implement this method. For now, we'll focus on the Expression tree, as it's more important
 	return input;
 }
-
-Expression* Calculator::createTree(string input)
-{
-	return new Expression;
-}
-

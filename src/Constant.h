@@ -16,6 +16,9 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+// Needed for std::transform
+#include <algorithm>
+
 #include "Number.h"
 #include "Exponent.h"
 #include "Integer.h"

@@ -9,8 +9,6 @@
 
 #include "Constant.h"
 
-// Needed for std::transform
-#include <algorithm>
 // Check the definitions of our constants
 // pi
 #ifndef M_PI

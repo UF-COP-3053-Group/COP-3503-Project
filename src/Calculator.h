@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <vector>
+#include "Parser.h"
 #include "Number.h"
 #include "Rational.h"
 #include "Expression.h"
@@ -28,7 +29,6 @@ public:
 	void calculate(string input);
 	Expression* parseInput(string& input);
 	string collectTerms(string& input);
-	Expression* createTree(string input);
 
 private:
 	vector<Expression*> previousAnswers;
