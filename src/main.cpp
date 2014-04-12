@@ -8,6 +8,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <string.h>
+
 // Test includes
 #include "Number.h"
 #include "Constant.h"
@@ -25,6 +26,7 @@ void printMenu();
 void tests();
 void rational_test();
 Rational *createRational();
+
 int main(int argc, const char * argv[])
 {
 	// If the third arg is test, run the tests. Note that strcmp == 0 if true.
@@ -110,6 +112,11 @@ void printMenu()
 	// Works!
 }
 
+/****************************************************
+ *
+ * All below functions are for testing purposes only
+ *
+ ****************************************************/
 
 /**
  * A function used to run some tests for expected and unexpected behavior

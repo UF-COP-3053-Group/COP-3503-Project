@@ -22,13 +22,17 @@ class Calculator
 public:
 	Calculator();
 	~Calculator();
+	
+	vector<Expression*> getPreviousAnswers();
+	Expression* getLastAnswer();
 	void calculate(string input);
-	expression* parseInput(string& input);
+	Expression* parseInput(string& input);
 	string collectTerms(string& input);
-	expression* createTree(string input);
+	Expression* createTree(string input);
+	void deleteExpressionTree(Expression* node);
 
 private:
-	vector<expression*> previousAnswers;
+	vector<Expression*> previousAnswers;
 	
 };
 

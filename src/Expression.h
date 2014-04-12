@@ -18,8 +18,8 @@ struct Expression
 {
 	char op;
 	Number num;
-	Expression* left;
-	Expression* right;
+	Expression* left = nullptr;
+	Expression* right = nullptr;
 };
 
 #endif
