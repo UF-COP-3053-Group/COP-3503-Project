@@ -93,6 +93,7 @@ void printMenu()
 			menuLoop = false;
 		}
 		// check for correct input
+		else{
 		cout << "################################################################################" << endl;
 		cout << "## Continuing...							      ##" << endl;
 		cout << "##                                                                            ##" << endl;
@@ -102,6 +103,7 @@ void printMenu()
 		{
 			menuLoop = false;
 		}
+	}
 	}
 	// Test that exit works
 	//cout << "Exiting" << endl;
