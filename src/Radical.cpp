@@ -162,35 +162,47 @@ void Radical::multiply(Rational* in)
 
 void Radical::divide(Number* in)
 {
+	//Radical/Number, gives back a rational where numerator = radical and denominator = in
 	cout << "Successfully recognized dividing a Generic Number to a Radical" << endl;
 }
 
 void Radical::divide(Constant* in)
 {
+	//Radical/Constant, gives back a rational where numerator = radical and denominator = in
 	cout << "Successfully recognized dividing a Constant to a Radical" << endl;
 }
 
 void Radical::divide(Exponent* in)
 {
+	//Radical/Exponent, gives back a rational where numerator = radical and denominator = in
 	cout << "Successfully recognized dividing a Exponent to a Radical" << endl;
 }
 
 void Radical::divide(Integer* in)
 {
+	//Radical/Integer, gives back a rational where numerator = radical and denominator = in
+	//EXCEPTION IF: in=0
+	//Special case if(in==1) return just the radical
 	cout << "Successfully recognized dividing a integer to a Radical" << endl;
 }
 
 void Radical::divide(Log* in)
 {
+	//Radical/Log, gives back a rational where numerator = radical and denominator = in
 	cout << "Successfully recognized dividing a Logarithm to a Radical" << endl;
 }
 
 void Radical::divide(Radical* in)
 {
+	//Radical/Radical
+	//If bases are same, make a radical with the radicands such that numerator=this.radicand and denominator=in.radicand
+	//this.radicand=(simplified rational)
+	//If bases are different: Gives back a rational where numerator = radical and denominator = in
 	cout << "Successfully recognized dividing a Radical to a Radical" << endl;
 }
 
 void Radical::divide(Rational* in)
 {
+	//Radical/Rational, gives back a rational where numerator = radical*in.denominator and denominator = in.numerator
 	cout << "Successfully recognized dividing a Rational to a Radical" << endl;
 }
