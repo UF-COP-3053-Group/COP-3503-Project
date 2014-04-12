@@ -9,6 +9,8 @@
 #ifndef COP_3503_Project_Expression_h
 #define COP_3503_Project_Expression_h
 
+#include "Number.h"
+
 /**
  * The main tree node structure used to store data
  * Stores a root and pointers to the left hand side and right hand side of an expression,
@@ -17,6 +19,8 @@
 class Expression
 {
 public:
+	Expression();
+	~Expression();
 	void deleteExpressionTree(Expression* node);
 	
 private:

@@ -14,11 +14,11 @@
 Expression::Expression()
 {
 	// Initilize the pointers to null
-	this.left = nullptr;
-	this.right = nullptr;
+	this->left = nullptr;
+	this->right = nullptr;
 	
 	// Initilize the operation to the null character
-	op = '\0'
+	op = '\0';
 }
 
 
@@ -28,8 +28,8 @@ Expression::Expression()
 Expression::~Expression()
 {
 	// Call the destructor on both the left and right sides.
-	delete this.left;
-	delete this.right;
+	delete this->left;
+	delete this->right;
 }
 
 
