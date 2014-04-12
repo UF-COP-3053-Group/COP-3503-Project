@@ -12,17 +12,10 @@
 #include <iostream>
 #include <vector>
 #include "Number.h"
+#include "Rational.h"
+#include "Expression.h"
 
 using namespace std;
-
-// The main tree node structure used to store data
-struct node
-{
-	char op;
-	Number num;
-	node* left;
-	node* right;
-};
 
 class Calculator
 {
@@ -30,12 +23,12 @@ public:
 	Calculator();
 	~Calculator();
 	void calculate(string input);
-	node* parseInput(string& input);
+	expression* parseInput(string& input);
 	string collectTerms(string& input);
-	node* createTree(string input);
+	expression* createTree(string input);
 
 private:
-	vector<node*> previousAnswers;
+	vector<expression*> previousAnswers;
 	
 };
 

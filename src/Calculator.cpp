@@ -45,13 +45,13 @@ void Calculator::calculate(string input)
  * then building a tree from the resulting (somewhat simplified) string.
  * Returns: a pointer to the root node of the tree
  */
-node* Calculator::parseInput(string& input)
+expression* Calculator::parseInput(string& input)
 {
 	// Before building the tree, lets try to collect any simple like terms
 	input = collectTerms(input);
 	
 	// Now, create the tree from the given input
-	node* tree = createTree(input);
+	expression* tree = createTree(input);
 	
 	
 	return tree; // Yes?
@@ -65,7 +65,7 @@ string Calculator::collectTerms(string& input)
 	return input;
 }
 
-node* Calculator::createTree(string input)
+expression* Calculator::createTree(string input)
 {
-	return new node;
+	return new expression;
 }
