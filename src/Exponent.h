@@ -22,6 +22,7 @@ using namespace std;
 class Exponent : public Number
 {
 public:
+    Exponent(Number base, Number power);
 	Exponent(double base, double power);
     Exponent(double base, Rational power);
 
@@ -30,6 +31,7 @@ public:
     /*void add(Number);
      
 	void add(Constant);
+    //combine
      
 	void add(Exponent);
     //if Integer base, convert both to integer, add
@@ -45,8 +47,6 @@ public:
      
 	void add(Rational);
     //combine
-
-	void subtract(Number);
      
 	void subtract(Constant);
      
@@ -63,9 +63,7 @@ public:
 	void subtract(Rational);
      
 
-	void multiply(Number);
-     
-	void multiply(Constant);
+    void multiply(Constant);
     //combine
      
 	void multiply(Exponent);
