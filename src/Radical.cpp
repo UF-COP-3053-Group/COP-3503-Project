@@ -30,37 +30,37 @@ void Radical::add(Number* in)
 
 void Radical::add(Constant* in)
 {
-	//Constant + Radical, no actual addition
+	//Constant + Radical, just call this.add(in);
 	cout << "Successfully recognized adding a Constant to a Radical" << endl;
 }
 
 void Radical::add(Exponent* in)
 {
-	//Exponent + Radical, no actual addition
+	//Exponent + Radical, just call this.add(in);
 	cout << "Successfully recognized adding an Exponent to a Radical" << endl;
 }
 
 void Radical::add(Integer* in)
 {
-	//Integer + Radical, no actual addition
+	//Integer + Radical, just call this.add(in);
 	cout << "Successfully recognized adding a integer to a Radical" << endl;
 }
 
 void Radical::add(Log* in)
 {
-	//Log + Radical, no actual addition
+	//Log + Radical, just call this.add(in);
 	cout << "Successfully recognized adding a Logarithm to a Radical" << endl;
 }
 
 void Radical::add(Radical* in)
 {
-	//Radical + Radical, no actual addition
+	//Radical + Radical, just call this.add(in);
 	cout << "Successfully recognized adding a Radical to a Radical" << endl;
 }
 
 void Radical::add(Rational* in)
 {
-	//Rational + Radical, no actual addition
+	//Rational + Radical, just call this.add(in);
 	cout << "Successfully recognized adding a Rational to a Radical" << endl;
 }
 
@@ -74,37 +74,37 @@ void Radical::subtract(Number* in)
 
 void Radical::subtract(Constant* in)
 {
-	//Radical - Constant, no actual subtraction
+	//Radical - Constant, just call this.subtract(<Number*>in);
 	cout << "Successfully recognized subtracting a Constant from a Radical" << endl;
 }
 
 void Radical::subtract(Exponent* in)
 {
-	//Radical - Exponent, no actual subtraction
+	//Radical - Exponent, just call this.subtract(<Number*>in);
 	cout << "Successfully recognized subtracting a Exponent from a Radical" << endl;
 }
 
 void Radical::subtract(Integer* in)
 {
-	//Radical - integer, no actual subtraction
+	//Radical - integer, just call this.subtract(<Number*>in);
 	cout << "Successfully recognized subtracting a integer from a Radical" << endl;
 }
 
 void Radical::subtract(Log* in)
 {
-	//Radical - Log, no actual subtraction
+	//Radical - Log, just call this.subtract(<Number*>in);
 	cout << "Successfully recognized subtracting a Logarithm from a Radical" << endl;
 }
 
 void Radical::subtract(Radical* in)
 {
-	//Radical - Radical, no actual subtraction
+	//Radical - Radical, just call this.subtract(<Number*>in);
 	cout << "Successfully recognized subtracting a Radical from a Radical" << endl;
 }
 
 void Radical::subtract(Rational* in)
 {
-	//Radical - Rational, no actual subtraction
+	//Radical - Rational, just call this.subtract(<Number*>in);
 	cout << "Successfully recognized subtracting a Rational from a Radical" << endl;
 }
 
@@ -117,25 +117,25 @@ void Radical::multiply(Number* in)
 
 void Radical::multiply(Constant* in)
 {
-	//Constant*Radical, no actual multiplication
+	//Constant*Radical, just call this.multiply(<Number*>in);
 	cout << "Successfully recognized multiplying a Constant to a Radical" << endl;
 }
 
 void Radical::multiply(Exponent* in)
 {
-	//Exponent*Radical, no actual multiplication
+	//Exponent*Radical, just call this.multiply(<Number*>in);
 	cout << "Successfully recognized multiplying a Exponent to a Radical" << endl;
 }
 
 void Radical::multiply(Integer* in)
 {
-	//Integer*Radical, no actual multiplication
+	//Integer*Radical, just call this.multiply(<Number*>in);
 	cout << "Successfully recognized multiplying a integer to a Radical" << endl;
 }
 
 void Radical::multiply(Log* in)
 {
-	//Log*Radical, no actual multiplication
+	//Log*Radical, just call this.multiply(<Number*>in);
 	cout << "Successfully recognized multiplying a Logarithm to a Radical" << endl;
 }
 
@@ -155,7 +155,7 @@ void Radical::multiply(Radical* in)
 
 void Radical::multiply(Rational* in)
 {
-	//Radical*Rational, Rational.num = this->multiply(Radical.num) This gives a rational with the radical in the numerator
+	//Radical*Rational, Rational.numerator = this->multiply(Radical.numerator) This gives a rational with the radical in the numerator
 	cout << "Successfully recognized multiplying a Rational to a Radical" << endl;
 }
 
