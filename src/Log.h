@@ -12,6 +12,8 @@
 #include <iostream>
 
 #include "Number.h"
+#include "Rational.h"
+#include "Radical.h"
 
 using namespace std;
 
@@ -19,6 +21,8 @@ class Log : public Number
 {
 public:
 	Log();
+    void exponentiate(Rational power);
+    void exponentiate(Integer power);
 	
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
 	/*void add(Number);

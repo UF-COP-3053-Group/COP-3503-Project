@@ -12,7 +12,8 @@
 #include <iostream>
 
 #include "Number.h"
-//#include "Rational.h"
+#include "Rational.h"
+#include "Radical.h"
 //WARNING: Circular dependency?
 
 using namespace std;
@@ -37,6 +38,9 @@ public:
 	void divide(Integer);
 
 	int getInt();
+    
+    void exponentiate(Rational power);
+    void exponentiate(Integer power);
 
 private:
 	int num;

@@ -12,6 +12,9 @@
 #include <iostream>
 
 #include "Number.h"
+#include "Integer.h"
+#include "Radical.h"
+#include "Rational.h"
 #include <string>
 
 using namespace std;
@@ -27,6 +30,9 @@ class Radical : public Number
 public:
 	Radical(int,Number*);
 	Radical();
+    
+    void exponentiate(Rational power);
+    void exponentiate(Integer power);
 	
 	// TODO: All implemented, need to finish adding rules for multiply and divide. 
 	string getSymValue();

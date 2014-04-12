@@ -50,6 +50,9 @@ public:
 
 	void divide(Number);
 	void divide(Constant);
+    
+    void exponentiate(Rational power);
+    void exponentiate(Integer power);
 	
 private:
 	string name;

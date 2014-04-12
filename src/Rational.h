@@ -15,6 +15,8 @@
 #include "Integer.h"
 //WARNING: circular dependency?
 #include "Constant.h"
+#include "Rational.h"
+#include "Radical.h"
 
 class Constant;
 
@@ -46,6 +48,9 @@ public:
 	void multiply(Rational);
 
 	void divide(Rational);
+    
+    void exponentiate(Rational power);
+    void exponentiate(Integer power);
 	/*void add(Number);
 	void add(Constant);
 	void add(Exponent);
