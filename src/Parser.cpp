@@ -142,7 +142,7 @@ vector<Token> Parser::tokenize(string input)
             throw "Invalid input detected";
         }
         negate = false;
-        first = fragments.at(0).at(0);
+        first = fragments.at(0).front());
         if (first=='(') {
             Token result = Token('(');
             tokens.push_back(result);
@@ -174,8 +174,10 @@ vector<Token> Parser::tokenize(string input)
         //negation operator, not subtraction
         else if (first=='-' && fragments.at(0).length() <= 2){
             negate = true;
+            fragments.at(0).erase(0);
         }
-        else if (first=='l' && fragments.at(0).length() <= 2){
+        //This is probably lazy/ bad, but it basically makes sure that theres no junk before the actual operation.
+        else if (first == 'l' && fragments.at(0).find("log_") > 0){
             //create log
         }
         else if (first=='p' && fragments.at(0).at(1) =='i' && fragments.at(0).length() == 2){
@@ -184,8 +186,14 @@ vector<Token> Parser::tokenize(string input)
         else if (first=='e' && fragments.at(0).length() == 1){
             //create e
         }
+        else if (first == 's' && fragments.at(0).find("sqrt:") > 0){
+            //create a square root
+        }
+        else if (first == 'r' && fragments.at(0).find("rt:") > 0){
+            //create an n root
+        }
         //all number are created here
-        else if (isdigit(first)){
+        else if (isdigit(first) && fragments.at(0).find_last_not_of("0123456789./") != -1){
             //find a '/' to create a fraction
             if(fragments.at(0).find_first_of('/') > 0){
                 //check to make sure there is only one '/' in the fraction
@@ -201,7 +209,10 @@ vector<Token> Parser::tokenize(string input)
                 }
                 //create a rational from a decimal
             }
+            //create integer
         }
+        else
+            throw "Nothing to tokenize";
         fragments.at(0).erase();
     }
     
