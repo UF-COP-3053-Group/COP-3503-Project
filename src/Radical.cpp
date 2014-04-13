@@ -251,9 +251,9 @@ void Radical::exponentiate(Rational power){
 }
 
 void Radical::exponentiate(Integer power){
-    if (power = radicand) {
+    //if (power.getInt() == radicand.getValue()) {
         //return base
-    }
+    //}
     //requires unique code
 }
 
