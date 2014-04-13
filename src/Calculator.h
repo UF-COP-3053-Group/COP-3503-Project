@@ -29,6 +29,7 @@ public:
 	void calculate(string input);
 	Expression* parseInput(string& input);
 	string collectTerms(string& input);
+	void defineOperators();
 
 private:
 	vector<Expression*> previousAnswers;

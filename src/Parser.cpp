@@ -32,7 +32,7 @@ Expression* Parser::createAST(string input)
 	for (int i = 0; i < input.length(); i++)
 	{
 		// Assign the current character
-		char c = input[i]
+		char c = input[i];
 		
 		// Switch the character, looking for an operator
 		switch (c)

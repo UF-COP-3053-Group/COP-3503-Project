@@ -20,12 +20,16 @@
 class Expression
 {
 public:
-	Expression();
+	Expression(Number num);
+	Expression(char operatorSymbol, Expression* leftNode, Expression* rightNode);
 	~Expression();
+	Number getNumber();
+	char getOperatorSymbol();
+	bool isNumber();
 	void deleteExpressionTree(Expression* node);
 	
 private:
-	char op;
+	char operatorSymbol;
 	Number num;
 	Expression* left;
 	Expression* right;

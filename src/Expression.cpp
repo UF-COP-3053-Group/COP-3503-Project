@@ -9,16 +9,29 @@
 #include "Expression.h"
 
 /**
- * Constructor
+ * Constructor for a leaf (number) node
  */
-Expression::Expression()
+Expression::Expression(Number num)
 {
 	// Initilize the pointers to null
 	this->left = nullptr;
 	this->right = nullptr;
 	
 	// Initilize the operation to the null character
-	op = '\0';
+	this->operatorSymbol = '\0';
+	
+	// Initlize the number to num
+	this->num = num;
+}
+
+/**
+ * Constructor for operator nodes.
+ */
+Expression::Expression(char operatorSymbol, Expression* leftNode, Expression* rightNode)
+{
+	this->left = leftNode;
+	this->right = rightNode;
+	this->operatorSymbol = operatorSymbol;
 }
 
 
@@ -30,6 +43,42 @@ Expression::~Expression()
 	// Call the destructor on both the left and right sides.
 	delete this->left;
 	delete this->right;
+}
+
+
+/**
+ * Returns the number stored by this class
+ * Note: before calling this method, check that this is a number node with isNumber()
+ */
+Number Expression::getNumber()
+{
+	return this->num;
+}
+
+
+/**
+ * Returns the operator symbol for this node. Will return the null character ('\0') if not an operator
+ */
+char Expression::getOperatorSymbol()
+{
+	return this->operatorSymbol;
+}
+
+
+/**
+ * Returns true if this expression node stores a number, false if not
+ */
+bool Expression::isNumber()
+{
+	// If both the left and right are null, it's a leaf node, AKA a number
+	if (this->left == nullptr && this->right == nullptr)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 

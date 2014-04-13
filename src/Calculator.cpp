@@ -99,3 +99,12 @@ string Calculator::collectTerms(string& input)
 	//TODO: Implement this method. For now, we'll focus on the Expression tree, as it's more important
 	return input;
 }
+
+
+/**
+ * A function to define the operators used by our calculator
+ */
+void Calculator::defineOperators()
+{
+	//TODO
+}
