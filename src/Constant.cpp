@@ -179,3 +179,11 @@ void Constant::divide(Constant num)
 		cout << getName() << "/" << num.getName()  << endl; //testing if statement
 	}
 }
+
+void Constant::exponentiate(Rational power){
+    //formating to be determined
+}
+
+void Constant::exponentiate(Integer power){
+    //formatting to be determined
+}

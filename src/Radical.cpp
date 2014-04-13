@@ -245,3 +245,15 @@ void Radical::divide(Rational* in)
 	//Radical/Rational, gives back a rational where numerator = radical*in.denominator and denominator = in.numerator
 	cout << "Successfully recognized dividing a Rational to a Radical" << endl;
 }
+
+void Radical::exponentiate(Rational power){
+    //requires unique code
+}
+
+void Radical::exponentiate(Integer power){
+    if (power = radicand) {
+        //return base
+    }
+    //requires unique code
+}
+

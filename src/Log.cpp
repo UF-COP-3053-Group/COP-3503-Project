@@ -15,3 +15,11 @@ Log::Log()
 {
 	// TODO: Create the constructor
 }
+
+void Log::exponentiate(Rational power){
+    //needs class implementation
+}
+
+void Radical::exponentiate(Integer power){
+    //needs class implementation
+}

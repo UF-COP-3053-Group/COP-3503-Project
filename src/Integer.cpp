@@ -86,3 +86,12 @@ void Integer::divide(Integer num)
 //	cout << ratAnswer->getNum() << "/" << ratAnswer->getDen() << endl;
 }
 
+void Integer::exponentiate(Rational power){
+    num= pow(num, power.getNum);
+    //return a radical
+}
+
+void Integer::exponentiate(Integer power){
+    num = pow(num, power.getInt());
+}
+

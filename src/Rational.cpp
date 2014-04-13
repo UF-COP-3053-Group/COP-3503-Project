@@ -184,10 +184,21 @@ Integer *Rational::rationalToInt(int n)
 }
 int Rational::getNum()
 {
-	return num;
+    return num;
 }
 
 int Rational::getDen()
 {
 	return den;
+}
+
+void Rational::exponentiate(Rational power){
+    num = pow(num, power.getNum);
+    den = pow(den, power.getNum);
+    //return a radical
+}
+
+void Rational::exponentiate(Integer power){
+    num = pow(num, power.getInt());
+    den = pow(den, power.getInt());
 }
