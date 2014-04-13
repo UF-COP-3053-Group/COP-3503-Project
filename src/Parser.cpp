@@ -142,7 +142,7 @@ vector<Token> Parser::tokenize(string input)
             throw "Invalid input detected";
         }
         negate = false;
-        first = fragments.at(0).front());
+        first = fragments.at(0).front();
         if (first=='(') {
             Token result = Token('(');
             tokens.push_back(result);

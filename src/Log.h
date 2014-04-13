@@ -19,8 +19,17 @@ using namespace std;
 
 class Log : public Number
 {
+private:
+    //**************
+    Number base;
+    Number argument;
+    //**************
+    
 public:
 	Log();
+    //**************
+    Log(Number b, Number a);
+    //**************
     void exponentiate(Rational power);
     void exponentiate(Integer power);
 	

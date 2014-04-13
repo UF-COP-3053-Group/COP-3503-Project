@@ -193,8 +193,8 @@ int Rational::getDen()
 }
 
 void Rational::exponentiate(Rational power){
-    num = pow(num, power.getNum);
-    den = pow(den, power.getNum);
+    num = pow(num, power.getNum());
+    den = pow(den, power.getNum());
     //return a radical
 }
 

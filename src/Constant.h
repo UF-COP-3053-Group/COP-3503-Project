@@ -30,6 +30,9 @@ using namespace std;
 
 class Constant : public Number
 {
+private:
+	string name;
+    
 public:
 	Constant(string name);
 	bool isKnown(string name);
@@ -54,8 +57,6 @@ public:
     void exponentiate(Rational power);
     void exponentiate(Integer power);
 	
-private:
-	string name;
 };
 
 #endif /* defined(__COP_3503_Project__Constant__) */

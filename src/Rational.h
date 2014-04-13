@@ -24,7 +24,16 @@ using namespace std;
 
 class Rational : public Number
 {
+private:
+    //**************
+	Number num;
+    Number denom;
+    //**************
+    
 public:
+    //**************
+    Rational(Number num, Number denom);
+    //**************
 	Rational(int num, int den);
 	virtual ~Rational();
 	void simplify();
@@ -83,9 +92,6 @@ public:
 	void divide(Log);
 	void divide(Radical);
 	void divide(Rational);*/
-
-private:
-	int num , den;
 
 };
 

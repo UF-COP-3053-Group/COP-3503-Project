@@ -20,6 +20,10 @@ using namespace std;
 
 class Integer : public Number
 {
+private:
+	int num;
+	int inputNum;
+    
 public:
 	Integer(); // default constructor for testing
 	Integer(int);
@@ -41,10 +45,6 @@ public:
     
     void exponentiate(Rational power);
     void exponentiate(Integer power);
-
-private:
-	int num;
-	int inputNum;
 };
 
 #endif /* defined(__COP_3503_Project__Integer__) */

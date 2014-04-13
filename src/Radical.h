@@ -27,7 +27,14 @@ class Rational;
 
 class Radical : public Number
 {
+private:
+    //**************
+	Number base;
+	Number* radicand;
+    //**************
+    
 public:
+    Radical(Number base, Number radicand);
 	Radical(int,Number*);
 	Radical();
     
@@ -71,10 +78,6 @@ public:
 	void divide(Log*);
 	void divide(Radical*);
 	void divide(Rational*);
-	
-private:
-	int base;
-	Number* radicand;
 	
 };
 
