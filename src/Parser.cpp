@@ -77,3 +77,13 @@ Expression* Parser::createAST(string input)
 	// Just so this builds right now
 	return nullptr;
 }
+
+
+/**
+ * Takes in an input string and turns it into a vector of tokens readable
+ * by the createAST() function.
+ */
+vector<Token> Parser::tokenize(string input)
+{
+	
+}

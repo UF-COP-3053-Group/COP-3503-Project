@@ -12,7 +12,9 @@
 #include <iostream>
 #include <stdexcept>
 #include <stack>
+#include <vector>
 #include "Expression.h"
+#include "Token.h"
 
 using namespace std;
 
@@ -24,6 +26,7 @@ class Parser
 {
 public:
 	Expression* createAST(string input);
+	vector<Token> tokenize(string input);
 	
 private:
 	
