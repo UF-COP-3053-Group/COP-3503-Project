@@ -8,12 +8,14 @@
 #include <stdexcept>
 #include <iostream>
 #include <string.h>
+#include "Calculator.h"
 
 // Test includes
 #include "Number.h"
 #include "Constant.h"
 #include "Integer.h"
 #include "Radical.h"
+
 // End test includes
 
 using namespace std;
@@ -26,6 +28,7 @@ void printMenu();
 void tests();
 void rational_test();
 Rational *createRational();
+
 
 int main(int argc, const char * argv[])
 {
@@ -45,6 +48,7 @@ int main(int argc, const char * argv[])
 	
 	else
 	{
+
 		printMenu(); // Default behavior
 	}
 
@@ -60,7 +64,8 @@ int main(int argc, const char * argv[])
  */
 void printMenu()
 {
-	string userInput; //should it be declared here or elsewhere?
+	Calculator *myCalc = new Calculator(); // Instantiate a Calculator object, for some reason doesn't work when constructed in main()
+	string userInput;
 	bool menuLoop = true;
 	//TODO: Print second part of menu and pass input to parser
 	//      Throw errors for bad input
@@ -92,6 +97,7 @@ void printMenu()
 		cin >> userInput;
 		if(userInput == "Q" || userInput == "q")  //this stopped working...
 		{
+			delete [] myCalc; //should call destructor and exit menu
 			menuLoop = false;
 		}
 		// check for correct input
@@ -103,8 +109,25 @@ void printMenu()
 		cin >> userInput;
 		if(userInput == "Q" || userInput == "q")
 		{
+			delete [] myCalc;
 			menuLoop = false;
 		}
+		// can't implement below yet, because calculate doesn't return anything.
+//		else {
+//		ans = myCalc.calculate(UserInput);
+// needs toString method from Calculator to convert Expression to String
+//		display answer
+//		cout << "Continue? y/n:" << endl;
+//		cin >> userIput;
+//		if (userInput == "n" || userInput == "n")
+//		{
+//			delete [] myCalc;
+//			menuLoop = false;
+//		}
+//		else if(user Input != "y" || userInput != "Y") {
+//			//throw some error, try again
+//		}
+//		}
 	}
 	}
 	// Test that exit works
