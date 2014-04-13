@@ -16,6 +16,10 @@ Log::Log()
 	// TODO: Create the constructor
 }
 
+Log::Log(Number b, Number a){
+    
+}
+
 void Log::exponentiate(Rational power){
     //needs class implementation
 }

@@ -33,6 +33,7 @@ private:
 public:
     //**************
     Rational(Number num, Number denom);
+    Rational(double decimal);
     //**************
 	Rational(int num, int den);
 	virtual ~Rational();

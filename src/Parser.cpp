@@ -176,45 +176,66 @@ vector<Token> Parser::tokenize(string input)
             negate = true;
             fragments.at(0).erase(0);
         }
-        //This is probably lazy/ bad, but it basically makes sure that theres no junk before the actual operation.
-        else if (first == 'l' && fragments.at(0).find("log_") > 0){
-            //create log
-        }
-        else if (first=='p' && fragments.at(0).at(1) =='i' && fragments.at(0).length() == 2){
-            //create pi
-        }
-        else if (first=='e' && fragments.at(0).length() == 1){
-            //create e
-        }
-        else if (first == 's' && fragments.at(0).find("sqrt:") > 0){
-            //create a square root
-        }
-        else if (first == 'r' && fragments.at(0).find("rt:") > 0){
-            //create an n root
-        }
-        //all number are created here
-        else if (isdigit(first) && fragments.at(0).find_last_not_of("0123456789./") != -1){
-            //find a '/' to create a fraction
-            if(fragments.at(0).find_first_of('/') > 0){
-                //check to make sure there is only one '/' in the fraction
-                if (fragments.at(0).find_first_of('/') != fragments.at(0).find_last_of('/')) {
-                    //temporary error handling
-                    throw "Only one / per fracton";
-                }
-                //create a rational
-            }
-            if(fragments.at(0).find_first_of('.') > 0){
-                if (fragments.at(0).find_first_of('.') != fragments.at(0).find_last_of('.')){
-                    throw "Only one . per decimal";
-                }
-                //create a rational from a decimal
-            }
-            //create integer
-        }
         else
-            throw "Nothing to tokenize";
+            Token(createNumber(fragments.at(0), first));
         fragments.at(0).erase();
     }
     
     return tokens;
+}
+
+Number Parser::createNumber(string number, char first){
+    Number result;
+    //This is probably lazy/ bad, but it basically makes sure that theres no junk before the actual operation.
+    if (first != 's' && number.find("rt:") > 0){
+        string base (number.find(':')+1, -1);
+        string radicand (0, number.find('r')-1);
+        result = Radical(createNumber(base, base.front()), createNumber(radicand, radicand.front()));
+    }
+    else if (first=='p' && number.at(1) =='i' && number.length() == 2){
+        //create pi
+        result = Constant("pi");
+    }
+    else if (first=='e' && number.length() == 1){
+        //create e
+        result = Constant("e");
+    }
+    else if (first == 's' && number.find("sqrt:") > 0){
+        //create a square root
+        string base (number.find(':')+1, -1);
+        result = Radical(createNumber(base, base.front()), Integer(2));
+    }
+    else if (first == 'l' && number.find("log_") > 0){
+        //create a log
+        string base (number.find('_')+1, number.find(':'));
+        string arg (number.find(':')+1, -1);
+        result = Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
+    }
+    //all numbers are created here
+    else if (isdigit(first) && number.find_last_not_of("0123456789./") != -1){
+        //find a '/' to create a fraction
+        if(number.find_first_of('/') > 0){
+            //check to make sure there is only one '/' in the fraction
+            if (number.find_first_of('/') != number.find_last_of('/')) {
+                //temporary error handling
+                throw "Only one / per fracton";
+            }
+            //create a rational
+            string numerator (0, number.find('/')-1);
+            string denom ( number.find('/') + 1, -1);
+            result = Rational(createNumber(numerator, numerator.front()), createNumber(denom, denom.front()));
+        }
+        if(number.find_first_of('.') > 0){
+            if (number.find_first_of('.') != number.find_last_of('.')){
+                throw "Only one . per decimal";
+            }
+            //create a rational from a decimal
+            
+            result = Rational(stod(number));
+        }
+        //finally, create an integer
+        result = Integer(stoi(number));
+    }
+
+    return result;
 }

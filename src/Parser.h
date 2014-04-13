@@ -17,6 +17,13 @@
 #include <ctype.h>
 #include "Expression.h"
 #include "Token.h"
+#include "Integer.h"
+#include "Rational.h"
+#include "Radical.h"
+#include "Constant.h"
+#include "Log.h"
+//sort out our circular dependencies in the other classes so that everything works here?
+
 
 using namespace std;
 
@@ -31,7 +38,7 @@ public:
 	vector<Token> tokenize(string input);
 	
 private:
-	
+	Number createNumber(string number, char first);
 };
 
 #endif /* defined(__COP_3503_Project__Parser__) */

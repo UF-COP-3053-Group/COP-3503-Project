@@ -13,6 +13,10 @@ using namespace std;
 /**
  * Constructor
  */
+Rational::Rational(double decimal){
+    //create a rational from a decimal number
+}
+
 Rational::Rational(int num , int den)
 {
 
