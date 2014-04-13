@@ -81,7 +81,7 @@ Expression* Parser::createAST(vector<Token> tokens)
 					o2 = operatorStack.top();
 					
 					// If o1 is right assoc and has the same precedence as the last op, or o1 has lower precedence
-					if (!o1.isRightAssoc() && o1.comparePrecedence(o2) == 0 || o1.comparePrecedence(o2) < 0)
+					if ((!o1.isRightAssoc() && o1.comparePrecedence(o2) == 0) || o1.comparePrecedence(o2) < 0)
 					{
 						operatorStack.pop();
 						addNode(expressionStack, o2);
@@ -135,37 +135,74 @@ vector<Token> Parser::tokenize(string input)
         fragments.push_back(buf);
     
     vector<Token> tokens;
+    char first;
+    bool negate;
     while (!fragments.empty()) {
-        
-        if (fragments.at(0).at(0)=='(') {
+        if (fragments.at(0).find_last_not_of("0123456789./-+* ^epilog_sqrt:") != -1) {
+            throw "Invalid input detected";
+        }
+        negate = false;
+        first = fragments.at(0).at(0);
+        if (first=='(') {
             Token result = Token('(');
             tokens.push_back(result);
         }
-        else if (fragments.at(0).at(0)==')'){
+        else if (first==')'){
             Token result = Token(')');
             tokens.push_back(result);
         }
-        //43322
-        else if (fragments.at(0).at(0)=='^'){
+        else if (first=='^'){
             Token result = Token(Operator('^', 4, true));
             tokens.push_back(result);
         }
-        else if (fragments.at(0).at(0)=='*'){
+        else if (first=='*'){
             Token result = Token(Operator('*', 3, false));
             tokens.push_back(result);
         }
-        else if (fragments.at(0).at(0)=='/'){
+        else if (first=='/'){
             Token result = Token(Operator('/', 3, false));
             tokens.push_back(result);
         }
-        else if (fragments.at(0).at(0)=='+'){
+        else if (first=='+'){
             Token result = Token(Operator('+', 2, false));
             tokens.push_back(result);
         }
-        else if (fragments.at(0).at(0)=='-' && fragments.at(0).length() < 2){
+        else if (first=='-' && fragments.at(0).length() < 2){
             Token result = Token(Operator('-', 2, false));
             tokens.push_back(result);
         }
+        //negation operator, not subtraction
+        else if (first=='-' && fragments.at(0).length() <= 2){
+            negate = true;
+        }
+        else if (first=='l' && fragments.at(0).length() <= 2){
+            //create log
+        }
+        else if (first=='p' && fragments.at(0).at(1) =='i' && fragments.at(0).length() == 2){
+            //create pi
+        }
+        else if (first=='e' && fragments.at(0).length() == 1){
+            //create e
+        }
+        //all number are created here
+        else if (isdigit(first)){
+            //find a '/' to create a fraction
+            if(fragments.at(0).find_first_of('/') > 0){
+                //check to make sure there is only one '/' in the fraction
+                if (fragments.at(0).find_first_of('/') != fragments.at(0).find_last_of('/')) {
+                    //temporary error handling
+                    throw "Only one / per fracton";
+                }
+                //create a rational
+            }
+            if(fragments.at(0).find_first_of('.') > 0){
+                if (fragments.at(0).find_first_of('.') != fragments.at(0).find_last_of('.')){
+                    throw "Only one . per decimal";
+                }
+                //create a rational from a decimal
+            }
+        }
+        fragments.at(0).erase();
     }
     
     return tokens;

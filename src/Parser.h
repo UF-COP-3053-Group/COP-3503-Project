@@ -12,7 +12,9 @@
 #include <iostream>
 #include <stdexcept>
 #include <stack>
+#include <sstream>
 #include <vector>
+#include <ctype.h>
 #include "Expression.h"
 #include "Token.h"
 
