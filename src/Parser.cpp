@@ -105,11 +105,18 @@ Expression* Parser::createAST(vector<Token> tokens)
 				throw runtime_error("Error in building the AST. Invalid Token.");
 			}
 		}
-		
+	// End for loop
 	}
 	
-	// Just so this builds right now
-	return nullptr;
+	// Finish adding nodes
+	while(!operatorStack.empty())
+	{
+		addNode(expressionStack, operatorStack.top());
+		operatorStack.pop();
+	}
+	
+	// Will this work? Only testing will tell
+	return expressionStack.top();
 }
 
 
