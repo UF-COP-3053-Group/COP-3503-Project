@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "Number.h"
+#include "Operator.h"
 
 /**
  * The main tree node structure used to store data
@@ -21,7 +22,7 @@ class Expression
 {
 public:
 	Expression(Number num);
-	Expression(char operatorSymbol, Expression* leftNode, Expression* rightNode);
+	Expression(Operator op, Expression* leftNode, Expression* rightNode);
 	~Expression();
 	Number getNumber();
 	char getOperatorSymbol();
@@ -29,7 +30,7 @@ public:
 	void deleteExpressionTree(Expression* node);
 	
 private:
-	char operatorSymbol;
+	Operator op;
 	Number num;
 	Expression* left;
 	Expression* right;

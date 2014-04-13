@@ -11,7 +11,7 @@
 /**
  * Adds a completed node to the expression stack with the given operator
  */
-void addNode(stack<Expression*> stack, char op)
+void addNode(stack<Expression*> stack, Operator op)
 {
 	Expression* rightNode = stack.top();
 	stack.pop();
@@ -33,45 +33,79 @@ Expression* Parser::createAST(vector<Token> tokens)
 	{
 		// Assign the current token
 		Token token = tokens[i];
-		/*
-		// Switch the character, looking for an operator
-		switch ()
+		
+		// If the token is a left parenthesis
+		if ( token.isLeftParen() )
 		{
-			case ' ':
-				break;
-			
-			case '(':
-				operatorStack.push('(');
-				break;
-			
-			case ')':
-				// Loop until we empty the stack between the parenthesis
-				char popOp;
-				while( !operatorStack.empty() )
+			// Push it onto the stack as an operator
+			operatorStack.push( Operator('(', 5, false) );
+		}
+		// Else if it's a right parenthesis
+		else if ( token.isRightParen() )
+		{
+			// Loop backwards through the stack
+			Operator popOp;
+			while ( !operatorStack.empty() )
+			{
+				// Pop off the top operator
+				popOp = operatorStack.top();
+				operatorStack.pop();
+				
+				// Check if it's the matching paren
+				if( popOp.getSymbol() == '(' )
 				{
-					// Pop off the top operator
-					popOp = operatorStack.top();
-					operatorStack.pop();
+					// Continue the outer for loop if it is
+					goto Label_MainLoop;
+				}
+				// Otherwise, add a node from the inner expression and loop again
+				else
+				{
+					addNode(expressionStack, popOp);
+				}
+			}
+			
+			// If we get here, the stack has emptied before we found the matching paren, which is bad.
+			throw runtime_error("Missing a \')\' in the expression");
+		}
+		// Default case
+		else
+		{
+			// If the token is an operator, decide what to do with it
+			if ( token.isOperator() )
+			{
+				Operator o1 = token.op;
+				Operator o2;
+				while( !operatorStack.empty() ) // Not needed?? -> && operatorStack.top() != null
+				{
+					// Define o2 as the top of the stack
+					o2 = operatorStack.top();
 					
-					// Check it
-					if( '(' == popOp )
+					// If o1 is right assoc and has the same precedence as the last op, or o1 has lower precedence
+					if (!o1.isRightAssoc() && o1.comparePrecedence(o2) == 0 || o1.comparePrecedence(o2) < 0)
 					{
-						// Continuet the outer for loop
-						goto Label_MainLoop;
+						operatorStack.pop();
+						addNode(expressionStack, o2);
 					}
 					else
 					{
-						addNode(expressionStack, popOp);
+						break;
 					}
 				}
-				throw runtime_error("Missing a \')\' in the expression");
-				break;
-			
-			default:
-				
-				break;
+				// Push this operator onto the stack
+				operatorStack.push( token.op );
+			}
+			// Otherwise, if it's a number
+			else if ( token.isNumber() )
+			{
+				expressionStack.push( new Expression( token.number ) );
+			}
+			// The token should have been an operator or a number. How'd we get here? Throw an error
+			else
+			{
+				throw runtime_error("Error in building the AST. Invalid Token.");
+			}
 		}
-		*/
+		
 	}
 	
 	// Just so this builds right now

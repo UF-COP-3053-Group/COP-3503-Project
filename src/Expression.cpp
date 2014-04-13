@@ -17,8 +17,8 @@ Expression::Expression(Number num)
 	this->left = nullptr;
 	this->right = nullptr;
 	
-	// Initilize the operation to the null character
-	this->operatorSymbol = '\0';
+	// Initilize the operation to the null operatoon
+	this->op = Operator();
 	
 	// Initlize the number to num
 	this->num = num;
@@ -27,11 +27,11 @@ Expression::Expression(Number num)
 /**
  * Constructor for operator nodes.
  */
-Expression::Expression(char operatorSymbol, Expression* leftNode, Expression* rightNode)
+Expression::Expression(Operator op, Expression* leftNode, Expression* rightNode)
 {
 	this->left = leftNode;
 	this->right = rightNode;
-	this->operatorSymbol = operatorSymbol;
+	this->op = op;
 }
 
 
@@ -61,7 +61,7 @@ Number Expression::getNumber()
  */
 char Expression::getOperatorSymbol()
 {
-	return this->operatorSymbol;
+	return this->op.getSymbol();
 }
 
 
