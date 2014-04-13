@@ -85,5 +85,47 @@ Expression* Parser::createAST(vector<Token> tokens)
  */
 vector<Token> Parser::tokenize(string input)
 {
-	
+    string buf; // Have a buffer string
+    stringstream ss(input); // Insert the string into a stream
+    
+    vector<string> fragments; // Create vector to hold our words
+    
+    while (ss >> buf)
+        fragments.push_back(buf);
+    
+    vector<Token> tokens;
+    while (!fragments.empty()) {
+        
+        if (fragments.at(0).at(0)=='(') {
+            Token result = Token('(');
+            tokens.push_back(result);
+        }
+        else if (fragments.at(0).at(0)==')'){
+            Token result = Token(')');
+            tokens.push_back(result);
+        }
+        //43322
+        else if (fragments.at(0).at(0)=='^'){
+            Token result = Token(Operator('^', 4, false));
+            tokens.push_back(result);
+        }
+        else if (fragments.at(0).at(0)=='*'){
+            Token result = Token(Operator('*', 3, false));
+            tokens.push_back(result);
+        }
+        else if (fragments.at(0).at(0)=='/'){
+            Token result = Token(Operator('/', 3, false));
+            tokens.push_back(result);
+        }
+        else if (fragments.at(0).at(0)=='+'){
+            Token result = Token(Operator('+', 2, false));
+            tokens.push_back(result);
+        }
+        else if (fragments.at(0).at(0)=='-' && fragments.at(0).length() < 2){
+            Token result = Token(Operator('-', 2, false));
+            tokens.push_back(result);
+        }
+    }
+    
+    return tokens;
 }
