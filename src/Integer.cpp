@@ -87,7 +87,7 @@ void Integer::divide(Integer num)
 }
 
 void Integer::exponentiate(Rational power){
-    num= pow(num, power.getNum);
+    num= pow(num, power.getNum());
     //return a radical
 }
 
