@@ -16,10 +16,18 @@
 class Token
 {
 public:
+	Token(Number number);
+	Token(Operator op);
+	Token(char paren);
+	
 	bool isNumber();
 	bool isOperator();
+	bool isLeftParen();
+	bool isRightParen();
+	
 	Number number;
 	Operator op;
+	char paren;
 
 private:
 	bool is_number;

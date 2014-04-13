@@ -8,6 +8,14 @@
 
 #include "Operator.h"
 
+/**
+ * Empty Constructor to allow empty operators to exist as needed for tokens and nodes
+ */
+Operator::Operator()
+{
+	this->symbol = '\0';
+}
+
 
 /**
  * Constructor

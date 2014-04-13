@@ -25,7 +25,7 @@ using namespace std;
 class Parser
 {
 public:
-	Expression* createAST(string input);
+	Expression* createAST(vector<Token> tokens);
 	vector<Token> tokenize(string input);
 	
 private:

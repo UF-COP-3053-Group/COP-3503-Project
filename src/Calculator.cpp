@@ -79,7 +79,7 @@ Expression* Calculator::parseInput(string& input)
 	
 	// Now, create the tree from the given input with the parser class
 	Parser parser;
-	Expression* root = parser.createAST(input);
+	Expression* root = parser.createAST( parser.tokenize(input) );
 	
 	
 	return root;

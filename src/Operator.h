@@ -17,6 +17,7 @@ using namespace std;
 class Operator
 {
 public:
+	Operator();
 	Operator(char symbol, int precedence, bool rightAssoc);
 	bool isRightAssoc();
 	char getSymbol();

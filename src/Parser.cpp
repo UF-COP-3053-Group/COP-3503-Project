@@ -20,22 +20,22 @@ void addNode(stack<Expression*> stack, char op)
 	stack.push(new Expression(op, leftNode, rightNode));
 }
 
-Expression* Parser::createAST(string input)
+Expression* Parser::createAST(vector<Token> tokens)
 {
 	// Create the needed stacks
-	stack<char> operatorStack;
+	stack<Operator> operatorStack;
 	stack<Expression*> expressionStack;
 	
-	// Loop through the whole input string
+	// Loop through the whole vector of tokens
 	// For simplicity, we use a GOTO label, since breaking or refactoring nested loops isn't so simple in C++
 	Label_MainLoop:
-	for (int i = 0; i < input.length(); i++)
+	for (int i = 0; i < tokens.size(); i++)
 	{
-		// Assign the current character
-		char c = input[i];
-		
+		// Assign the current token
+		Token token = tokens[i];
+		/*
 		// Switch the character, looking for an operator
-		switch (c)
+		switch ()
 		{
 			case ' ':
 				break;
@@ -71,7 +71,7 @@ Expression* Parser::createAST(string input)
 				
 				break;
 		}
-		
+		*/
 	}
 	
 	// Just so this builds right now
