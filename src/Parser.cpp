@@ -140,7 +140,7 @@ vector<Token> Parser::tokenize(string input)
         }
         //43322
         else if (fragments.at(0).at(0)=='^'){
-            Token result = Token(Operator('^', 4, false));
+            Token result = Token(Operator('^', 4, true));
             tokens.push_back(result);
         }
         else if (fragments.at(0).at(0)=='*'){
