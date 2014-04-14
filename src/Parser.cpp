@@ -244,7 +244,7 @@ Number Parser::createNumber(string number, char first){
             result = Rational(number);
         }
         //finally, create an integer
-        result = Integer(stoi(number));
+        result = Integer(atoi(number.c_str()));
     }
 
     return result;
