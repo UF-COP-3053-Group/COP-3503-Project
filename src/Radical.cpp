@@ -79,7 +79,7 @@ Expression* Radical::add(Number* num , Expression* caller)
 { 
 	//Hope this is right, not too sure how Expression works tbh. Will include pseudocode so I can be corrected.
 	//Idea is to see if the other side is a radical, if it is, check if they have the same base and radicand, if they do, add the coefficients.
-	int c = coefficient;
+	int c = coefficient->getValue();
 	if(num->getType()=="Radical")
 	{
 		if((num->getBase()->getValue()==base)&&(num->getRad()->getValue()==radicand))
