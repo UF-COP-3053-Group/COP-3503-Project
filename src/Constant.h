@@ -19,12 +19,7 @@
 // Needed for std::transform
 #include <algorithm>
 
-#include "Number.h"
-#include "Exponent.h"
-#include "Integer.h"
-#include "Log.h"
-#include "Radical.h"
-#include "Rational.h"
+
 
 using namespace std;
 
@@ -41,25 +36,6 @@ public:
 	bool isKnown(string name);
 	double getValue();
 	string getName();
-	
-	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
-	void add(Number);
-	void add(Integer);
-	void add(Radical);
-	void add(Constant);
-
-	void subtract(Number);
-	void subtract(Constant);
-
-	void multiply(Number);
-	void multiply(Constant);
-
-	void divide(Number);
-	void divide(Constant);
-    
-    void exponentiate(Rational power);
-    void exponentiate(Integer power);
-	
 };
 
 #endif /* defined(__COP_3503_Project__Constant__) */
