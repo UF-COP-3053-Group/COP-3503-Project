@@ -10,6 +10,7 @@
 #define __COP_3503_Project__Log__
 
 #include <iostream>
+#include "Number.h"
 
 using namespace std;
 

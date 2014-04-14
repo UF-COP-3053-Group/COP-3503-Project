@@ -10,6 +10,7 @@
 #define __COP_3503_Project__Integer__
 
 #include <iostream>
+#include "Number.h"
 
 using namespace std;
 
@@ -22,6 +23,7 @@ private:
 public:
 	Integer(); // default constructor for testing
 	Integer(int);
+	double getValue();
 };
 
 #endif /* defined(__COP_3503_Project__Integer__) */

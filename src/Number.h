@@ -25,8 +25,8 @@ public:
 		//virtual void multiply() = 0;
 		//virtual void divide() = 0;
 	
-	virtual float getValue() = 0;
-	virtual string getType() = 0;
+	virtual double getValue();
+	virtual string getType();
 	
 private:
 	bool negative;

@@ -19,6 +19,11 @@
 // Needed for std::transform
 #include <algorithm>
 
+//Include Numbers
+#include "Number.h"
+#include "Rational.h"
+#include "Integer.h"
+
 
 
 using namespace std;
@@ -28,8 +33,6 @@ class Constant : public Number
 {
 private:
 	string name;
-	Rational power;
-	Integer powerInt;
     
 public:
 	Constant(string name);
