@@ -76,13 +76,13 @@ double Rational::getValue()
 }
 //handling of divide by 0 is done by constructor,
 //negative numbers should work now.
-Integer Rational::gcd(Integer c , Integer d)
+int Rational::gcd(int c , int d)
 {
     
    
 
-    int a = c.getValue();
-    int b = d.getValue();
+    int a = c ;//.getValue();
+    int b = d ;//.getValue();
     
 	bool flip = false;
 	if(b < 0 && a > 0)
@@ -110,8 +110,8 @@ Integer Rational::gcd(Integer c , Integer d)
 	if(r == 0)
 	{
 		if(flip)
-			return Integer(-1 * bot);
-		return Integer(bot);
+			return (-1 * bot);
+		return (bot);
 	}
 	else
 	{
@@ -225,59 +225,46 @@ Number* Rational::getDen(){
 
 Expression* Rational::add(Number *r , Expression *caller)
 {
-	//TODO
 	return caller;
 
 }
 
 Expression* Rational::subtract(Number *r , Expression *caller)
 {
-	//TODO
 	return caller;
 
 }
 
 Expression* Rational::multiply(Number *r , Expression *caller)
 {
-	//TODO
 	return caller;
 
 }
 
 Expression* Rational::divide(Number *r , Expression *caller)
 {
-	//TODO
 	return caller;
 
 }
 
 
-
-
-
-
-
-
-
-
-
-/*
 void Rational::simplify()
 {
-	if(numerator.getType() != "Integer" || den.getType() != "Integer")
+	if(numerator->getType() != "Integer" || den->getType() != "Integer")
 		return;
 
-	int numerator = (int)num.getValue();
-	int denominator = (int) den.getValue();
+	int numerator = (int)this->numerator->getValue();
+	int denominator = (int) this->den->getValue();
+	
 	int gcd = Rational::gcd(numerator, denominator);
-	if(numator== 0)
+	if(numerator== 0)
 	{
-		return 0;
+		return ;
 	}
 
 	if(denominator== 1)
 	{
-		Rational::rationalToInt(num);//should return an integer, = num
+		return;
 
 	}
 
@@ -286,11 +273,10 @@ void Rational::simplify()
 		numerator *= -1;
 		denominator *= -1;
 	}
-	num = numerator / gcd;
-	den = denominator / gcd;	
+	this->numerator =  new Integer(numerator / gcd);
+	this->den = new Integer(denominator / gcd);	
 
 }
-<<<<<<< HEAD
-*/
+
 
 
