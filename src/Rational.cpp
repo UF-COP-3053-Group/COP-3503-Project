@@ -67,9 +67,11 @@ Rational::~Rational()
 
 //handling of divide by 0 is done by constructor,
 //negative numbers should work now.
-int Rational::gcd(int a , int b)
+Integer Rational::gcd(Integer c , Integer d)
 {
-
+    int a = c.getValue();
+    int b = d.getValue();
+    
 	bool flip = false;
 	if(b < 0 && a > 0)
 	{
@@ -96,8 +98,8 @@ int Rational::gcd(int a , int b)
 	if(r == 0)
 	{
 		if(flip)
-			return -1 *bot;
-		return bot;	
+			return Integer(-1 * bot);
+		return Integer(bot);
 	}
 	else
 	{

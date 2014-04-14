@@ -23,7 +23,7 @@ using namespace std;
 class Rational : public Number
 {
 private:
-    string type;
+    string type = "Rational";
     Number numerator;
     Number denom;
     
@@ -36,7 +36,7 @@ public:
 	Rational(int num, int den);
 	virtual ~Rational();
 	void simplify();
-	int gcd(int a , int b);
+	Integer gcd(Integer c , Integer d);
 	Number getNum();
 	Number getDen();
 };
