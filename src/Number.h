@@ -11,11 +11,13 @@
 
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
 using namespace std;
 
 
-class Number {
+class Number
+{
 public:
 		// Commented out for working purposes.
 		//We can't create objects that don't define all of these functions and we need to for testing.
