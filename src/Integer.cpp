@@ -81,6 +81,15 @@ void Integer::divide(Number* num)
 	cout << "Successfully recognized dividing this Integer by a generic Number. Or vice versa" << endl;
 }
 
+
+Expression* Integer::divide(Integer* num , Expression *caller)
+{
+	return new Expression(new Rational(this->getValue() , num->getValue()));
+
+}
+
+
+
 /*
 Rational Integer::divide(Integer num)
 {

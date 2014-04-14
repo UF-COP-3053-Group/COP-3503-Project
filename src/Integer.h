@@ -37,7 +37,7 @@ public:
 	Expression* multiply(Integer* z , Expression* caller);
 
 	void divide(Number* n);
-//	Rational divide(Integer z);
+	Expression* divide(Integer* z , Expression* caller);
 
 	double getValue();
     
