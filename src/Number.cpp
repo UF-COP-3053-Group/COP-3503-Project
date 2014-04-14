@@ -10,7 +10,14 @@
 
 string Number::getType()
 {
-	throw logic_error("Error: Number.getType() called when it should have been implemented by a subclass.");
+	if (type == "Number")
+	{
+		throw logic_error("Error: Number.getType() called when it should have been implemented by a subclass.");
+	}
+	else
+	{
+		return this->type;
+	}
 }
 
 double Number::getValue()
