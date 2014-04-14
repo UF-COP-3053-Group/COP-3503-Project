@@ -37,8 +37,8 @@ public:
 	virtual ~Rational();
 	void simplify();
 	Integer gcd(Integer c , Integer d);
-	Number getNum();
-	Number getDen();
+	Number* getNum();
+	Number* getDen();
 
 	double getValue();
 };

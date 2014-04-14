@@ -29,9 +29,9 @@ Rational::Rational(Number* num, Number* den){
 Rational::Rational(int num , int den)
 {
     type = "Rational";
-	numerator = Integer(num);
-    den = Integer(den);
-    if (den->getValue() == 0)
+	this->numerator = new Integer(num);
+    this->den = new Integer(den);
+    if (this->den->getValue() == 0)
         throw "Division by zero is bad";
 
 }
@@ -39,7 +39,7 @@ Rational::Rational(int num , int den)
 Rational::Rational(Rational* num, Number* den){
     type = "Rational";
     //Depends on nonexistent methods
-    numerator = num->getNum();
+    this->numerator = num->getNum();
     //denom = num.getDen().multiply(den));
     if (den->getValue() == 0)
         throw "Division by zero is bad";
@@ -118,11 +118,11 @@ Integer Rational::gcd(Integer c , Integer d)
 
 }
 
-Number Rational::getNum(){
+Number* Rational::getNum(){
     return this->numerator;
 }
 
-Number Rational::getDen(){
+Number* Rational::getDen(){
     return this->den;
 }
 /*
