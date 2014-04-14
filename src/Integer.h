@@ -10,6 +10,7 @@
 #define __COP_3503_Project__Integer__
 
 #include <iostream>
+#include <vector>
 
 #include "Number.h"
 #include "Rational.h"
@@ -45,6 +46,7 @@ public:
     
     void exponentiate(Rational power);
     void exponentiate(Integer power);
+	
 };
 
 #endif /* defined(__COP_3503_Project__Integer__) */

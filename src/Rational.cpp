@@ -26,7 +26,6 @@ Rational::Rational(int num , int den)
 	this->num = num;
 	this->den = den;
 	// TODO: Create the constructor
-
 }
 
 Rational::~Rational()

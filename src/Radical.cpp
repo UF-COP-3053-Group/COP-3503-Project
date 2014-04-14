@@ -20,10 +20,24 @@ Radical::Radical()
 
 }
 
-Radical::Radical(int base, Number radicand)
+Radical::Radical(Number base, Number radicand)
 {
 	this->base = base;
 	this->radicand = radicand;
+}
+
+void Radical::Exponentiate(Integer power)
+{
+	Number tBase = new Rational(power.getValue(),base);
+	base = tBase;
+	simplify();
+}
+
+void Radical::Exponentiate(Rational power)
+{
+	tBase = new Rational(power.getNum(),power.getDen()*base);
+	base = tBase;
+	simplify();
 }
 
 string Radical::getSymValue()
@@ -32,10 +46,11 @@ string Radical::getSymValue()
 	return o;
 }
 
-string Radical::getRadicand(Number radicand)
+Number Radical::getRadicand(Number radicand)
 {
-	return "Radicand";//radicand.getValue();
+	return radicand.getValue();
 }
+
 int Radical::getBase()
 {
 	return base;
@@ -43,9 +58,17 @@ int Radical::getBase()
 
 void Radical::simplify()
 {
-	if(/*radicand is an integer*/0)
+	base.simplify();
+	if(radicand.getType()=='i')
 	{
 		/*factorize the radicand, if a factor is repeated this->base times, pull out the factor. When done multiply the pulled out factors together and then call this->multiply(pulled factors)*/
+		/*WIP
+		int f = 1;
+		vector <int> factors;
+		while(f<Math.floor(radicand.getValue()/2))
+		{
+			if(radicand.getValue()%f==0)
+				*/
 	}
 	else if(/*radicand is an exponent*/0)
 	{

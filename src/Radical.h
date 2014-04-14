@@ -10,6 +10,7 @@
 #define __COP_3503_Project__Radical__
 
 #include <iostream>
+#include <vector>
 
 #include "Number.h"
 #include "Integer.h"
@@ -29,13 +30,13 @@ class Radical : public Number
 {
 private:
     //**************
-	int base;
+	Number base;
 	Number radicand;
+	string value;
     //**************
     
 public:
     Radical(Number base, Number radicand);
-	Radical(int,Number*);
 	Radical();
     
     void exponentiate(Rational power);
@@ -46,6 +47,7 @@ public:
 	string getRadicand(Number* radicand);
 	void simplify();
 	int getBase();
+	string getType();
 	
 	void add(Number*);
 	void add(Constant*);
