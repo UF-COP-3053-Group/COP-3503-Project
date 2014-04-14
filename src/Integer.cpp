@@ -38,11 +38,11 @@ void Integer::add(Number* num)
 	// Do nothing. Destructor?
 }
 
-int Integer::add(Integer num)
+int Integer::add(Integer* num)
 {
 	// needs to return answer, figure out format first. May affect above line (answer may need to be Integer).
 	// same goes for other implemented methods.
-	int answer = this->getValue() + num.getValue(); //works
+	int answer = this->getValue() + num->getValue(); //works
 	return answer; 
 }
 
@@ -53,9 +53,9 @@ void Integer::subtract(Number* num)
 	// Destructor?
 }
 
-int Integer::subtract(Integer num)
+int Integer::subtract(Integer* num)
 {
-	int answer = this->getValue() - num.getValue(); //works
+	int answer = this->getValue() - num->getValue(); //works
 	return answer;
 }
 
@@ -66,9 +66,9 @@ void Integer::multiply(Number* num)
 	// else multiply coefficient with Integer
 }
 
-int Integer::multiply(Integer num)
+int Integer::multiply(Integer* num)
 {
-	int answer = (this->getValue()) * (num.getValue()); //works
+	int answer = (this->getValue()) * (num->getValue()); //works
 	return answer;	
 
 }
