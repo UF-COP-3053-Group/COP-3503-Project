@@ -90,7 +90,7 @@ void printMenu()
 			menuLoop = false;
 		}
 		// check for correct input
-		else if(userInput =="c " || userInput == "C")
+		else if(userInput =="c" || userInput == "C")
 		{
 		cout << "################################################################################" << endl;
 		cout << "## Continuing...							      ##" << endl;
@@ -129,9 +129,8 @@ void printMenu()
 			}
 		}
 	}
-	// Test that exit works
-	//cout << "Exiting" << endl;
-	// Works!
+	
+	cout << "Bye!" << endl;
 }
 
 /****************************************************
