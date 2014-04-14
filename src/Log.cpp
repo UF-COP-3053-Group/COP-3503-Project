@@ -29,15 +29,4 @@ double Log::getValue()
 	//FIXME: Implement this
 	return 0.0;
 }
-<<<<<<< HEAD
-=======
 
-void Log::exponentiate(Integer power){
-    //needs class implementation
-}
-
-string Log::getType()
-{
-	return "l";
-}
->>>>>>> 40773ff532c3a7ab8062ddec51b7f0aa00c21353
