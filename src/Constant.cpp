@@ -180,10 +180,13 @@ void Constant::divide(Constant num)
 	}
 }
 
-void Constant::exponentiate(Rational power){
+Radical Constant::exponentiate(Rational power){
     //formating to be determined
+	Radical result = Radical(power.getDen(), *this);
+	return result;
 }
 
 void Constant::exponentiate(Integer power){
     //formatting to be determined
+
 }

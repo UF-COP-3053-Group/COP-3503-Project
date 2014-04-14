@@ -20,7 +20,7 @@
 #include <algorithm>
 
 #include "Number.h"
-//#include "Exponent.h"
+#include "Exponent.h"
 #include "Integer.h"
 #include "Log.h"
 #include "Radical.h"
@@ -28,10 +28,13 @@
 
 using namespace std;
 
+
 class Constant : public Number
 {
 private:
 	string name;
+	Rational power;
+	Integer powerInt;
     
 public:
 	Constant(string name);
