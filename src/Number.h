@@ -22,7 +22,7 @@ public:
 	virtual double getValue();
 	virtual string getType();
 	
-private:
+protected:
 	bool negative;
 	string type;
 };

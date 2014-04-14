@@ -17,13 +17,13 @@
 #include "Radical.h"
 
 class Constant;
+class Integer;
 
 using namespace std;
 
 class Rational : public Number
 {
 private:
-    string type = "Rational";
     Number numerator;
     Number denom;
     
