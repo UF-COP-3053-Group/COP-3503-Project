@@ -22,6 +22,8 @@ Rational::Rational(Number num, Number den){
     type = "Rational";
     numerator = num;
     denom = den;
+    if (denom.getValue() == 0)
+        throw "Division by zero is bad";
 }
 
 Rational::Rational(int num , int den)
@@ -29,6 +31,8 @@ Rational::Rational(int num , int den)
     type = "Rational";
 	numerator = Integer(num);
     denom = Integer(den);
+    if (denom.getValue() == 0)
+        throw "Division by zero is bad";
 
 }
 
@@ -37,16 +41,22 @@ Rational::Rational(Rational num, Number den){
     //Depends on nonexistent methods
     numerator = num.getNum();
     //denom = num.getDen().multiply(den));
+    if (denom.getValue() == 0)
+        throw "Division by zero is bad";
 }
 
 Rational::Rational(Number num, Rational den){
     //numerator = num * den.getDen();
     denom = den.getNum();
+    if (denom.getValue() == 0)
+        throw "Division by zero is bad";
 }
 
 Rational::Rational(Rational num, Rational den){
     //numerator = num.getNum() * den.getDen();
     //denom = num.getDen() * den.getNum();
+    if (denom.getValue() == 0)
+        throw "Division by zero is bad";
 }
 
 Rational::~Rational()
@@ -97,6 +107,14 @@ int Rational::gcd(int a , int b)
 	// We should never get here
 	throw runtime_error("Error in calculating the gcd. We should never have reached this point.");
 
+}
+
+Number Rational::getNum(){
+    return this->numerator;
+}
+
+Number Rational::getDen(){
+    return this->denom;
 }
 
 /* FIXME
