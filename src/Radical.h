@@ -28,6 +28,7 @@ public:
     Radical(Number* base, Number* radicand);
 	
 	double getValue();
+	string toString();
 
 	Expression* add(Number* num , Expression* caller);
 	Expression* subtract(Number* num , Expression* caller);
