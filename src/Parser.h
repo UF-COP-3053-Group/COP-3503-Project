@@ -17,11 +17,16 @@
 #include <ctype.h>
 #include "Expression.h"
 #include "Token.h"
-#include "Integer.h"
-#include "Rational.h"
-#include "Radical.h"
-#include "Constant.h"
-#include "Log.h"
+
+// For testing
+#include "Number.h"
+
+// Commented out for testing
+//#include "Integer.h"
+//#include "Rational.h"
+//#include "Radical.h"
+//#include "Constant.h"
+//#include "Log.h"
 //sort out our circular dependencies in the other classes so that everything works here?
 
 

@@ -27,6 +27,8 @@ void tests();
 
 int main(int argc, const char * argv[])
 {
+	tests();
+	
 	// If the third arg is test, run the tests. Note that strcmp == 0 if true.
 	if ( argc > 1 && !strcmp(argv[1], "test") )
 	{
@@ -88,7 +90,8 @@ void printMenu()
 			menuLoop = false;
 		}
 		// check for correct input
-		else{
+		else
+		{
 		cout << "################################################################################" << endl;
 		cout << "## Continuing...							      ##" << endl;
 		cout << "##                                                                            ##" << endl;
@@ -96,7 +99,7 @@ void printMenu()
 		cin >> userInput;
 		if(userInput == "Q" || userInput == "q")
 		{
-			delete [] myCalc;
+			delete [] myCalc;  // FIXME: quitting on first loop crashes
 			menuLoop = false;
 		}
 		// can't implement below yet, because calculate doesn't return anything.
@@ -136,6 +139,9 @@ void tests()
 {
 	//TODO: Write some tests
 	cout << "Running tests:" << endl;
+	
+	Calculator calc = Calculator();
+	calc.calculate("2 + 5 * 3");
 		
 }
 

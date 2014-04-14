@@ -11,7 +11,7 @@
 /**
  * Adds a completed node to the expression stack with the given operator
  */
-void addNode(stack<Expression*> stack, Operator op)
+void addNode(stack<Expression*> &stack, Operator op)
 {
 	Expression* rightNode = stack.top();
 	stack.pop();
@@ -177,13 +177,19 @@ vector<Token> Parser::tokenize(string input)
             fragments.at(0).erase(0);
         }
         else
-            Token(createNumber(fragments.at(0), first));
-        fragments.at(0).erase();
+            tokens.push_back( Token(createNumber(fragments.at(0), first)) );
+		
+        fragments.erase(fragments.begin());
     }
-    
+	/*
+	Token yes = Token( createNumber("0", '0') );
+    tokens.push_back(yes);
+	
+	Token no = tokens.back();*/
     return tokens;
 }
 
+/*
 Number Parser::createNumber(string number, char first){
     Number result;
     //This is probably lazy/ bad, but it basically makes sure that theres no junk before the actual operation.
@@ -238,4 +244,10 @@ Number Parser::createNumber(string number, char first){
     }
 
     return result;
+}
+*/
+
+Number Parser::createNumber(string number, char first){
+	Number num = Number(number);
+	return num;
 }
