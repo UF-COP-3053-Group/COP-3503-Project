@@ -13,6 +13,8 @@
 #include "Number.h"
 #include "Operator.h"
 
+class Number;
+
 /**
  * The main tree node structure used to store data
  * Stores a root and pointers to the left hand side and right hand side of an expression,

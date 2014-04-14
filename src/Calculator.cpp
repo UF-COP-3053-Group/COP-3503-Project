@@ -117,7 +117,67 @@ string Calculator::collectTerms(string& input)
  */
 void Calculator::simplifyTree(Expression* root)
 {
-	
+	root = simplifyNode(root, nullptr);
+}
+
+
+/**
+ * Helper function to recursivly simplify the tree
+ * Takes in a node and the last operation seen to pass on as the caller
+ */
+Expression* Calculator::simplifyNode(Expression* node, Expression* lastOp)
+{
+	// If this node is an operator (not a number)
+	if(!node->isNumber())
+	{
+		// Simplify left
+		simplifyNode(node->getLeftNode(), node);
+		
+		// Simplify right
+		simplifyNode(node->getRightNode(), node);
+		
+		// Then operate
+		if(node->getOperatorSymbol() == '+')
+		{
+			// If the left node is a number
+			if(node->getLeftNode()->isNumber())
+			{
+				// Call the .add method of the left node with the right as an arg and lastOp as an arg
+				return node->getLeftNode()->getNumber()->add( node->getRightNode(), lastOp);
+			}
+			/* TODO: Is this needed?
+			// Try it with the right side
+			else if(node->getRightNode()->isNumber())
+			{
+				return node->getRightNode()->getNumber()->add(node->getLeftNode());
+			}
+			*/
+			
+		}
+		else if (node->getOperatorSymbol() == '-')
+		{
+			
+		}
+		else if (node->getOperatorSymbol() == '*')
+		{
+			
+		}
+		else if (node->getOperatorSymbol() == '/')
+		{
+			
+		}
+		// We can't do any math, so return the last operator
+		else
+		{
+			return lastOp;
+		}
+		
+	}
+	// If not an operator, it's a number, so return the number
+	else
+	{
+		return node;
+	}
 }
 
 
@@ -163,9 +223,6 @@ double Calculator::toDouble(Expression* root)
 	}
 	else
 	{
-		Number* num = root->getNumber();
-		double lol = num->getValue();
-		
-		return lol;
+		return root->getNumber()->getValue();
 	}
 }

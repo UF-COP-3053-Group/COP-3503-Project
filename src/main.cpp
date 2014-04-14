@@ -28,7 +28,6 @@ void tests();
 int main(int argc, const char * argv[])
 {
 	tests();
-	
 	// If the third arg is test, run the tests. Note that strcmp == 0 if true.
 	if ( argc > 1 && !strcmp(argv[1], "test") )
 	{
@@ -40,8 +39,6 @@ int main(int argc, const char * argv[])
 
 		printMenu(); // Default behavior
 	}
-
-	// TODO: Everything
 }
 
 /**
@@ -145,12 +142,11 @@ void printMenu()
  */
 void tests()
 {
-	//TODO: Write some tests
 	cout << "Running tests:" << endl;
 	
 	Calculator calc = Calculator();
 	Expression* tree;
-	tree = calc.calculate("2 + 10 / 2 * 3");
+	tree = calc.calculate("2 * pi");
 	
 	double out = calc.toDouble(tree);
 	
