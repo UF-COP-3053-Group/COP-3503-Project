@@ -121,6 +121,7 @@ void Calculator::simplifyTree(Expression* root)
 
 /**
  * Takes in the root of a tree and converts it to a string
+ * Returns a string that represents the simplified mathematical expression
  */
 string Calculator::toString(Expression* root)
 {
@@ -128,11 +129,38 @@ string Calculator::toString(Expression* root)
 	return "Not yet implemented";
 }
 
-
 /**
- * A function to define the operators used by our calculator
+ * Takes in the root of a tree and converts it to a double
+ * Returns the double that represents the answer from the tree
  */
-void Calculator::defineOperators()
+double Calculator::toDouble(Expression* root)
 {
-	//TODO
+	// First, get the operator from this node
+	char op = root->getOperatorSymbol();
+	
+	// Then, operate
+	if (op == '^')
+	{
+		return pow( toDouble(root->getLeftNode()), toDouble(root->getRightNode()) );
+	}
+	else if (op == '*')
+	{
+		return toDouble(root->getLeftNode()) * toDouble(root->getRightNode());
+	}
+	else if (op == '/')
+	{
+		return toDouble(root->getLeftNode()) / toDouble(root->getRightNode());
+	}
+	else if (op == '+')
+	{
+		return toDouble(root->getLeftNode()) + toDouble(root->getRightNode());
+	}
+	else if (op == '-')
+	{
+		return toDouble(root->getLeftNode()) - toDouble(root->getRightNode());
+	}
+	else
+	{
+		return root->getNumber()->getValue();
+	}
 }

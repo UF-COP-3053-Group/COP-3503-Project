@@ -144,7 +144,7 @@ void tests()
 	Expression* tree;
 	tree = calc.calculate("2 + 5");
 	
-	cout << calc.toString(tree);
+	cout << calc.toDouble(tree);
 		
 }
 

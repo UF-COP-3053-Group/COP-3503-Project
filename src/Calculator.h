@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cmath>
 #include "Parser.h"
 #include "Number.h"
 #include "Rational.h"
@@ -31,7 +32,7 @@ public:
 	string collectTerms(string& input);
 	void simplifyTree(Expression* root);
 	string toString(Expression* root);
-	void defineOperators();
+	double toDouble(Expression* root);
 
 private:
 	vector<Expression*> previousAnswers;

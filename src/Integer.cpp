@@ -24,7 +24,7 @@ Integer::Integer(int inputNum)
 
 double Integer::getValue()
 {
-	return inputNum;
+	return (double)(this->inputNum);
 }
 
 

@@ -21,17 +21,19 @@
 class Expression
 {
 public:
-	Expression(Number num);
+	Expression(Number* num);
 	Expression(Operator op, Expression* leftNode, Expression* rightNode);
 	~Expression();
-	Number getNumber();
+	Number* getNumber();
 	char getOperatorSymbol();
 	bool isNumber();
 	void deleteExpressionTree(Expression* node);
+	Expression* getLeftNode();
+	Expression* getRightNode();
 	
 private:
 	Operator op;
-	Number num;
+	Number* num;
 	Expression* left;
 	Expression* right;
 };

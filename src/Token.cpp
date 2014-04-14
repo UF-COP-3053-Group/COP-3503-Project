@@ -11,7 +11,7 @@
 /**
  * Constructor for a number
  */
-Token::Token(Number number)
+Token::Token(Number* number)
 {
 	this->number = number;
 	this->is_number = true;
