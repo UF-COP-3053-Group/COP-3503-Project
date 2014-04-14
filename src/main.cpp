@@ -53,7 +53,6 @@ int main(int argc, const char * argv[])
  */
 void printMenu()
 {
-//	Calculator *myCalc = new Calculator(); // Instantiate a Calculator object, for some reason doesn't work when constructed in main()
 	Calculator myCalc = Calculator();
 	string userInput;
 	string userInput2;
@@ -88,7 +87,6 @@ void printMenu()
 		cin >> userInput;
 		if(userInput == "Q" || userInput == "q")  //this stopped working...
 		{
-			delete &myCalc; //should call destructor and exit menu
 			menuLoop = false;
 		}
 		// check for correct input
@@ -101,7 +99,6 @@ void printMenu()
 		cin >> userInput;
 		if(userInput == "Q" || userInput == "q")
 		{
-			delete &myCalc;
 			menuLoop = false;
 		}
 		// can't implement below yet, because calculate doesn't return anything.
@@ -113,7 +110,6 @@ void printMenu()
 		cin >> userInput2;
 		if (userInput2 == "n" || userInput2 == "N")
 		{
-			delete &myCalc;
 			menuLoop = false;
 		}
 		else if(userInput2 != "y" || userInput2 != "Y") {
