@@ -55,6 +55,7 @@ void printMenu()
 {
 	Calculator *myCalc = new Calculator(); // Instantiate a Calculator object, for some reason doesn't work when constructed in main()
 	string userInput;
+	string userInput2;
 	bool menuLoop = true;
 	//TODO: Print second part of menu and pass input to parser
 	//      Throw errors for bad input
@@ -104,18 +105,20 @@ void printMenu()
 		}
 		// can't implement below yet, because calculate doesn't return anything.
 		else {
-		ans = myCalc.calculate(UserInput);
+//		myCalc.calculate(userInput); not calling correctly
  // needs toString method from Calculator to convert Expression to String
  //		display answer
 		cout << "Continue? y/n:" << endl;
-		cin >> userInput;
-		if (userInput == "n" || userInput == "N")
+		cin >> userInput2;
+		if (userInput2 == "n" || userInput2 == "N")
 		{
 			delete myCalc;
 			menuLoop = false;
 		}
-		else if(user Input != "y" || userInput != "Y") {
+		else if(userInput2 != "y" || userInput2 != "Y") {
 			//throw some error, try again
+//			throw
+			cout << "yes just because " << endl;
 		}
 		}
 	}
