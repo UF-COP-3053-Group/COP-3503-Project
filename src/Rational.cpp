@@ -223,28 +223,28 @@ Number* Rational::getDen(){
 }
 
 
-Expression* add(Number *r , Expression *caller)
+Expression* Rational::add(Number *r , Expression *caller)
 {
 	//TODO
 	return caller;
 
 }
 
-Expression* subtract(Number *r , Expression *caller)
+Expression* Rational::subtract(Number *r , Expression *caller)
 {
 	//TODO
 	return caller;
 
 }
 
-Expression* multiply(Number *r , Expression *caller)
+Expression* Rational::multiply(Number *r , Expression *caller)
 {
 	//TODO
 	return caller;
 
 }
 
-Expression* divide(Number *r , Expression *caller)
+Expression* Rational::divide(Number *r , Expression *caller)
 {
 	//TODO
 	return caller;
