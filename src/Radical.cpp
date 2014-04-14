@@ -45,6 +45,20 @@ double Radical::getValue()
 	return pow(radicand->getValue(),(1/base->getValue()));
 }
 
+string Radical::toString()
+{
+	string o = "";
+	if(base->getValue()==2)
+	{
+		o = string("sqrt(")+radicand->toString()+string(")");
+	}
+	else
+	{
+		o = string("(")+base->toString()+string(")root(")+radicand->toString+string(")");
+	}
+	return o;
+}
+
 Number* Radical::getBase()
 {
 	return base;
