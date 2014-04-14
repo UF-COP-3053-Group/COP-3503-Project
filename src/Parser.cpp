@@ -213,7 +213,7 @@ Number* Parser::createNumber(string number, char first){
     else if (first == 's' && (int)number.find("sqrt:") > 0){
         //create a square root
         string base (number.find(':')+1, -1);
-        result = new Radical(createNumber(base, base.front()), Integer(2));
+        result = new Radical(createNumber(base, base.front()), new Integer(2));
     }
     else if (first == 'l' && (int)number.find("log_") > 0){
         //create a log
