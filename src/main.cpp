@@ -58,7 +58,7 @@ void printMenu()
 	bool menuLoop = true;
 	//TODO: Print second part of menu and pass input to parser
 	//      Throw errors for bad input
-	while(menuLoop != false || menuLoop != false)
+	while(menuLoop != false)
 	{
 		cout << "################################################################################" << endl;
 		cout << "################################################################################" << endl;
@@ -103,21 +103,21 @@ void printMenu()
 			menuLoop = false;
 		}
 		// can't implement below yet, because calculate doesn't return anything.
-//		else {
-//		ans = myCalc.calculate(UserInput);
-// needs toString method from Calculator to convert Expression to String
-//		display answer
-//		cout << "Continue? y/n:" << endl;
-//		cin >> userIput;
-//		if (userInput == "n" || userInput == "n")
-//		{
-//			delete [] myCalc;
-//			menuLoop = false;
-//		}
-//		else if(user Input != "y" || userInput != "Y") {
-//			//throw some error, try again
-//		}
-//		}
+		else {
+		ans = myCalc.calculate(UserInput);
+ // needs toString method from Calculator to convert Expression to String
+ //		display answer
+		cout << "Continue? y/n:" << endl;
+		cin >> userInput;
+		if (userInput == "n" || userInput == "N")
+		{
+			delete myCalc;
+			menuLoop = false;
+		}
+		else if(user Input != "y" || userInput != "Y") {
+			//throw some error, try again
+		}
+		}
 	}
 	}
 	// Test that exit works
