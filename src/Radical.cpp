@@ -1,4 +1,3 @@
-
 //
 //  Radical.cpp
 //  COP-3503-Project
@@ -60,11 +59,8 @@ string Radical::toString()
 	return o;
 }
 
-Number* Radical::getBase()
-{
-	return base;
+
 	Number* Radical::getCoef()
->>>>>>> fb0d2f14a2d84c3f0759c43cd7c8ad58de1167a5
 {
 	return coefficient;
 }
