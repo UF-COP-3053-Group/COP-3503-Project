@@ -13,8 +13,8 @@
 
 #include "Number.h"
 #include "Integer.h"
-#include "Radical.h"
 #include "Rational.h"
+
 #include <string>
 
 using namespace std;
@@ -29,8 +29,8 @@ class Radical : public Number
 {
 private:
     //**************
-	Number base;
-	Number* radicand;
+	int base;
+	Number radicand;
     //**************
     
 public:

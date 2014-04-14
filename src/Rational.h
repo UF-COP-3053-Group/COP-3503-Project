@@ -13,9 +13,7 @@
 
 #include "Number.h"
 #include "Integer.h"
-//WARNING: circular dependency?
 #include "Constant.h"
-#include "Rational.h"
 #include "Radical.h"
 
 class Constant;

@@ -20,7 +20,7 @@ Radical::Radical()
 
 }
 
-Radical::Radical(int base, Number* radicand)
+Radical::Radical(int base, Number radicand)
 {
 	this->base = base;
 	this->radicand = radicand;
@@ -32,7 +32,7 @@ string Radical::getSymValue()
 	return o;
 }
 
-string Radical::getRadicand(Number* radicand)
+string Radical::getRadicand(Number radicand)
 {
 	return "Radicand";//radicand.getValue();
 }
