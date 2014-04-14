@@ -36,7 +36,7 @@ public:
 	Rational(int num, int den);
 	virtual ~Rational();
 	void simplify();
-	Integer gcd(Integer c , Integer d);
+	int gcd(int c , int d);
 	Number* getNum();
 	Number* getDen();
 

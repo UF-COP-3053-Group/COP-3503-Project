@@ -124,6 +124,7 @@ void Calculator::simplifyTree(Expression* root)
 /**
  * Helper function to recursivly simplify the tree
  * Takes in a node and the last operation seen to pass on as the caller
+ * Should be able to simplify the tree by replacing nodes in place, but I'm not sure how that can work with this tree
  * FIXME
  */
 Expression* Calculator::simplifyNode(Expression* node, Expression* lastOp)
@@ -194,6 +195,9 @@ Expression* Calculator::simplifyNode(Expression* node, Expression* lastOp)
 	{
 		return node;
 	}
+	
+	// If we reach here, something went wrong with the recursive calls
+	throw runtime_error("We should have never reached this point");
 }
 
 
@@ -203,6 +207,28 @@ Expression* Calculator::simplifyNode(Expression* node, Expression* lastOp)
  */
 string Calculator::toString(Expression* root)
 {
+	// Note: A post order traversal of this tree results in RPN output
+	// Which is currently what we're outputting here
+	
+	// If the root is a not a number (is an operator), return the toString of left, right, and operator
+	if (!root->isNumber())
+	{
+		// Print to a string stream for easy conversion
+		sstream ss;
+		string out;
+		ss << toString(root->getLeftNode()) << " " << toString(root->getRightNode()) << " "  << root->getOperatorSymbol();
+		ss >> out;
+		return out;
+	}
+	
+	// If the root is a number
+	if (root->isNumber())
+	{
+		// return the number as a string
+		// TODO: uncomment this when all numbers have a toString();
+		//return root->getNumber()->toString();
+	}
+	
 	
 	return "Not yet implemented";
 }

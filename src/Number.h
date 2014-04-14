@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <stdexcept>
 #include <cmath>
 #include "Expression.h"
@@ -28,6 +29,7 @@ public:
 	virtual Expression* divide(Number* num, Expression* caller) = 0;
 	
 	virtual double getValue() = 0;
+	virtual string toString() = 0;
 	virtual string getType();
 	bool negative;
 	string type;

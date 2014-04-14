@@ -104,6 +104,13 @@ Expression* Integer::divide(Number* num , Expression *caller)
 
 }
 
+string Integer::toString()
+{
+	ostringstream rtnStream;
+	rtnStream << this->getValue();
+	string rtnString = rtnStream.str();
+	return rtnString;
+}
 
 
 /*
