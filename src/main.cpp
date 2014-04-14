@@ -78,6 +78,8 @@ void printMenu()
 		cout << "## () - Grouping							      ##" << endl;
 		cout << "## ans - Use previous answer                      ##" << endl;  //check the layout
 		cout << "##									      ##" << endl;
+		cout << "## IMPORTANT NOTE: Please insert a space between every term!		      ##" << endl;
+		cout << "##									      ##" << endl;
 		cout << "################################################################################" << endl;
 		cout << "################################################################################" << endl;
 		cout << endl;
@@ -121,6 +123,8 @@ void printMenu()
 			cout << "## () - Grouping							      ##" << endl;
 			cout << "## ans - Use previous answer                      ##" << endl;  //check the layout
 			cout << "##									      ##" << endl;
+			cout << "## IMPORTANT NOTE: Please insert a space between every term!		      ##" << endl;
+			cout << "##									      ##" << endl;
 			cout << "################################################################################" << endl;
 			cout << "################################################################################" << endl;
 			cout << endl;
@@ -152,18 +156,21 @@ void printMenu()
 			while(reviewLoop == true) {
 				cout << "################################################################################" << endl;
 				cout << "################################################################################" << endl;
-				cout << "##  Review previous answer? Y/N						      ##" << endl;
+				cout << "##  Review previous answers? Y/N						      ##" << endl;
+				cout << "##                                                                            ##" << endl;
+				cout << "## Each run will display the next to last answer 			      ##" << endl;
 				cin >> reviewInput;
 				if(reviewInput == "Y" || reviewInput == "y") {
 					if(myCalc.getPreviousAnswers().empty()) {
 						throw logic_error("No previous answers to show!");
 					}
 					else{
-						cout << "Your last answer was" << myCalc.getLastAnswer() << endl; // Only is an Expression pointer, need toString method. Doesn't get other previous answers. Yet
+						cout << "Your last answer was" << *(myCalc.getPreviousAnswers().rbegin() + runs)  << endl; // Goes further back for each run
+						runs++;
 					}
 				}
 				else if(reviewInput == "N" || reviewInput == "n") {
-
+					reviewLoop = false;
 				}
 				else {
 					throw logic_error("Incorrect input!");
