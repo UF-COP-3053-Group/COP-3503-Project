@@ -11,7 +11,7 @@
 /**
  * Adds a completed node to the expression stack with the given operator
  */
-void addNode(stack<Expression*> stack, Operator op)
+void addNode(stack<Expression*> &stack, Operator op)
 {
 	Expression* rightNode = stack.top();
 	stack.pop();
@@ -174,15 +174,25 @@ vector<Token> Parser::tokenize(string input)
         //negation operator, not subtraction
         else if (first=='-' && fragments.at(0).length() <= 2){
             negate = true;
+			// Erase first character of the string
             fragments.at(0).erase(0);
+			tokens.push_back( Token(createNumber(fragments.at(0), first)) );
         }
         else
-            Token(createNumber(fragments.at(0), first));
-        fragments.at(0).erase();
+		{
+            tokens.push_back( Token(createNumber(fragments.at(0), first)) );
+		}
+		
+        fragments.erase(fragments.begin());
     }
-    
+	/*
+	Token yes = Token( createNumber("0", '0') );
+    tokens.push_back(yes);
+	
+	Token no = tokens.back();*/
     return tokens;
 }
+
 
 Number Parser::createNumber(string number, char first){
     Number result;
@@ -231,7 +241,7 @@ Number Parser::createNumber(string number, char first){
             }
             //create a rational from a decimal
             
-            result = Rational(stod(number));
+            result = Rational(number));
         }
         //finally, create an integer
         result = Integer(stoi(number));

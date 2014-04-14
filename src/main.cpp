@@ -11,10 +11,7 @@
 #include "Calculator.h"
 
 // Test includes
-#include "Number.h"
-#include "Constant.h"
-#include "Integer.h"
-#include "Radical.h"
+
 
 // End test includes
 
@@ -26,26 +23,18 @@ void printMenu();
 // For testing purposes only.
 // TODO: Replace with actual expression testing once the calulator is implemented
 void tests();
-void rational_test();
-Rational *createRational();
 
 
 int main(int argc, const char * argv[])
 {
+	tests();
+	
 	// If the third arg is test, run the tests. Note that strcmp == 0 if true.
 	if ( argc > 1 && !strcmp(argv[1], "test") )
 	{
 		tests();
 		return 0;
 	}
-
-	// a test for creating and simplifying rationals
-	if( argc > 1 && !strcmp(argv[1] , "rational"))
-	{
-		rational_test();
-		return 0;
-	}
-	
 	else
 	{
 
@@ -101,7 +90,8 @@ void printMenu()
 			menuLoop = false;
 		}
 		// check for correct input
-		else{
+		else
+		{
 		cout << "################################################################################" << endl;
 		cout << "## Continuing...							      ##" << endl;
 		cout << "##                                                                            ##" << endl;
@@ -109,7 +99,7 @@ void printMenu()
 		cin >> userInput;
 		if(userInput == "Q" || userInput == "q")
 		{
-			delete [] myCalc;
+			delete [] myCalc;  // FIXME: quitting on first loop crashes
 			menuLoop = false;
 		}
 		// can't implement below yet, because calculate doesn't return anything.
@@ -150,152 +140,10 @@ void tests()
 	//TODO: Write some tests
 	cout << "Running tests:" << endl;
 	
-	cout << "Running overloaded addition test:" << endl;
-	cout << "Creating a Constant" << endl;
-	Constant myconst = Constant("pi");
-	Constant myconst2 = Constant("e");
-	
-	cout << "Creating an empty Integer and 'real' Integer" << endl;
-	Integer myint = Integer();
-	Integer myint2 = Integer(5);
-	Integer myint3 = Integer(3);
-	
-	cout << "Creating a Radical" << endl;
-	Radical myrad = Radical();
-	
-	cout << "Creating a Log (Not overloaded yet)" << endl;
-	Log mylog = Log();
-	
-	cout << "Adding an Integer" << endl;
-	myconst.add(myint);
-	
-	cout << "Adding a Radical" << endl;
-	myconst.add(myrad);
-	
-	cout << "Adding a Log" << endl;
-	myconst.add(mylog);
-
-	cout << "Adding two Constants" << endl;
-	myconst.add(myconst);
-
-	cout << "Adding two different Constants" << endl;
-	myconst.add(myconst2);
-
-	cout << "Integer tests" << endl;
-	cout << "Adding a constant (generic Number)" << endl;
-	myint.add(myconst);
-
-	cout << "Adding an actual Integer" << endl;
-	myint2.add(myint2);
-
-
-	cout << "Subtracting a Radical (generic Number)" << endl;
-	myint.subtract(myrad);
-
-	cout << "Subtracting an Integer" << endl;
-	myint2.subtract(myint2);
-	myint2.subtract(myint3);
-	myint3.subtract(myint2);
-
-	cout << "Multiplying a Radical (generic Number)" << endl;
-	myint.multiply(myrad);
-
-	cout << "Multiplying an Integer" << endl;
-	myint2.multiply(myint2);
-
-	cout << "Dividing a Radical (generic Number)" << endl;
-	myint.divide(myrad);
-
-	cout << "Dividing an Integer" << endl;
-	myint2.divide(myint2);
-	myint2.divide(myint3);
-	myint3.divide(myint2);
-
+	Calculator calc = Calculator();
+	calc.calculate("2 + 5 * 3");
 		
 }
-
-void rational_test()
-{
-	int num , den;
-	char response;
-	cout << "Enter numerator: " <<endl;
-	cin >> num;
-
-	cout << "Enter denominator: " <<endl;
-	cin >> den;	
-
-	cout << "Creating Rational" <<endl;
-	Rational *r = new Rational(num,den);
-	cout << "Numerator: " << r->getNum() <<endl;
-	cout << "Denominator: " << r->getDen() << endl;
-	cout << "GCD: " << r->gcd(r->getNum() , r->getDen()) << endl;
-	cout << "Simplifying" <<endl;
-	r->simplify();
-
-	cout << "Numerator: " << r->getNum() <<endl;
-	cout << "Denominator: " << r->getDen() << endl;
-
-	cout << "Would you like to test addition? (y/n)" << endl;
-	cin >> response;
-	if(response == 'y')	
-	{
-		Rational *a = createRational();
-		r->add(*a);
-		delete a;
-
-		
-	}
-
-	cout << "Would you like to test subtraction? (y/n)" << endl;	
-	cin >> response;
-	if(response == 'y')
-	{
-		Rational *a = createRational();
-		r->subtract(*a);
-		delete a;
-
-	}
-	cout << "Would you like to test multiplication?" <<endl;
-	cin >> response; 
-
-	if(response == 'y')
-	{
-
-		Rational *a = createRational();
-		r->multiply(*a);
-		delete a;
-
-	}
-
-	cout << "Would you like to test division?" << endl;
-	cin >> response;	
-	if(response == 'y')
-	{
-		Rational *a = createRational();
-		r->divide(*a);
-		delete a;
-
-	}
-
-	
-
-	delete r;
-}
-
-
-Rational *createRational()
-{
-	int _num , _den;
-	cout << "Enter numerator: " <<endl;
-	cin >> _num;	
-	cout << "Enter denominator: " <<endl;
-	cin >> _den;
-	Rational *a = new Rational(_num , _den);
-
-	return a;
-}
-
-
 
 
 
