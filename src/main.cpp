@@ -151,15 +151,15 @@ void tests()
 	
 	Calculator calc = Calculator();
 	Expression* tree;
-	tree = calc.calculate("2 + 5");
+	tree = calc.calculate("2 + 10 / 2 * 3");
 	
 	double out = calc.toDouble(tree);
 	
-	cout << "Out?";
+	cout << "Out?" << endl;
 	
-	cout << out;
+	cout << out << endl;
 	
-	cout << "DONE";
+	cout << "DONE" << endl;
 		
 }
 

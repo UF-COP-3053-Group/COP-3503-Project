@@ -23,6 +23,7 @@ Calculator::Calculator()
  */
 Calculator::~Calculator()
 {
+	/*
 	// Delete all pointers to expressions in the previous answers vector to prevent memory leaks
 	for (int i = 0; i < previousAnswers.size(); i++)
 	{
@@ -30,6 +31,7 @@ Calculator::~Calculator()
 		// The root node will recursivly delete all child nodes
 		delete previousAnswers[i];
 	}
+	*/
 }
 
 
@@ -138,7 +140,7 @@ double Calculator::toDouble(Expression* root)
 	// First, get the operator from this node
 	char op = root->getOperatorSymbol();
 	
-	// Then, operate
+	// Then, operate recursivly down the tree
 	if (op == '^')
 	{
 		return pow( toDouble(root->getLeftNode()), toDouble(root->getRightNode()) );
