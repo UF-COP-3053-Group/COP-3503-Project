@@ -22,6 +22,8 @@ private:
 public:
 	Radical();
     Radical(Number* base, Number* radicand);
+	
+	double getValue();
 };
 
 #endif /* defined(__COP_3503_Project__Radical__) */

@@ -24,3 +24,12 @@ Radical::Radical(Number* base, Number* radicand){
     
 }
 
+
+/**
+ * Returns the numerical value of this object as a double
+ */
+double Radical::getValue()
+{
+	//FIXME: Implement this
+	return 0.0;
+}

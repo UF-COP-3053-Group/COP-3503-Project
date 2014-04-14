@@ -19,3 +19,12 @@ Log::Log()
 Log::Log(Number* base, Number* argument){
     
 }
+
+/**
+ * Returns the numerical value of this object as a double
+ */
+double Log::getValue()
+{
+	//FIXME: Implement this
+	return 0.0;
+}

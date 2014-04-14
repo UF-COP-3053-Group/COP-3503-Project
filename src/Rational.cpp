@@ -47,7 +47,7 @@ Rational::Rational(Rational* num, Number* den){
 
 Rational::Rational(Number* num, Rational* den){
     //numerator = num * den.getDen();
-    den = den->getNum();
+    this->den = den->getNum();
     if (den->getValue() == 0)
         throw "Division by zero is bad";
 }
@@ -67,7 +67,7 @@ Rational::~Rational()
 
 double Rational::getValue()
 {
-	return (numerator->getValue()) / (den->getValue*());
+	return (numerator->getValue()) / (den->getValue());
 }
 //handling of divide by 0 is done by constructor,
 //negative numbers should work now.
@@ -114,7 +114,7 @@ Integer Rational::gcd(Integer c , Integer d)
 	}
 	
 	// We should never get here
-//	throw runtime_error("Error in calculating the gcd. We should never have reached this point.");
+	throw runtime_error("Error in calculating the gcd. We should never have reached this point.");
 
 }
 
