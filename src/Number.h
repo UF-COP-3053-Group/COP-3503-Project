@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <stdexcept>
 #include <cmath>
 #include "Expression.h"

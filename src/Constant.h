@@ -47,7 +47,7 @@ public:
 	Expression *multiply(Number* num , Expression *caller);
 	Expression *divide(Number* num , Expression *caller);
 
-
+	string toString();
 
 
 	

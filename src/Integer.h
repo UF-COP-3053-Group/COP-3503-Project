@@ -39,6 +39,8 @@ public:
 //	Expression* divide(Integer* z , Expression* caller);
 
 	double getValue();
+
+	string toString();
     
 };
 

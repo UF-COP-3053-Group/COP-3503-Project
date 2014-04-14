@@ -106,8 +106,9 @@ Expression* Integer::divide(Number* num , Expression *caller)
 
 string Integer::toString()
 {
-	ostringstream rtnString;
-	rtnString << this->getValue();
+	ostringstream rtnStream;
+	rtnStream << this->getValue();
+	string rtnString = rtnStream.str();
 	return rtnString;
 }
 

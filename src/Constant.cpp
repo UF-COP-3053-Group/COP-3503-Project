@@ -116,6 +116,10 @@ Expression* Constant::divide(Number *num , Expression *caller)
 
 }
 
+string Constant::toString()
+{
+	return this->getName();
+}
 
 
 
