@@ -16,20 +16,9 @@ Log::Log()
 	// TODO: Create the constructor
 }
 
-<<<<<<< HEAD
 Log::Log(Number* base, Number* argument){
     this->base = base;
     this->argument = argument;
-=======
-Log::Log(Number b, Number a){
-    this->base=b;
-    this->argument=a;
-}
-
-void Log::simplify()
-{
-
->>>>>>> 40773ff532c3a7ab8062ddec51b7f0aa00c21353
 }
 
 /**
