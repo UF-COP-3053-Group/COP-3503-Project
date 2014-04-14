@@ -23,37 +23,29 @@ Radical::Radical()
 
 Radical::Radical(Number* coefficient, Number* base, Number* radicand)
 {
-	    this->coefficient = coeficient;
+	    this->coefficient = coefficient;
 		this->base = base;
 		this->radicand = radicand;
 		type = "Radical";
 }
-
-Radical::Radical(Number* base, Number* radicand)
-{
-		coefficient = new Integer(1);
-	    this->base = base;
-		this->radicand = radicand;
-		type = "Radical";
-}
-
 
 /**
  * Returns the numerical value of this object as a double
  */
 double Radical::getValue()
 {
-	return pow(radicand->getval(),(1/base->getval()));
+	return pow(radicand->getValue(),(1/base->getValue()));
 }
 
-<<<<<<< HEAD
 Number* Radical::getBase()
 {
 	return base;
 }
 
 Number* Radical::getCoef()
-=======
+{
+	return coef->getValue();
+}
 string Radical::toString()
 {
 	string o = "";
