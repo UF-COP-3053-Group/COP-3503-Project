@@ -124,6 +124,7 @@ void Calculator::simplifyTree(Expression* root)
 /**
  * Helper function to recursivly simplify the tree
  * Takes in a node and the last operation seen to pass on as the caller
+ * FIXME
  */
 Expression* Calculator::simplifyNode(Expression* node, Expression* lastOp)
 {
@@ -136,14 +137,14 @@ Expression* Calculator::simplifyNode(Expression* node, Expression* lastOp)
 		// Simplify right
 		simplifyNode(node->getRightNode(), node);
 		
-		// Then operate
+		// Then operate in place
 		if(node->getOperatorSymbol() == '+')
 		{
-			// If the left node is a number
-			if(node->getLeftNode()->isNumber())
+			// If the left node is a number and the right node is a number
+			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
 			{
 				// Call the .add method of the left node with the right as an arg and lastOp as an arg
-				return node->getLeftNode()->getNumber()->add( node->getRightNode(), lastOp);
+				return node->getLeftNode()->getNumber()->add( node->getRightNode()->getNumber(), lastOp);
 			}
 			/* TODO: Is this needed?
 			// Try it with the right side
@@ -156,15 +157,30 @@ Expression* Calculator::simplifyNode(Expression* node, Expression* lastOp)
 		}
 		else if (node->getOperatorSymbol() == '-')
 		{
-			
+			// If the left node is a number and the right node is a number
+			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
+			{
+				// Call the .subtract method of the left node with the right as an arg and lastOp as an arg
+				return node->getLeftNode()->getNumber()->subtract( node->getRightNode()->getNumber(), lastOp);
+			}
 		}
 		else if (node->getOperatorSymbol() == '*')
 		{
-			
+			// If the left node is a number and the right node is a number
+			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
+			{
+				// Call the .multiply method of the left node with the right as an arg and lastOp as an arg
+				return node->getLeftNode()->getNumber()->multiply( node->getRightNode()->getNumber(), lastOp);
+			}
 		}
 		else if (node->getOperatorSymbol() == '/')
 		{
-			
+			// If the left node is a number and the right node is a number
+			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
+			{
+				// Call the .devide method of the left node with the right as an arg and lastOp as an arg
+				return node->getLeftNode()->getNumber()->add( node->getRightNode()->getNumber(), lastOp);
+			}
 		}
 		// We can't do any math, so return the last operator
 		else

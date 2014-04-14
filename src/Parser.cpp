@@ -8,6 +8,16 @@
 
 #include "Parser.h"
 
+//////////////////
+// * The idea behind this parser is to create an AST that is ordered and contains all of our expressions
+// This should then be able to be simplified by modifying branches of the tree in place
+// It is also easy to traverse and to get a decimal answer from.
+// The implementation itself is complicated however, and uses a verson of the shunting-yard algorithm
+// to create the AST first. Then, our own methods take over in a sad attempt to implement
+// the vast rules of mathematics into a small introductory C++ program
+//////////////////
+
+
 /**
  * Adds a completed node to the expression stack with the given operator
  */

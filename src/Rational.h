@@ -9,7 +9,7 @@
 #ifndef __COP_3503_Project__Rational__
 #define __COP_3503_Project__Rational__
 
-//#include <iostream>
+#include <iostream>
 
 #include "Number.h"
 #include "Integer.h"

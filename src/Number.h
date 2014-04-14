@@ -22,6 +22,10 @@ class Number
 {
 public:
 	virtual Expression* add(Number* num, Expression* caller) = 0;
+	virtual Expression* subtract(Number* num, Expression* caller) = 0;
+	virtual Expression* multiply(Number* num, Expression* caller) = 0;
+	virtual Expression* devide(Number* num, Expression* caller) = 0;
+	
 	virtual double getValue() = 0;
 	virtual string getType();
 	bool negative;
