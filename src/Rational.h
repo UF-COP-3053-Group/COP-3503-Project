@@ -30,12 +30,15 @@ private:
 public:
     Rational(string decimalString);
     Rational(Number num, Number den);
+    Rational(Rational num, Number den);
+    Rational(Number num, Rational den);
+    Rational(Rational num, Rational den);
 	Rational(int num, int den);
 	virtual ~Rational();
 	void simplify();
 	int gcd(int a , int b);
-	int getNum();
-	int getDen();
+	Number getNum();
+	Number getDen();
 };
 
 #endif /* defined(__COP_3503_Project__Rational__) */

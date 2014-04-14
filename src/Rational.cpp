@@ -15,16 +15,38 @@ using namespace std;
  */
 Rational::Rational(string decimalString){
     //create a rational from a decimal number
+    type = "Rational";
 }
 
 Rational::Rational(Number num, Number den){
-    
+    type = "Rational";
+    numerator = num;
+    denom = den;
 }
 
 Rational::Rational(int num , int den)
 {
-	// TODO: Create the constructor
+    type = "Rational";
+	numerator = Integer(num);
+    denom = Integer(den);
 
+}
+
+Rational::Rational(Rational num, Number den){
+    type = "Rational";
+    //Depends on nonexistent methods
+    numerator = num.getNum();
+    //denom = num.getDen().multiply(den));
+}
+
+Rational::Rational(Number num, Rational den){
+    //numerator = num * den.getDen();
+    denom = den.getNum();
+}
+
+Rational::Rational(Rational num, Rational den){
+    //numerator = num.getNum() * den.getDen();
+    //denom = num.getDen() * den.getNum();
 }
 
 Rational::~Rational()
