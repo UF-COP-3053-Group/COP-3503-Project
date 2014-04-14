@@ -37,7 +37,7 @@ public:
 	vector<Token> tokenize(string input);
 	
 private:
-	Number createNumber(string number, char first);
+	Number* createNumber(string number, char first);
 };
 
 #endif /* defined(__COP_3503_Project__Parser__) */
