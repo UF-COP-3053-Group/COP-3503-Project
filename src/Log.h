@@ -17,6 +17,7 @@ using namespace std;
 class Log : public Number
 {
 private:
+    string type = "Log";
     
 public:
 	Log();

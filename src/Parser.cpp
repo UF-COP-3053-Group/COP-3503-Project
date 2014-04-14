@@ -197,7 +197,7 @@ vector<Token> Parser::tokenize(string input)
 Number Parser::createNumber(string number, char first){
     Number result;
     //This is probably lazy/ bad, but it basically makes sure that theres no junk before the actual operation.
-    if (first != 's' && number.find("rt:") > 0){
+    if (first != 's' && (int)number.find("rt:") > 0){
         string base (number.find(':')+1, -1);
         string radicand (0, number.find('r')-1);
         result = Radical(createNumber(base, base.front()), createNumber(radicand, radicand.front()));
@@ -210,23 +210,23 @@ Number Parser::createNumber(string number, char first){
         //create e
         result = Constant("e");
     }
-    else if (first == 's' && number.find("sqrt:") > 0){
+    else if (first == 's' && (int)number.find("sqrt:") > 0){
         //create a square root
         string base (number.find(':')+1, -1);
         result = Radical(createNumber(base, base.front()), Integer(2));
     }
-    else if (first == 'l' && number.find("log_") > 0){
+    else if (first == 'l' && (int)number.find("log_") > 0){
         //create a log
         string base (number.find('_')+1, number.find(':'));
         string arg (number.find(':')+1, -1);
         result = Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
     }
     //all numbers are created here
-    else if (isdigit(first) && number.find_last_not_of("0123456789./") != -1){
+    else if (isdigit(first) && (int)number.find_last_not_of("0123456789./") != -1){
         //find a '/' to create a fraction
-        if(number.find_first_of('/') > 0){
+        if((int)number.find_first_of('/') > 0){
             //check to make sure there is only one '/' in the fraction
-            if (number.find_first_of('/') != number.find_last_of('/')) {
+            if ((int)number.find_first_of('/') != (int)number.find_last_of('/')) {
                 //temporary error handling
                 throw "Only one / per fracton";
             }
@@ -235,8 +235,8 @@ Number Parser::createNumber(string number, char first){
             string denom ( number.find('/') + 1, -1);
             result = Rational(createNumber(numerator, numerator.front()), createNumber(denom, denom.front()));
         }
-        if(number.find_first_of('.') > 0){
-            if (number.find_first_of('.') != number.find_last_of('.')){
+        if((int)number.find_first_of('.') > 0){
+            if ((int)number.find_first_of('.') != (int)number.find_last_of('.')){
                 throw "Only one . per decimal";
             }
             //create a rational from a decimal

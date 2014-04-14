@@ -33,6 +33,7 @@ class Constant : public Number
 {
 private:
 	string name;
+    string type = "Constant";
     
 public:
 	Constant(string name);

@@ -24,7 +24,7 @@ public:
 	
 private:
 	bool negative;
-	string type;		
+	string type = "Number";
 };
 
 #endif /* NUMBER_H_ */
