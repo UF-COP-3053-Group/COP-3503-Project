@@ -25,10 +25,12 @@ public:
 	Radical();
     Radical(Number* coefficient, Number* base, Number* radicand);//Radicals MUST be constructed with a coefficient.
 	
-	
+	Number* getCoef();
+	Number* getRad();
 	Number* getBase();
 	double getValue();
 	string toString();
+	string getType();
 
 	Expression* add(Number* num , Expression* caller);
 	Expression* subtract(Number* num , Expression* caller);
