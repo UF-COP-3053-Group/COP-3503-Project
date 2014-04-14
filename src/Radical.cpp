@@ -1,3 +1,4 @@
+
 //
 //  Radical.cpp
 //  COP-3503-Project
@@ -25,7 +26,7 @@ Radical::Radical(Number* coefficient, Number* base, Number* radicand)
 	    this->coefficient = coeficient;
 		this->base = base;
 		this->radicand = radicand;
-		type = "r";
+		type = "Radical";
 }
 
 Radical::Radical(Number* base, Number* radicand)
@@ -33,7 +34,7 @@ Radical::Radical(Number* base, Number* radicand)
 		coefficient = new Integer(1);
 	    this->base = base;
 		this->radicand = radicand;
-		type = "r";
+		type = "Radical";
 }
 
 
@@ -42,9 +43,17 @@ Radical::Radical(Number* base, Number* radicand)
  */
 double Radical::getValue()
 {
-	return pow(radicand->getValue(),(1/base->getValue()));
+	return pow(radicand->getval(),(1/base->getval()));
 }
 
+<<<<<<< HEAD
+Number* Radical::getBase()
+{
+	return base;
+}
+
+Number* Radical::getCoef()
+=======
 string Radical::toString()
 {
 	string o = "";
@@ -63,6 +72,7 @@ Number* Radical::getBase()
 {
 	return base;
 	Number* Radical::getCoef()
+>>>>>>> fb0d2f14a2d84c3f0759c43cd7c8ad58de1167a5
 {
 	return coefficient;
 }
@@ -82,7 +92,7 @@ Expression* Radical::add(Number* num , Expression* caller)
 	//Hope this is right, not too sure how Expression works tbh. Will include pseudocode so I can be corrected.
 	//Idea is to see if the other side is a radical, if it is, check if they have the same base and radicand, if they do, add the coefficients.
 	int c = coefficient;
-	if(num->getType()=="r")
+	if(num->getType()=="Radical")
 	{
 		if((num->getBase()->getValue()==base)&&(num->getRad()->getValue()==radicand))
 		{
@@ -97,7 +107,7 @@ Expression* Radical::subtract(Number* num , Expression* caller)
 {
 	//Same as addition only negative
 	int c = coefficient;
-	if(num->getType()=="r")
+	if(num->getType()=="Radical")
 	{
 		if((num->getBase()->getValue()==base)&&(num->getRad()->getValue()==radicand))
 		{
@@ -110,7 +120,7 @@ Expression* Radical::subtract(Number* num , Expression* caller)
 
 Expression* Radical::multiply(Number* num , Expression* caller)
 {
-	if(num->getType()=="r")
+	if(num->getType()=="Radical")
 	{
 		//If the radicands are the same, return an Integer equal to radicand*coefficient
 		if(num->getRad() == radicand)
@@ -129,7 +139,7 @@ Expression* Radical::multiply(Number* num , Expression* caller)
 
 Expression* Radical::divide(Number* num , Expression* caller)
 {
-	if(num->getType()=="r")
+	if(num->getType()=="Radical")
 	{
 		//divide the coef's and divide the radicands
 		else
@@ -141,6 +151,56 @@ Expression* Radical::divide(Number* num , Expression* caller)
 	return caller;
 }
 
+void Radical::simplify()
+{
+	if((radicand->getType() != "Integer")||(base->getType() != "Integer"))
+		throw bad_input;//Should throw bad input or something if this ever happens. Needless to say this should not happen.
+	vector<int> factors;//vector to hold the disassembled factor tree
+	recurseSimplify(factors, radicand->getValue());//Get all of the factors for the radicand
+	sort(factors.begin(),factors.end());//Sort them increasing
+	b=base->getValue();//Get an int with the base for easier access
+	if(factors.size >= b)//If there are fewer factors than the base, no simplification can be done
+	{
+		for(int i=0;i<factors.size()+((b-1)*-1);i++)//loop through the factors from 0 to a value small enough that I can compare 'b' factors.
+		{
+			bool row = false;//initialise the variable that determines if a row of factors has been found
+			for(int j=0;j<b-1;j++)//check b consecutive factors
+			{
+				if(factors[i+j]==factors[i+j+1])//check them 2 at a time
+					row = true;
+				else
+					row=false;
+			}
+			if(row)//If we got b of the same factor in a row
+			{
+				coeficcient = coefficient*New(Integer(factors[i]));//multiply the coefficient by the factor
+				for(int j=0;j<b;j++)
+				{
+					factors.erase(factors.begin()+i+j);//and erase the factor from the list
+				}
+			}
+		}
+	}
+	int p = 1;
+	for(int i=0;i<factors.size();i++)//Then multiply the leftover factors and set the radicand to that
+	{
+		p*=factors[i];
+	}
+	radicand = new Integer(p);
+}
 
 
+bool Radical::recurseSimplify(vector<int> factors, int b)
+{
+	int f = 2;
+	while (f < floor(b/2))
+	{
+		if(f%r==0)
+		{
+			factors.push_back(f);
+			recurseSimplify(factors,r/f);
+		}
+		f++;
+	}
+}
 	
