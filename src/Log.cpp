@@ -17,7 +17,8 @@ Log::Log()
 }
 
 Log::Log(Number* base, Number* argument){
-    
+    this->base=base;
+    this->argument=argument;
 }
 
 /**
