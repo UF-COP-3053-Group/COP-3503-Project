@@ -100,9 +100,9 @@ Expression* Log::simplify()
 
 			for(int i = 0; i < factors.size()-1; ++i)
 			{
-				s=s+"log"+this->base->toString()+"("+factors[i].toString()+") + ";
+				s=s+"log"+this->base->toString()+"("+string(itoa(factors[i]))+") + ";
 			}
-			s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+")";
+			s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+")";
 			return calc.parseInput(s);
 	}
 	if (this->argument->getType()=="Rational")
@@ -110,9 +110,9 @@ Expression* Log::simplify()
 		this->argument->simplify();
 		i = 2;
 
-					while(i < this->argument->getNum())
+					while(i < (Rational)this->argument->getNum())
 					{
-						if((0 == this->argument->getNum()% i ) and isPrime(i))
+						if((0 == (Rational)this->argument->getNum()% i ) and isPrime(i))
 						{
 							factors.push_back(i);
 						}
@@ -121,15 +121,15 @@ Expression* Log::simplify()
 
 					for(int i = 0; i < factors.size()-1; ++i)
 					{
-						s=s+"log"+this->base->toString()+"("+factors[i].toString()+") + ";
+						s=s+"log"+this->base->toString()+"("+string(itoa(factors[i]))+") + ";
 					}
-					s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+")";
+					s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+")";
 					factors.clear();
 					 i = 2;
 
-										while(i < this->argument->getDen())
+										while(i < (Rational)this->argument->getDen())
 										{
-											if((0 == this->argument->getDen()% i ) and isPrime(i))
+											if((0 == (Rational)this->argument->getDen()% i ) and isPrime(i))
 											{
 												factors.push_back(i);
 											}
@@ -138,23 +138,23 @@ Expression* Log::simplify()
 
 										for(int i = 0; i < factors.size()-1; ++i)
 										{
-											ss=ss+"log"+this->base->toString()+"("+factors[i].toString()+") - ";
+											ss=ss+"log"+this->base->toString()+"("+string(itoa(factors[i]))+") - ";
 										}
-										s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+")";
+										s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+")";
 				s=s+" - "+ss;
 				return calc.parseInput(s);
 
 	}
 	if (this->argument->getType()=="r")
 	{
-		s=this->argument->getRadicand()->toString()+" * ( ";
-		if(this->argument->getBase->getType()=="Integer")
+		s=(Radical)this->argument->getRadicand()->toString()+" * ( ";
+		if((Radical)this->argument->getBase()->getType()=="Integer")
 			{
 				 i = 2;
 
 					while(i < this->argument->getBase())
 					{
-						if((0 == this->argumen->getBase()t% i ) and isPrime(i))
+						if((0 == this->argumen->getBase()% i ) and isPrime(i))
 						{
 							factors.push_back(i);
 						}
@@ -163,19 +163,19 @@ Expression* Log::simplify()
 
 					for(int i = 0; i < factors.size()-1; ++i)
 					{
-						s=s+"log"+this->base->toString()+"("+factors[i].toString()+") + ";
+						s=s+"log"+this->base->toString()+"("+string(itoa(factors[i]))+") + ";
 					}
-					s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+") )";
+					s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+") )";
 					return calc.parseInput(s);
 			}
 		if (this->argument->getBase()->getType()=="Rational")
 			{
-				this->argument->getBase()->simplify();
+				(Rational)this->argument->getBase()->simplify();
 				i = 2;
 
-							while(i < this->argument->getBase()->getNum())
+							while(i < (Rational)this->argument->getBase()->getNum())
 							{
-								if((0 == this->argument->getBase()->getNum()% i ) and isPrime(i))
+								if((0 == (Rational)this->argument->getBase()->getNum()% i ) and isPrime(i))
 								{
 									factors.push_back(i);
 								}
@@ -184,15 +184,15 @@ Expression* Log::simplify()
 
 							for(int i = 0; i < factors.size()-1; ++i)
 							{
-								s=s+"log"+this->base->toString()+"("+factors[i].toString()+") + ";
+								s=s+"log"+this->base->toString()+"("+string(itoa(factors[i]))+") + ";
 							}
-							s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+")";
+							s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+")";
 							factors.clear();
 							 i = 2;
 
-												while(i < this->argument->getBase()->getDen())
+												while(i < (Rational)this->argument->getBase()->getDen())
 												{
-													if((0 == this->argument->getBase()->getDen()% i ) and isPrime(i))
+													if((0 == (Rational)this->argument->getBase()->getDen()% i ) and isPrime(i))
 													{
 														factors.push_back(i);
 													}
@@ -201,9 +201,9 @@ Expression* Log::simplify()
 
 												for(int i = 0; i < factors.size()-1; ++i)
 												{
-													ss=ss+"log"+this->base->toString()+"("+factors[i].toString()+") - ";
+													ss=ss+"log"+this->base->toString()+"("+string(itoa(factors[i]))+") - ";
 												}
-												s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+") )";
+												s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+") )";
 						s=s+" - "+ss;
 						return calc.parseInput(s);
 
