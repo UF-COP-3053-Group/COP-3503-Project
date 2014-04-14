@@ -110,16 +110,17 @@ Expression* Radical::multiply(Number* num , Expression* caller)
 {
 	if(num->getType()=="Radical")
 	{
+		Radical* r = num;
 		//If the radicands are the same, return an Integer equal to radicand*coefficient
-		if(num->getRad() == radicand)
+		if(r->getRad() == radicand)
 		{
-			return new Expression(new Integer(radicand->getValue()*coefficient->getValue()*num->getCoef()->getValue()));
+			return new Expression(new Integer(radicand->getValue()*coefficient->getValue()*r->getCoef()->getValue()));
 		}
 		//If radicands are different return a radicand where coefficients are multiplied and the base is the same and the radicand is multiplied
 		else
 		{
 			//Not sure about this construction. Supposed to return new Radical (coefThis*coefIn,base,radThis*radIn) but there's no way to multiply two Numbers in a way that returns a Number, right?
-			return new Expression(new Radical(coefficient*num->getCoef(),base,radicand*num->getRadicand()));
+			return new Expression(new Radical(coefficient*r->getCoef(),base,radicand*r->getRadicand()));
 		}
 	}
 	return caller;
