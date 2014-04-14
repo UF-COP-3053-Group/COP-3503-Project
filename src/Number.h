@@ -14,6 +14,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <cmath>
+#include <algorithm>
 #include "Expression.h"
 
 using namespace std;
