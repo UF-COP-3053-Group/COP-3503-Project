@@ -19,7 +19,7 @@ class Integer : public Number
 private:
 	int num;
 	int inputNum;
-    string type = "Integer";
+    string type;
     
 public:
 	Integer(); // default constructor for testing
