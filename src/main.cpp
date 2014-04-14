@@ -90,7 +90,7 @@ void printMenu()
 			menuLoop = false;
 		}
 		// check for correct input
-		else
+		else if(userInput =="c " || userInput == "C")
 		{
 		cout << "################################################################################" << endl;
 		cout << "## Continuing...							      ##" << endl;
@@ -119,6 +119,15 @@ void printMenu()
 		}
 		}
 	}
+		else { // half-assed input checking
+			throw logic_error("Incorrect input!"); //do something
+			cout << "Press 'q' to quit or 'c' to continue: " << endl;
+			cin >> userInput;
+			if(userInput == "Q" || userInput == "q")  //this stopped working...
+			{
+				menuLoop = false;
+			}
+		}
 	}
 	// Test that exit works
 	//cout << "Exiting" << endl;
@@ -144,7 +153,13 @@ void tests()
 	Expression* tree;
 	tree = calc.calculate("2 + 5");
 	
-	cout << calc.toDouble(tree);
+	double out = calc.toDouble(tree);
+	
+	cout << "Out?";
+	
+	cout << out;
+	
+	cout << "DONE";
 		
 }
 

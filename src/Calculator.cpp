@@ -161,6 +161,9 @@ double Calculator::toDouble(Expression* root)
 	}
 	else
 	{
-		return root->getNumber()->getValue();
+		Number* num = root->getNumber();
+		double lol = num->getValue();
+		
+		return lol;
 	}
 }
