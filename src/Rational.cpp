@@ -65,6 +65,11 @@ Rational::~Rational()
 
 }
 
+string Rational::getType()
+{
+	return this->type;
+}
+
 double Rational::getValue()
 {
 	return (numerator->getValue()) / (den->getValue());
@@ -115,6 +120,97 @@ Integer Rational::gcd(Integer c , Integer d)
 	
 	// We should never get here
 	throw runtime_error("Error in calculating the gcd. We should never have reached this point.");
+
+}
+
+Expression* Rational::multiply(Rational *r , Expression* caller)
+{
+	//only handle simple case : int / int for now	
+	if(this->numerator->getType() != "Integer"  || this->den->getType() != "Integer")
+	{
+		
+		return caller; 
+
+	}
+
+
+	else
+	{
+		int ansNum = numerator->getValue() + r->getNum()->getValue();
+		int ansDen = den->getValue() + r->getDen()->getValue();
+
+
+		return new Expression(new Rational(ansNum , ansDen));
+	}
+		
+
+}
+
+Expression* Rational::divide(Rational *r , Expression *caller)
+{
+	//only handle simple case : int / int for now	
+	if(this->numerator->getType() != "Integer"  || this->den->getType() != "Integer")
+	{
+		
+		return caller; 
+
+	}
+
+	else
+	{
+		int ansNum = numerator->getValue() + r->getDen()->getValue();
+		int ansDen = numerator->getValue() + r->getNum()->getValue();	
+		
+		return new Expression(new Rational(ansNum , ansDen));
+
+	}
+	
+
+}
+
+Expression* Rational::add(Rational *r , Expression *caller)
+{
+	//only handle simple case : int / int for now	
+	if(this->numerator->getType() != "Integer"  || this->den->getType() != "Integer")
+	{
+		
+		return caller; 
+
+	}
+
+	else
+	{
+		int ansNum =( numerator->getValue() * r->getDen()->getValue() ) + ( den->getValue() * r->getNum()->getValue() );
+
+		int ansDen = den->getValue() * r->getDen()->getValue();
+
+
+		return new Expression(new Rational(ansNum , ansDen));
+
+
+	}
+
+}
+
+Expression* Rational::subtract(Rational *r , Expression *caller)
+{
+	//only handle simple case : int / int for now	
+	if(this->numerator->getType() != "Integer"  || this->den->getType() != "Integer")
+	{
+		
+		return caller; 
+
+	}
+
+
+	else
+	{
+		int ansNum = (numerator->getValue() * r->getDen()->getValue()) - (den->getValue() * r->getNum()->getValue());
+		int ansDen = den->getValue() * r->getDen()->getValue();
+		
+		return new Expression(new Rational(ansNum , ansDen));
+
+	}
 
 }
 

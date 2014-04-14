@@ -29,7 +29,7 @@ double Integer::getValue()
 
 string Integer::getType()
 {
-	return this->type;
+	return type;
 }
 
 void Integer::add(Number* num)
@@ -38,12 +38,13 @@ void Integer::add(Number* num)
 	// Do nothing. Destructor?
 }
 
-int Integer::add(Integer num)
+Expression* Integer::add(Integer* num , Expression *caller)
 {
 	// needs to return answer, figure out format first. May affect above line (answer may need to be Integer).
 	// same goes for other implemented methods.
-	int answer = this->getValue() + num.getValue(); //works
-	return answer; 
+	int answer = this->getValue() + num->getValue(); //works
+	return new Expression(new Integer(answer));
+
 }
 
 void Integer::subtract(Number* num)
@@ -53,10 +54,12 @@ void Integer::subtract(Number* num)
 	// Destructor?
 }
 
-int Integer::subtract(Integer num)
+Expression* Integer::subtract(Integer* num ,Expression *caller )
 {
-	int answer = this->getValue() - num.getValue(); //works
-	return answer;
+	int answer = this->getValue() - num->getValue(); //works
+	return new Expression(new Integer(answer));
+
+
 }
 
 void Integer::multiply(Number* num)
@@ -66,10 +69,10 @@ void Integer::multiply(Number* num)
 	// else multiply coefficient with Integer
 }
 
-int Integer::multiply(Integer num)
+Expression* Integer::multiply(Integer* num , Expression *caller)
 {
-	int answer = (this->getValue()) * (num.getValue()); //works
-	return answer;	
+	int answer = (this->getValue()) * (num->getValue()); //works
+	return new Expression(new Integer(answer));
 
 }
 

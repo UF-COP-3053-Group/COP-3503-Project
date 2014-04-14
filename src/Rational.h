@@ -15,7 +15,7 @@
 #include "Integer.h"
 #include "Constant.h"
 #include "Radical.h"
-
+#include "Expression.h"
 class Constant;
 class Integer;
 
@@ -40,6 +40,13 @@ public:
 	Number* getNum();
 	Number* getDen();
 
+	Expression* add(Rational *r , Expression *caller);
+	Expression* subtract(Rational *r , Expression *caller);
+	Expression* multiply(Rational *r , Expression* caller);
+	Expression* divide(Rational *r , Expression* caller);
+
+	
+	string getType();
 	double getValue();
 };
 
