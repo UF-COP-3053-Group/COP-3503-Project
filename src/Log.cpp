@@ -65,7 +65,41 @@ string Log::toString()
 	return "log_"+base+":"+argument;
 }
 
+Expression* Log::simplify()
+{
+	if(this->argument->getType()=="Integer")
+	{
+		int i = 2;
+			vector<int> factors;
+			while(i < this->argument)
+			{
+				if((0 == this->argument% i ) and isPrime(i))
+				{
+					factors.push_back(i);
+				}
+				i++;
+			}
 
+			for(int i = 0; i < factors.size(); ++i)
+			{
+				cout<<factors[i]<<endl;
+
+			}
+
+	}
+}
+
+bool Log::isPrime(int n)
+{
+	int j = 2;
+	while(j < n)
+	{
+		if(0 == n % j)
+			return false;
+		j++;
+	}
+	return true;
+}
 
 
 

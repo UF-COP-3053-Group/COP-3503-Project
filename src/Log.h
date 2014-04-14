@@ -32,8 +32,9 @@ public:
 	Expression* multiply(Number* num, Expression* caller);
 	Expression* divide(Number* num, Expression* caller);
 
+	Expression* simplify();
 
-
+	bool isPrime(int n);
 
 };
 
