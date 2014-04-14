@@ -22,10 +22,9 @@ public:
 	virtual double getValue();
 	virtual string getType();
 	
-	
 private:
 	bool negative;
-	string type;		
+	string type = "Number";
 };
 
 #endif /* NUMBER_H_ */

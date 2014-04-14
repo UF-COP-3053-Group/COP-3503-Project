@@ -197,7 +197,7 @@ vector<Token> Parser::tokenize(string input)
 Number Parser::createNumber(string number, char first){
     Number result;
     //This is probably lazy/ bad, but it basically makes sure that theres no junk before the actual operation.
-    if (first != 's' && number.find("rt:") > 0){
+    if (first != 's' && (int)number.find("rt:") > 0){
         string base (number.find(':')+1, -1);
         string radicand (0, number.find('r')-1);
         result = Radical(createNumber(base, base.front()), createNumber(radicand, radicand.front()));
