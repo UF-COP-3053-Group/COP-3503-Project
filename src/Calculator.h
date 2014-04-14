@@ -26,10 +26,11 @@ public:
 	
 	vector<Expression*> getPreviousAnswers();
 	Expression* getLastAnswer();
-	void calculate(string input);
+	Expression* calculate(string input);
 	Expression* parseInput(string& input);
 	string collectTerms(string& input);
 	void simplifyTree(Expression* root);
+	string toString(Expression* root);
 	void defineOperators();
 
 private:

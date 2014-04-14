@@ -141,7 +141,10 @@ void tests()
 	cout << "Running tests:" << endl;
 	
 	Calculator calc = Calculator();
-	calc.calculate("2 + 5 * 3");
+	Expression* tree;
+	tree = calc.calculate("2 + 5");
+	
+	cout << calc.toString(tree);
 		
 }
 
