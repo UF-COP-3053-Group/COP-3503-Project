@@ -17,7 +17,7 @@ Expression::Expression(Number* num)
 	this->left = nullptr;
 	this->right = nullptr;
 	
-	// Initilize the operation to the null operatoon
+	// Initilize the operation to the null operator
 	this->op = Operator();
 	
 	// Initlize the number to num

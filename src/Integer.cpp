@@ -24,12 +24,12 @@ Integer::Integer(int inputNum)
 
 double Integer::getValue()
 {
-	return (double)(this->inputNum);
+	return this->inputNum;
 }
 
 string Integer::getType()
 {
-	return type;
+	return this->type;
 }
 
 void Integer::add(Number* num)

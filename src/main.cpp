@@ -90,7 +90,7 @@ void printMenu()
 			menuLoop = false;
 		}
 		// check for correct input
-		else if(userInput =="c " || userInput == "C")
+		else if(userInput =="c" || userInput == "C")
 		{
 		cout << "################################################################################" << endl;
 		cout << "## Continuing...							      ##" << endl;
@@ -129,9 +129,8 @@ void printMenu()
 			}
 		}
 	}
-	// Test that exit works
-	//cout << "Exiting" << endl;
-	// Works!
+	
+	cout << "Bye!" << endl;
 }
 
 /****************************************************
@@ -151,15 +150,15 @@ void tests()
 	
 	Calculator calc = Calculator();
 	Expression* tree;
-	tree = calc.calculate("2 + 5");
+	tree = calc.calculate("2 + 10 / 2 * 3");
 	
 	double out = calc.toDouble(tree);
 	
-	cout << "Out?";
+	cout << "Out?" << endl;
 	
-	cout << out;
+	cout << out << endl;
 	
-	cout << "DONE";
+	cout << "DONE" << endl;
 		
 }
 

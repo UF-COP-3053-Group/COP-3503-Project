@@ -138,8 +138,8 @@ vector<Token> Parser::tokenize(string input)
     char first;
     bool negate;
     while (!fragments.empty()) {
-        if (fragments.at(0).find_last_not_of("0123456789./-+* ^epilog_sqrt:") != -1) {
-            throw "Invalid input detected";
+        if (fragments.at(0).find_last_not_of("0123456789./-+* ^epilog_sqrt:") != string::npos) {
+            throw invalid_argument("Invalid input detected");
         }
         negate = false;
         first = fragments.at(0).front();
@@ -193,7 +193,7 @@ vector<Token> Parser::tokenize(string input)
 Number* Parser::createNumber(string number, char first){
     Number* result;
     //This is probably lazy/ bad, but it basically makes sure that theres no junk before the actual operation.
-    if (first != 's' && (int)number.find("rt:") > 0){
+    if (first != 's' && number.find("rt:") != string::npos){
         string base (number.find(':')+1, -1);
         string radicand (0, number.find('r')-1);
         result = new Radical(createNumber(base, base.front()), createNumber(radicand, radicand.front()));
@@ -206,23 +206,23 @@ Number* Parser::createNumber(string number, char first){
         //create e
         result = new Constant("e");
     }
-    else if (first == 's' && (int)number.find("sqrt:") > 0){
+    else if (first == 's' && number.find("sqrt:") != string::npos){
         //create a square root
         string base (number.find(':')+1, -1);
         result = new Radical(createNumber(base, base.front()), new Integer(2));
     }
-    else if (first == 'l' && (int)number.find("log_") > 0){
+    else if (first == 'l' && number.find("log_") != string::npos){
         //create a log
         string base (number.find('_')+1, number.find(':'));
         string arg (number.find(':')+1, -1);
         result = new Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
     }
     //all numbers are created here
-    else if (isdigit(first) && (int)number.find_last_not_of("0123456789./") != -1){
+    else if (isdigit(first) && number.find_last_not_of("0123456789./") == string::npos){
         //find a '/' to create a fraction
-        if((int)number.find_first_of('/') > 0){
+        if(number.find_first_of('/') != string::npos){
             //check to make sure there is only one '/' in the fraction
-            if ((int)number.find_first_of('/') != (int)number.find_last_of('/')) {
+            if (number.find_first_of('/') != number.find_last_of('/')) {
                 //temporary error handling
                 throw "Only one / per fracton";
             }
@@ -231,17 +231,21 @@ Number* Parser::createNumber(string number, char first){
             string denom ( number.find('/') + 1, -1);
             result = new Rational(createNumber(numerator, numerator.front()), createNumber(denom, denom.front()));
         }
-        if((int)number.find_first_of('.') > 0){
-            if ((int)number.find_first_of('.') != (int)number.find_last_of('.')){
+        else if(number.find_first_of('.') != string::npos){
+            if (number.find_first_of('.') != number.find_last_of('.')){
                 throw "Only one . per decimal";
             }
             //create a rational from a decimal
             
             result = new Rational(number);
         }
+		else
+		{
         //finally, create an integer
         result = new Integer(atoi(number.c_str()));
+		}
     }
+
 
     return result;
 }

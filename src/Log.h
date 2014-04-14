@@ -18,6 +18,8 @@ class Log : public Number
 {
 private:
     string type;
+	Number* base;
+	Number* argument;
     
 public:
 	Log();
