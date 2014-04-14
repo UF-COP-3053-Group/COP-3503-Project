@@ -106,3 +106,7 @@ Rational Integer::divide(Integer num)
 }
 */
 
+string Integer::getType()
+{
+	return "i";
+}
