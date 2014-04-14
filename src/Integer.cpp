@@ -38,7 +38,7 @@ void Integer::add(Number* num)
 	// Do nothing. Destructor?
 }
 
-Expression* Integer::add(Integer* num)
+Expression* Integer::add(Integer* num , Expression *caller)
 {
 	// needs to return answer, figure out format first. May affect above line (answer may need to be Integer).
 	// same goes for other implemented methods.
@@ -54,7 +54,7 @@ void Integer::subtract(Number* num)
 	// Destructor?
 }
 
-Expression* Integer::subtract(Integer* num)
+Expression* Integer::subtract(Integer* num ,Expression *caller )
 {
 	int answer = this->getValue() - num->getValue(); //works
 	return new Expression(new Integer(answer));
@@ -69,7 +69,7 @@ void Integer::multiply(Number* num)
 	// else multiply coefficient with Integer
 }
 
-Expression* Integer::multiply(Integer* num)
+Expression* Integer::multiply(Integer* num , Expression *caller)
 {
 	int answer = (this->getValue()) * (num->getValue()); //works
 	return new Expression(new Integer(answer));
