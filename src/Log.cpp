@@ -76,7 +76,7 @@ string Log::toString()
 {
 	ostringstream rtnStream;
 	rtnStream << this->simplify(); //correct method to use?
-	string rtnString = rtnString.str();
+	string rtnString = rtnStream.str();
 	return rtnString;
 }
 
