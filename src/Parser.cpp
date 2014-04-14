@@ -241,7 +241,7 @@ Number Parser::createNumber(string number, char first){
             }
             //create a rational from a decimal
             
-            result = Rational(number));
+            result = Rational(number);
         }
         //finally, create an integer
         result = Integer(stoi(number));

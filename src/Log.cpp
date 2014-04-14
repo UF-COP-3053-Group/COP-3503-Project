@@ -16,14 +16,6 @@ Log::Log()
 	// TODO: Create the constructor
 }
 
-Log::Log(Number b, Number a){
+Log::Log(Number base, Number argument){
     
-}
-
-void Log::exponentiate(Rational power){
-    //needs class implementation
-}
-
-void Radical::exponentiate(Integer power){
-    //needs class implementation
 }
