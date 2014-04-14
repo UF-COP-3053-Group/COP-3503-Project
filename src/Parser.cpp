@@ -200,26 +200,26 @@ Number* Parser::createNumber(string number, char first){
     if (first != 's' && (int)number.find("rt:") > 0){
         string base (number.find(':')+1, -1);
         string radicand (0, number.find('r')-1);
-        result = Radical(createNumber(base, base.front()), createNumber(radicand, radicand.front()));
+        result = new Radical(createNumber(base, base.front()), createNumber(radicand, radicand.front()));
     }
     else if (first=='p' && number.at(1) =='i' && number.length() == 2){
         //create pi
-        result = Constant("pi");
+        result = new Constant("pi");
     }
     else if (first=='e' && number.length() == 1){
         //create e
-        result = Constant("e");
+        result = new Constant("e");
     }
     else if (first == 's' && (int)number.find("sqrt:") > 0){
         //create a square root
         string base (number.find(':')+1, -1);
-        result = Radical(createNumber(base, base.front()), Integer(2));
+        result = new Radical(createNumber(base, base.front()), Integer(2));
     }
     else if (first == 'l' && (int)number.find("log_") > 0){
         //create a log
         string base (number.find('_')+1, number.find(':'));
         string arg (number.find(':')+1, -1);
-        result = Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
+        result = new Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
     }
     //all numbers are created here
     else if (isdigit(first) && (int)number.find_last_not_of("0123456789./") != -1){
@@ -233,7 +233,7 @@ Number* Parser::createNumber(string number, char first){
             //create a rational
             string numerator (0, number.find('/')-1);
             string denom ( number.find('/') + 1, -1);
-            result = Rational(createNumber(numerator, numerator.front()), createNumber(denom, denom.front()));
+            result = new Rational(createNumber(numerator, numerator.front()), createNumber(denom, denom.front()));
         }
         if((int)number.find_first_of('.') > 0){
             if ((int)number.find_first_of('.') != (int)number.find_last_of('.')){
@@ -241,10 +241,10 @@ Number* Parser::createNumber(string number, char first){
             }
             //create a rational from a decimal
             
-            result = Rational(number);
+            result = new Rational(number);
         }
         //finally, create an integer
-        result = Integer(atoi(number.c_str()));
+        result = new Integer(atoi(number.c_str()));
     }
 
     return result;
