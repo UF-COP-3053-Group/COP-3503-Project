@@ -23,7 +23,19 @@ private:
     
 public:
 	Log();
+<<<<<<< HEAD
     Log(Number* base, Number* argument);
+=======
+    //**************
+    Log(Number b, Number a);
+    void simplify();
+    //Log(Number*, Number*);
+    //Log(Number*, Number);
+    //Log(Number, Number*);
+    //**************
+    void exponentiate(Rational power);
+    void exponentiate(Integer power);
+>>>>>>> 40773ff532c3a7ab8062ddec51b7f0aa00c21353
 	
 	double getValue();
 };

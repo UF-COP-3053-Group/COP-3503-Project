@@ -250,4 +250,12 @@ void Rational::simplify()
 	den = denominator / gcd;	
 
 }
+<<<<<<< HEAD
 */
+=======
+
+string Rational::getType()
+{
+	return "rat";
+}
+>>>>>>> 40773ff532c3a7ab8062ddec51b7f0aa00c21353
