@@ -174,10 +174,14 @@ vector<Token> Parser::tokenize(string input)
         //negation operator, not subtraction
         else if (first=='-' && fragments.at(0).length() <= 2){
             negate = true;
+			// Erase first character of the string
             fragments.at(0).erase(0);
+			tokens.push_back( Token(createNumber(fragments.at(0), first)) );
         }
         else
+		{
             tokens.push_back( Token(createNumber(fragments.at(0), first)) );
+		}
 		
         fragments.erase(fragments.begin());
     }
@@ -189,7 +193,7 @@ vector<Token> Parser::tokenize(string input)
     return tokens;
 }
 
-/*
+
 Number Parser::createNumber(string number, char first){
     Number result;
     //This is probably lazy/ bad, but it basically makes sure that theres no junk before the actual operation.
@@ -237,17 +241,11 @@ Number Parser::createNumber(string number, char first){
             }
             //create a rational from a decimal
             
-            result = Rational(stod(number));
+            result = Rational(number));
         }
         //finally, create an integer
         result = Integer(stoi(number));
     }
 
     return result;
-}
-*/
-
-Number Parser::createNumber(string number, char first){
-	Number num = Number(number);
-	return num;
 }
