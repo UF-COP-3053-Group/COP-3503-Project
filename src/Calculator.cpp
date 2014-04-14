@@ -102,6 +102,16 @@ string Calculator::collectTerms(string& input)
 
 
 /**
+ * Takes in of root node of an AST and simplifies the tree in place.
+ * Args: <Expression*> root: the root of the tree
+ */
+void Calculator::simplifyTree(Expression* root)
+{
+	
+}
+
+
+/**
  * A function to define the operators used by our calculator
  */
 void Calculator::defineOperators()

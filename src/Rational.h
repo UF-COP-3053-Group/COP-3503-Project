@@ -23,7 +23,7 @@ using namespace std;
 class Rational : public Number
 {
 private:
-    string type = "Rational";
+    string type;
     Number numerator;
     Number denom;
     

@@ -17,7 +17,7 @@ using namespace std;
 class Radical : public Number
 {
 private:
-    string type = "Radical";
+    string type;
     
 public:
 	Radical();
