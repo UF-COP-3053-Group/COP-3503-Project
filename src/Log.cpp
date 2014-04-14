@@ -17,7 +17,13 @@ Log::Log()
 }
 
 Log::Log(Number b, Number a){
-    
+    this->base=b;
+    this->argument=a;
+}
+
+void Log::simplify()
+{
+
 }
 
 void Log::exponentiate(Rational power){

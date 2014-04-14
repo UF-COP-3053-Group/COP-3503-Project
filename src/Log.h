@@ -29,6 +29,10 @@ public:
 	Log();
     //**************
     Log(Number b, Number a);
+    void simplify();
+    //Log(Number*, Number*);
+    //Log(Number*, Number);
+    //Log(Number, Number*);
     //**************
     void exponentiate(Rational power);
     void exponentiate(Integer power);

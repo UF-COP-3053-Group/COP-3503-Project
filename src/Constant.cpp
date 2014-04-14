@@ -190,3 +190,8 @@ void Constant::exponentiate(Integer power){
     //formatting to be determined
 
 }
+
+string Constant::getType()
+{
+	return "c";
+}
