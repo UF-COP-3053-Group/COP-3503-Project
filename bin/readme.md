@@ -3,4 +3,7 @@ This is our calculator binary from a long long time ago...(when the code compile
 
 So, to run this from a terminal, type ./calculator rational or ./calculator test.
 
+Contributors:
+Kyle Stratis - Menu system (main.cpp), Integer, Constant, misc bugs
+
 
