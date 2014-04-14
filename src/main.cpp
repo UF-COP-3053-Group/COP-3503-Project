@@ -184,9 +184,10 @@ void printMenu()
 			}
 			// can't implement below yet, because calculate doesn't return anything.
 			else {
-				myCalc.calculate(userInput);
+				Expression* lastAns = myCalc.calculate(userInput);
 				// needs toString method from Calculator to convert Expression to String
 				//		display answer
+				cout << "Decimal answer: " << myCalc.toDouble(lastAns) << endl;
 				cout << "Continue? y/n:" << endl;
 				cin >> userInput2;
 				if (userInput2 == "n" || userInput2 == "N")

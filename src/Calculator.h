@@ -11,6 +11,8 @@
 
 #include <iostream>
 #include <vector>
+#include <stdexcept>
+#include <sstream>
 #include <cmath>
 #include "Parser.h"
 #include "Number.h"
