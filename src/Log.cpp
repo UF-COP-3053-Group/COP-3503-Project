@@ -84,9 +84,10 @@ Expression* Log::simplify()
 	string s="";
 	string ss="";
 	vector<int> factors;
+	int i = 2;
 	if(this->argument->getType()=="Integer")
 	{
-		int i = 2;
+		 i = 2;
 
 			while(i < this->argument)
 			{
@@ -107,7 +108,7 @@ Expression* Log::simplify()
 	if (this->argument->getType()=="Rational")
 	{
 		this->argument->simplify();
-		int i = 2;
+		i = 2;
 
 					while(i < this->argument->getNum())
 					{
@@ -124,7 +125,7 @@ Expression* Log::simplify()
 					}
 					s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+")";
 					factors.clear();
-					int i = 2;
+					 i = 2;
 
 										while(i < this->argument->getDen())
 										{
@@ -149,7 +150,7 @@ Expression* Log::simplify()
 		s=this->argument->getRadicand()->toString()+" * ( ";
 		if(this->argument->getBase->getType()=="Integer")
 			{
-				int i = 2;
+				 i = 2;
 
 					while(i < this->argument->getBase())
 					{
@@ -170,7 +171,7 @@ Expression* Log::simplify()
 		if (this->argument->getBase()->getType()=="Rational")
 			{
 				this->argument->getBase()->simplify();
-				int i = 2;
+				i = 2;
 
 							while(i < this->argument->getBase()->getNum())
 							{
@@ -187,7 +188,7 @@ Expression* Log::simplify()
 							}
 							s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+")";
 							factors.clear();
-							int i = 2;
+							 i = 2;
 
 												while(i < this->argument->getBase()->getDen())
 												{
