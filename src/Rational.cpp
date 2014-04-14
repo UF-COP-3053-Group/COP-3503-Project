@@ -18,10 +18,10 @@ Rational::Rational(string decimalString){
     type = "Rational";
 }
 
-Rational::Rational(Number num, Number den){
+Rational::Rational(Number* num, Number* den){
     type = "Rational";
-    numerator = num;
-    denom = den;
+    numerator = *num;
+    denom = *den;
     if (denom.getValue() == 0)
         throw "Division by zero is bad";
 }
@@ -36,23 +36,23 @@ Rational::Rational(int num , int den)
 
 }
 
-Rational::Rational(Rational num, Number den){
+Rational::Rational(Rational* num, Number* den){
     type = "Rational";
     //Depends on nonexistent methods
-    numerator = num.getNum();
+    numerator = num->getNum();
     //denom = num.getDen().multiply(den));
     if (denom.getValue() == 0)
         throw "Division by zero is bad";
 }
 
-Rational::Rational(Number num, Rational den){
+Rational::Rational(Number* num, Rational* den){
     //numerator = num * den.getDen();
-    denom = den.getNum();
+    denom = den->getNum();
     if (denom.getValue() == 0)
         throw "Division by zero is bad";
 }
 
-Rational::Rational(Rational num, Rational den){
+Rational::Rational(Rational* num, Rational* den){
     //numerator = num.getNum() * den.getDen();
     //denom = num.getDen() * den.getNum();
     if (denom.getValue() == 0)

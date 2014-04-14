@@ -29,10 +29,10 @@ private:
     
 public:
     Rational(string decimalString);
-    Rational(Number num, Number den);
-    Rational(Rational num, Number den);
-    Rational(Number num, Rational den);
-    Rational(Rational num, Rational den);
+    Rational(Number* num, Number* den);
+    Rational(Rational* num, Number* den);
+    Rational(Number* num, Rational* den);
+    Rational(Rational* num, Rational* den);
 	Rational(int num, int den);
 	virtual ~Rational();
 	void simplify();

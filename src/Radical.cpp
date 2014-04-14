@@ -20,7 +20,7 @@ Radical::Radical()
 
 }
 
-Radical::Radical(Number base, Number radicand){
+Radical::Radical(Number* base, Number* radicand){
     
 }
 

@@ -16,6 +16,6 @@ Log::Log()
 	// TODO: Create the constructor
 }
 
-Log::Log(Number base, Number argument){
+Log::Log(Number* base, Number* argument){
     
 }
