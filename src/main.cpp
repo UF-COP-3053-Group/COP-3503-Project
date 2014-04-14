@@ -86,7 +86,7 @@ void printMenu()
 		cin >> userInput;
 		if(userInput == "Q" || userInput == "q")  //this stopped working...
 		{
-			delete [] myCalc; //should call destructor and exit menu
+			delete myCalc; //should call destructor and exit menu
 			menuLoop = false;
 		}
 		// check for correct input
@@ -99,7 +99,7 @@ void printMenu()
 		cin >> userInput;
 		if(userInput == "Q" || userInput == "q")
 		{
-			delete [] myCalc;  // FIXME: quitting on first loop crashes
+			delete myCalc;
 			menuLoop = false;
 		}
 		// can't implement below yet, because calculate doesn't return anything.
