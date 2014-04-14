@@ -41,7 +41,7 @@ public:
 	void divide(Number);
 	void divide(Integer);
 
-	int getInt();
+	int getValue();
     
     void exponentiate(Rational power);
     void exponentiate(Integer power);

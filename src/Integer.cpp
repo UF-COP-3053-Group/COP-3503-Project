@@ -22,7 +22,7 @@ Integer::Integer(int inputNum)
 	this->inputNum = inputNum;
 }
 
-int Integer::getInt()
+int Integer::getValue()
 {
 	return inputNum;
 }

@@ -10,6 +10,7 @@
 #define NUMBER_H_
 
 #include <iostream>
+#include "Math.h"
 
 using namespace std;
 
