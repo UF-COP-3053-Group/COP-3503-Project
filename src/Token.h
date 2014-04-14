@@ -16,7 +16,7 @@
 class Token
 {
 public:
-	Token(Number number);
+	Token(Number* number);
 	Token(Operator op);
 	Token(char paren);
 	
@@ -25,7 +25,7 @@ public:
 	bool isLeftParen();
 	bool isRightParen();
 	
-	Number number;
+	Number* number;
 	Operator op;
 	char paren;
 

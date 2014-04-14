@@ -56,14 +56,22 @@ Expression* Calculator::getLastAnswer()
 
 /**
  * The main calculator function that takes an input and simplifies it.
- * Will store the answer for later retrieval.
+ * Will store the answer for later retrieval in the previousAnswers
+ * Also returns the reference to the calculated tree
  */
-void Calculator::calculate(string input)
+Expression* Calculator::calculate(string input)
 {
 	// First, we need to parse the input
-	parseInput(input);
+	Expression* tree = parseInput(input);
 	
-	// Next, take the tree
+	// Next, take the tree and simplify it
+	simplifyTree(tree);
+	
+	// Finally, we add the tree to the list of previous answers.
+	previousAnswers.push_back(tree);
+	
+	// Return the reference to this tree as well
+	return tree;
 }
 
 
@@ -81,7 +89,7 @@ Expression* Calculator::parseInput(string& input)
 	Parser parser;
 	Expression* root = parser.createAST( parser.tokenize(input) );
 	
-	
+	// Returns the root node of the newly created tree
 	return root;
 }
 
@@ -112,9 +120,47 @@ void Calculator::simplifyTree(Expression* root)
 
 
 /**
- * A function to define the operators used by our calculator
+ * Takes in the root of a tree and converts it to a string
+ * Returns a string that represents the simplified mathematical expression
  */
-void Calculator::defineOperators()
+string Calculator::toString(Expression* root)
 {
-	//TODO
+	
+	return "Not yet implemented";
+}
+
+/**
+ * Takes in the root of a tree and converts it to a double
+ * Returns the double that represents the answer from the tree
+ */
+double Calculator::toDouble(Expression* root)
+{
+	// First, get the operator from this node
+	char op = root->getOperatorSymbol();
+	
+	// Then, operate
+	if (op == '^')
+	{
+		return pow( toDouble(root->getLeftNode()), toDouble(root->getRightNode()) );
+	}
+	else if (op == '*')
+	{
+		return toDouble(root->getLeftNode()) * toDouble(root->getRightNode());
+	}
+	else if (op == '/')
+	{
+		return toDouble(root->getLeftNode()) / toDouble(root->getRightNode());
+	}
+	else if (op == '+')
+	{
+		return toDouble(root->getLeftNode()) + toDouble(root->getRightNode());
+	}
+	else if (op == '-')
+	{
+		return toDouble(root->getLeftNode()) - toDouble(root->getRightNode());
+	}
+	else
+	{
+		return root->getNumber()->getValue();
+	}
 }

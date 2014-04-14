@@ -11,7 +11,7 @@
 /**
  * Constructor for a leaf (number) node
  */
-Expression::Expression(Number num)
+Expression::Expression(Number* num)
 {
 	// Initilize the pointers to null
 	this->left = nullptr;
@@ -43,6 +43,7 @@ Expression::~Expression()
 	// Call the destructor on both the left and right sides.
 	delete this->left;
 	delete this->right;
+	delete this->num;
 }
 
 
@@ -50,7 +51,7 @@ Expression::~Expression()
  * Returns the number stored by this class
  * Note: before calling this method, check that this is a number node with isNumber()
  */
-Number Expression::getNumber()
+Number* Expression::getNumber()
 {
 	return this->num;
 }
@@ -102,4 +103,21 @@ void Expression::deleteExpressionTree(Expression* node)
 	
 	// Finally, delete this node itself
 	delete node;
+}
+
+/**
+ * Retuns the left node of this tree
+ */
+Expression* Expression::getLeftNode()
+{
+	return this->left;
+}
+
+
+/**
+ * Retuns the right node of this tree
+ */
+Expression* Expression::getRightNode()
+{
+	return this->right;
 }
