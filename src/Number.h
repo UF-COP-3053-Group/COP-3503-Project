@@ -19,7 +19,7 @@ using namespace std;
 class Number
 {
 public:	
-	//virtual double getValue();
+	virtual double getValue() = 0;
 	virtual string getType();
 	bool negative;
 	string type;
