@@ -28,10 +28,6 @@ void tests();
 int main(int argc, const char * argv[])
 {
 	tests();
-<<<<<<< HEAD
-=======
-
->>>>>>> FETCH_HEAD
 	// If the third arg is test, run the tests. Note that strcmp == 0 if true.
 	if ( argc > 1 && !strcmp(argv[1], "test") )
 	{
@@ -239,15 +235,9 @@ void tests()
 
 	Calculator calc = Calculator();
 	Expression* tree;
-<<<<<<< HEAD
+
 	tree = calc.calculate("2 * pi");
 	
-=======
-	tree = calc.calculate("2 + 5");
-
-
-
->>>>>>> FETCH_HEAD
 	double out = calc.toDouble(tree);
 
 	cout << "Out?";
