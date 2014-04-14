@@ -28,13 +28,13 @@ public:
 	
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
 	void add(Number* n);
-	int add(Integer* z);
+	Expression* add(Integer* z);
 	string getType();
 	void subtract(Number* n );
-	int subtract(Integer* z);
+	Expression* subtract(Integer* z);
 
 	void multiply(Number* n );
-	int multiply(Integer* z);
+	Expression* multiply(Integer* z);
 
 	void divide(Number* n);
 //	Rational divide(Integer z);
