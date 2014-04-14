@@ -38,7 +38,7 @@ void Integer::add(Number* num)
 	// Do nothing. Destructor?
 }
 
-Expression* Integer::add(Integer* num , Expression *caller)
+Expression* Integer::add(Number* num , Expression *caller)
 {
 	// needs to return answer, figure out format first. May affect above line (answer may need to be Integer).
 	// same goes for other implemented methods.
