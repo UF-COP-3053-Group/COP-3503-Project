@@ -51,7 +51,8 @@ public:
 	Expression* subtract(Rational *r , Expression *caller);
 	Expression* multiply(Rational *r , Expression* caller);
 	Expression* divide(Rational *r , Expression* caller);
-
+	
+	string toString();
 
 	
 	string getType();

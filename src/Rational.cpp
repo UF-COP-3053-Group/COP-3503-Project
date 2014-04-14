@@ -123,6 +123,17 @@ int Rational::gcd(int c , int d)
 
 }
 
+//assumes the Number type of numerator and demoniator work properly.
+string Rational::toString()
+{
+	string str;
+	str += this->numerator->toString();
+	str += " / ";
+	str += this->den->toString();
+	return str;
+
+}
+
 Expression* Rational::multiply(Rational *r , Expression* caller)
 {
 	//only handle simple case : int / int for now	
