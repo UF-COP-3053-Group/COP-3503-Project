@@ -26,16 +26,16 @@ public:
 	Integer(int inputNum);
 	
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
-	void add(Number n);
+	void add(Number* n);
 	int add(Integer z);
 
-	void subtract(Number n );
+	void subtract(Number* n );
 	int subtract(Integer z);
 
-	void multiply(Number n );
+	void multiply(Number* n );
 	int multiply(Integer z);
 
-	void divide(Number n);
+	void divide(Number* n);
 //	Rational divide(Integer z);
 
 	double getValue();

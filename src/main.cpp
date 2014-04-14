@@ -53,9 +53,9 @@ int main(int argc, const char * argv[])
  */
 void printMenu()
 {
-	Calculator myCalc = Calculator();
 	string userInput;
 	string userInput2;
+	Calculator myCalc = Calculator();
 	bool menuLoop = true;
 	//TODO: Print second part of menu and pass input to parser
 	//      Throw errors for bad input

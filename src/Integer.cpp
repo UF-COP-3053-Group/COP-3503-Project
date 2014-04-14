@@ -28,10 +28,10 @@ double Integer::getValue()
 }
 
 
-void Integer::add(Number num)
+void Integer::add(Number* num)
 {
 	cout << "Successfully recognized adding a generic Number to this Integer" << endl; //all outputs here are for testing only
-	// Do nothing
+	// Do nothing. Destructor?
 }
 
 int Integer::add(Integer num)
@@ -42,10 +42,11 @@ int Integer::add(Integer num)
 	return answer; 
 }
 
-void Integer::subtract(Number num)
+void Integer::subtract(Number* num)
 {
 	cout << "Successfully recognized subtracting a generic Number from this Integer" << endl;
 	// Do nothing
+	// Destructor?
 }
 
 int Integer::subtract(Integer num)
@@ -54,7 +55,7 @@ int Integer::subtract(Integer num)
 	return answer;
 }
 
-void Integer::multiply(Number num)
+void Integer::multiply(Number* num)
 {
 	cout << "Successfully recognized multiplying a generic Number and this Integer" << endl;
 	// if coefficient == 1, do nothing
@@ -68,7 +69,7 @@ int Integer::multiply(Integer num)
 
 }
 
-void Integer::divide(Number num)
+void Integer::divide(Number* num)
 {
 	cout << "Successfully recognized dividing this Integer by a generic Number. Or vice versa" << endl;
 }
