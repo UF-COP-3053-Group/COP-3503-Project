@@ -62,11 +62,15 @@ Expression* Log::divide(Number *num , Expression *caller)
 
 string Log::toString()
 {
-	return "log_"+base+":"+argument;
+	return "log"+base+":"+argument;
 }
 
 Expression* Log::simplify()
 {
+	//simplifies logs down to addition and subtraction of prime factors
+	Calculator calc = new Calculator();
+	string s="";
+	string ss="";
 	if(this->argument->getType()=="Integer")
 	{
 		int i = 2;
@@ -80,13 +84,19 @@ Expression* Log::simplify()
 				i++;
 			}
 
-			for(int i = 0; i < factors.size(); ++i)
+			for(int i = 0; i < factors.size()-1; ++i)
 			{
-				cout<<factors[i]<<endl;
-
+				s=s+"log"+this->base+"("+factors[i]+") + ";
 			}
+			s=s+"log"+this->base+"("+factors[factors.size()-1]+")";
+			return calc.parseInput(s);
+	}
+	if (this->argument->getType()=="Rational")
+	{
+		this->argument->simplify();
 
 	}
+
 }
 
 bool Log::isPrime(int n)
