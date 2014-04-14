@@ -9,7 +9,6 @@
 #ifndef __COP_3503_Project__Radical__
 #define __COP_3503_Project__Radical__
 
-#include <iostream>
 #include "Number.h"
 
 using namespace std;
@@ -24,9 +23,10 @@ private:
     
 public:
 	Radical();
-    Radical(Number* coefficient, Number* base, Number* radicand);
-    Radical(Number* base, Number* radicand);
+    Radical(Number* coefficient, Number* base, Number* radicand);//Radicals MUST be constructed with a coefficient.
 	
+	
+	Number* getBase();
 	double getValue();
 	string toString();
 
