@@ -30,6 +30,11 @@ void Log::exponentiate(Rational power){
     //needs class implementation
 }
 
-void Radical::exponentiate(Integer power){
+void Log::exponentiate(Integer power){
     //needs class implementation
+}
+
+string Log::getType()
+{
+	return "l";
 }

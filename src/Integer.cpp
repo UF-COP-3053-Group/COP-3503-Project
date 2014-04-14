@@ -95,3 +95,7 @@ void Integer::exponentiate(Integer power){
     num = pow(num, power.getInt());
 }
 
+string Integer::getType()
+{
+	return "i";
+}

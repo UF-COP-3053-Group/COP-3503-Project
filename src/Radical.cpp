@@ -257,3 +257,7 @@ void Radical::exponentiate(Integer power){
     //requires unique code
 }
 
+string Radical::getType()
+{
+	return "r";
+}

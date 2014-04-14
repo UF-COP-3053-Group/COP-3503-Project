@@ -206,3 +206,8 @@ void Rational::exponentiate(Integer power){
     num = pow(num, power.getInt());
     den = pow(den, power.getInt());
 }
+
+string Rational::getType()
+{
+	return "rat";
+}
