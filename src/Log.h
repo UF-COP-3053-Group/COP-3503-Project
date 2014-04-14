@@ -26,7 +26,7 @@ public:
     Log(Number* base, Number* argument);
 	double getValue();
 
-
+	string toString();
 	Expression* add(Number* num, Expression* caller);
 	Expression* subtract(Number* num, Expression* caller);
 	Expression* multiply(Number* num, Expression* caller);

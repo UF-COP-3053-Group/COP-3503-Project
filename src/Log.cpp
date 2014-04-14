@@ -19,6 +19,7 @@ Log::Log()
 Log::Log(Number* base, Number* argument){
     this->base = base;
     this->argument = argument;
+    type="l";
 }
 
 /**
@@ -27,7 +28,7 @@ Log::Log(Number* base, Number* argument){
 double Log::getValue()
 {
 	//FIXME: Implement this
-	return 0.0;
+	return (log(argument)/log(base));
 }
 
 
@@ -59,7 +60,10 @@ Expression* Log::divide(Number *num , Expression *caller)
 
 }
 
-
+string Log::toString()
+{
+	return "log_"+base+":"+argument;
+}
 
 
 
