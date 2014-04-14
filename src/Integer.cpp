@@ -27,6 +27,10 @@ double Integer::getValue()
 	return (double)(this->inputNum);
 }
 
+string Integer::getType()
+{
+	return type;
+}
 
 void Integer::add(Number* num)
 {

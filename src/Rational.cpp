@@ -21,8 +21,8 @@ Rational::Rational(string decimalString){
 Rational::Rational(Number* num, Number* den){
     type = "Rational";
     numerator = *num;
-    denom = *den;
-    if (denom.getValue() == 0)
+    this->den = *den;
+    if (den->getValue() == 0)
         throw "Division by zero is bad";
 }
 
@@ -30,8 +30,8 @@ Rational::Rational(int num , int den)
 {
     type = "Rational";
 	numerator = Integer(num);
-    denom = Integer(den);
-    if (denom.getValue() == 0)
+    den = Integer(den);
+    if (den.getValue() == 0)
         throw "Division by zero is bad";
 
 }
@@ -41,21 +41,21 @@ Rational::Rational(Rational* num, Number* den){
     //Depends on nonexistent methods
     numerator = num->getNum();
     //denom = num.getDen().multiply(den));
-    if (denom.getValue() == 0)
+    if (den.getValue() == 0)
         throw "Division by zero is bad";
 }
 
 Rational::Rational(Number* num, Rational* den){
     //numerator = num * den.getDen();
-    denom = den->getNum();
-    if (denom.getValue() == 0)
+    den = den->getNum();
+    if (den.getValue() == 0)
         throw "Division by zero is bad";
 }
 
 Rational::Rational(Rational* num, Rational* den){
     //numerator = num.getNum() * den.getDen();
     //denom = num.getDen() * den.getNum();
-    if (denom.getValue() == 0)
+    if (den.getValue() == 0)
         throw "Division by zero is bad";
 }
 
@@ -65,10 +65,17 @@ Rational::~Rational()
 
 }
 
+double Rational::getValue()
+{
+	return (numerator.getValue()) / (den.getValue*());
+}
 //handling of divide by 0 is done by constructor,
 //negative numbers should work now.
 Integer Rational::gcd(Integer c , Integer d)
 {
+    
+   
+
     int a = c.getValue();
     int b = d.getValue();
     
@@ -107,7 +114,7 @@ Integer Rational::gcd(Integer c , Integer d)
 	}
 	
 	// We should never get here
-	throw runtime_error("Error in calculating the gcd. We should never have reached this point.");
+//	throw runtime_error("Error in calculating the gcd. We should never have reached this point.");
 
 }
 
@@ -116,31 +123,35 @@ Number Rational::getNum(){
 }
 
 Number Rational::getDen(){
-    return this->denom;
+    return this->den;
 }
-
-/* FIXME
+/*
 void Rational::simplify()
 {
-	int gcd = Rational::gcd(this->num , this->den);
-	if(num == 0)
+	if(numerator.getType() != "Integer" || den.getType() != "Integer")
+		return;
+
+	int numerator = (int)num.getValue();
+	int denominator = (int) den.getValue();
+	int gcd = Rational::gcd(numerator, denominator);
+	if(numator== 0)
 	{
-		Rational::rationalToInt(0);//should return an integer, = 0;
+		return 0;
 	}
 
-	if(den == 1)
+	if(denominator== 1)
 	{
 		Rational::rationalToInt(num);//should return an integer, = num
 
 	}
 
-	if(num < 0 && den < 0)
+	if(numerator < 0 && denominator < 0)
 	{
-		num *= -1;
-		den *= -1;
+		numerator *= -1;
+		denominator *= -1;
 	}
-	num = num / gcd;
-	den = den / gcd;	
+	num = numerator / gcd;
+	den = denominator / gcd;	
 
 }
 */

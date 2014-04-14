@@ -25,7 +25,7 @@ class Rational : public Number
 {
 private:
     Number numerator;
-    Number denom;
+    Number den;
     
 public:
     Rational(string decimalString);

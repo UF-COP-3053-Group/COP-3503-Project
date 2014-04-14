@@ -28,7 +28,7 @@ public:
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
 	void add(Number* n);
 	int add(Integer z);
-
+	string getType();
 	void subtract(Number* n );
 	int subtract(Integer z);
 
