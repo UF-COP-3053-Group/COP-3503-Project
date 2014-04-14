@@ -185,11 +185,7 @@ vector<Token> Parser::tokenize(string input)
 		
         fragments.erase(fragments.begin());
     }
-	/*
-	Token yes = Token( createNumber("0", '0') );
-    tokens.push_back(yes);
 	
-	Token no = tokens.back();*/
     return tokens;
 }
 

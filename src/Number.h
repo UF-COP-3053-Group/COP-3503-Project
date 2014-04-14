@@ -19,10 +19,8 @@ using namespace std;
 class Number
 {
 public:	
-	virtual double getValue();
+	//virtual double getValue();
 	virtual string getType();
-	
-protected:
 	bool negative;
 	string type;
 };

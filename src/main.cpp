@@ -153,7 +153,13 @@ void tests()
 	Expression* tree;
 	tree = calc.calculate("2 + 5");
 	
-	cout << calc.toDouble(tree);
+	double out = calc.toDouble(tree);
+	
+	cout << "Out?";
+	
+	cout << out;
+	
+	cout << "DONE";
 		
 }
 

@@ -32,6 +32,7 @@ Expression::Expression(Operator op, Expression* leftNode, Expression* rightNode)
 	this->left = leftNode;
 	this->right = rightNode;
 	this->op = op;
+	this->num = nullptr;
 }
 
 
@@ -40,10 +41,15 @@ Expression::Expression(Operator op, Expression* leftNode, Expression* rightNode)
  */
 Expression::~Expression()
 {
+	/* FIXME: I leak.
 	// Call the destructor on both the left and right sides.
-	delete this->left;
-	delete this->right;
-	delete this->num;
+	if( this->left != nullptr)
+		delete this->left;
+	if( this->right != nullptr)
+		delete this->right;
+	if( this->num != nullptr)
+		delete this->num;
+	*/
 }
 
 
