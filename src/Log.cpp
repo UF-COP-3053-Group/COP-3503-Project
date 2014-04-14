@@ -99,9 +99,9 @@ Expression* Log::simplify()
 
 			for(int i = 0; i < factors.size()-1; ++i)
 			{
-				s=s+"log"+this->base->toString()+"("+factors[i]+") + ";
+				s=s+"log"+this->base->toString()+"("+factors[i].toString()+") + ";
 			}
-			s=s+"log"+this->base->toString()+"("+factors[factors.size()-1]+")";
+			s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+")";
 			return calc.parseInput(s);
 	}
 	if (this->argument->getType()=="Rational")
@@ -120,9 +120,9 @@ Expression* Log::simplify()
 
 					for(int i = 0; i < factors.size()-1; ++i)
 					{
-						s=s+"log"+this->base->toString()+"("+factors[i]+") + ";
+						s=s+"log"+this->base->toString()+"("+factors[i].toString()+") + ";
 					}
-					s=s+"log"+this->base->toString()+"("+factors[factors.size()-1]+")";
+					s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+")";
 					factors.clear();
 					int i = 2;
 
@@ -137,9 +137,9 @@ Expression* Log::simplify()
 
 										for(int i = 0; i < factors.size()-1; ++i)
 										{
-											ss=ss+"log"+this->base->toString()+"("+factors[i]+") - ";
+											ss=ss+"log"+this->base->toString()+"("+factors[i].toString()+") - ";
 										}
-										s=s+"log"+this->base->toString()+"("+factors[factors.size()-1]+")";
+										s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+")";
 				s=s+" - "+ss;
 				return calc.parseInput(s);
 
@@ -162,9 +162,9 @@ Expression* Log::simplify()
 
 					for(int i = 0; i < factors.size()-1; ++i)
 					{
-						s=s+"log"+this->base->toString()+"("+factors[i]+") + ";
+						s=s+"log"+this->base->toString()+"("+factors[i].toString()+") + ";
 					}
-					s=s+"log"+this->base->toString()+"("+factors[factors.size()-1]+") )";
+					s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+") )";
 					return calc.parseInput(s);
 			}
 		if (this->argument->getBase()->getType()=="Rational")
@@ -183,9 +183,9 @@ Expression* Log::simplify()
 
 							for(int i = 0; i < factors.size()-1; ++i)
 							{
-								s=s+"log"+this->base->toString()+"("+factors[i]+") + ";
+								s=s+"log"+this->base->toString()+"("+factors[i].toString()+") + ";
 							}
-							s=s+"log"+this->base->toString()+"("+factors[factors.size()-1]+")";
+							s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+")";
 							factors.clear();
 							int i = 2;
 
@@ -200,9 +200,9 @@ Expression* Log::simplify()
 
 												for(int i = 0; i < factors.size()-1; ++i)
 												{
-													ss=ss+"log"+this->base->toString()+"("+factors[i]+") - ";
+													ss=ss+"log"+this->base->toString()+"("+factors[i].toString()+") - ";
 												}
-												s=s+"log"+this->base->toString()+"("+factors[factors.size()-1]+") )";
+												s=s+"log"+this->base->toString()+"("+factors[factors.size()-1].toString()+") )";
 						s=s+" - "+ss;
 						return calc.parseInput(s);
 
