@@ -206,7 +206,7 @@ Number* Parser::createNumber(string number, char first){
     /*if (first != 's' && number.find("rt:") != string::npos){
         string base (number.find(':')+1, -1);
         string radicand (0, number.find('r')-1);
-        result = new Radical(createNumber(base, base.front()), createNumber(radicand, radicand.front()));
+        result = new Radical(new Integer(1),createNumber(base, base.front()), createNumber(radicand, radicand.front()));
     }
     else if (first=='p' && number.at(1) =='i' && number.length() == 2){
         //create pi
@@ -219,7 +219,7 @@ Number* Parser::createNumber(string number, char first){
     else if (first == 's' && number.find("sqrt:") != string::npos){
         //create a square root
         string base (number.find(':')+1, -1);
-        result = new Radical(createNumber(base, base.front()), new Integer(2));
+        result = new Radical(new Integer(1), createNumber(base, base.front()), new Integer(2));
     }
     else if (first == 'l' && number.find("log_") != string::npos){
         //create a log
