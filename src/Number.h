@@ -11,7 +11,6 @@
 
 #include <iostream>
 #include <string>
-#include "Math.h"
 
 using namespace std;
 
