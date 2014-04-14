@@ -31,58 +31,74 @@ string Integer::getType()
 {
 	return type;
 }
-
+/*
 void Integer::add(Number* num)
 {
 	cout << "Successfully recognized adding a generic Number to this Integer" << endl; //all outputs here are for testing only
 	// Do nothing. Destructor?
 }
-
+*/
 Expression* Integer::add(Number* num , Expression *caller)
 {
 	// needs to return answer, figure out format first. May affect above line (answer may need to be Integer).
 	// same goes for other implemented methods.
+	if(num->getType() != "Integer")
+		return caller;
+
+
 	int answer = this->getValue() + num->getValue(); //works
 	return new Expression(new Integer(answer));
 
 }
-
-void Integer::subtract(Number* num)
+/*
+void Integer::subtract(Number* num, Expression* caller)
 {
-	cout << "Successfully recognized subtracting a generic Number from this Integer" << endl;
+
+	return 
+//	cout << "Successfully recognized subtracting a generic Number from this Integer" << endl;
 	// Do nothing
 	// Destructor?
 }
-
-Expression* Integer::subtract(Integer* num ,Expression *caller )
+*/
+Expression* Integer::subtract(Number* num ,Expression *caller )
 {
+	if(num->getType() != "Integer")
+		return caller;
+
+
+
 	int answer = this->getValue() - num->getValue(); //works
 	return new Expression(new Integer(answer));
 
 
 }
-
+/*
 void Integer::multiply(Number* num)
 {
 	cout << "Successfully recognized multiplying a generic Number and this Integer" << endl;
 	// if coefficient == 1, do nothing
 	// else multiply coefficient with Integer
 }
-
-Expression* Integer::multiply(Integer* num , Expression *caller)
+*/
+Expression* Integer::multiply(Number* num , Expression *caller)
 {
+	if(num->getType() != "Integer")
+		return caller;
+
+
+
 	int answer = (this->getValue()) * (num->getValue()); //works
 	return new Expression(new Integer(answer));
 
 }
-
+/*
 void Integer::divide(Number* num)
 {
 	cout << "Successfully recognized dividing this Integer by a generic Number. Or vice versa" << endl;
 }
 
-
-Expression* Integer::divide(Integer* num , Expression *caller)
+*/
+Expression* Integer::divide(Number* num , Expression *caller)
 {
 	return new Expression(new Rational(this->getValue() , num->getValue()));
 

@@ -35,19 +35,19 @@ Rational::Rational(int num , int den)
         throw "Division by zero is bad";
 
 }
-
+//TODO
 Rational::Rational(Rational* num, Number* den){
     type = "Rational";
     //Depends on nonexistent methods
-    this->numerator = num->getNum();
+//    this->numerator = num->getValue();
     //denom = num.getDen().multiply(den));
     if (den->getValue() == 0)
         throw "Division by zero is bad";
 }
-
+//TODO
 Rational::Rational(Number* num, Rational* den){
     //numerator = num * den.getDen();
-    this->den = den->getNum();
+   // this->den = den->getValue();
     if (den->getValue() == 0)
         throw "Division by zero is bad";
 }
@@ -221,6 +221,46 @@ Number* Rational::getNum(){
 Number* Rational::getDen(){
     return this->den;
 }
+
+
+Expression* add(Number *r , Expression *caller)
+{
+	//TODO
+	return caller;
+
+}
+
+Expression* subtract(Number *r , Expression *caller)
+{
+	//TODO
+	return caller;
+
+}
+
+Expression* multiply(Number *r , Expression *caller)
+{
+	//TODO
+	return caller;
+
+}
+
+Expression* divide(Number *r , Expression *caller)
+{
+	//TODO
+	return caller;
+
+}
+
+
+
+
+
+
+
+
+
+
+
 /*
 void Rational::simplify()
 {

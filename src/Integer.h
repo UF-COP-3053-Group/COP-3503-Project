@@ -26,17 +26,17 @@ public:
 	Integer(int inputNum);
 	
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
-	void add(Number* n);
-	Expression* add(Number* z , Expression* caller);
+	Expression* add(Number* num, Expression* caller);
+//	Expression* add(Number* z , Expression* caller);
 	string getType();
-	void subtract(Number* n  );
-	Expression* subtract(Integer* z , Expression* caller);
+	Expression*  subtract(Number* num , Expression* caller  );
+//	Expression* subtract(Integer* z , Expression* caller);
 
-	void multiply(Number* n  );
-	Expression* multiply(Integer* z , Expression* caller);
+	Expression*  multiply(Number* num , Expression* caller  );
+//	Expression* multiply(Integer* z , Expression* caller);
 
-	void divide(Number* n);
-	Expression* divide(Integer* z , Expression* caller);
+	Expression*  divide(Number* n , Expression* caller);
+//	Expression* divide(Integer* z , Expression* caller);
 
 	double getValue();
     

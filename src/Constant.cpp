@@ -88,4 +88,40 @@ string Constant::getName()
 	return this->name;
 }
 
+Expression* Constant::add(Number *num , Expression *caller)
+{
+	//TODO
+	return caller;
+
+}
+
+Expression* Constant::subtract(Number *num , Expression *caller)
+{
+	//TODO
+	return caller;
+
+}
+
+Expression* Constant::multiply(Number *num , Expression *caller)
+{
+	//TODO
+	return caller;
+
+}
+
+Expression* Constant::divide(Number *num , Expression *caller)
+{
+	//TODO
+	return caller;
+
+}
+
+
+
+
+
+
+
+
+
 

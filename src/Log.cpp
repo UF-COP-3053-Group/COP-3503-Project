@@ -30,3 +30,39 @@ double Log::getValue()
 	return 0.0;
 }
 
+
+Expression* Log::add(Number *num , Expression *caller)
+{
+	//TODO
+	return caller;
+
+}
+
+Expression* Log::subtract(Number *num , Expression *caller)
+{
+	//TODO
+	return caller;
+
+}
+
+Expression* Log::multiply(Number *num , Expression *caller)
+{
+	//TODO
+	return caller;
+
+}
+
+Expression* Log::divide(Number *num , Expression *caller)
+{
+	//TODO
+	return caller;
+
+}
+
+
+
+
+
+
+
+

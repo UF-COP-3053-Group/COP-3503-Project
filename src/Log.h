@@ -25,6 +25,16 @@ public:
 	Log();
     Log(Number* base, Number* argument);
 	double getValue();
+
+
+	Expression* add(Number* num, Expression* caller);
+	Expression* subtract(Number* num, Expression* caller);
+	Expression* multiply(Number* num, Expression* caller);
+	Expression* divide(Number* num, Expression* caller);
+
+
+
+
 };
 
 #endif /* defined(__COP_3503_Project__Log__) */

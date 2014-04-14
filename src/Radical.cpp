@@ -20,8 +20,9 @@ Radical::Radical()
 
 }
 
-Radical::Radical(Number* base, Number* radicand){
-    
+Radical::Radical(Number* base, Number* radicand)
+{
+	    //TODO
 }
 
 
@@ -33,4 +34,31 @@ double Radical::getValue()
 	//FIXME: Implement this
 	return 0.0;
 }
+
+Expression* Radical::add(Number* num , Expression* caller)
+{
+	//TODO
+	return caller;
+}
+
+Expression* Radical::subtract(Number* num , Expression* caller)
+{
+	//TODO
+	return caller;
+}
+
+Expression* Radical::multiply(Number* num , Expression* caller)
+{
+	//TODO
+	return caller;
+}
+
+Expression* Radical::divide(Number* num , Expression* caller)
+{
+	//TODO
+	return caller;
+}
+
+
+
 	
