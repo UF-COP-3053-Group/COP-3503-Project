@@ -20,5 +20,7 @@ Radical::Radical()
 
 }
 
-
+Radical::Radical(Number base, Number radicand){
+    
+}
 

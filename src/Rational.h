@@ -27,6 +27,7 @@ private:
     
 public:
     Rational(string decimalString);
+    Rational(Number num, Number den);
 	Rational(int num, int den);
 	virtual ~Rational();
 	void simplify();

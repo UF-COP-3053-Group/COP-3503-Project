@@ -17,6 +17,10 @@ Rational::Rational(string decimalString){
     //create a rational from a decimal number
 }
 
+Rational::Rational(Number num, Number den){
+    
+}
+
 Rational::Rational(int num , int den)
 {
 	// TODO: Create the constructor

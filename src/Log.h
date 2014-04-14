@@ -20,6 +20,7 @@ private:
     
 public:
 	Log();
+    Log(Number base, Number argument);
 };
 
 #endif /* defined(__COP_3503_Project__Log__) */
