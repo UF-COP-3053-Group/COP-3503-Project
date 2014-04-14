@@ -34,6 +34,8 @@ public:
 	Expression* subtract(Number* num , Expression* caller);
 	Expression* multiply(Number* num , Expression* caller);
 	Expression* divide(Number* num , Expression* caller);
+	
+	void simplify();
 
 };
 
