@@ -3,7 +3,7 @@
 //  COP-3503-Project
 //
 //  Created by Justin on 4/9/14.
-//  Editied by Tylor on 4/11/2014.
+//  Edited by Tylor on 4/11/2014.
 //
 
 
@@ -22,7 +22,8 @@ Radical::Radical()
 
 Radical::Radical(Number* base, Number* radicand)
 {
-	    //TODO
+	    this->base = base;
+		this->radicand = radicand;
 }
 
 
@@ -31,8 +32,7 @@ Radical::Radical(Number* base, Number* radicand)
  */
 double Radical::getValue()
 {
-	//FIXME: Implement this
-	return 0.0;
+	return pow(radicand->getval(),(1/base->getval()));
 }
 
 Expression* Radical::add(Number* num , Expression* caller)

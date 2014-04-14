@@ -12,6 +12,7 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <cmath>
 #include "Expression.h"
 
 using namespace std;
