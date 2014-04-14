@@ -30,8 +30,15 @@ double Log::getValue()
 	//FIXME: Implement this
 	return (log(argument)/log(base));
 }
+ Number* Log::getBase()
+ {
+	 return this->base;
+ }
 
-
+ Number* Log::getArgument()
+ {
+	 return this->argument;
+ }
 Expression* Log::add(Number *num , Expression *caller)
 {
 	//TODO
@@ -56,13 +63,18 @@ Expression* Log::multiply(Number *num , Expression *caller)
 Expression* Log::divide(Number *num , Expression *caller)
 {
 	//TODO
+	if (num->getType()=="l"&&this->base==num->getBase())
+	{
+		this->base=num->getArgument();
+		return new Expression(new Log(this->base,this->argument));
+	}
 	return caller;
 
 }
 
 string Log::toString()
 {
-	return "log"+base+":"+argument;
+	return calc.toString(simplify());
 }
 
 Expression* Log::simplify()
@@ -71,10 +83,11 @@ Expression* Log::simplify()
 	Calculator calc = new Calculator();
 	string s="";
 	string ss="";
+	vector<int> factors;
 	if(this->argument->getType()=="Integer")
 	{
 		int i = 2;
-			vector<int> factors;
+
 			while(i < this->argument)
 			{
 				if((0 == this->argument% i ) and isPrime(i))
@@ -94,8 +107,109 @@ Expression* Log::simplify()
 	if (this->argument->getType()=="Rational")
 	{
 		this->argument->simplify();
+		int i = 2;
+
+					while(i < this->argument->getNum())
+					{
+						if((0 == this->argument->getNum()% i ) and isPrime(i))
+						{
+							factors.push_back(i);
+						}
+						i++;
+					}
+
+					for(int i = 0; i < factors.size()-1; ++i)
+					{
+						s=s+"log"+this->base+"("+factors[i]+") + ";
+					}
+					s=s+"log"+this->base+"("+factors[factors.size()-1]+")";
+					factors.clear();
+					int i = 2;
+
+										while(i < this->argument->getDen())
+										{
+											if((0 == this->argument->getDen()% i ) and isPrime(i))
+											{
+												factors.push_back(i);
+											}
+											i++;
+										}
+
+										for(int i = 0; i < factors.size()-1; ++i)
+										{
+											ss=ss+"log"+this->base+"("+factors[i]+") - ";
+										}
+										s=s+"log"+this->base+"("+factors[factors.size()-1]+")";
+				s=s+" - "+ss;
+				return calc.parseInput(s);
 
 	}
+	if (this->argument->getType()=="r")
+	{
+		s=this->argument->getRadicand()+" * ( ";
+		if(this->argument->getBase->getType()=="Integer")
+			{
+				int i = 2;
+
+					while(i < this->argument->getBase())
+					{
+						if((0 == this->argumen->getBase()t% i ) and isPrime(i))
+						{
+							factors.push_back(i);
+						}
+						i++;
+					}
+
+					for(int i = 0; i < factors.size()-1; ++i)
+					{
+						s=s+"log"+this->base+"("+factors[i]+") + ";
+					}
+					s=s+"log"+this->base+"("+factors[factors.size()-1]+") )";
+					return calc.parseInput(s);
+			}
+		if (this->argument->getBase()->getType()=="Rational")
+			{
+				this->argument->getBase()->simplify();
+				int i = 2;
+
+							while(i < this->argument->getBase()->getNum())
+							{
+								if((0 == this->argument->getBase()->getNum()% i ) and isPrime(i))
+								{
+									factors.push_back(i);
+								}
+								i++;
+							}
+
+							for(int i = 0; i < factors.size()-1; ++i)
+							{
+								s=s+"log"+this->base+"("+factors[i]+") + ";
+							}
+							s=s+"log"+this->base+"("+factors[factors.size()-1]+")";
+							factors.clear();
+							int i = 2;
+
+												while(i < this->argument->getBase()->getDen())
+												{
+													if((0 == this->argument->getBase()->getDen()% i ) and isPrime(i))
+													{
+														factors.push_back(i);
+													}
+													i++;
+												}
+
+												for(int i = 0; i < factors.size()-1; ++i)
+												{
+													ss=ss+"log"+this->base+"("+factors[i]+") - ";
+												}
+												s=s+"log"+this->base+"("+factors[factors.size()-1]+") )";
+						s=s+" - "+ss;
+						return calc.parseInput(s);
+
+			}
+
+	}
+	return new Expression(new Log(this->base,this->argument));
 
 }
 
