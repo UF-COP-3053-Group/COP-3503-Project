@@ -74,6 +74,7 @@ Expression* Log::divide(Number *num , Expression *caller)
 
 string Log::toString()
 {
+	Calculator calc = new Calculator();
 	return calc.toString(simplify());
 }
 
