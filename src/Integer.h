@@ -18,7 +18,6 @@ using namespace std;
 class Integer : public Number
 {
 private:
-	int num;
 	int inputNum;
     string type;
     
@@ -28,7 +27,7 @@ public:
 	
 	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
 	void add(Number* n);
-	Expression* add(Integer* z , Expression* caller);
+	Expression* add(Number* z , Expression* caller);
 	string getType();
 	void subtract(Number* n  );
 	Expression* subtract(Integer* z , Expression* caller);

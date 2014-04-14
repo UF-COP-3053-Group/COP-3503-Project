@@ -12,13 +12,16 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include "Expression.h"
 
 using namespace std;
 
+class Expression;
 
 class Number
 {
-public:	
+public:
+	virtual Expression* add(Number* num, Expression* caller) = 0;
 	virtual double getValue() = 0;
 	virtual string getType();
 	bool negative;
