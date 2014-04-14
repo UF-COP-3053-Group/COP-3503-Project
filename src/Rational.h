@@ -24,8 +24,8 @@ using namespace std;
 class Rational : public Number
 {
 private:
-    Number numerator;
-    Number den;
+    Number *numerator;
+    Number *den;
     
 public:
     Rational(string decimalString);
@@ -39,6 +39,8 @@ public:
 	Integer gcd(Integer c , Integer d);
 	Number getNum();
 	Number getDen();
+
+	double getValue();
 };
 
 #endif /* defined(__COP_3503_Project__Rational__) */

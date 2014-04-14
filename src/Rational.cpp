@@ -20,8 +20,8 @@ Rational::Rational(string decimalString){
 
 Rational::Rational(Number* num, Number* den){
     type = "Rational";
-    numerator = *num;
-    this->den = *den;
+    numerator = num;
+    this->den = den;
     if (den->getValue() == 0)
         throw "Division by zero is bad";
 }
@@ -31,7 +31,7 @@ Rational::Rational(int num , int den)
     type = "Rational";
 	numerator = Integer(num);
     den = Integer(den);
-    if (den.getValue() == 0)
+    if (den->getValue() == 0)
         throw "Division by zero is bad";
 
 }
@@ -41,21 +41,21 @@ Rational::Rational(Rational* num, Number* den){
     //Depends on nonexistent methods
     numerator = num->getNum();
     //denom = num.getDen().multiply(den));
-    if (den.getValue() == 0)
+    if (den->getValue() == 0)
         throw "Division by zero is bad";
 }
 
 Rational::Rational(Number* num, Rational* den){
     //numerator = num * den.getDen();
     den = den->getNum();
-    if (den.getValue() == 0)
+    if (den->getValue() == 0)
         throw "Division by zero is bad";
 }
 
 Rational::Rational(Rational* num, Rational* den){
     //numerator = num.getNum() * den.getDen();
     //denom = num.getDen() * den.getNum();
-    if (den.getValue() == 0)
+    if (den->getValue() == 0)
         throw "Division by zero is bad";
 }
 
@@ -67,7 +67,7 @@ Rational::~Rational()
 
 double Rational::getValue()
 {
-	return (numerator.getValue()) / (den.getValue*());
+	return (numerator->getValue()) / (den->getValue*());
 }
 //handling of divide by 0 is done by constructor,
 //negative numbers should work now.
