@@ -32,7 +32,7 @@ Radical::Radical(Number* base, Number* radicand)
  */
 double Radical::getValue()
 {
-	return pow(radicand->getval(),(1/base->getval()));
+	return pow(radicand->getValue(),(1/base->getValue()));
 }
 
 Expression* Radical::add(Number* num , Expression* caller)
