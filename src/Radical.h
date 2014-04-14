@@ -3,7 +3,7 @@
 //  COP-3503-Project
 //
 //  Created by Justin on 4/9/14.
-//  Edited by Tylor on 4/11/2014.
+//  Edited by Tylor on 4/14/2014.
 //
 
 #ifndef __COP_3503_Project__Radical__
@@ -20,9 +20,11 @@ private:
     string type;
 	Number* base;
 	Number* radicand;
+	Number* coefficient;
     
 public:
 	Radical();
+    Radical(Number* coefficient, Number* base, Number* radicand);
     Radical(Number* base, Number* radicand);
 	
 	double getValue();
