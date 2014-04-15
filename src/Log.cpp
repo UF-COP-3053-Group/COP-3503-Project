@@ -105,12 +105,12 @@ Expression* Log::simplify()
 			for(int i = 0; i < factors.size()-1; ++i)
 			{
 				char buffer [100];  //buffer overflows are a thing, right? hah
-				string converted = sprintf(buffer, "%d", factors[i]);
+				converted = sprintf(buffer, "%d", factors[i]);
 				s=s+"log"+this->base->toString()+"("+converted+") + "; //itoa is not standard C++, changed to result from sprintf
 
 			}
 			char buffer2 [100];  //buffer overflows are a thing, right? hah
-			string converted = sprintf(buffer2, "%d", factors[i]);
+			converted = sprintf(buffer2, "%d", factors[i]);
 			s=s+"log"+this->base->toString()+"("+converted+")";
 			return calc.parseInput(s);
 	}
@@ -130,12 +130,12 @@ Expression* Log::simplify()
 
 					for(int i = 0; i < factors.size()-1; ++i)
 					{
-						char buffer [1000];
-						string converted = sprintf(buffer, "%d", factors[i]);
+						char buffer3 [1000];
+						converted = sprintf(buffer3, "%d", factors[i]);
 						s=s+"log"+this->base->toString()+"("+converted+") + ";
 					}
-					char buffer2 [100];  //buffer overflows are a thing, right? hah
-					string converted = sprintf(buffer2, "%d", factors[i]);
+					char buffer4 [100];  //buffer overflows are a thing, right? hah
+					converted = sprintf(buffer4, "%d", factors[i]);
 					s=s+"log"+this->base->toString()+"("+converted+")";
 					factors.clear();
 					 i = 2;
@@ -151,12 +151,12 @@ Expression* Log::simplify()
 
 										for(int i = 0; i < factors.size()-1; ++i)
 										{
-											char buffer [1000];
-											string converted = sprintf(buffer, "%d", factors[i]);
+											char buffer5 [1000];
+											converted = sprintf(buffer5, "%d", factors[i]);
 											ss=ss+"log"+this->base->toString()+"("+converted+") - ";
 										}
-										char buffer2 [100];  //buffer overflows are a thing, right? hah
-										string converted = sprintf(buffer2, "%d", factors[i]);
+										char buffer6 [100];  //buffer overflows are a thing, right? hah
+										converted = sprintf(buffer6, "%d", factors[i]);
 										s=s+"log"+this->base->toString()+"("+converted+")";
 				s=s+" - "+ss;
 				return calc.parseInput(s);
@@ -180,12 +180,12 @@ Expression* Log::simplify()
 
 					for(int i = 0; i < factors.size()-1; ++i)
 					{
-						char buffer [1000];
-						string converted = sprintf(buffer, "%d", factors[i]);
+						char buffer7 [1000];
+						converted = sprintf(buffer7, "%d", factors[i]);
 						s=s+"log"+this->base->toString()+"("+converted+") + ";
 					}
-					char buffer2 [100];  //buffer overflows are a thing, right? hah
-					string converted = sprintf(buffer2, "%d", factors[i]);
+					char buffer8 [100];  //buffer overflows are a thing, right? hah
+					converted = sprintf(buffer8, "%d", factors[i]);
 					s=s+"log"+this->base->toString()+"("+converted+") )";
 					return calc.parseInput(s);
 			}
@@ -205,12 +205,12 @@ Expression* Log::simplify()
 
 							for(int i = 0; i < factors.size()-1; ++i)
 							{
-								char buffer [1000];
-								string converted = sprintf(buffer, "%d", factors[i]);
+								char buffer9 [1000];
+								converted = sprintf(buffer9, "%d", factors[i]);
 								s=s+"log"+this->base->toString()+"("+converted+") + ";
 							}
-							char buffer2 [100];  //buffer overflows are a thing, right? hah
-							string converted = sprintf(buffer2, "%d", factors[i]);
+							char buffer10 [100];  //buffer overflows are a thing, right? hah
+							converted = sprintf(buffer10, "%d", factors[i]);
 							s=s+"log"+this->base->toString()+"("+converted+")";
 							factors.clear();
 							 i = 2;
@@ -226,12 +226,12 @@ Expression* Log::simplify()
 
 												for(int i = 0; i < factors.size()-1; ++i)
 												{
-													char buffer [1000];
-													string converted = sprintf(buffer, "%d", factors[i]);
+													char buffer11 [1000];
+													converted = sprintf(buffer11, "%d", factors[i]);
 													ss=ss+"log"+this->base->toString()+"("+converted+") - ";
 												}
-												char buffer2 [100];  //buffer overflows are a thing, right? hah
-												string converted = sprintf(buffer2, "%d", factors[i]);
+												char buffer12 [100];  //buffer overflows are a thing, right? hah
+												converted = sprintf(buffer12, "%d", factors[i]);
 												s=s+"log"+this->base->toString()+"("+converted+") )";
 						s=s+" - "+ss;
 						return calc.parseInput(s);
