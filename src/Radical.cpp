@@ -41,10 +41,7 @@ Number* Radical::getBase()
 	return base;
 }
 
-Number* Radical::getCoef()
-{
-	return coef->getValue();
-}
+
 string Radical::toString()
 {
 	string o = "";
@@ -59,8 +56,7 @@ string Radical::toString()
 	return o;
 }
 
-
-	Number* Radical::getCoef()
+Number* Radical::getCoef()
 {
 	return coefficient;
 }
@@ -82,10 +78,11 @@ Expression* Radical::add(Number* num , Expression* caller)
 	int c = coefficient->getValue();
 	if(num->getType()=="Radical")
 	{
-		if((num->getBase()->getValue()==base)&&(num->getRad()->getValue()==radicand))
+		Radical* r = num;
+		if((r->getBase()->getValue()==base->getValue())&&(r->getRad()->getValue()==radicand->getValue()))
 		{
-			c+=num->getCoef()->getValue();
-			return new Expression(new Radical(c,base,radicand));
+			c+=r->getCoef()->getValue();
+			return new Expression(new Radical(new Integer(c),base,radicand));
 		}
 	}
 	return caller;
@@ -98,10 +95,10 @@ Expression* Radical::subtract(Number* num , Expression* caller)
 	if(num->getType()=="Radical")
 	{
 		Radical* r = num;
-		if((r->getBase()->getValue()==base)&&(r->getRad()->getValue()==radicand))
+		if((r->getBase()->getValue()==base->getValue())&&(r->getRad()->getValue()==radicand->getValue()))
 		{
 			c-=r->getCoef()->getValue();
-			return new Expression(new Radical(c,base,radicand));
+			return new Expression(new Radical(new Integer(c),base,radicand));
 		}
 	}
 	return caller;
@@ -115,7 +112,7 @@ Expression* Radical::multiply(Number* num , Expression* caller)
 		//If the radicands are the same, return an Integer equal to radicand*coefficient
 		if(r->getRad() == radicand)
 		{
-			return new Expression(new Integer(radicand->getValue()*coefficient->getValue()*r->getCoef()->getValue()));
+			return caller;/*BROKEN NEEDS TO ACCESS INTEGER*///new Expression(new Integer(radicand->getValue()*coefficient->getValue()*r->getCoef()->getValue()));
 		}
 		//If radicands are different return a radicand where coefficients are multiplied and the base is the same and the radicand is multiplied
 		else
