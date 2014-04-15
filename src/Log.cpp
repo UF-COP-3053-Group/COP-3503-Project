@@ -104,7 +104,10 @@ Expression* Log::simplify()
 
 			for(int i = 0; i < factors.size()-1; ++i)
 			{
-				s=s+"log"+this->base->toString()+"("+string(itoa(factors[i]))+") + ";
+				char buffer [10];
+				string converted = sprintf(buffer, "%d", factors[i]);
+				s=s+"log"+this->base->toString()+"("+converted+") + "; //itoa is not standard C++, changed to result from sprintf
+
 			}
 			s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+")";
 			return calc.parseInput(s);
