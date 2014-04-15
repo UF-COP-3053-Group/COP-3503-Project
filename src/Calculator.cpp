@@ -4,7 +4,10 @@
 //
 //  Created by Justin on 4/10/14.
 //
-//
+//  Responibilities:
+//  Justin:
+//     Everything in here, basically.
+//  Hard to test as it's dependent on a lot of other classes working
 
 #include "Calculator.h"
 
@@ -23,7 +26,7 @@ Calculator::Calculator()
  */
 Calculator::~Calculator()
 {
-	/*
+	/* TODO: Stop this from segfaulting on linux but not via LLVM?
 	// Delete all pointers to expressions in the previous answers vector to prevent memory leaks
 	for (int i = 0; i < previousAnswers.size(); i++)
 	{
@@ -214,7 +217,7 @@ string Calculator::toString(Expression* root)
 	if (!root->isNumber())
 	{
 		// Print to a string stream for easy conversion
-		sstream ss;
+		stringstream ss;
 		string out;
 		ss << toString(root->getLeftNode()) << " " << toString(root->getRightNode()) << " "  << root->getOperatorSymbol();
 		ss >> out;
