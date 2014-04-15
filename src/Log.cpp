@@ -104,17 +104,19 @@ Expression* Log::simplify()
 
 			for(int i = 0; i < factors.size()-1; ++i)
 			{
-				char buffer [10];
+				char buffer [100];  //buffer overflows are a thing, right? hah
 				string converted = sprintf(buffer, "%d", factors[i]);
 				s=s+"log"+this->base->toString()+"("+converted+") + "; //itoa is not standard C++, changed to result from sprintf
 
 			}
-			s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+")";
+			char buffer2 [100];  //buffer overflows are a thing, right? hah
+			string converted = sprintf(buffer2, "%d", factors[i]);
+			s=s+"log"+this->base->toString()+"("+converted+")";
 			return calc.parseInput(s);
 	}
-	if (this->argument->getType()=="Rational")
+	if (this->getArgument()->getType()=="Rational")
 	{
-		this->argument->simplify();
+//		this->getArgument()->simplify(); // for now, let's assume it being simplified doesn't matter.
 		i = 2;
 
 					while(i < (Rational)this->argument->getNum())
