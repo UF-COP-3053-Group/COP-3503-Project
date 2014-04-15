@@ -1,10 +1,16 @@
+/*
+*
+* Author: Hanif Ahmed
+*/
+
+
 #include <iostream>
 #include <vector>
 
 #define NUM 30
 using namespace std;
 
-
+//checks if n is prime
 
 bool isPrime(int n)
 {
@@ -18,6 +24,7 @@ bool isPrime(int n)
 	return true;
 }
 
+//returns a vector of primes less than NUM
 int main()
 {
 	int i = 2;

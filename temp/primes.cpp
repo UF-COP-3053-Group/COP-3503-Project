@@ -1,9 +1,11 @@
 /*
-* Author: HA
+* Author: Hanif Ahmed
 * This program implements the sieve of erastones to find primes numbers from
 * 2 to n.//
 *
 */
+
+
 
 
 #include <fstream>
