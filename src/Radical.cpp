@@ -94,12 +94,13 @@ Expression* Radical::add(Number* num , Expression* caller)
 Expression* Radical::subtract(Number* num , Expression* caller)
 {
 	//Same as addition only negative
-	int c = coefficient;
+	int c = coefficient->getValue();
 	if(num->getType()=="Radical")
 	{
-		if((num->getBase()->getValue()==base)&&(num->getRad()->getValue()==radicand))
+		Radical* r = num;
+		if((r->getBase()->getValue()==base)&&(r->getRad()->getValue()==radicand))
 		{
-			c-=num->getCoef()->getValue();
+			c-=r->getCoef()->getValue();
 			return new Expression(new Radical(c,base,radicand));
 		}
 	}
@@ -130,11 +131,12 @@ Expression* Radical::divide(Number* num , Expression* caller)
 {
 	if(num->getType()=="Radical")
 	{
+		Radical *r = num;
 		//divide the coef's and divide the radicands
 		else
 		{
 			//Not sure about this construction. Supposed to return new Radical (coefThis*coefIn,base,radThis*radIn) but there's no way to divide two Numbers in a way that returns a Number, right?
-			return new Expression(new Radical(coefficient/num->getCoef(),base,radicand/num->getRadicand()));
+			return new Expression(new Radical(coefficient/r->getCoef(),base,radicand/r->getRadicand()));
 		}
 	}
 	return caller;
