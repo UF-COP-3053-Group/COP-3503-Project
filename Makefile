@@ -2,7 +2,7 @@
 CC=g++
 
 #-g option for debugging, c++0x compiler, additional warnings
-CFLAGS = -g -std=c++0x #-Wall -pedantic 
+CFLAGS =  -std=c++0x #-Wall -pedantic 
 SOURCES = ./src/*.cpp
 BIN = calculator
 

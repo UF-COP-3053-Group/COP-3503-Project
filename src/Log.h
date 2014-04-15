@@ -1,8 +1,8 @@
 //
-//  Log.h
-//  COP-3503-Project
+// Log.h
+// COP-3503-Project
 //
-//  Created by Justin on 4/9/14.
+// Created by Justin on 4/9/14.
 //
 //
 
@@ -11,7 +11,6 @@
 
 #include <iostream>
 #include "Number.h"
-#include "Calculator.h" //if this is going to use the parser, we need to include the Calculator class
 
 using namespace std;
 
@@ -19,27 +18,23 @@ class Log : public Number
 {
 private:
     string type;
-	Number* base;
-	Number* argument;
-	Calculator calc;
+Number* base;
+Number* argument;
     
 public:
-	Log();
+Log();
     Log(Number* base, Number* argument);
-	double getValue();
-	Number* getBase();
-	Number* getArgument();
+double getValue();
 
-	string toString();
-	Expression* add(Number* num, Expression* caller);
-	Expression* subtract(Number* num, Expression* caller);
-	Expression* multiply(Number* num, Expression* caller);
-	Expression* divide(Number* num, Expression* caller);
 
-	Expression* simplify();
+Expression* add(Number* num, Expression* caller);
+Expression* subtract(Number* num, Expression* caller);
+Expression* multiply(Number* num, Expression* caller);
+Expression* divide(Number* num, Expression* caller);
 
-	bool isPrime(int n);
+
+
 
 };
 
-#endif /* defined(__COP_3503_Project__Log__) */
+#endif /* defined(__COP_3503_Project__Log__) */S
