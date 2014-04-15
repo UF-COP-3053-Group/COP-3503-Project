@@ -13,6 +13,9 @@ Tylor : Radical Class
 Nick : Logarithm class, edits to other classes to work with log class
 
 
+Build the project by typing 'make' in the main directory of the project (an executable already exits as well).
+
+
 See the two branches of our project (and the commits) at the following links: 
 https://github.com/UF-COP-3053-Group/COP-3503-Project  
 https://github.com/UF-COP-3053-Group/COP-3503-Project/tree/working
