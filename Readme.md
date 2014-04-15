@@ -38,4 +38,4 @@ Our /docs directory contains the submission files for part 1 of the project.
 
 /src contains the source files, as expected. 
 
-/temp contains two files for dealing with prime numbers that are not part of the actual program (yet) but could prove to be useful for submission 2, particularly for the logarithm class where logarithms are expressed as the sum of primes in simplest form.  
+/temp contains two .cpp files for dealing with primes numbers, which may be useful later.  It also contains the Radical.cpp/.h and Log.cpp/.h files which still have some bugs but will be incorporated in the final program.    
