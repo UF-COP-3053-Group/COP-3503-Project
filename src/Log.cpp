@@ -95,7 +95,7 @@ Expression* Log::simplify()
 
 			while(i < (this->getArgument()->getValue()))
 			{
-				if((0 == this->argument% i ) and isPrime(i))
+				if((0 == fmod((this->getArgument()->getValue()),double(i)) ) and isPrime(i)) //fmod must be used to get modulus of doubles
 				{
 					factors.push_back(i);
 				}
