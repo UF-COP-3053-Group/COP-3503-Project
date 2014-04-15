@@ -75,8 +75,9 @@ Expression* Log::divide(Number *num , Expression *caller)
 
 string Log::toString()
 {
+	Calculator calc2 = new Calculator();
 	ostringstream rtnStream;
-	rtnStream << this->simplify(); //correct method to use?
+	rtnStream << calc2.toString(this->simplify()); //correct method to use?
 	string rtnString = rtnStream.str();
 	return rtnString;
 }

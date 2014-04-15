@@ -4,7 +4,7 @@ Ian : Exponent (which was later made a member function of all the Number subclas
 Hanif : Rational Class , also getting Integer to work with Parser later.  
 Kyle : Integer, main, Constant, Log bug fixes  
 Tylor : Radical Class
-Nick : Logarithm class
+Nick : Logarithm class, edits to other classes to work with log class
 
 See the two branches of our project (and the commits) at the following links: 
 https://github.com/UF-COP-3053-Group/COP-3503-Project  
