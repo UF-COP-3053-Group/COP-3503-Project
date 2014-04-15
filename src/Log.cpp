@@ -171,7 +171,7 @@ Expression* Log::simplify()
 
 					while(i < this->argument->getBase())
 					{
-						if((0 == this->argumen->getBase()% i ) and isPrime(i))
+						if((0 == this->argument->getBase()% i ) and isPrime(i))
 						{
 							factors.push_back(i);
 						}
@@ -180,9 +180,13 @@ Expression* Log::simplify()
 
 					for(int i = 0; i < factors.size()-1; ++i)
 					{
-						s=s+"log"+this->base->toString()+"("+string(itoa(factors[i]))+") + ";
+						char buffer [1000];
+						string converted = sprintf(buffer, "%d", factors[i]);
+						s=s+"log"+this->base->toString()+"("+converted+") + ";
 					}
-					s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+") )";
+					char buffer2 [100];  //buffer overflows are a thing, right? hah
+					string converted = sprintf(buffer2, "%d", factors[i]);
+					s=s+"log"+this->base->toString()+"("+converted+") )";
 					return calc.parseInput(s);
 			}
 		if (this->argument->getBase()->getType()=="Rational")
@@ -201,9 +205,13 @@ Expression* Log::simplify()
 
 							for(int i = 0; i < factors.size()-1; ++i)
 							{
-								s=s+"log"+this->base->toString()+"("+string(itoa(factors[i]))+") + ";
+								char buffer [1000];
+								string converted = sprintf(buffer, "%d", factors[i]);
+								s=s+"log"+this->base->toString()+"("+converted+") + ";
 							}
-							s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+")";
+							char buffer2 [100];  //buffer overflows are a thing, right? hah
+							string converted = sprintf(buffer2, "%d", factors[i]);
+							s=s+"log"+this->base->toString()+"("+converted+")";
 							factors.clear();
 							 i = 2;
 
@@ -218,9 +226,13 @@ Expression* Log::simplify()
 
 												for(int i = 0; i < factors.size()-1; ++i)
 												{
-													ss=ss+"log"+this->base->toString()+"("+string(itoa(factors[i]))+") - ";
+													char buffer [1000];
+													string converted = sprintf(buffer, "%d", factors[i]);
+													ss=ss+"log"+this->base->toString()+"("+converted+") - ";
 												}
-												s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+") )";
+												char buffer2 [100];  //buffer overflows are a thing, right? hah
+												string converted = sprintf(buffer2, "%d", factors[i]);
+												s=s+"log"+this->base->toString()+"("+converted+") )";
 						s=s+" - "+ss;
 						return calc.parseInput(s);
 
