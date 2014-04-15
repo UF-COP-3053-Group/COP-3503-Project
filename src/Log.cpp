@@ -119,7 +119,7 @@ Expression* Log::simplify()
 //		this->getArgument()->simplify(); // for now, let's assume it being simplified doesn't matter.
 		i = 2;
 
-					while(i < (Rational)this->argument->getNum())
+					while(i < (Rational)this->argument->getNum())  // Don't have access to getNum....
 					{
 						if((0 == (Rational)this->argument->getNum()% i ) and isPrime(i))
 						{
@@ -130,9 +130,13 @@ Expression* Log::simplify()
 
 					for(int i = 0; i < factors.size()-1; ++i)
 					{
-						s=s+"log"+this->base->toString()+"("+string(itoa(factors[i]))+") + ";
+						char buffer [1000];
+						string converted = sprintf(buffer, "%d", factors[i]);
+						s=s+"log"+this->base->toString()+"("+converted+") + ";
 					}
-					s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+")";
+					char buffer2 [100];  //buffer overflows are a thing, right? hah
+					string converted = sprintf(buffer2, "%d", factors[i]);
+					s=s+"log"+this->base->toString()+"("+converted+")";
 					factors.clear();
 					 i = 2;
 
@@ -147,9 +151,13 @@ Expression* Log::simplify()
 
 										for(int i = 0; i < factors.size()-1; ++i)
 										{
-											ss=ss+"log"+this->base->toString()+"("+string(itoa(factors[i]))+") - ";
+											char buffer [1000];
+											string converted = sprintf(buffer, "%d", factors[i]);
+											ss=ss+"log"+this->base->toString()+"("+converted+") - ";
 										}
-										s=s+"log"+this->base->toString()+"("+string(itoa(factors[i-1]))+")";
+										char buffer2 [100];  //buffer overflows are a thing, right? hah
+										string converted = sprintf(buffer2, "%d", factors[i]);
+										s=s+"log"+this->base->toString()+"("+converted+")";
 				s=s+" - "+ss;
 				return calc.parseInput(s);
 
