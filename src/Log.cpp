@@ -93,7 +93,7 @@ Expression* Log::simplify()
 	{
 		 i = 2;
 
-			while(i < this->argument)
+			while(i < (this->getArgument()->getValue()))
 			{
 				if((0 == this->argument% i ) and isPrime(i))
 				{
