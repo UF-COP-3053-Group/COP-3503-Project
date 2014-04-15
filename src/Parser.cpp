@@ -15,7 +15,18 @@
 // The implementation itself is complicated however, and uses a verson of the shunting-yard algorithm
 // to create the AST first. Then, our own methods take over in a sad attempt to implement
 // the vast rules of mathematics into a small introductory C++ program
+//
+// P.S. In place tree modification with abstract grammar rules is powerful, but wow is it hard.
 //////////////////
+
+/****************
+ * Outline of responsibilites
+ * Justin:
+ *   create the tree with createAST and an algorithm
+ *   create the Expression and Token classes
+ * Ian:
+ *   create the Tokenize function that acts as a lexer for the parser
+ ****************/
 
 
 /**

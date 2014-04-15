@@ -8,6 +8,7 @@
 
 #include "Log.h"
 
+
 /**
  * Constructor
  */
@@ -83,7 +84,7 @@ string Log::toString()
 Expression* Log::simplify()
 {
 	//simplifies logs down to addition and subtraction of prime factors
-	Calculator calc = new Calculator();
+	Calculator calc = Calculator();
 	string s="";
 	string ss="";
 	vector<int> factors;
@@ -92,7 +93,7 @@ Expression* Log::simplify()
 	{
 		 i = 2;
 
-			while(i < this->argument)
+			while(i < (this->getArgument()->getValue()))
 			{
 				if((0 == this->argument% i ) and isPrime(i))
 				{

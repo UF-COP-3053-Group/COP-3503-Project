@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "Number.h"
+#include "Calculator.h" //if this is going to use the parser, we need to include the Calculator class
 
 using namespace std;
 
@@ -20,6 +21,7 @@ private:
     string type;
 	Number* base;
 	Number* argument;
+	Calculator calc;
     
 public:
 	Log();
