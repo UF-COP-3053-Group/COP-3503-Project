@@ -72,8 +72,8 @@ Expression* Calculator::calculate(string input)
 	// Next, take the tree and simplify it
 	simplifyTree(tree);
 	
-	// Finally, we add the tree to the list of previous answers.
-	previousAnswers.push_back(tree);
+	// Finally, we add the tree to the list of previous inputs and answers.
+	this->addAnswer(input, tree);
 	
 	// Return the reference to this tree as well
 	return tree;
@@ -271,3 +271,48 @@ double Calculator::toDouble(Expression* root)
 		return root->getNumber()->getValue();
 	}
 }
+
+
+/**
+ * Adds an input and answer to the previousInput and previousAnswer vectors respectivly,
+ * making sure both are valid so they can have a common size and index between them.
+ */
+void Calculator::addAnswer(string input, Expression* answer)
+{
+	// Make sure both inputs are valid
+	if(input != "" && answer != nullptr)
+	{
+		// Add to the vectors
+		this->previousInputs.push_back(input);
+		this->previousAnswers.push_back(answer);
+	}
+}
+
+
+/**
+ * Retuns a string of the previous inputs and their respective answers
+ * in the form "input = answer\n"
+ */
+string Calculator::getPreviousAnswersAsString()
+{
+	string out;
+	
+	// Make sure there are some answers to be given
+	// If the size isn't greater than 0, return an error string
+	if (!(previousAnswers.size() > 0))
+	{
+		return "No previous answers to show\n";
+	}
+	
+	for (int i = 0; i<previousInputs.size(); i++)
+	{
+		out += previousInputs[i];
+		out += " = ";
+		// Convert the Expression* tree to a string.
+		out += this->toString(previousAnswers[i]);
+		out += "\n";
+	}
+	
+	return out;
+}
+

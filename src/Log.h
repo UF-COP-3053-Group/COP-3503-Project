@@ -37,4 +37,4 @@ Expression* divide(Number* num, Expression* caller);
 
 };
 
-#endif /* defined(__COP_3503_Project__Log__) */S
+#endif /* defined(__COP_3503_Project__Log__) */

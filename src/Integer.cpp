@@ -18,8 +18,8 @@ Integer::Integer()
  */
 Integer::Integer(int inputNum)
 {
-	// TODO: Parser should take care of input and push it to correct class.
 	this->inputNum = inputNum;
+	this->type = "Integer";
 }
 
 double Integer::getValue()

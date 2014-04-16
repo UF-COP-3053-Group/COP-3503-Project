@@ -19,6 +19,8 @@ using namespace std;
 
 // Define all functions used in the main
 void printMenu();
+void altMenu();
+void displayHelp();
 
 // For testing purposes only.
 // TODO: Replace with actual expression testing once the calulator is implemented
@@ -34,11 +36,13 @@ int main(int argc, const char * argv[])
 		tests();
 		return 0;
 	}
-	else
-	{
+	
+	// Try the altMenu, as it's simpler for testing
+	altMenu();
+	
+	// From here, hand control off to the menu.
+	//printMenu(); // Default behavior
 
-		printMenu(); // Default behavior
-	}
 }
 
 /**
@@ -227,6 +231,97 @@ void printMenu()
 }
 }
 
+
+
+/**
+ * Provides an alternate, simplified menu structure.
+ */
+void altMenu()
+{
+	// Store the input in this string
+	string input;
+	
+	// Create a caluclator object
+	Calculator calc = Calculator();
+	
+	cout << "Welcome to The Best Calculator You Will Ever Use." << endl;
+	cout << "(TBCYWEU, pronounced TibKeyWoo)" << endl;
+	cout << endl;
+	cout << "Please enter a space-seperated expression to evaluate.";
+	
+	// Start input loop
+	do
+	{
+		cout << endl << "Type an expression, 'h' for (h)elp, 'a' to list previous (a)nswers, or 'q' to (q)uit." << endl << endl;
+		cout << "Input: ";
+		cin >> input;
+		
+		// Check input
+		if (input == "q" || input == "Q")
+		{
+			// Exit
+			break;
+		}
+		else if (input == "h" || input == "H")
+		{
+			// Display help
+			displayHelp();
+		}
+		else if (input == "a" || input == "A")
+		{
+			// Show answers
+			cout << calc.getPreviousAnswersAsString();
+		}
+		else
+		{
+			// Doesn't match any other cases, so assume it's an expression.
+			// Put inside of a try catch in case it isn't readable by the calculator.
+			try
+			{
+				calc.calculate(input);
+			}
+			catch (invalid_argument)
+			{
+				cout << "That isn't a supported expression or option!" << endl;
+			}
+		}
+		
+	} while (input != "q" || input != "Q");
+	
+	// Aw, they're leaving! At least say goodbye.
+	cout << "Goodbye!" << endl;
+
+}
+
+/**
+ * Prints a help menu to std::cout
+ */
+void displayHelp()
+{
+	cout << "Welcome to TBCYWEU's help menu!" << endl;
+	cout << "The following operations are supported:" << endl;
+	cout << " + add" << endl;
+	cout << " - subtract" << endl;
+	cout << " * multiply" << endl;
+	cout << " / divide" << endl;
+	cout << " ^ exponentiate" << endl;
+	cout << " () grouping" << endl;
+	cout << endl;
+	cout << "The following functions are allowed:" << endl;
+	// TODO: Copied from the old menu. Fix these when they work.
+	cout << " log - logarithm. Example: log3(3) - log base 3 of 3" << endl;
+	cout << " rad - radical. Example: rad3(8) - cubic root of 8" << endl;
+	cout << " ans - Use previous answer" << endl;
+	cout << endl;
+	cout << "The following constants are supported:" << endl;
+	cout << " e - Euler's number							      ##" << endl;
+	cout << " pi - 3.14159..." << endl;
+	cout << endl;
+	cout << "IMPORTANT NOTE: Please insert a space between every term and operation!" << endl;
+	cout << "e.g. type '2 + 5 ^ 2 / 5'" << endl;
+}
+
+
 /****************************************************
  *
  * All below functions are for testing purposes only
@@ -244,15 +339,13 @@ void tests()
 	Calculator calc = Calculator();
 	Expression* tree;
 
-	tree = calc.calculate("2 * pi");
+	tree = calc.calculate("2 + 2");
 	
 	double out = calc.toDouble(tree);
 
-	cout << "Out?";
+	cout << "Out: " << out << endl;
 
-	cout << out;
-
-	cout << "DONE";
+	cout << "TESTS DONE" << endl << endl;
 
 }
 
