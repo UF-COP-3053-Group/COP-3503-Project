@@ -24,10 +24,10 @@ class Expression;
 class Number
 {
 public:
-	virtual Expression* add(Number* num, Expression* caller) = 0;
-	virtual Expression* subtract(Number* num, Expression* caller) = 0;
-	virtual Expression* multiply(Number* num, Expression* caller) = 0;
-	virtual Expression* divide(Number* num, Expression* caller) = 0;
+	virtual Expression* add(Number* num) = 0;
+	virtual Expression* subtract(Number* num) = 0;
+	virtual Expression* multiply(Number* num) = 0;
+	virtual Expression* divide(Number* num) = 0;
 	
 	virtual double getValue() = 0;
 	virtual string toString() = 0;

@@ -38,12 +38,13 @@ void Integer::add(Number* num)
 	// Do nothing. Destructor?
 }
 */
-Expression* Integer::add(Number* num , Expression *caller)
+Expression* Integer::add(Number* num)
 {
 	// needs to return answer, figure out format first. May affect above line (answer may need to be Integer).
 	// same goes for other implemented methods.
 	if(num->getType() != "Integer")
-		return caller;
+		//TODO
+		throw logic_error("No one has written this part of the method yet");;
 
 
 	int answer = this->getValue() + num->getValue(); //works
@@ -60,10 +61,11 @@ void Integer::subtract(Number* num, Expression* caller)
 	// Destructor?
 }
 */
-Expression* Integer::subtract(Number* num ,Expression *caller )
+Expression* Integer::subtract(Number* num)
 {
 	if(num->getType() != "Integer")
-		return caller;
+		//TODO
+		throw logic_error("No one has written this part of the method yet");;
 
 
 
@@ -80,10 +82,11 @@ void Integer::multiply(Number* num)
 	// else multiply coefficient with Integer
 }
 */
-Expression* Integer::multiply(Number* num , Expression *caller)
+Expression* Integer::multiply(Number* num)
 {
 	if(num->getType() != "Integer")
-		return caller;
+		//TODO
+		throw logic_error("No one has written this part of the method yet");;
 
 
 
@@ -91,14 +94,10 @@ Expression* Integer::multiply(Number* num , Expression *caller)
 	return new Expression(new Integer(answer));
 
 }
-/*
-void Integer::divide(Number* num)
-{
-	cout << "Successfully recognized dividing this Integer by a generic Number. Or vice versa" << endl;
-}
 
-*/
-Expression* Integer::divide(Number* num , Expression *caller)
+
+
+Expression* Integer::divide(Number* num)
 {
 	return new Expression(new Rational(this->getValue() , num->getValue()));
 

@@ -31,31 +31,31 @@ return 0.0;
 }
 
 
-Expression* Log::add(Number *num , Expression *caller)
+Expression* Log::add(Number *num)
 {
-//TODO
-return caller;
+	//TODO
+	throw logic_error("No one has written this part of the method yet");;
 
 }
 
-Expression* Log::subtract(Number *num , Expression *caller)
+Expression* Log::subtract(Number *num)
 {
-//TODO
-return caller;
+	//TODO
+	throw logic_error("No one has written this part of the method yet");;
 
 }
 
-Expression* Log::multiply(Number *num , Expression *caller)
+Expression* Log::multiply(Number *num)
 {
-//TODO
-return caller;
+	//TODO
+	throw logic_error("No one has written this part of the method yet");;
 
 }
 
-Expression* Log::divide(Number *num , Expression *caller)
+Expression* Log::divide(Number *num)
 {
-//TODO
-return caller;
+	//TODO
+	throw logic_error("No one has written this part of the method yet");;
 
 }
 

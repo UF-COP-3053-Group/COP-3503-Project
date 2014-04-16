@@ -134,10 +134,10 @@ Expression* Calculator::simplifyNode(Expression* node)
 	// If this node is an operator (not a number)
 	if(!node->isNumber())
 	{
-		// Simplify left
+		// Simplify left side recursively
 		node->setLeft( simplifyNode(node->getLeftNode()) );
 		
-		// Simplify right
+		// Simplify right side recursively
 		node->setRight( simplifyNode(node->getRightNode()) );
 		
 		// Then operate in place
@@ -149,6 +149,7 @@ Expression* Calculator::simplifyNode(Expression* node)
 				// Call the .add method of the left node with the right as an arg and lastOp as an arg
 				return node->getLeftNode()->getNumber()->add( node->getRightNode()->getNumber());
 			}
+			
 			/* TODO: Is this needed?
 			// Try it with the right side
 			else if(node->getRightNode()->isNumber())

@@ -134,13 +134,14 @@ string Rational::toString()
 
 }
 
-Expression* Rational::multiply(Rational *r , Expression* caller)
+Expression* Rational::multiply(Rational *r)
 {
 	//only handle simple case : int / int for now	
 	if(this->numerator->getType() != "Integer"  || this->den->getType() != "Integer")
 	{
 		
-		return caller; 
+		//TODO
+		throw logic_error("No one has written this part of the method yet");;
 
 	}
 
@@ -157,13 +158,14 @@ Expression* Rational::multiply(Rational *r , Expression* caller)
 
 }
 
-Expression* Rational::divide(Rational *r , Expression *caller)
+Expression* Rational::divide(Rational *r)
 {
 	//only handle simple case : int / int for now	
 	if(this->numerator->getType() != "Integer"  || this->den->getType() != "Integer")
 	{
 		
-		return caller; 
+		//TODO
+		throw logic_error("No one has written this part of the method yet");;
 
 	}
 
@@ -179,13 +181,14 @@ Expression* Rational::divide(Rational *r , Expression *caller)
 
 }
 
-Expression* Rational::add(Rational *r , Expression *caller)
+Expression* Rational::add(Rational *r)
 {
 	//only handle simple case : int / int for now	
 	if(this->numerator->getType() != "Integer"  || this->den->getType() != "Integer")
 	{
 		
-		return caller; 
+		//TODO
+		throw logic_error("No one has written this part of the method yet");;
 
 	}
 
@@ -203,13 +206,14 @@ Expression* Rational::add(Rational *r , Expression *caller)
 
 }
 
-Expression* Rational::subtract(Rational *r , Expression *caller)
+Expression* Rational::subtract(Rational *r)
 {
 	//only handle simple case : int / int for now	
 	if(this->numerator->getType() != "Integer"  || this->den->getType() != "Integer")
 	{
 		
-		return caller; 
+		//TODO
+		throw logic_error("No one has written this part of the method yet");;
 
 	}
 
@@ -234,27 +238,31 @@ Number* Rational::getDen(){
 }
 
 
-Expression* Rational::add(Number *r , Expression *caller)
+Expression* Rational::add(Number *r)
 {
-	return caller;
+	//TODO
+	throw logic_error("No one has written this method yet");
 
 }
 
-Expression* Rational::subtract(Number *r , Expression *caller)
+Expression* Rational::subtract(Number *r)
 {
-	return caller;
+	//TODO
+	throw logic_error("No one has written this method yet");
 
 }
 
-Expression* Rational::multiply(Number *r , Expression *caller)
+Expression* Rational::multiply(Number *r)
 {
-	return caller;
+	//TODO
+	throw logic_error("No one has written this method yet");
 
 }
 
-Expression* Rational::divide(Number *r , Expression *caller)
+Expression* Rational::divide(Number *r)
 {
-	return caller;
+	//TODO
+	throw logic_error("No one has written this method yet");
 
 }
 

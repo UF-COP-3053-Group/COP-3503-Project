@@ -40,17 +40,17 @@ public:
 	Number* getNum();
 	Number* getDen();
 
-	Expression* add(Number *r , Expression *caller);
-	Expression* subtract(Number *r , Expression *caller);
-	Expression* multiply(Number *r , Expression* caller);
-	Expression* divide(Number *r , Expression* caller);
+	Expression* add(Number *r);
+	Expression* subtract(Number *r);
+	Expression* multiply(Number *r);
+	Expression* divide(Number *r);
 
 
 	//overloads
-	Expression* add(Rational *r , Expression *caller);
-	Expression* subtract(Rational *r , Expression *caller);
-	Expression* multiply(Rational *r , Expression* caller);
-	Expression* divide(Rational *r , Expression* caller);
+	Expression* add(Rational *r);
+	Expression* subtract(Rational *r);
+	Expression* multiply(Rational *r);
+	Expression* divide(Rational *r);
 	
 	string toString();
 

@@ -27,10 +27,10 @@ Radical();
 
 double getValue();
 
-Expression* add(Number* num , Expression* caller);
-Expression* subtract(Number* num , Expression* caller);
-Expression* multiply(Number* num , Expression* caller);
-Expression* divide(Number* num , Expression* caller);
+Expression* add(Number* num);
+Expression* subtract(Number* num);
+Expression* multiply(Number* num);
+Expression* divide(Number* num);
 
 };
 

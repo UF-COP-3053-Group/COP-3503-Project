@@ -35,28 +35,28 @@ double Radical::getValue()
 return pow(radicand->getValue(),(1/base->getValue()));
 }
 
-Expression* Radical::add(Number* num , Expression* caller)
+Expression* Radical::add(Number* num)
 {
 //TODO
-return caller;
+return nullptr;
 }
 
-Expression* Radical::subtract(Number* num , Expression* caller)
+Expression* Radical::subtract(Number* num)
 {
 //TODO
-return caller;
+return nullptr;
 }
 
-Expression* Radical::multiply(Number* num , Expression* caller)
+Expression* Radical::multiply(Number* num)
 {
 //TODO
-return caller;
+return nullptr;
 }
 
-Expression* Radical::divide(Number* num , Expression* caller)
+Expression* Radical::divide(Number* num)
 {
 //TODO
-return caller;
+return nullptr;
 }
 
 

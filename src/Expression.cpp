@@ -41,7 +41,7 @@ Expression::Expression(Operator op, Expression* leftNode, Expression* rightNode)
  */
 Expression::~Expression()
 {
-	/* FIXME: I leak.
+	// NOTE: This may be broken on other platforms, but it prevents memory leaks on mine (OSX).
 	// Call the destructor on both the left and right sides.
 	if( this->left != nullptr)
 		delete this->left;
@@ -49,7 +49,6 @@ Expression::~Expression()
 		delete this->right;
 	if( this->num != nullptr)
 		delete this->num;
-	*/
 }
 
 
@@ -131,19 +130,31 @@ Expression* Expression::getRightNode()
 
 /**
  * Sets the left pointer of this node to the passes expression
- * Note: null pointers are specifically allowed to be inserted here
+ * Note: null pointers are specifically allowed to be inserted here to mark the end of a tree
  */
 void Expression::setLeft(Expression* newLeft)
 {
+	// Only delete the pointer if it is pointing somewhere else
+	if(this->left != newLeft)
+	{
+		delete this->left;
+	}
+	
 	this->left = newLeft;
 }
 
 
 /**
  * Sets the left pointer of this node to the passes expression
- * Note: null pointers are specifically allowed to be inserted here
+ * Note: null pointers are specifically allowed to be inserted here to mark the end of a tree
  */
 void Expression::setRight(Expression* newRight)
 {
+	// Only delete the pointer if it is pointing somewhere else
+	if(this->right != newRight)
+	{
+		delete this->right;
+	}
+	
 	this->right = newRight;
 }

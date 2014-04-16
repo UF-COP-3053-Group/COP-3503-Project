@@ -88,31 +88,31 @@ string Constant::getName()
 	return this->name;
 }
 
-Expression* Constant::add(Number *num , Expression *caller)
+Expression* Constant::add(Number *num)
 {
 	//TODO
-	return caller;
+	throw logic_error("No one has written this part of the method yet");;
 
 }
 
-Expression* Constant::subtract(Number *num , Expression *caller)
+Expression* Constant::subtract(Number *num)
 {
 	//TODO
-	return caller;
+	throw logic_error("No one has written this part of the method yet");;
 
 }
 
-Expression* Constant::multiply(Number *num , Expression *caller)
+Expression* Constant::multiply(Number *num)
 {
 	//TODO
-	return caller;
+	throw logic_error("No one has written this part of the method yet");;
 
 }
 
-Expression* Constant::divide(Number *num , Expression *caller)
+Expression* Constant::divide(Number *num)
 {
 	//TODO
-	return caller;
+	throw logic_error("No one has written this part of the method yet");;
 
 }
 
