@@ -127,3 +127,23 @@ Expression* Expression::getRightNode()
 {
 	return this->right;
 }
+
+
+/**
+ * Sets the left pointer of this node to the passes expression
+ * Note: null pointers are specifically allowed to be inserted here
+ */
+void Expression::setLeft(Expression* newLeft)
+{
+	this->left = newLeft;
+}
+
+
+/**
+ * Sets the left pointer of this node to the passes expression
+ * Note: null pointers are specifically allowed to be inserted here
+ */
+void Expression::setRight(Expression* newRight)
+{
+	this->right = newRight;
+}

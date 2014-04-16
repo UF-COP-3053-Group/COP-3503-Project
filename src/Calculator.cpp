@@ -119,10 +119,7 @@ string Calculator::collectTerms(string& input)
  */
 void Calculator::simplifyTree(Expression*& root)
 {
-	// A dummy is needed here to match the function call, as it requires a non-temporary variable
-	Expression* dummy = nullptr;
-	root = simplifyNode(root, dummy);
-	delete dummy;
+	root = simplifyNode(root);
 }
 
 
@@ -132,16 +129,16 @@ void Calculator::simplifyTree(Expression*& root)
  * Should be able to simplify the tree by replacing nodes in place, but I'm not sure how that can work with this tree
  * FIXME
  */
-Expression* Calculator::simplifyNode(Expression* node, Expression*& lastOp)
+Expression* Calculator::simplifyNode(Expression* node)
 {
 	// If this node is an operator (not a number)
 	if(!node->isNumber())
 	{
 		// Simplify left
-		node->left = simplifyNode(node->getLeftNode(), node);
+		node->setLeft( simplifyNode(node->getLeftNode()) );
 		
 		// Simplify right
-		node->right = simplifyNode(node->getRightNode(), node);
+		node->setRight( simplifyNode(node->getRightNode()) );
 		
 		// Then operate in place
 		if(node->getOperatorSymbol() == '+')
@@ -150,7 +147,7 @@ Expression* Calculator::simplifyNode(Expression* node, Expression*& lastOp)
 			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
 			{
 				// Call the .add method of the left node with the right as an arg and lastOp as an arg
-				return node->getLeftNode()->getNumber()->add( node->getRightNode()->getNumber(), lastOp);
+				return node->getLeftNode()->getNumber()->add( node->getRightNode()->getNumber());
 			}
 			/* TODO: Is this needed?
 			// Try it with the right side
@@ -167,7 +164,7 @@ Expression* Calculator::simplifyNode(Expression* node, Expression*& lastOp)
 			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
 			{
 				// Call the .subtract method of the left node with the right as an arg and lastOp as an arg
-				return node->getLeftNode()->getNumber()->subtract( node->getRightNode()->getNumber(), lastOp);
+				return node->getLeftNode()->getNumber()->subtract( node->getRightNode()->getNumber());
 			}
 		}
 		else if (node->getOperatorSymbol() == '*')
@@ -176,7 +173,7 @@ Expression* Calculator::simplifyNode(Expression* node, Expression*& lastOp)
 			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
 			{
 				// Call the .multiply method of the left node with the right as an arg and lastOp as an arg
-				return node->getLeftNode()->getNumber()->multiply( node->getRightNode()->getNumber(), lastOp);
+				return node->getLeftNode()->getNumber()->multiply( node->getRightNode()->getNumber());
 			}
 		}
 		else if (node->getOperatorSymbol() == '/')
@@ -185,13 +182,15 @@ Expression* Calculator::simplifyNode(Expression* node, Expression*& lastOp)
 			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
 			{
 				// Call the .devide method of the left node with the right as an arg and lastOp as an arg
-				return node->getLeftNode()->getNumber()->add( node->getRightNode()->getNumber(), lastOp);
+				return node->getLeftNode()->getNumber()->divide( node->getRightNode()->getNumber());
 			}
 		}
-		// We can't do any math, so return the last operator
+		// This operator isn't yet known or supported then
 		else
 		{
-			return lastOp;
+			string errorString = "Error in simplifying the tree: Unknown operator: ";
+			errorString += node->getOperatorSymbol();
+			throw invalid_argument(errorString);
 		}
 		
 	}
