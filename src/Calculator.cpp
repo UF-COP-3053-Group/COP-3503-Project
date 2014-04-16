@@ -4,7 +4,7 @@
 //
 //  Created by Justin on 4/10/14.
 //
-//  Responibilities:
+//  Responsibilities:
 //  Justin:
 //     Everything in here, basically.
 //  Hard to test as it's dependent on a lot of other classes working
@@ -31,7 +31,7 @@ Calculator::~Calculator()
 	for (int i = 0; i < previousAnswers.size(); i++)
 	{
 		// Delete all of the nodes in the tree, including the root
-		// The root node will recursivly delete all child nodes
+		// The root node will recursively delete all child nodes
 		delete previousAnswers[i];
 	}
 }
@@ -80,7 +80,7 @@ Expression* Calculator::calculate(string input)
 
 
 /**
- * Parses the input by first combining like terms over additon and subtraction,
+ * Parses the input by first combining like terms over addition and subtraction,
  * then building a tree from the resulting (somewhat simplified) string.
  * Returns: a pointer to the root node of the tree
  */
@@ -124,7 +124,7 @@ void Calculator::simplifyTree(Expression* root)
 
 
 /**
- * Helper function to recursivly simplify the tree
+ * Helper function to recursively simplify the tree
  * Takes in a node and the last operation seen to pass on as the caller
  * Should be able to simplify the tree by replacing nodes in place, but I'm not sure how that can work with this tree
  * FIXME
@@ -213,13 +213,6 @@ string Calculator::toString(Expression* root)
 	// If the root is a not a number (is an operator), return the toString of left, right, and operator
 	if (!root->isNumber())
 	{
-		// Output in RPN
-		/*
-		string out;
-		out = toString(root->getLeftNode()) + " " + toString(root->getRightNode()) + " "  + root->getOperatorSymbol();
-		return out;
-		*/
-		
 		// Output in infix
 		string out;
 		out = toString(root->getLeftNode()) + " " + root->getOperatorSymbol() + " " + toString(root->getRightNode());
@@ -234,8 +227,39 @@ string Calculator::toString(Expression* root)
 	}
 	
 	
-	return "Not yet implemented";
+	throw runtime_error ("Error in calulator.toString: We should have never reached the end.");
 }
+
+
+/**
+ * Takes in the root of a tree and converts it to a string
+ * Returns a string that represents the simplified mathematical expression
+ */
+string Calculator::toRPNString(Expression* root)
+{
+	// Note: A post order traversal of this tree results in RPN output
+	// Which is currently what we're outputting here
+	
+	// If the root is a not a number (is an operator), return the toString of left, right, and operator
+	if (!root->isNumber())
+	{
+		// Output in RPN via post order traversal
+		string out;
+		out = toString(root->getLeftNode()) + " " + toString(root->getRightNode()) + " "  + root->getOperatorSymbol();
+		return out;
+	}
+	
+	// If the root is a number
+	if (root->isNumber())
+	{
+		// return the number as a string
+		return root->getNumber()->toString();
+	}
+	
+	
+	throw runtime_error ("Error in calulator.toRPNString: We should have never reached the end.");
+}
+
 
 /**
  * Takes in the root of a tree and converts it to a double
@@ -246,7 +270,7 @@ double Calculator::toDouble(Expression* root)
 	// First, get the operator from this node
 	char op = root->getOperatorSymbol();
 	
-	// Then, operate recursivly down the tree
+	// Then, operate recursively down the tree
 	if (op == '^')
 	{
 		return pow( toDouble(root->getLeftNode()), toDouble(root->getRightNode()) );
@@ -275,7 +299,7 @@ double Calculator::toDouble(Expression* root)
 
 
 /**
- * Adds an input and answer to the previousInput and previousAnswer vectors respectivly,
+ * Adds an input and answer to the previousInput and previousAnswer vectors respectively,
  * making sure both are valid so they can have a common size and index between them.
  */
 void Calculator::addAnswer(string input, Expression* answer)
@@ -291,7 +315,7 @@ void Calculator::addAnswer(string input, Expression* answer)
 
 
 /**
- * Retuns a string of the previous inputs and their respective answers
+ * Returns a string of the previous inputs and their respective answers
  * in the form "input = answer\n"
  */
 string Calculator::getPreviousAnswersAsString()

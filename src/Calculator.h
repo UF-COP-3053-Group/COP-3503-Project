@@ -35,6 +35,7 @@ public:
 	void simplifyTree(Expression* root);
 	Expression* simplifyNode(Expression* root, Expression* lastOp);
 	string toString(Expression* root);
+	string toRPNString(Expression* root);
 	double toDouble(Expression* root);
 	void addAnswer(string input, Expression* answer);
 	string getPreviousAnswersAsString();
