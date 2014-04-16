@@ -254,7 +254,8 @@ void altMenu()
 	{
 		cout << endl << "Type an expression, 'h' for (h)elp, 'a' to list previous (a)nswers, or 'q' to (q)uit." << endl << endl;
 		cout << "Input: ";
-		cin >> input;
+		// Get line, as cin >> input considers spaces as white space
+		getline (cin, input);
 		
 		// Check input
 		if (input == "q" || input == "Q")
@@ -272,13 +273,19 @@ void altMenu()
 			// Show answers
 			cout << calc.getPreviousAnswersAsString();
 		}
+		else if (input == "")
+		{
+			// Empty input
+			cout << "No really, enter something.";
+		}
 		else
 		{
 			// Doesn't match any other cases, so assume it's an expression.
 			// Put inside of a try catch in case it isn't readable by the calculator.
 			try
 			{
-				calc.calculate(input);
+				// Calculate an answer from the input and print it directly
+				cout << calc.toString( calc.calculate(input) );
 			}
 			catch (invalid_argument)
 			{

@@ -193,11 +193,9 @@ Expression* Calculator::simplifyNode(Expression* node, Expression* lastOp)
 		}
 		
 	}
+	
 	// If not an operator, it's a number, so return the number
-	else
-	{
-		return node;
-	}
+	return node;
 	
 	// If we reach here, something went wrong with the recursive calls
 	throw runtime_error("We should have never reached this point");
@@ -216,11 +214,16 @@ string Calculator::toString(Expression* root)
 	// If the root is a not a number (is an operator), return the toString of left, right, and operator
 	if (!root->isNumber())
 	{
-		// Print to a string stream for easy conversion
-		stringstream ss;
+		// Output in RPN
+		/*
 		string out;
-		ss << toString(root->getLeftNode()) << " " << toString(root->getRightNode()) << " "  << root->getOperatorSymbol();
-		ss >> out;
+		out = toString(root->getLeftNode()) + " " + toString(root->getRightNode()) + " "  + root->getOperatorSymbol();
+		return out;
+		*/
+		
+		// Output in infix
+		string out;
+		out = toString(root->getLeftNode()) + " " + root->getOperatorSymbol() + " " + toString(root->getRightNode());
 		return out;
 	}
 	
@@ -228,8 +231,7 @@ string Calculator::toString(Expression* root)
 	if (root->isNumber())
 	{
 		// return the number as a string
-		// TODO: uncomment this when all numbers have a toString();
-		//return root->getNumber()->toString();
+		return root->getNumber()->toString();
 	}
 	
 	
@@ -295,7 +297,8 @@ void Calculator::addAnswer(string input, Expression* answer)
  */
 string Calculator::getPreviousAnswersAsString()
 {
-	string out;
+	string out = "Previous Answers:\n";
+	string iString;
 	
 	// Make sure there are some answers to be given
 	// If the size isn't greater than 0, return an error string
@@ -306,6 +309,15 @@ string Calculator::getPreviousAnswersAsString()
 	
 	for (int i = 0; i<previousInputs.size(); i++)
 	{
+		// Number the outputs starting at size and counting down
+		int num = previousInputs.size() - i;
+		
+		// Convert num to a string
+		stringstream ss;
+		ss << num;
+		ss >> iString;
+		
+		out += iString + ".) ";
 		out += previousInputs[i];
 		out += " = ";
 		// Convert the Expression* tree to a string.
