@@ -32,12 +32,13 @@ public:
 	void deleteExpressionTree(Expression* node);
 	Expression* getLeftNode();
 	Expression* getRightNode();
+	Expression* left;
+	Expression* right;
 	
 private:
 	Operator op;
 	Number* num;
-	Expression* left;
-	Expression* right;
+
 };
 
 #endif

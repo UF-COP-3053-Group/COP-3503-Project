@@ -372,6 +372,9 @@ void displayHelp()
  */
 void tests()
 {
+	// Skip the tests right now //
+	//////////////////////////////
+	return;
 	cout << "Running tests:" << endl;
 
 	Calculator calc = Calculator();

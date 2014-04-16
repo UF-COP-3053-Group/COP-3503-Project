@@ -117,9 +117,12 @@ string Calculator::collectTerms(string& input)
  * Takes in of root node of an AST and simplifies the tree in place.
  * Args: <Expression*> root: the root of the tree
  */
-void Calculator::simplifyTree(Expression* root)
+void Calculator::simplifyTree(Expression*& root)
 {
-	root = simplifyNode(root, nullptr);
+	// A dummy is needed here to match the function call, as it requires a non-temporary variable
+	Expression* dummy = nullptr;
+	root = simplifyNode(root, dummy);
+	delete dummy;
 }
 
 
@@ -129,16 +132,16 @@ void Calculator::simplifyTree(Expression* root)
  * Should be able to simplify the tree by replacing nodes in place, but I'm not sure how that can work with this tree
  * FIXME
  */
-Expression* Calculator::simplifyNode(Expression* node, Expression* lastOp)
+Expression* Calculator::simplifyNode(Expression* node, Expression*& lastOp)
 {
 	// If this node is an operator (not a number)
 	if(!node->isNumber())
 	{
 		// Simplify left
-		simplifyNode(node->getLeftNode(), node);
+		node->left = simplifyNode(node->getLeftNode(), node);
 		
 		// Simplify right
-		simplifyNode(node->getRightNode(), node);
+		node->right = simplifyNode(node->getRightNode(), node);
 		
 		// Then operate in place
 		if(node->getOperatorSymbol() == '+')

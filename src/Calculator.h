@@ -32,8 +32,8 @@ public:
 	Expression* calculate(string input);
 	Expression* parseInput(string& input);
 	string collectTerms(string& input);
-	void simplifyTree(Expression* root);
-	Expression* simplifyNode(Expression* root, Expression* lastOp);
+	void simplifyTree(Expression*& root);
+	Expression* simplifyNode(Expression* root, Expression*& lastOp);
 	string toString(Expression* root);
 	string toRPNString(Expression* root);
 	double toDouble(Expression* root);
