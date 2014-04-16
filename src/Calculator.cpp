@@ -26,7 +26,7 @@ Calculator::Calculator()
  */
 Calculator::~Calculator()
 {
-	/* TODO: Stop this from segfaulting on linux but not via LLVM?
+	// TODO: Stop this from segfaulting on linux but not via LLVM?
 	// Delete all pointers to expressions in the previous answers vector to prevent memory leaks
 	for (int i = 0; i < previousAnswers.size(); i++)
 	{
@@ -34,7 +34,6 @@ Calculator::~Calculator()
 		// The root node will recursivly delete all child nodes
 		delete previousAnswers[i];
 	}
-	*/
 }
 
 

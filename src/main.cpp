@@ -241,6 +241,9 @@ void altMenu()
 	// Store the input in this string
 	string input;
 	
+	// Keep track of the mode we're working in. Simplification mode is the default
+	bool doubleMode = false;
+	
 	// Create a caluclator object
 	Calculator calc = Calculator();
 	
@@ -252,7 +255,9 @@ void altMenu()
 	// Start input loop
 	do
 	{
-		cout << endl << "Type an expression, 'h' for (h)elp, 'a' to list previous (a)nswers, or 'q' to (q)uit." << endl << endl;
+		cout << endl << "Type an expression, 'h' for (h)elp, 'a' to list previous (a)nswers,";
+		cout << " 'm' to switch between simplification and double mode, or 'q' to (q)uit." << endl << endl;
+		
 		cout << "Input: ";
 		// Get line, as cin >> input considers spaces as white space
 		getline (cin, input);
@@ -273,9 +278,25 @@ void altMenu()
 			// Show answers
 			cout << calc.getPreviousAnswersAsString();
 		}
+		else if (input == "m" || input == "M")
+		{
+			// Switch the mode
+			// If the double mode is on, turn it off
+			if (doubleMode)
+			{
+				cout << "Switching to simplification mode" << endl;
+				doubleMode = false;
+			}
+			// Else turn double mode on
+			else
+			{
+				cout << "Switching to double mode" << endl;
+				doubleMode = true;
+			}
+		}
 		else if (input == "")
 		{
-			// Empty input
+			// If the input is empty, warn the user
 			cout << "No really, enter something.";
 		}
 		else
@@ -284,8 +305,18 @@ void altMenu()
 			// Put inside of a try catch in case it isn't readable by the calculator.
 			try
 			{
+				cout << "Answer: ";
+				
 				// Calculate an answer from the input and print it directly
-				cout << calc.toString( calc.calculate(input) );
+				if(!doubleMode)
+				{
+					cout << calc.toString( calc.calculate(input) );
+				}
+				else
+				{
+					cout << calc.toDouble( calc.calculate(input) );
+				}
+				
 			}
 			catch (invalid_argument)
 			{
