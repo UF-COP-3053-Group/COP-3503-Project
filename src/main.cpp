@@ -21,7 +21,7 @@ using namespace std;
 void printMenu();
 void altMenu();
 void displayHelp();
-
+void rational_test();
 // For testing purposes only.
 // TODO: Replace with actual expression testing once the calulator is implemented
 void tests();
@@ -35,8 +35,16 @@ int main(int argc, const char * argv[])
 	{
 		tests();
 		return 0;
+
+
 	}
+
+	if(argc >  1 && !strcmp(argv[1] , "rational"))	
+	{
+		rational_test();
+		return 0;
 	
+	}
 	// Try the altMenu, as it's simpler for testing
 	altMenu();
 	
@@ -389,6 +397,30 @@ void tests()
 	cout << "TESTS DONE" << endl << endl;
 
 }
+
+void rational_test()
+{
+	Rational *r = new Rational(4,6);
+	Integer *i1 = new Integer(3);
+	Integer *i2 = new Integer(7);
+
+	Rational *r2 = new Rational(i1, i2);
+	
+	cout << r->getType() << endl;
+	cout << r2->getType() << endl;
+	delete r;
+	
+
+
+}
+
+
+
+
+
+
+
+
 
 
 

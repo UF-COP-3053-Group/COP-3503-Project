@@ -33,6 +33,7 @@ public:
     Rational(Rational* num, Number* den);
     Rational(Number* num, Rational* den);
     Rational(Rational* num, Rational* den);
+	Rational(Integer *i1 , Integer *i2);
 	Rational(int num, int den);
 	virtual ~Rational();
 	void simplify();

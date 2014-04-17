@@ -8,22 +8,37 @@
 
 #include "Rational.h"
 #include <stdexcept>
+#include <string>
 using namespace std;
 
 /**
  * Constructor
  */
+
 Rational::Rational(string decimalString){
     //create a rational from a decimal number
     type = "Rational";
-}
+    if(decimalString == "0" || decimalString == "0.0")	
+	throw "Division by zero is bad";
+    
 
+
+}
 Rational::Rational(Number* num, Number* den){
     type = "Rational";
     numerator = num;
     this->den = den;
     if (den->getValue() == 0)
         throw "Division by zero is bad";
+}
+
+Rational::Rational(Integer *i1 , Integer *i2)
+{
+	int z1 = i1->getValue();
+	int z2 = i2->getValue();
+	
+	Rational(z1,z2);	
+
 }
 
 Rational::Rational(int num , int den)
