@@ -9,6 +9,8 @@
 #include <iostream>
 #include <string.h>
 #include "Calculator.h"
+#include <stdlib.h>
+#include <fstream>
 
 // Test includes
 
@@ -22,6 +24,8 @@ void printMenu();
 void altMenu();
 void displayHelp();
 void rational_test();
+void gui();
+void parse();
 // For testing purposes only.
 // TODO: Replace with actual expression testing once the calulator is implemented
 void tests();
@@ -45,6 +49,19 @@ int main(int argc, const char * argv[])
 		return 0;
 	
 	}
+
+	if(argc > 1 && !strcmp(argv[1] , "gui"))
+	{
+		gui();
+	//	return 0;
+	}
+
+	if(argc > 1 && !strcmp(argv[1] , "parse"))
+	{	
+		parse();
+		return 0;	
+		
+	}
 	// Try the altMenu, as it's simpler for testing
 	altMenu();
 	
@@ -53,6 +70,29 @@ int main(int argc, const char * argv[])
 
 }
 
+void gui()
+{
+	//WARNING: violating all good coding principles here
+
+	system("./test2");
+
+}
+
+void parse()
+{
+	Calculator calc = Calculator(); 
+	ifstream myfile("Writefile.txt");
+	string input = "";
+	if(myfile.good())
+		getline(myfile, input);
+	ofstream outFile;
+	outFile.open("Outfile.txt");
+
+	outFile << calc.toString( calc.calculate(input) );	
+	outFile.close();
+	cout <<"done"<<endl;
+	return;
+}
 /**
  * Prints a menu to stdout
  * The code isn't super sexy or using lots of escape characters,
@@ -60,6 +100,8 @@ int main(int argc, const char * argv[])
  * None of the expressions are set in stone, let me know
  * if they need to be changed. - Kyle
  */
+
+
 void printMenu()
 {
 	string userInput;
@@ -409,7 +451,9 @@ void rational_test()
 	cout << r->getType() << endl;
 	cout << r2->getType() << endl;
 	delete r;
-	
+	delete i1;
+	delete i2;
+	delete r2;	
 
 
 }
