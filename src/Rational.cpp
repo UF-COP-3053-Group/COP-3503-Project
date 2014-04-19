@@ -288,8 +288,10 @@ Expression* Rational::add(Number *r)
 		addRat(dynamic_cast<Rational*>(r));	
 
 	}
-	else	
+	else
+	{
 		throw logic_error("No one has written this method yet");
+	}
 
 }
 
