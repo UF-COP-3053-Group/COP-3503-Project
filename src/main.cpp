@@ -53,7 +53,7 @@ int main(int argc, const char * argv[])
 	if(argc > 1 && !strcmp(argv[1] , "gui"))
 	{
 		gui();
-	//	return 0;
+		return 0;
 	}
 
 	if(argc > 1 && !strcmp(argv[1] , "parse"))
@@ -442,19 +442,47 @@ void tests()
 
 void rational_test()
 {
+	//Make some rationals 
 	Rational *r = new Rational(4,6);
 	Integer *i1 = new Integer(3);
 	Integer *i2 = new Integer(7);
 
 	Rational *r2 = new Rational(i1, i2);
+
+	Calculator calc = Calculator();
+	Expression *tree;
 	
+	tree = calc.calculate("3 / 2");
+	string out = calc.toString(tree);	
+	/* Test Type	
 	cout << r->getType() << endl;
 	cout << r2->getType() << endl;
+	*/
+
+	/* Test Simplify
+	cout << r->getNum()->getValue() << endl;
+	cout << r->getDen()->getValue() << endl; 
+	r->simplify();
+	cout << r->getNum()->getValue() << endl;
+	cout << r->getDen()->getValue() << endl; 
+	*/
+	/*
+	cout << r->getNum()->toString() << endl;
+	cout << r->getDen()->toString()  << endl;
+	r->add(i1);
+	cout << r->getNum()->toString() << endl;	
+	cout << r->getDen()->toString() << endl;
+	r->simplify();
+	cout << r->getNum()->toString() << endl;	
+	cout << r->getDen()->toString() << endl;
+	*/	
+		
+		
+
 	delete r;
 	delete i1;
 	delete i2;
-	delete r2;	
-
+	delete r2;
 
 }
 

@@ -36,11 +36,12 @@ public:
 	Rational(Integer *i1 , Integer *i2);
 	Rational(int num, int den);
 	virtual ~Rational();
-	void simplify();
+	Expression* simplify();
 	int gcd(int c , int d);
 	Number* getNum();
 	Number* getDen();
-
+	
+	Expression* addRat(Rational *r);
 	Expression* add(Number *r);
 	Expression* subtract(Number *r);
 	Expression* multiply(Number *r);
@@ -48,11 +49,12 @@ public:
 
 
 	//overloads
+	/*
 	Expression* add(Rational *r);
 	Expression* subtract(Rational *r);
 	Expression* multiply(Rational *r);
 	Expression* divide(Rational *r);
-	
+	*/
 	string toString();
 
 	
