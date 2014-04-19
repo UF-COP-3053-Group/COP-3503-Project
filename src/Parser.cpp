@@ -9,14 +9,14 @@
 #include "Parser.h"
 
 //////////////////
-// * The idea behind this parser is to create an AST that is ordered and contains all of our expressions
+// * The idea behind this parser is to create an abstract syntax tree that is ordered and contains all of our expressions
 // This should then be able to be simplified by modifying branches of the tree in place
-// It is also easy to traverse and to get a decimal answer from.
-// The implementation itself is complicated however, and uses a verson of the shunting-yard algorithm
+// This tree is also easy to traverse and to get a decimal answer from.
+// The implementation itself is complicated, however, and uses a verson of the shunting-yard algorithm
 // to create the AST first. Then, our own methods take over in a sad attempt to implement
 // the vast rules of mathematics into a small introductory C++ program
 //
-// P.S. In place tree modification with abstract grammar rules is powerful, but wow is it hard.
+// P.S. In place tree modification with abstract grammar rules is powerful, but wow is it tough to implement properly.
 //////////////////
 
 /****************
@@ -48,8 +48,6 @@ Expression* Parser::createAST(vector<Token> tokens)
 	stack<Expression*> expressionStack;
 	
 	// Loop through the whole vector of tokens
-	// For simplicity, we use a GOTO label, since breaking or refactoring nested loops isn't so simple in C++
-	Label_MainLoop:
 	for (int i = 0; i < tokens.size(); i++)
 	{
 		// Assign the current token
@@ -58,12 +56,15 @@ Expression* Parser::createAST(vector<Token> tokens)
 		// If the token is a left parenthesis
 		if ( token.isLeftParen() )
 		{
-			// Push it onto the stack as an operator
-			operatorStack.push( Operator('(', 5, false) );
+			// Push it onto the stack as an operator with no precedence so that it's never operated upon
+			operatorStack.push( Operator('(', 0, false) );
 		}
 		// Else if it's a right parenthesis
 		else if ( token.isRightParen() )
 		{
+			// Throw an exception if something goes wrong (which is the default until we match the parens)
+			bool exceptionFlag = true;
+			
 			// Loop backwards through the stack
 			Operator popOp;
 			while ( !operatorStack.empty() )
@@ -76,7 +77,9 @@ Expression* Parser::createAST(vector<Token> tokens)
 				if( popOp.getSymbol() == '(' )
 				{
 					// Continue the outer for loop if it is
-					goto Label_MainLoop;
+					// Set remember to not throw an exception when exiting this loop
+					exceptionFlag = false;
+					break;
 				}
 				// Otherwise, add a node from the inner expression and loop again
 				else
@@ -85,8 +88,11 @@ Expression* Parser::createAST(vector<Token> tokens)
 				}
 			}
 			
-			// If we get here, the stack has emptied before we found the matching paren, which is bad.
-			throw runtime_error("Missing a \')\' in the expression");
+			// If we get here and the flag is still set, the stack has emptied before we found the matching paren, which is bad.
+			if (exceptionFlag)
+			{
+				throw runtime_error("Unmatched parenthesis in the expression");
+			}
 		}
 		// Default case
 		else
@@ -101,7 +107,7 @@ Expression* Parser::createAST(vector<Token> tokens)
 					// Define o2 as the top of the stack
 					o2 = operatorStack.top();
 					
-					// If o1 is right assoc and has the same precedence as the last op, or o1 has lower precedence
+					// If o1 is not right assoc and has the same precedence as the last op, or o1 has lower precedence
 					if ((!o1.isRightAssoc() && o1.comparePrecedence(o2) == 0) || o1.comparePrecedence(o2) < 0)
 					{
 						operatorStack.pop();
@@ -159,7 +165,7 @@ vector<Token> Parser::tokenize(string input)
     char first;
     bool negate;
     while (!fragments.empty()) {
-        if (fragments.at(0).find_last_not_of("0123456789./-+* ^epilog_sqrt:") != string::npos) {
+        if (fragments.at(0).find_last_not_of("0123456789./-+* ^()epilog_sqrt:") != string::npos) {
             throw invalid_argument("Invalid input detected");
         }
         negate = false;
@@ -269,4 +275,65 @@ Number* Parser::createNumber(string number, char first){
 
 
     return result;
+}
+
+
+
+////////////////////////
+// ALT TOKENIZER WORK //
+////////////////////////
+
+
+/**
+ * Creates a vector of appropriate tokens for use by the parser by reading
+ * the input, converting it to numbers and operators, and storing each as a token
+ *
+ * Args: <string> input: A space delimited calculation, e.g. "2 + 5 * 3"
+ * Returns: A vector of Tokens
+ */
+vector<Token> Parser::tokenize2(string input)
+{
+	// Create an empty vector to store the tokens
+	vector<Token> tokens;
+	
+	// Split the input over spaces into a vector of strings
+	vector<string> rawTokens = splitString(input, ' ');
+	
+	
+	
+	
+	
+	// Return the tokens
+	return tokens;
+}
+
+
+/**
+ * Splits a string over the specified delimiter, returning a vector of the split strings
+ */
+vector<string> Parser::splitString(string input, char delimiter)
+{
+	// Create a string stream from the input
+	stringstream ss = stringstream(input);
+	
+	// Create a temporary string to store elements
+	string item;
+	
+	// Create a new vector to store the output
+	vector<string> output;
+	
+	// Loop until there isn't anything left to get from the string stream
+	// This reads ss into item, stopping at each instance of the delimiter
+	while ( getline(ss, item, delimiter) )
+	{
+		// Make sure this isn't empty
+		if (!item.empty())
+		{
+			// Push this item into the list of elements
+			output.push_back(item);
+		}
+	}
+	
+	// Return the vector of split strings
+	return output;
 }

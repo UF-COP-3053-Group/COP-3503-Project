@@ -36,6 +36,9 @@ public:
 	Expression* createAST(vector<Token> tokens);
 	vector<Token> tokenize(string input);
 	
+	vector<Token> tokenize2(string input);
+	vector<string> splitString(string input, char delimiter);
+	
 private:
 	Number* createNumber(string number, char first);
 };

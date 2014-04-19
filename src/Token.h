@@ -10,6 +10,7 @@
 #define __COP_3503_Project__Token__
 
 #include <iostream>
+#include <vector>
 #include "Number.h"
 #include "Operator.h"
 
@@ -34,4 +35,4 @@ private:
 	bool is_operator;
 };
 
-#endif /* defined(__COP_3503_Project__Token__) */
+#endif /* defined() */
