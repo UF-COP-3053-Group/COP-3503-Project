@@ -93,6 +93,8 @@ void parse()
 	cout <<"done"<<endl;
 	return;
 }
+
+
 /**
  * Prints a menu to stdout
  * The code isn't super sexy or using lots of escape characters,
@@ -306,7 +308,7 @@ void altMenu()
 	do
 	{
 		cout << endl << "Type an expression, 'h' for (h)elp, 'a' to list previous (a)nswers,";
-		cout << " 'm' to switch between simplification and double mode, or 'q' to (q)uit." << endl << endl;
+		cout << " 'm' to switch between simplification and double (m)ode, or 'q' to (q)uit." << endl << endl;
 		
 		cout << "Input: ";
 		// Get line, as cin >> input considers spaces as white space
