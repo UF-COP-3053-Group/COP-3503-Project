@@ -30,6 +30,8 @@ Rational::Rational(Number* num, Number* den){
     this->den = den;
     if (den->getValue() == 0)
         throw "Division by zero is bad";
+	
+	this->simplify();
 }
 
 Rational::Rational(Integer *i1 , Integer *i2)
@@ -40,6 +42,7 @@ Rational::Rational(Integer *i1 , Integer *i2)
 	if(den->getValue() == 0)
 		throw invalid_argument("Can't divide by 0");		
 
+	this->simplify();
 }
 
 Rational::Rational(int num , int den)
@@ -50,6 +53,7 @@ Rational::Rational(int num , int den)
     	if (this->den->getValue() == 0)
         	throw  invalid_argument("Can't divide by 0");
 
+	this->simplify();
 }
 //TODO
 Rational::Rational(Rational* num, Number* den){

@@ -103,6 +103,7 @@ Expression* Integer::divide(Number* num)
 
 }
 
+
 string Integer::toString()
 {
 	ostringstream rtnStream;
