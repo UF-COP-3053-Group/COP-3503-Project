@@ -314,7 +314,8 @@ vector<Token> Parser::tokenize2(string input)
 vector<string> Parser::splitString(string input, char delimiter)
 {
 	// Create a string stream from the input
-	stringstream ss = stringstream(input);
+	stringstream ss;
+	ss << input;
 	
 	// Create a temporary string to store elements
 	string item;

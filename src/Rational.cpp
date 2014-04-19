@@ -285,7 +285,7 @@ Expression* Rational::add(Number *r)
 
 	else if(r->getType() == "Rational")
 	{
-		addRat(dynamic_cast<Rational*>(r));	
+		this->addRat(dynamic_cast<Rational*>(r));
 
 	}
 	else
