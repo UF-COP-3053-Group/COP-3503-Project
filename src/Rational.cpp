@@ -137,7 +137,7 @@ int Rational::gcd(int c , int d)
 	}
 	
 	// We should never get here
-//	throw runtime_error("Error in calculating the gcd. We should never have reached this point.");
+	throw runtime_error("Error in calculating the gcd. We should never have reached this point.");
 
 }
 
@@ -151,102 +151,6 @@ string Rational::toString()
 	return str;
 
 }
-/*
-Expression* Rational::multiply(Rational *r)
-{
-	//only handle simple case : int / int for now	
-	if(this->numerator->getType() != "Integer"  || this->den->getType() != "Integer")
-	{
-		
-		//TODO
-		throw logic_error("No one has written this part of the method yet");;
-
-	}
-
-
-	else
-	{
-		int ansNum = numerator->getValue() + r->getNum()->getValue();
-		int ansDen = den->getValue() + r->getDen()->getValue();
-
-
-		return new Expression(new Rational(ansNum , ansDen));
-	}
-		
-
-}
-
-Expression* Rational::divide(Rational *r)
-{
-	//only handle simple case : int / int for now	
-	if(this->numerator->getType() != "Integer"  || this->den->getType() != "Integer")
-	{
-		
-		//TODO
-		throw logic_error("No one has written this part of the method yet");;
-
-	}
-
-	else
-	{
-		int ansNum = numerator->getValue() + r->getDen()->getValue();
-		int ansDen = numerator->getValue() + r->getNum()->getValue();	
-		
-		return new Expression(new Rational(ansNum , ansDen));
-
-	}
-	
-
-}
-
-Expression* Rational::add(Rational *r)
-{
-	//only handle simple case : int / int for now	
-	if(this->numerator->getType() != "Integer"  || this->den->getType() != "Integer")
-	{
-		
-		//TODO
-		throw logic_error("No one has written this part of the method yet");
-
-	}
-
-	else
-	{
-		int ansNum =( numerator->getValue() * r->getDen()->getValue() ) + ( den->getValue() * r->getNum()->getValue() );
-
-		int ansDen = den->getValue() * r->getDen()->getValue();
-
-
-		return new Expression(new Rational(ansNum , ansDen));
-
-
-	}
-
-}
-
-Expression* Rational::subtract(Rational *r)
-{
-	//only handle simple case : int / int for now	
-	if(this->numerator->getType() != "Integer"  || this->den->getType() != "Integer")
-	{
-		
-		//TODO
-		throw logic_error("No one has written this part of the method yet");;
-
-	}
-
-
-	else
-	{
-		int ansNum = (numerator->getValue() * r->getDen()->getValue()) - (den->getValue() * r->getNum()->getValue());
-		int ansDen = den->getValue() * r->getDen()->getValue();
-		
-		return new Expression(new Rational(ansNum , ansDen));
-
-	}
-
-}
-*/
 Number* Rational::getNum(){
     return this->numerator;
 }
@@ -264,10 +168,69 @@ Expression* Rational::addRat(Rational *r)
 	this->simplify();
 	if(this->den->getValue() == 1.0)
 		return new Expression(this->numerator);		
+
+	if((int) this->numerator->getValue() == 0)
+		return new Expression(new Integer(0));
+
+
 	return new Expression(this);
+
+	
 
 }
 
+Expression* Rational::subtRat(Rational *r)
+{
+	this->numerator = new Integer(this->numerator->getValue() * r->getDen()->getValue() - this->den->getValue()*r->getNum()->getValue());
+	this->den = new Integer(this->den->getValue() * r->getDen()->getValue());
+	
+	this->simplify();
+	if(this->den->getValue() == 1.0)
+		return new Expression(this->numerator);
+		
+	if((int) this->numerator->getValue() == 0)
+		return new Expression(new Integer(0));
+
+	return new Expression(this) ;
+
+}
+
+
+Expression* Rational::multRat(Rational* r)
+{
+	this->numerator = new Integer(this->numerator->getValue() * r->getNum()->getValue());
+	this->den = new Integer(this->den->getValue() * r->getDen()->getValue());
+	
+	this->simplify();
+	if(this->den->getValue() == 1.0)
+		return new Expression(this->numerator);
+		
+	if((int) this->numerator->getValue() == 0)
+		return new Expression(new Integer(0));
+
+	return new Expression(this) ;
+
+
+}
+
+Expression* Rational::divRat(Rational* r)
+{
+	this->numerator = new Integer(this->numerator->getValue() * r->getDen()->getValue());
+	this->den = new Integer(this->den->getValue() * r->getNum()->getValue());
+
+	this->simplify();
+	if(this->den->getValue() == 1.0)
+		return new Expression(this->numerator);
+		
+	if((int) this->numerator->getValue() == 0)
+		return new Expression(new Integer(0));
+
+	return new Expression(this) ;
+
+
+
+	
+}
 
 Expression* Rational::add(Number *r)
 {
@@ -277,21 +240,26 @@ Expression* Rational::add(Number *r)
 		this->numerator = new Integer(this->numerator->getValue() + this->den->getValue() * r->getValue());
 
 		this->simplify();
-		if(this->getDen()->getValue() == 1.0)
+		if(this->den->getValue() == 1.0)
 			return new Expression(this->numerator);
+		
+		if((int) this->numerator->getValue() == 0)
+			return new Expression(new Integer(0));
+
 		return new Expression(this) ;
 	
 	}
 
 	else if(r->getType() == "Rational")
 	{
-		this->addRat(dynamic_cast<Rational*>(r));
+		if(dynamic_cast<Rational*>(r) != nullptr)
+			return addRat(dynamic_cast<Rational*>(r));
 
 	}
-	else
-	{
-		throw logic_error("No one has written this method yet");
-	}
+		
+
+	throw logic_error("No oijne has written this method yet");
+
 
 }
 
@@ -302,28 +270,81 @@ Expression* Rational::subtract(Number *r)
 		this->numerator = new Integer(this->numerator->getValue() - this->den->getValue() * r->getValue());
 
 		this->simplify()->getNumber();
-		if((int)this->getDen()->getValue()  == 1.0)
+		if((int)this->den->getValue()  == 1)
 			return new Expression(this->numerator);
+		if((int) this->numerator->getValue() == 0)
+			return new Expression(new Integer(0));
+
+
 		return new Expression(this);
-	//	return new Expression(Operator('/' , 2, 0) , new Expression(this->numerator) , new  Expression(this->den) );	
 
 	}
 	
+	else if(r->getType() == "Rational")
+	{
+		if(dynamic_cast<Rational*>(r) != nullptr)
+			return subtRat(dynamic_cast<Rational*>(r));
 
+	}
+
+	
 	throw logic_error("No one has written this method yet");
 
 }
 
 Expression* Rational::multiply(Number *r)
 {
-	//TODO
+	if(r->getType() == "Integer")
+	{
+		this->numerator = new Integer(this->numerator->getValue() * r->getValue());
+		this->simplify()->getNumber();
+		if((int)this->den->getValue()  == 1)
+			return new Expression(this->numerator);
+		if((int) this->numerator->getValue() == 0)
+			return new Expression(new Integer(0));
+
+
+		return new Expression(this);
+
+
+	}	
+
+	else if (r->getType() == "Rational")
+	{
+		if(dynamic_cast<Rational*>(r) != nullptr)
+			return multRat(dynamic_cast<Rational*>(r));
+
+	}
+
 	throw logic_error("No one has written this method yet");
 
 }
 
 Expression* Rational::divide(Number *r)
 {
-	//TODO
+	if(r->getType() == "Integer")
+	{
+		this->den= new Integer(this->den->getValue() * r->getValue());
+		this->simplify()->getNumber();
+		if((int)this->den->getValue()  == 1)
+			return new Expression(this->numerator);
+		if((int) this->numerator->getValue() == 0)
+			return new Expression(new Integer(0));
+
+
+		return new Expression(this);
+
+	}
+	
+	
+	else if (r->getType() == "Rational")
+	{
+		if(dynamic_cast<Rational*>(r) != nullptr)
+			return divRat(dynamic_cast<Rational*>(r));
+
+	}
+
+
 	throw logic_error("No one has written this method yet");
 
 }

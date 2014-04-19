@@ -42,19 +42,17 @@ public:
 	Number* getDen();
 	
 	Expression* addRat(Rational *r);
+	Expression* subtRat(Rational *r);	
+	Expression* multRat(Rational *r);
+	Expression* divRat(Rational *r);
+
+
 	Expression* add(Number *r);
 	Expression* subtract(Number *r);
 	Expression* multiply(Number *r);
 	Expression* divide(Number *r);
 
 
-	//overloads
-	/*
-	Expression* add(Rational *r);
-	Expression* subtract(Rational *r);
-	Expression* multiply(Rational *r);
-	Expression* divide(Rational *r);
-	*/
 	string toString();
 
 	
