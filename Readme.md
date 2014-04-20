@@ -1,6 +1,6 @@
 The basic breakdown of responsibilities:
 
-Justin : Parser, Calculator class , Constant 
+Justin : Parser, Calculator, Constant, and Main
 
 Ian : Exponent (which was later made a member function of all the Number subclasses) and Tokenizer , Rational class constructors
 
