@@ -110,14 +110,11 @@ Expression* Constant::add(Number *num)
 /**
  * Adds two constants of the same kind, returning an expression "2 * constant"
  */
+//TODO: Replace this by collecting terms during tokenization.
 Expression* Constant::add(Constant *num)
 {
 	// When two of the same constants are added, they return 2 * the constant
-	Expression* arg2 = new Expression(num);
-	Expression* arg1 = new Expression(new Integer(2));
-	Expression* out = new Expression('*', arg1, arg2);
-	
-	return out;
+	return new Expression('*', new Expression(new Integer(2)), new Expression(num));
 	
 }
 
