@@ -25,6 +25,7 @@ class Expression
 public:
 	Expression(Number* num);
 	Expression(Operator op, Expression* leftNode, Expression* rightNode);
+	Expression(char operatorSymbol, Expression* leftNode, Expression* rightNode);
 	~Expression();
 	Number* getNumber();
 	char getOperatorSymbol();

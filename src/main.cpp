@@ -374,6 +374,16 @@ void altMenu()
 			{
 				cout << "That isn't a supported expression or option!" << endl;
 			}
+			// Catch parts that we haven't written
+			catch (logic_error e)
+			{
+				cout << e.what();
+			}
+			// Cleanly exit when something unexpected happens
+			catch (...)
+			{
+				cout << "Some unexpected exception happened. Exiting...";
+			}
 		}
 		
 	} while (input != "q" || input != "Q");

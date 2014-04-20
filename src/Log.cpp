@@ -60,8 +60,9 @@ Expression* Log::divide(Number *num)
 }
 
 
-
-
-
+string Log::toString()
+{
+	throw logic_error("No one has built this method yet");
+}
 
 

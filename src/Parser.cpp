@@ -226,10 +226,10 @@ Number* Parser::createNumber(string number, char first){
         negate = false;
 
     //This is probably lazy/ bad, but it basically makes sure that theres no junk before the actual operation.
-    /*if (first != 's' && number.find("rt:") != string::npos){
+    if (first != 's' && number.find("rt:") != string::npos){
         string base (number.find(':')+1, -1);
         string radicand (0, number.find('r')-1);
-        result = new Radical(new Integer(1),createNumber(base, base.front()), createNumber(radicand, radicand.front()));
+        result = new Radical(createNumber(base, base.front()), createNumber(radicand, radicand.front()));
     }
     else
      */
@@ -245,7 +245,7 @@ Number* Parser::createNumber(string number, char first){
     else if (first == 's' && number.find("sqrt:") != string::npos){
         //create a square root
         string base (number.find(':')+1, -1);
-        result = new Radical(new Integer(1), createNumber(base, base.front()), new Integer(2));
+        result = new Radical(createNumber(base, base.front()), new Integer(2));
     }
     else if (first == 'l' && number.find("log_") != string::npos){
         //create a log
@@ -254,8 +254,12 @@ Number* Parser::createNumber(string number, char first){
         result = new Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
     }*/
     //all numbers are created here
+<<<<<<< HEAD
     //if it is negative, ignore first and check the letter. If not, proceed as normal
     else if ((negate && isdigit(number.at(0))) || (isdigit(first) && number.find_last_not_of("-0123456789./") == string::npos)){
+=======
+    else if (isdigit(first) && number.find_last_not_of("0123456789./") == string::npos){
+>>>>>>> FETCH_HEAD
         //find a '/' to create a fraction
         if(number.find_first_of('/') != string::npos){
             //check to make sure there is only one '/' in the fraction

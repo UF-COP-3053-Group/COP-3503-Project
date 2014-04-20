@@ -25,6 +25,7 @@ public:
 Log();
     Log(Number* base, Number* argument);
 double getValue();
+	string toString();
 
 
 Expression* add(Number* num);

@@ -44,7 +44,7 @@ Expression* Integer::add(Number* num)
 	// same goes for other implemented methods.
 	if(num->getType() != "Integer")
 		//TODO
-		throw logic_error("No one has written this part of the method yet");;
+		throw logic_error("No one has written this part of the method yet");
 
 
 	int answer = this->getValue() + num->getValue(); //works
@@ -65,7 +65,7 @@ Expression* Integer::subtract(Number* num)
 {
 	if(num->getType() != "Integer")
 		//TODO
-		throw logic_error("No one has written this part of the method yet");;
+		throw logic_error("No one has written this part of the method yet");
 
 
 
@@ -86,7 +86,7 @@ Expression* Integer::multiply(Number* num)
 {
 	if(num->getType() != "Integer")
 		//TODO
-		throw logic_error("No one has written this part of the method yet");;
+		throw logic_error("No one has written this part of the method yet");
 
 
 

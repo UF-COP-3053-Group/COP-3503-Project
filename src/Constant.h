@@ -41,11 +41,15 @@ public:
 	double getValue();
 	string getName();
 
-
-	Expression *add(Number* num);
-	Expression *subtract(Number* num);
-	Expression *multiply(Number* num);
-	Expression *divide(Number* num);
+	Expression* add(Constant* num);
+	Expression* add(Number* num);
+	
+	Expression* subtract(Number* num);
+	Expression* subtract(Constant* num);
+	
+	Expression* multiply(Number* num);
+	
+	Expression* divide(Number* num);
 
 	string toString();
 

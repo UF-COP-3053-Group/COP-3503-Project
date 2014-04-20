@@ -37,6 +37,17 @@ Expression::Expression(Operator op, Expression* leftNode, Expression* rightNode)
 
 
 /**
+ * Alternate Constructor for operator nodes that attempts to create an operator from the passed symbol
+ */
+Expression::Expression(char operatorSymbol, Expression* leftNode, Expression* rightNode)
+{
+	this->left = leftNode;
+	this->right = rightNode;
+	this->num = nullptr;
+	this->op = Operator(operatorSymbol);
+}
+
+/**
  * Destructor
  */
 Expression::~Expression()
