@@ -45,6 +45,7 @@ public:
 	Expression* add(Number* num);
 	
 	Expression* subtract(Number* num);
+	Expression* subtract(Constant* num);
 	
 	Expression* multiply(Number* num);
 	

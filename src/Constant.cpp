@@ -91,7 +91,7 @@ string Constant::getName()
 
 Expression* Constant::add(Number *num)
 {
-	// Use a dynamic cast to check if the passed number is a consatnt
+	// Use a dynamic cast to check if the passed number is a constant
 	Constant* constant = dynamic_cast<Constant*>(num);
 	// If it is, use the add constant method
 	if (constant != nullptr && this->getName() == constant->getName())
@@ -113,28 +113,49 @@ Expression* Constant::add(Number *num)
 Expression* Constant::add(Constant *num)
 {
 	// When two of the same constants are added, they return 2 * the constant
-	return new Expression('*', new Expression(new Integer(2)), new Expression(num));
+	Expression* arg2 = new Expression(num);
+	Expression* arg1 = new Expression(new Integer(2));
+	Expression* out = new Expression('*', arg1, arg2);
+	
+	return out;
 	
 }
 
 Expression* Constant::subtract(Number *num)
 {
-	//TODO
-	throw logic_error("No one has written this part of the method yet");;
+	// Use a dynamic cast to check if the passed number is a constant
+	Constant* constant = dynamic_cast<Constant*>(num);
+	// If it is, use the add constant method
+	if (constant != nullptr && this->getName() == constant->getName())
+	{
+		return this->subtract(constant);
+	}
+	// Otherwise, we return an expression concatinating these numbers with the add operator
+	else
+	{
+		return new Expression('-', new Expression(this), new Expression(num));
+	}
 
+}
+
+
+Expression* Constant::subtract(Constant* num)
+{
+	// When two of the same constants are subtracted, they cancel each other out, so there is no expression
+	return nullptr;
 }
 
 Expression* Constant::multiply(Number *num)
 {
 	//TODO
-	throw logic_error("No one has written this part of the method yet");;
+	throw logic_error("No one has written this part of the method yet");
 
 }
 
 Expression* Constant::divide(Number *num)
 {
 	//TODO
-	throw logic_error("No one has written this part of the method yet");;
+	throw logic_error("No one has written this part of the method yet");
 
 }
 
