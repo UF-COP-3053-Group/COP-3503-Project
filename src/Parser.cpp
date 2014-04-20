@@ -199,10 +199,9 @@ vector<Token> Parser::tokenize(string input)
             tokens.push_back(result);
         }
         //negation operator, not subtraction
-        else if (first=='-' && fragments.at(0).length() <= 2){
-            negate = true;
+        else if (first=='-' && fragments.at(0).length() >= 2){
 			// Erase first character of the string
-            fragments.at(0).erase(0);
+            fragments.at(0).erase(0,1);
 			tokens.push_back( Token(createNumber(fragments.at(0), first)) );
         }
         else
@@ -219,13 +218,22 @@ vector<Token> Parser::tokenize(string input)
 
 Number* Parser::createNumber(string number, char first){
     Number* result;
+    bool negate;
+    
+    if (first == '-')
+        negate = true;
+    else
+        negate = false;
+
     //This is probably lazy/ bad, but it basically makes sure that theres no junk before the actual operation.
     /*if (first != 's' && number.find("rt:") != string::npos){
         string base (number.find(':')+1, -1);
         string radicand (0, number.find('r')-1);
         result = new Radical(new Integer(1),createNumber(base, base.front()), createNumber(radicand, radicand.front()));
     }
-    else if (first=='p' && number.at(1) =='i' && number.length() == 2){
+    else
+     */
+    if (first=='p' && number.at(1) =='i' && number.length() == 2){
         //create pi
         result = new Constant("pi");
     }
@@ -233,6 +241,7 @@ Number* Parser::createNumber(string number, char first){
         //create e
         result = new Constant("e");
     }
+    /*
     else if (first == 's' && number.find("sqrt:") != string::npos){
         //create a square root
         string base (number.find(':')+1, -1);
@@ -243,9 +252,10 @@ Number* Parser::createNumber(string number, char first){
         string base (number.find('_')+1, number.find(':'));
         string arg (number.find(':')+1, -1);
         result = new Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
-    }
+    }*/
     //all numbers are created here
-    else*/ if (isdigit(first) && number.find_last_not_of("0123456789./") == string::npos){
+    //if it is negative, ignore first and check the letter. If not, proceed as normal
+    else if ((negate && isdigit(number.at(0))) || (isdigit(first) && number.find_last_not_of("-0123456789./") == string::npos)){
         //find a '/' to create a fraction
         if(number.find_first_of('/') != string::npos){
             //check to make sure there is only one '/' in the fraction
@@ -269,7 +279,13 @@ Number* Parser::createNumber(string number, char first){
 		else
 		{
         //finally, create an integer
-        result = new Integer(atoi(number.c_str()));
+            if (negate) {
+                result = new Integer(-atoi(number.c_str()));
+            }
+            else {
+                result = new Integer(atoi(number.c_str()));
+            }
+        
 		}
     }
 
