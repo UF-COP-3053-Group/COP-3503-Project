@@ -86,9 +86,6 @@ Expression* Calculator::calculate(string input)
  */
 Expression* Calculator::parseInput(string& input)
 {
-	// First, replace all instances of the 'ans' keyword with the last answer
-	input = replaceAnswer(input);
-	
 	// Before building the tree, lets try to collect any simple like terms
 	input = collectTerms(input);
 	
@@ -100,33 +97,6 @@ Expression* Calculator::parseInput(string& input)
 	return root;
 }
 
-
-/**
- *
- */
-string Calculator::replaceAnswer(string input)
-{
-	// Find the position of an 'ans' keyword
-	size_t position = input.find("ans");
-	// Loop until there aren't any more keywords to replace
-	while (position != string::npos)
-	{
-		// Get the last answer
-		string lastAns = this->toString( this->getLastAnswer() );
-		
-		string replaceText = "( ";
-		replaceText += lastAns;
-		replaceText += " )";
-		
-		// Replace "ans" with the replaceText
-		input.replace(position, string("ans").length(), replaceText);
-		
-		// Update the position
-		position = input.find("ans");
-	}
-	
-	return input;
-}
 
 /**
  * A preprocessing helper function that will attempt to collect like terms from the passed

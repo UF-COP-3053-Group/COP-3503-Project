@@ -33,18 +33,21 @@ void tests();
 
 int main(int argc, const char * argv[])
 {
-	// Check the args to see if we want to run any tests or non-standard behaviors
+	tests();
 	// If the third arg is test, run the tests. Note that strcmp == 0 if true.
 	if ( argc > 1 && !strcmp(argv[1], "test") )
 	{
 		tests();
 		return 0;
+
+
 	}
 
 	if(argc >  1 && !strcmp(argv[1] , "rational"))	
 	{
 		rational_test();
 		return 0;
+	
 	}
 
 	if(argc > 1 && !strcmp(argv[1] , "gui"))
@@ -56,11 +59,10 @@ int main(int argc, const char * argv[])
 	if(argc > 1 && !strcmp(argv[1] , "parse"))
 	{	
 		parse();
-		return 0;
+		return 0;	
+		
 	}
-	
-	
-	// Use the altMenu, as it's simpler and seems to work better
+	// Try the altMenu, as it's simpler for testing
 	altMenu();
 	
 	// From here, hand control off to the menu.
@@ -284,7 +286,7 @@ void printMenu()
 
 
 /**
- * Provides an alternate, simplified menu structure. -Justin
+ * Provides an alternate, simplified menu structure.
  */
 void altMenu()
 {
