@@ -19,6 +19,11 @@ class Operator
 public:
 	Operator();
 	Operator(char symbol, int precedence, bool rightAssoc);
+	Operator(char symbol);
+	
+	int findPrecedence(char symbol);
+	bool findRightAssoc(char symbol);
+	
 	bool isRightAssoc();
 	char getSymbol();
 	int getPrecedence();

@@ -150,7 +150,7 @@ Expression* Calculator::simplifyNode(Expression* node)
 				return node->getLeftNode()->getNumber()->add( node->getRightNode()->getNumber());
 			}
 			
-			/* TODO: Is this needed?
+			/* TODO: Is this needed? Probably redundant.
 			// Try it with the right side
 			else if(node->getRightNode()->isNumber())
 			{
@@ -210,7 +210,7 @@ Expression* Calculator::simplifyNode(Expression* node)
  */
 string Calculator::toString(Expression* root)
 {
-	// Note: A post order traversal of this tree results in RPN output
+	// Note: An in order traversal of this tree results in standard (infix) output
 	// Which is currently what we're outputting here
 	
 	// If the root is a not a number (is an operator), return the toString of left, right, and operator
@@ -230,7 +230,7 @@ string Calculator::toString(Expression* root)
 	}
 	
 	
-	throw runtime_error ("Error in calulator.toString: We should have never reached the end.");
+	throw runtime_error("Error in calulator.toString: We should have never reached the end of this recursive function.");
 }
 
 
@@ -260,7 +260,7 @@ string Calculator::toRPNString(Expression* root)
 	}
 	
 	
-	throw runtime_error ("Error in calulator.toRPNString: We should have never reached the end.");
+	throw runtime_error("Error in calulator.toRPNString: We should have never reached the end of this recursive function.");
 }
 
 

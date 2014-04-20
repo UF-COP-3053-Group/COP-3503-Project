@@ -68,10 +68,10 @@ double Constant::getValue()
 	 Each constant first trys to return the value as defined by the platform's math.h, 
 	 and then reverts to a hard-coded 32-bit double definition if not found.
 	 */
-	if (name == "pi")
+	if (this->name == "pi")
 		return M_PI;
 
-	else if (name == "e")
+	else if (this->name == "e")
 		return M_E;
 
 	// Should never be encountered, as we check if the constant is known during construction
@@ -88,11 +88,33 @@ string Constant::getName()
 	return this->name;
 }
 
+
 Expression* Constant::add(Number *num)
 {
-	//TODO
-	throw logic_error("No one has written this part of the method yet");;
+	// Use a dynamic cast to check if the passed number is a consatnt
+	Constant* constant = dynamic_cast<Constant*>(num);
+	// If it is, use the add constant method
+	if (constant != nullptr && this->getName() == constant->getName())
+	{
+		return this->add(constant);
+	}
+	// Otherwise, we return an expression concatinating these numbers with the add operator
+	else
+	{
+		return new Expression('+', new Expression(this), new Expression(num));
+	}
 
+}
+
+
+/**
+ * Adds two constants of the same kind, returning an expression "2 * constant"
+ */
+Expression* Constant::add(Constant *num)
+{
+	// When two of the same constants are added, they return 2 * the constant
+	return new Expression('*', new Expression(new Integer(2)), new Expression(num));
+	
 }
 
 Expression* Constant::subtract(Number *num)

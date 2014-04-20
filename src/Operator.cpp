@@ -18,6 +18,18 @@ Operator::Operator()
 
 
 /**
+ * Constructor to build an operator from just the passed symbol.
+ * Uses findPrecedence(symbol) and findAssoc(symbol) to build the parameters
+ */
+Operator::Operator(char symbol)
+{
+	this->symbol = symbol;
+	this->precedence = findPrecedence(symbol);
+	this->rightAssoc = findRightAssoc(symbol);
+}
+
+
+/**
  * Constructor
  * Args: a character symbol for the operation, a numerical presidence (higher is more urgent), and if it is right associtive.
  */
@@ -26,6 +38,50 @@ Operator::Operator(char symbol, int precedence, bool rightAssoc)
 	this->symbol = symbol;
 	this->precedence = precedence;
 	this->rightAssoc = rightAssoc;
+}
+
+
+/**
+ *
+ */
+int Operator::findPrecedence(char symbol)
+{
+	// Switch the symbol, returning it's precedence
+	switch (symbol)
+	{
+		case '+':
+		case '-':
+			return 2;
+			break;
+			
+		case '*':
+		case '/':
+			return 3;
+			break;
+		
+		case '^':
+			return 4;
+			break;
+		
+		default:
+			throw runtime_error("Couldn't find the precedence for this symbol.");
+	}
+}
+
+
+/**
+ *
+ */
+bool Operator::findRightAssoc(char symbol)
+{
+	// Check if this symbol is right associative, returning false by default
+	if (symbol == '^')
+	{
+		return true;
+	}
+	
+	// Default case
+	return false;
 }
 
 
