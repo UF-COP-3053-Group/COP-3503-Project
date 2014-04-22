@@ -5,12 +5,18 @@
 //  Created by Justin on 4/9/14.
 //
 //
+#include <stdio.h>
 #include <stdexcept>
 #include <iostream>
-#include <string.h>
-#include "Calculator.h"
-#include <stdlib.h>
 #include <fstream>
+#include <sstream>
+#include <string.h>
+#include <stdlib.h>
+#include <vector>
+#include <curl/curl.h>
+
+#include "Calculator.h"
+
 
 // Test includes
 
@@ -71,9 +77,95 @@ int main(int argc, const char * argv[])
 void gui()
 {
 	//WARNING: violating all good coding principles here
-
+    
 	system("./test2");
+    
+}
 
+vector<string> contents;
+
+size_t handle_data(void *ptr, size_t size, size_t nmemb, void *stream)
+{
+    contents.push_back(string(static_cast<const char*>(ptr), size * nmemb));
+    return size * nmemb;
+}
+
+/*
+ Make a web request to Wolfram Alpha (the calculator to end all calculators)
+ Returns either the exact answer or a decimal answer.
+ */
+string toWolframAlpha (string input, bool deci){
+    string buf; // Have a buffer string
+    stringstream ss(input); // Insert the string into a stream
+    vector<char> letters;
+    
+    ostringstream result;
+    
+    while (ss >> buf) //remove spaces
+        result << buf;
+    
+    for (int x = 0; x < result.str().size(); x++) //make a vector of letters
+        letters.push_back(result.str().at(x));
+    
+    ostringstream result2;
+    
+    /*
+     URL encode the string, which involves taking non-alphanumeric symbols, putting a % in front,
+     and then converting the char to its hex representation.
+     */
+    for (int y = 0; y < letters.size(); y++) {
+        if(!isalnum(letters.at(y)) && (letters.at(y) != '-' ||letters.at(y) != '.' || letters.at(y) != '_' || letters.at(y) != '~')){
+            string waste = &letters.at(y);
+            result2 << '%' << hex << (int)letters.at(y);
+        }
+        else
+            result2 << letters.at(y);
+    }
+    
+    //The actual web request starts here
+    CURL *curl;
+    CURLcode res;
+    
+    string query = "http://api.wolframalpha.com/v2/query?input=";
+    curl = curl_easy_init();
+    if(curl) {
+        
+        query += result2.str();
+        //Exact answer
+        if (!deci){
+            query += "&appid=22JXWX-YT43YWVEUU&format=plaintext&includepodid=Result";
+            //curl requires a const char, convert the string accordingly
+            const char * arg = query.c_str();
+            curl_easy_setopt(curl, CURLOPT_URL, arg);
+        }
+        //decimal answer
+        else{
+            query += "&appid=22JXWX-YT43YWVEUU&format=plaintext&includepodid=DecimalApproximation";
+            const char * arg = query.c_str();
+            curl_easy_setopt(curl, CURLOPT_URL, arg);
+        }
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+        curl_easy_setopt(curl,CURLOPT_WRITEFUNCTION,handle_data);
+        //Perform the request, res will get the return code
+        res = curl_easy_perform(curl);
+        
+        // Check for errors
+        if(res != CURLE_OK)
+            fprintf(stderr, "curl_easy_perform() failed: %s\n",
+                    curl_easy_strerror(res));
+        
+        // always cleanup
+        curl_easy_cleanup(curl);
+        
+    }
+    string output = contents.at(0).substr(contents.at(0).find("<plaintext>")+11);
+    //cout << query << endl;
+    output = output.substr(0,output.find_first_of("<"));
+    contents.pop_back();
+    result.flush();
+    result2.flush();
+    ss.flush();
+    return output;
 }
 
 void parse()
@@ -360,13 +452,16 @@ void altMenu()
 				// Calculate an answer from the input and print it directly
 				if(!doubleMode)
 				{
-					cout << calc.toString( calc.calculate(input) );
+
+					cout << calc.toString( calc.calculate(input) ) << endl;
+                    cout << toWolframAlpha(calc.toString( calc.calculate(input)), false);
 				}
 				else
 				{
 					cout << calc.toDouble( calc.calculate(input) );
+                    cout << toWolframAlpha(calc.toString( calc.calculate(input)), true);
 				}
-				
+
 			}
 			catch (invalid_argument)
 			{
@@ -495,8 +590,6 @@ void rational_test()
 	delete r2;
 
 }
-
-
 
 
 
