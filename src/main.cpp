@@ -452,9 +452,9 @@ void altMenu()
 				// Calculate an answer from the input and print it directly
 				if(!doubleMode)
 				{
-
+                    cout << toWolframAlpha(input, false) << endl;
 					cout << calc.toString( calc.calculate(input) ) << endl;
-                    cout << toWolframAlpha(calc.toString( calc.calculate(input)), false);
+                    
 				}
 				else
 				{
