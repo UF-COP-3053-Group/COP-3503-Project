@@ -133,14 +133,14 @@ string toWolframAlpha (string input, bool deci){
         query += result2.str();
         //Exact answer
         if (!deci){
-            query += "&appid=22JXWX-YT43YWVEUU&format=plaintext&includepodid=Result";
+            query += "&appid=22JXWX-YT43YWVEUU&format=plaintext&includepodid=Result&includepodid=Input";
             //curl requires a const char, convert the string accordingly
             const char * arg = query.c_str();
             curl_easy_setopt(curl, CURLOPT_URL, arg);
         }
         //decimal answer
         else{
-            query += "&appid=22JXWX-YT43YWVEUU&format=plaintext&includepodid=DecimalApproximation";
+            query += "&appid=22JXWX-YT43YWVEUU&format=plaintext&includepodid=DecimalApproximation&includepodid=Input";
             const char * arg = query.c_str();
             curl_easy_setopt(curl, CURLOPT_URL, arg);
         }
@@ -158,7 +158,19 @@ string toWolframAlpha (string input, bool deci){
         curl_easy_cleanup(curl);
         
     }
-    string output = contents.at(0).substr(contents.at(0).find("<plaintext>")+11);
+    string output;
+    size_t pos = contents.at(0).find("DecimalApproximation");
+    if (pos != string::npos) {
+        output = contents.at(0).substr(contents.at(0).find("<plaintext>", pos)+11);
+        
+    }
+    pos = contents.at(0).find("Result");
+    if(pos != string::npos){
+        output = contents.at(0).substr(contents.at(0).find("<plaintext>", pos)+11);
+    }
+    else{
+        output = contents.at(0).substr(contents.at(0).find("<plaintext>")+11);
+    }
     //cout << query << endl;
     output = output.substr(0,output.find_first_of("<"));
     contents.pop_back();
@@ -452,7 +464,7 @@ void altMenu()
 				// Calculate an answer from the input and print it directly
 				if(!doubleMode)
 				{
-                    cout << toWolframAlpha(input, false) << endl;
+                    //cout << toWolframAlpha(input, false) << endl;
 					cout << calc.toString( calc.calculate(input) ) << endl;
                     
 				}

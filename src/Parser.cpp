@@ -249,6 +249,7 @@ Number* Parser::createNumber(string number, char first){
         string base (number.find('_')+1, number.find(':'));
         string arg (number.find(':')+1, -1);
         result = new Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
+        // Log (createAST( tokenize ( everything in parens)), other arg)
 	}
     //all numbers are created here
 
@@ -258,7 +259,6 @@ Number* Parser::createNumber(string number, char first){
         if(number.find_first_of('/') != string::npos){
             //check to make sure there is only one '/' in the fraction
             if (number.find_first_of('/') != number.find_last_of('/')) {
-                //temporary error handling
                 throw invalid_argument("Invalid input detected");
             }
             //create a rational
