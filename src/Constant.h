@@ -31,10 +31,6 @@ using namespace std;
 
 class Constant : public Number
 {
-private:
-	string name;
-    string type;
-    
 public:
 	Constant(string name);
 	bool isKnown(string name);
@@ -50,10 +46,15 @@ public:
 	Expression* multiply(Number* num);
 	
 	Expression* divide(Number* num);
+	
+	Number* getCoefficient();
 
 	string toString();
 
-
+private:
+	string name;
+    string type;
+	Number* coefficient;
 	
 };
 

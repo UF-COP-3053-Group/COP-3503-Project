@@ -66,7 +66,7 @@ double Constant::getValue()
 	/*
 	 C++ doesn't allow string switching, so a chain of if - else if is used instead.
 	 Each constant first trys to return the value as defined by the platform's math.h, 
-	 and then reverts to a hard-coded 32-bit double definition if not found.
+	 and if not found then reverts to the hard-coded 32-bit double definition at the top of this file.
 	 */
 	if (this->name == "pi")
 		return M_PI;
@@ -76,7 +76,9 @@ double Constant::getValue()
 
 	// Should never be encountered, as we check if the constant is known during construction
 	else
+	{
 		throw runtime_error("How did we get here? Error getting the value of constant: " + this->name);
+	}
 }
 
 /**
@@ -88,12 +90,15 @@ string Constant::getName()
 	return this->name;
 }
 
-
+/**
+ * Will attempt to add any passed Number* to this constant
+ * Returns a new expression pointer (AKA expression tree) representing the answer
+ */
 Expression* Constant::add(Number *num)
 {
 	// Use a dynamic cast to check if the passed number is a constant
 	Constant* constant = dynamic_cast<Constant*>(num);
-	// If it is, use the add constant method
+	// If it is, and it's the same constant name, use the add constant method
 	if (constant != nullptr && this->getName() == constant->getName())
 	{
 		return this->add(constant);
@@ -156,6 +161,20 @@ Expression* Constant::divide(Number *num)
 
 }
 
+
+/**
+ * Returns the coefficient of this constant. E.g. 2 * pi will return an Integer pointer to 2.
+ */
+Number* Constant::getCoefficient()
+{
+	return this->coefficient;
+}
+
+
+/**
+ * Returns a string representation of this constant.
+ * e.g. "3 * pi" or "e ^ 2"
+ */
 string Constant::toString()
 {
 	return this->getName();

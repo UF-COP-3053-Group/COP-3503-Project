@@ -68,6 +68,10 @@ Expression* Calculator::calculate(string input)
 	// First, we need to parse the input
 	Expression* tree = parseInput(input);
 	
+	// DEBUG: Make sure the tree was parsed right
+	cout << toString(tree) << endl;
+	cout << toRPNString(tree) << endl;
+	
 	// Next, take the tree and simplify it
 	simplifyTree(tree);
 	
@@ -161,14 +165,24 @@ void Calculator::simplifyTree(Expression*& root)
  */
 Expression* Calculator::simplifyNode(Expression* node)
 {
+	// DEBUG: Print the working tree
+	cout << "Working Tree: " << toString(node) << endl;
+	
+	
 	// If this node is an operator (not a number)
 	if(!node->isNumber())
 	{
 		// Simplify left side recursively
 		node->setLeft( simplifyNode(node->getLeftNode()) );
 		
+		// DEBUG: Show the change
+		cout << "Tree modified left to: " << toString(node) << endl;
+		
 		// Simplify right side recursively
 		node->setRight( simplifyNode(node->getRightNode()) );
+		
+		// DEBUG: Show the change
+		cout << "Tree modified right to: " << toString(node) << endl;
 		
 		// Then operate in place
 		if(node->getOperatorSymbol() == '+')
@@ -176,8 +190,17 @@ Expression* Calculator::simplifyNode(Expression* node)
 			// If the left node is a number and the right node is a number
 			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
 			{
-				// Call the .add method of the left node with the right as an arg and lastOp as an arg
-				return node->getLeftNode()->getNumber()->add( node->getRightNode()->getNumber());
+				// Call the .add method of the left node with the right as an arg
+				//return node->getLeftNode()->getNumber()->add( node->getRightNode()->getNumber());
+				
+				// DEBUG: Verbose version
+				Number* left = node->getLeftNode()->getNumber();
+				Number* right = node->getRightNode()->getNumber();
+				cout << "Adding left to right" << endl;
+				Expression* result = left->add(right);
+				cout << "Result: " << toString(result) << endl;
+				return result;
+				
 			}
 			
 			/* TODO: Is this needed? Probably redundant.
@@ -194,7 +217,7 @@ Expression* Calculator::simplifyNode(Expression* node)
 			// If the left node is a number and the right node is a number
 			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
 			{
-				// Call the .subtract method of the left node with the right as an arg and lastOp as an arg
+				// Call the .subtract method of the left node with the right as an arg
 				return node->getLeftNode()->getNumber()->subtract( node->getRightNode()->getNumber());
 			}
 		}
@@ -203,7 +226,7 @@ Expression* Calculator::simplifyNode(Expression* node)
 			// If the left node is a number and the right node is a number
 			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
 			{
-				// Call the .multiply method of the left node with the right as an arg and lastOp as an arg
+				// Call the .multiply method of the left node with the right as an arg
 				return node->getLeftNode()->getNumber()->multiply( node->getRightNode()->getNumber());
 			}
 		}
@@ -212,8 +235,16 @@ Expression* Calculator::simplifyNode(Expression* node)
 			// If the left node is a number and the right node is a number
 			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
 			{
-				// Call the .devide method of the left node with the right as an arg and lastOp as an arg
-				return node->getLeftNode()->getNumber()->divide( node->getRightNode()->getNumber());
+				// Call the .devide method of the left node with the right as an arg
+				//return node->getLeftNode()->getNumber()->divide( node->getRightNode()->getNumber());
+				
+				// DEBUG: Verbose version
+				Number* left = node->getLeftNode()->getNumber();
+				Number* right = node->getRightNode()->getNumber();
+				cout << "Dividing left to right" << endl;
+				Expression* result = left->divide(right);
+				cout << "Result: " << toString(result) << endl;
+				return result;
 			}
 		}
 		// This operator isn't yet known or supported then
@@ -278,7 +309,7 @@ string Calculator::toRPNString(Expression* root)
 	{
 		// Output in RPN via post order traversal
 		string out;
-		out = toString(root->getLeftNode()) + " " + toString(root->getRightNode()) + " "  + root->getOperatorSymbol();
+		out = toRPNString(root->getLeftNode()) + " " + toRPNString(root->getRightNode()) + " "  + root->getOperatorSymbol();
 		return out;
 	}
 	
