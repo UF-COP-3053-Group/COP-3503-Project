@@ -8,10 +8,6 @@
 
 #include "Integer.h"
 
-Integer::Integer()
-{
-	// Default constructor for testing
-}
 
 /**
  * Constructor
@@ -27,10 +23,7 @@ double Integer::getValue()
 	return this->inputNum;
 }
 
-string Integer::getType()
-{
-	return type;
-}
+
 /*
 void Integer::add(Number* num)
 {
@@ -101,6 +94,15 @@ Expression* Integer::divide(Number* num)
 {
 	return new Expression(new Rational(this->getValue() , num->getValue()));
 
+}
+
+
+/**
+ * Will exponentiate this integer by the passed Number* num
+ */
+Expression* Integer::exponentiate(Number* num)
+{
+	throw logic_error("No one has written exponentiate for Integer yet");
 }
 
 

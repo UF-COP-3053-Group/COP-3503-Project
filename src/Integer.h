@@ -25,18 +25,11 @@ public:
 	Integer(); // default constructor for testing
 	Integer(int inputNum);
 	
-	// TODO: need to implement add, subtract, etc. How do we implement this dependent upon Number subclass?
 	Expression* add(Number* num);
-//	Expression* add(Number* z);
-	string getType();
 	Expression*  subtract(Number* num);
-//	Expression* subtract(Integer* z);
-
 	Expression*  multiply(Number* num);
-//	Expression* multiply(Integer* z);
-
 	Expression*  divide(Number* n);
-//	Expression* divide(Integer* z);
+	Expression* exponentiate(Number* num);
 
 	double getValue();
 

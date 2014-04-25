@@ -51,6 +51,7 @@ public:
 	Expression* subtract(Number *r);
 	Expression* multiply(Number *r);
 	Expression* divide(Number *r);
+	Expression* exponentiate(Number* num);
 
 
 	string toString();

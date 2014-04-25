@@ -59,6 +59,16 @@ Expression* Radical::divide(Number* num)
 throw logic_error("No one has built this method yet");
 }
 
+
+/**
+ * Will exponentiate this radical by the passed Number* num
+ */
+Expression* Radical::exponentiate(Number* num)
+{
+	throw logic_error("No one has written exponentiate for Radical yet");
+}
+
+
 string Radical::toString()
 {
 	throw logic_error("No one has built this method yet");

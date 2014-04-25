@@ -354,6 +354,14 @@ Expression* Rational::divide(Number *r)
 }
 
 
+/**
+ * Will exponentiate this rational by the passed Number* num
+ */
+Expression* Rational::exponentiate(Number* num)
+{
+	throw logic_error("No one has written exponentiate for Rational yet");
+}
+
 
 Expression* Rational::simplify()
 {

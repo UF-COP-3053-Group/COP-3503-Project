@@ -32,9 +32,7 @@ Expression* add(Number* num);
 Expression* subtract(Number* num);
 Expression* multiply(Number* num);
 Expression* divide(Number* num);
-
-
-
+Expression* exponentiate(Number* num);
 
 };
 

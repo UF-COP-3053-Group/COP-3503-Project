@@ -60,6 +60,15 @@ Expression* Log::divide(Number *num)
 }
 
 
+/**
+ * Will exponentiate this log by the passed Number* num
+ */
+Expression* Log::exponentiate(Number* num)
+{
+	throw logic_error("No one has written exponentiate for Log yet");
+}
+
+
 string Log::toString()
 {
 	throw logic_error("No one has built this method yet");
