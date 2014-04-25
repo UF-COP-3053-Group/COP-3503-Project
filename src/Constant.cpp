@@ -37,6 +37,9 @@ Constant::Constant(string name)
 
 	// Set the name of the constant
 	this->name = name;
+	
+	// Set the coefficient to 1
+	this->coefficient = new Integer(1);
 }
 
 
@@ -118,8 +121,11 @@ Expression* Constant::add(Number *num)
 //TODO: Replace this by collecting terms during tokenization.
 Expression* Constant::add(Constant *num)
 {
-	// When two of the same constants are added, they return 2 * the constant
-	return new Expression('*', new Expression(new Integer(2)), new Expression(num));
+	// When two of the same constants are added, they add their coefficients
+	coefficient = this->coefficient->add( num->getCoefficient() )->getNumber();
+	
+	// Return this constant now that its coefficient has been updated
+	return new Expression(this);
 	
 }
 
@@ -177,7 +183,16 @@ Number* Constant::getCoefficient()
  */
 string Constant::toString()
 {
-	return this->getName();
+	// If the coefficient is one, just return the constant name
+	if (this->getCoefficient()->getValue() == 1)
+	{
+		return this->getName();
+	}
+	// Otherwise, return "coefficient * constant name"
+	else
+	{
+			return this->getCoefficient()->toString() + " * " + this->getName();
+	}
 }
 
 
