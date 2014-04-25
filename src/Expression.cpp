@@ -147,6 +147,7 @@ void Expression::setLeft(Expression* newLeft)
 {
 	// Only delete the pointer if it is pointing somewhere else
 	// FIXME: For whatever reason, it also deletes the value in newLeft, so I've left it disabled
+	// FIXME: Potential (Probable) Memory Leak
 	/*
 	if(this->left != newLeft)
 	{
@@ -166,6 +167,7 @@ void Expression::setRight(Expression* newRight)
 {
 	// Only delete the pointer if it is pointing somewhere else
 	// FIXME: For whatever reason, it also deletes the value in newRight, so I've left it disabled
+	// FIXME: Potential (Probable) Memory Leak
 	/*
 	if(this->right != newRight)
 	{

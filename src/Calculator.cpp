@@ -68,9 +68,9 @@ Expression* Calculator::calculate(string input)
 	// First, we need to parse the input
 	Expression* tree = parseInput(input);
 	
-	// DEBUG: Make sure the tree was parsed right
-	cout << toString(tree) << endl;
-	cout << toRPNString(tree) << endl;
+//	// DEBUG: Make sure the tree was parsed right
+//	cout << toString(tree) << endl;
+//	cout << toRPNString(tree) << endl;
 	
 	// Next, take the tree and simplify it
 	tree = simplifyTree(tree);
@@ -160,41 +160,47 @@ Expression* Calculator::simplifyTree(Expression* root)
 /**
  * Helper function to recursively simplify the tree
  * Takes in a node and the last operation seen to pass on as the caller
- * FIXME: Seems to have a bug with deeply nested trees
+ * Returns a simplified node (Expression *)
  */
 Expression* Calculator::simplifyNode(Expression* node)
 {
+//	// Note, all debug lines are prepended with the same // as this line. They exist so we can see the simplification happen verbosely.
 	
 	// If this node is an operator (not a number)
 	if(!node->isNumber())
 	{
 		
-		// DEBUG: Print the working tree
-		cout << "Working Tree: " << toString(node) << endl;
-		
-		// DEBUG: Notify before simplification
-		cout << "Simplifying left." << endl;
+//		// DEBUG: Print the working tree
+//		cout << "Working Tree: " << toString(node) << endl;
+//		
+//		// DEBUG: Notify before simplification
+//		cout << "Simplifying left." << endl;
 		
 		// Simplify left side recursively
-		Expression* leftNode = node->getLeftNode();
-		Expression* simpleLeft = simplifyNode(leftNode);
-		node->setLeft( simpleLeft );
-		//node->setLeft( simplifyNode(node->getLeftNode()) );
+		node->setLeft( simplifyNode(node->getLeftNode()) );
+
+//		// DEBUG: Verbose way
+//		Expression* leftNode = node->getLeftNode();
+//		Expression* simpleLeft = simplifyNode(leftNode);
+//		node->setLeft( simpleLeft );
+
 		
-		// DEBUG: Show the change
-		cout << "Tree modified left to: " << toString(node) << endl;
-		
-		// DEBUG: Notify before simplification
-		cout << "Simplifying right." << endl;
+//		// DEBUG: Show the change
+//		cout << "Tree modified left to: " << toString(node) << endl;
+//		
+//		// DEBUG: Notify before simplification
+//		cout << "Simplifying right." << endl;
 
 		// Simplify right side recursively
-		Expression* rightNode = node->getRightNode();
-		Expression* simpleRight = simplifyNode(rightNode);
-		node->setRight( simpleRight );
-		//node->setRight( simplifyNode(node->getRightNode()) );
+		node->setRight( simplifyNode(node->getRightNode()) );
 		
-		// DEBUG: Show the change
-		cout << "Tree modified right to: " << toString(node) << endl;
+//		// DEBUG: Verbose way
+//		Expression* rightNode = node->getRightNode();
+//		Expression* simpleRight = simplifyNode(rightNode);
+//		node->setRight( simpleRight );
+//				
+//		// DEBUG: Show the change
+//		cout << "Tree modified right to: " << toString(node) << endl;
 		
 		// Then operate in place
 		if(node->getOperatorSymbol() == '+')
@@ -203,15 +209,15 @@ Expression* Calculator::simplifyNode(Expression* node)
 			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
 			{
 				// Call the .add method of the left node with the right as an arg
-				//return node->getLeftNode()->getNumber()->add( node->getRightNode()->getNumber());
+				return node->getLeftNode()->getNumber()->add( node->getRightNode()->getNumber());
 				
-				// DEBUG: Verbose version
-				Number* left = node->getLeftNode()->getNumber();
-				Number* right = node->getRightNode()->getNumber();
-				cout << "Adding left to right" << endl;
-				Expression* result = left->add(right);
-				cout << "Result: " << toString(result) << endl;
-				return result;
+//				// DEBUG: Verbose version
+//				Number* left = node->getLeftNode()->getNumber();
+//				Number* right = node->getRightNode()->getNumber();
+//				cout << "Adding left to right" << endl;
+//				Expression* result = left->add(right);
+//				cout << "Result: " << toString(result) << endl;
+//				return result;
 				
 			}
 			
@@ -248,15 +254,15 @@ Expression* Calculator::simplifyNode(Expression* node)
 			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
 			{
 				// Call the .devide method of the left node with the right as an arg
-				//return node->getLeftNode()->getNumber()->divide( node->getRightNode()->getNumber());
+				return node->getLeftNode()->getNumber()->divide( node->getRightNode()->getNumber());
 				
-				// DEBUG: Verbose version
-				Number* left = node->getLeftNode()->getNumber();
-				Number* right = node->getRightNode()->getNumber();
-				cout << "Dividing left to right" << endl;
-				Expression* result = left->divide(right);
-				cout << "Result: " << toString(result) << endl;
-				return result;
+//				// DEBUG: Verbose version
+//				Number* left = node->getLeftNode()->getNumber();
+//				Number* right = node->getRightNode()->getNumber();
+//				cout << "Dividing left to right" << endl;
+//				Expression* result = left->divide(right);
+//				cout << "Result: " << toString(result) << endl;
+//				return result;
 			}
 		}
 		// This operator isn't yet known or supported then
