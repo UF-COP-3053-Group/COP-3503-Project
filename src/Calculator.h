@@ -29,15 +29,18 @@ public:
 	
 	vector<Expression*> getPreviousAnswers();
 	Expression* getLastAnswer();
+	
 	Expression* calculate(string input);
 	Expression* parseInput(string& input);
 	string replaceAnswer(string input);
 	string collectTerms(string& input);
-	void simplifyTree(Expression*& root);
+	Expression* simplifyTree(Expression* root);
 	Expression* simplifyNode(Expression* root);
+	
 	string toString(Expression* root);
 	string toRPNString(Expression* root);
 	double toDouble(Expression* root);
+	
 	void addAnswer(string input, Expression* answer);
 	string getPreviousAnswersAsString();
 

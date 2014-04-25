@@ -73,7 +73,7 @@ Expression* Calculator::calculate(string input)
 	cout << toRPNString(tree) << endl;
 	
 	// Next, take the tree and simplify it
-	simplifyTree(tree);
+	tree = simplifyTree(tree);
 	
 	// Finally, we add the tree to the list of previous inputs and answers.
 	this->addAnswer(input, tree);
@@ -151,35 +151,47 @@ string Calculator::collectTerms(string& input)
  * Takes in of root node of an AST and simplifies the tree in place.
  * Args: <Expression*> root: the root of the tree
  */
-void Calculator::simplifyTree(Expression*& root)
+Expression* Calculator::simplifyTree(Expression* root)
 {
-	root = simplifyNode(root);
+	return simplifyNode(root);
 }
 
 
 /**
  * Helper function to recursively simplify the tree
  * Takes in a node and the last operation seen to pass on as the caller
- * Should be able to simplify the tree by replacing nodes in place, but I'm not sure how that can work with this tree
- * FIXME
+ * FIXME: Seems to have a bug with deeply nested trees
  */
 Expression* Calculator::simplifyNode(Expression* node)
 {
-	// DEBUG: Print the working tree
-	cout << "Working Tree: " << toString(node) << endl;
-	
 	
 	// If this node is an operator (not a number)
 	if(!node->isNumber())
 	{
+		
+		// DEBUG: Print the working tree
+		cout << "Working Tree: " << toString(node) << endl;
+		
+		// DEBUG: Notify before simplification
+		cout << "Simplifying left." << endl;
+		
 		// Simplify left side recursively
-		node->setLeft( simplifyNode(node->getLeftNode()) );
+		Expression* leftNode = node->getLeftNode();
+		Expression* simpleLeft = simplifyNode(leftNode);
+		node->setLeft( simpleLeft );
+		//node->setLeft( simplifyNode(node->getLeftNode()) );
 		
 		// DEBUG: Show the change
 		cout << "Tree modified left to: " << toString(node) << endl;
 		
+		// DEBUG: Notify before simplification
+		cout << "Simplifying right." << endl;
+
 		// Simplify right side recursively
-		node->setRight( simplifyNode(node->getRightNode()) );
+		Expression* rightNode = node->getRightNode();
+		Expression* simpleRight = simplifyNode(rightNode);
+		node->setRight( simpleRight );
+		//node->setRight( simplifyNode(node->getRightNode()) );
 		
 		// DEBUG: Show the change
 		cout << "Tree modified right to: " << toString(node) << endl;

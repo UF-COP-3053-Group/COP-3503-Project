@@ -146,10 +146,13 @@ Expression* Expression::getRightNode()
 void Expression::setLeft(Expression* newLeft)
 {
 	// Only delete the pointer if it is pointing somewhere else
+	// FIXME: For whatever reason, it also deletes the value in newLeft, so I've left it disabled
+	/*
 	if(this->left != newLeft)
 	{
 		delete this->left;
 	}
+	*/
 	
 	this->left = newLeft;
 }
@@ -162,10 +165,13 @@ void Expression::setLeft(Expression* newLeft)
 void Expression::setRight(Expression* newRight)
 {
 	// Only delete the pointer if it is pointing somewhere else
+	// FIXME: For whatever reason, it also deletes the value in newRight, so I've left it disabled
+	/*
 	if(this->right != newRight)
 	{
 		delete this->right;
 	}
+	*/
 	
 	this->right = newRight;
 }
