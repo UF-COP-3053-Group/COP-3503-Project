@@ -50,6 +50,8 @@ public:
 	Expression* divide(Number* num);
 	Expression* divide(Constant* num);
 	
+	Expression* exponentiate(Number *num);
+	
 	Number* getCoefficient();
 	Number* getExponent();
 	void setCoefficient(Number* coefficient);

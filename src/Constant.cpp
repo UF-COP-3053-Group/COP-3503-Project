@@ -279,11 +279,15 @@ Expression* Constant::divide(Constant *num)
 /**
  * Exponentiates this constant by multiplying together this exponent and the passed exponent
  */
-/*Expression* Constant::exponentiate(Number *num)
+Expression* Constant::exponentiate(Number *num)
 {
+	// TODO: Wrap this in a try catch, having Expression's getNumber throw an exception if there isn't a number (in the case of difficult exponents like log)
+	this->exponent = this->getExponent()->multiply(num)->getNumber();
 	
+	// Return this constant as a new expression
+	return new Expression(this);
 }
-*/
+
 
 
 /**
