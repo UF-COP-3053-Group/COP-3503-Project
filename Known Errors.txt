@@ -1,0 +1,12 @@
+This file contains a list of known errors, their causes, and potential fixes
+
+Known Calculation Errors:
+
+pi / 2:
+	Returns: 3 / 2
+	Cause: The Rational.simplify() method only supporting integers
+	Fix: Allow the simplify method to work on more than just integers
+
+
+
+General Program Errors:

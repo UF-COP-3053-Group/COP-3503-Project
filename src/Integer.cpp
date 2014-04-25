@@ -18,47 +18,40 @@ Integer::Integer(int inputNum)
 	this->type = "Integer";
 }
 
+
 double Integer::getValue()
 {
 	return this->inputNum;
 }
 
-
-/*
-void Integer::add(Number* num)
+string Integer::getType()
 {
-	cout << "Successfully recognized adding a generic Number to this Integer" << endl; //all outputs here are for testing only
-	// Do nothing. Destructor?
+	return type;
 }
-*/
+
+
 Expression* Integer::add(Number* num)
 {
-	// needs to return answer, figure out format first. May affect above line (answer may need to be Integer).
-	// same goes for other implemented methods.
-	if(num->getType() != "Integer")
-		//TODO
-		throw logic_error("No one has written this part of the method yet");
-
-
-	int answer = this->getValue() + num->getValue(); //works
-	return new Expression(new Integer(answer));
-
+	// Check if num is an integer
+	if (dynamic_cast<Integer*>(num) != nullptr)
+	{
+		// num is an integer, so let's do some simple artihmetic
+		this->inputNum = this->getInt() + dynamic_cast<Integer*>(num)->getInt();
+		
+		// Retun this Integer as a new expression
+		return new Expression(this);
+	}
+	
+	// Default behavior: return a new expression concatinating these
+	return new Expression('+', new Expression(this), new Expression(num));
 }
-/*
-void Integer::subtract(Number* num, Expression* caller)
-{
 
-	return 
-//	cout << "Successfully recognized subtracting a generic Number from this Integer" << endl;
-	// Do nothing
-	// Destructor?
-}
-*/
+
 Expression* Integer::subtract(Number* num)
 {
 	if(num->getType() != "Integer")
 		//TODO
-		throw logic_error("No one has written this part of the method yet");
+		throw logic_error("No one has written this part of subtract for Integer yet");
 
 
 
@@ -67,42 +60,70 @@ Expression* Integer::subtract(Number* num)
 
 
 }
-/*
-void Integer::multiply(Number* num)
-{
-	cout << "Successfully recognized multiplying a generic Number and this Integer" << endl;
-	// if coefficient == 1, do nothing
-	// else multiply coefficient with Integer
-}
-*/
+
+
 Expression* Integer::multiply(Number* num)
 {
-	if(num->getType() != "Integer")
-		//TODO
-		throw logic_error("No one has written this part of the method yet");
-
-
-
-	int answer = (this->getValue()) * (num->getValue()); //works
-	return new Expression(new Integer(answer));
-
+	// Check if num is an integer
+	if (dynamic_cast<Integer*>(num) != nullptr)
+	{
+		// This is an integer, so let's do some simple artihmetic
+		this->inputNum = this->getInt() * dynamic_cast<Integer*>(num)->getInt();
+		
+		// Retun this Integer as a new expression
+		return new Expression(this);
+	}
+	
+	// Check if num is a constant
+	if (dynamic_cast<Constant*>(num) != nullptr)
+	{
+		// This is a constant, so let the constant handle multiplying this into its coefficient
+		return dynamic_cast<Constant*>(num)->multiply(this);
+	}
+	
+	// Default behavior: return a new expression concatinating these
+	return new Expression('*', new Expression(this), new Expression(num));
 }
-
 
 
 Expression* Integer::divide(Number* num)
 {
+	// FIXME: Why are we using getValue here?? The point of the project is to avoid doubles whenever possible.
 	return new Expression(new Rational(this->getValue() , num->getValue()));
-
 }
 
 
 /**
  * Will exponentiate this integer by the passed Number* num
+ * Written by Justin
  */
 Expression* Integer::exponentiate(Number* num)
 {
-	throw logic_error("No one has written exponentiate for Integer yet");
+	// Use a dynamic cast to check if the passed number is an integer
+	Integer* passedInt = dynamic_cast<Integer*>(num);
+	
+	// If it is, we can simply use the pow method
+	if (passedInt != nullptr)
+	{
+		// Just change this number in place
+		this->inputNum = pow( this->getInt(), passedInt->getValue() );
+		
+		// Return this Integer as an expression
+		return new Expression(this);
+	}
+	// Otherwise, we return an expression concatinating these numbers with the operator
+	else
+	{
+		return new Expression('^', new Expression(this), new Expression(num));
+	}
+}
+
+/**
+ * Retuns the primitive int stored by this Integer
+ */
+int Integer::getInt()
+{
+	return this->inputNum;
 }
 
 

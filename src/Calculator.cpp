@@ -265,6 +265,15 @@ Expression* Calculator::simplifyNode(Expression* node)
 //				return result;
 			}
 		}
+		else if (node->getOperatorSymbol() == '^')
+		{
+			// If the left node is a number and the right node is a number
+			if(node->getLeftNode()->isNumber() && node->getRightNode()->isNumber())
+			{
+				// Call the .exponentiate method of the left node with the right as an arg
+				return node->getLeftNode()->getNumber()->exponentiate( node->getRightNode()->getNumber());
+			}
+		}
 		// This operator isn't yet known or supported then
 		else
 		{

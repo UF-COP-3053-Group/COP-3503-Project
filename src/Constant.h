@@ -24,7 +24,8 @@
 #include "Rational.h"
 #include "Integer.h"
 
-
+// Foward declarations to prevent errors referencing classes
+class Integer;
 
 using namespace std;
 
@@ -46,9 +47,11 @@ public:
 	
 	Expression* multiply(Number* num);
 	Expression* multiply(Constant *num);
+	Expression* multiply(Integer* num);
 	
 	Expression* divide(Number* num);
 	Expression* divide(Constant* num);
+	Expression* divide(Integer* num);
 	
 	Expression* exponentiate(Number *num);
 	

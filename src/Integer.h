@@ -22,7 +22,6 @@ private:
     string type;
     
 public:
-	Integer(); // default constructor for testing
 	Integer(int inputNum);
 	
 	Expression* add(Number* num);
@@ -32,7 +31,9 @@ public:
 	Expression* exponentiate(Number* num);
 
 	double getValue();
-
+	string getType();
+	
+	int getInt();
 	string toString();
     
 };

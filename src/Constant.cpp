@@ -213,11 +213,15 @@ Expression* Constant::multiply(Number *num)
 	{
 		return this->multiply(constant);
 	}
-	// Otherwise, we return an expression concatinating these numbers with the multiply operator
-	else
+	
+	// Check if num is an Integer
+	if (dynamic_cast<Integer*>(num) != nullptr)
 	{
-		return new Expression('*', new Expression(this), new Expression(num));
+		return this->multiply(dynamic_cast<Integer*>(num));
 	}
+	
+	// Otherwise, we return an expression concatinating these numbers with the multiply operator
+	return new Expression('*', new Expression(this), new Expression(num));
 }
 
 
@@ -240,6 +244,21 @@ Expression* Constant::multiply(Constant *num)
 }
 
 
+/**
+ * Multiplies this constant by an Integer
+ */
+Expression* Constant::multiply(Integer* num)
+{
+	// Simply multiply the coefficient
+	this->coefficient = this->getCoefficient()->multiply(num)->getNumber();
+	
+	return new Expression(this);
+}
+
+
+/**
+ * Tried to divide this constant by the passed Number* num
+ */
 Expression* Constant::divide(Number *num)
 {
 	// Use a dynamic cast to check if the passed number is a constant
@@ -249,10 +268,10 @@ Expression* Constant::divide(Number *num)
 	{
 		return this->divide(constant);
 	}
-	// Otherwise, we return an expression concatinating these numbers with the divide operator
+	// Otherwise, we return a rational expression from these numbers
 	else
 	{
-		return new Expression('/', new Expression(this), new Expression(num));
+		return new Expression(new Rational(this, num));
 	}
 }
 

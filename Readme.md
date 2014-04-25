@@ -1,12 +1,12 @@
 The basic breakdown of responsibilities:
 
-Justin : Parser, Calculator, Constant, and Main
+Justin : Parser, Calculator, Expression, Operator, Token, Number, Constant, and Main. Parts of Integer, and general bugs. 
 
 Ian : Exponent (which was later made a member function of all the Number subclasses) and Tokenizer , Rational class constructors
 
 Hanif : Rational Class , also getting Integer to work with Parser later.  
 
-Kyle : Integer, main, Constant, Log bug fixes  
+Kyle : Integer, Main, Constant, Log bug fixes  
 
 Tylor : Radical Class
 
