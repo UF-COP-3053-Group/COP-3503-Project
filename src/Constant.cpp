@@ -40,6 +40,7 @@ Constant::Constant(string name)
 	
 	// Set the coefficient to 1
 	this->coefficient = new Integer(1);
+	this->exponent = new Integer(1);
 }
 
 
@@ -116,29 +117,30 @@ Expression* Constant::add(Number *num)
 
 
 /**
- * Adds two constants of the same kind, returning an expression "2 * constant"
+ * Adds two constants of the same kind by adding their coefficients
  */
-//TODO: Replace this by collecting terms during tokenization.
+//TODO: Replace this by collecting terms during tokenization, if possible
 Expression* Constant::add(Constant *num)
 {
 	// When two of the same constants are added, they add their coefficients
-	coefficient = this->coefficient->add( num->getCoefficient() )->getNumber();
+	this->coefficient = this->coefficient->add( num->getCoefficient() )->getNumber();
 	
 	// Return this constant now that its coefficient has been updated
 	return new Expression(this);
 	
 }
 
+
 Expression* Constant::subtract(Number *num)
 {
 	// Use a dynamic cast to check if the passed number is a constant
 	Constant* constant = dynamic_cast<Constant*>(num);
-	// If it is, use the add constant method
+	// If it is, and it's the same name, use the constant version of this method
 	if (constant != nullptr && this->getName() == constant->getName())
 	{
 		return this->subtract(constant);
 	}
-	// Otherwise, we return an expression concatinating these numbers with the add operator
+	// Otherwise, we return an expression concatinating these numbers with the subtract operator
 	else
 	{
 		return new Expression('-', new Expression(this), new Expression(num));
@@ -146,26 +148,104 @@ Expression* Constant::subtract(Number *num)
 
 }
 
-
+/**
+ * Subtracts two constants of the same kind by subtracting their coefficients
+ */
 Expression* Constant::subtract(Constant* num)
 {
-	// When two of the same constants are subtracted, they cancel each other out, so there is no expression
-	return nullptr;
+	// When two of the same constants are subtracted, they subtract their coefficients
+	this->coefficient = this->coefficient->subtract( num->getCoefficient() )->getNumber();
+	
+	// TODO: Add this back once Integer is fully implemented properly
+//	if (coefficient->getValue() == 0)
+//	{
+//		return new Expression( new Integer(0) );
+//	}
+	// Return this constant now that its coefficient has been updated
+	return new Expression(this);
 }
+
 
 Expression* Constant::multiply(Number *num)
 {
-	//TODO
-	throw logic_error("No one has written this part of the method yet");
-
+	// Use a dynamic cast to check if the passed number is a constant
+	Constant* constant = dynamic_cast<Constant*>(num);
+	// If it is, and it's the same constant name, use the constant version of this method
+	if (constant != nullptr && this->getName() == constant->getName())
+	{
+		return this->multiply(constant);
+	}
+	// Otherwise, we return an expression concatinating these numbers with the multiply operator
+	else
+	{
+		return new Expression('*', new Expression(this), new Expression(num));
+	}
 }
+
+
+/**
+ * Multiplies two constants of the same kind by adding together their exponents
+ */
+Expression* Constant::multiply(Constant *num)
+{
+	// When two of the same constants are multiplied, they add their exponents
+	this->exponent = this->exponent->add( num->getExponent() )->getNumber();
+	
+	// If the exponent is now 0, simplify that to 1
+	if (this->getExponent()->getValue() == 0)
+	{
+		return new Expression( new Integer(1) );
+	}
+	
+	// Return this constant now that its coefficient has been updated
+	return new Expression(this);
+}
+
 
 Expression* Constant::divide(Number *num)
 {
-	//TODO
-	throw logic_error("No one has written this part of the method yet");
-
+	// Use a dynamic cast to check if the passed number is a constant
+	Constant* constant = dynamic_cast<Constant*>(num);
+	// If it is, and it's the same constant name, use the constant version of this method
+	if (constant != nullptr && this->getName() == constant->getName())
+	{
+		return this->divide(constant);
+	}
+	// Otherwise, we return an expression concatinating these numbers with the divide operator
+	else
+	{
+		return new Expression('/', new Expression(this), new Expression(num));
+	}
 }
+
+
+/**
+ * Divides two constants of the same kind by subtracting their exponents
+ */
+Expression* Constant::divide(Constant *num)
+{
+	// When two of the same constants are divided, they subtract their exponents
+	this->exponent = this->exponent->subtract( num->getExponent() )->getNumber();
+	
+	// If the exponent is now 0, simplify that to 1
+	if (this->getExponent()->getValue() == 0)
+	{
+		return new Expression( new Integer(1) );
+	}
+	
+	// Return this constant now that its coefficient has been updated
+	return new Expression(this);
+}
+
+
+/**
+ * Exponentiates this constant by multiplying together this exponent and the passed exponent
+ */
+/*Expression* Constant::exponentiate(Number *num)
+{
+	
+}
+*/
 
 
 /**
@@ -178,21 +258,56 @@ Number* Constant::getCoefficient()
 
 
 /**
+ * Returns the coefficient of the constant. E.g. pi ^ 3 will return an Integer pointer to 3
+ */
+Number* Constant::getExponent()
+{
+	return this->exponent;
+}
+
+
+/**
+ * Set the coefficient of this constant to the passed Number* coefficient
+ */
+void Constant::setCoefficient(Number* coefficient)
+{
+	this->coefficient = coefficient;
+}
+
+
+/**
+ * Set the exponent of this constant to the passed Number* exponent
+ */
+void Constant::setExponent(Number* exponent)
+{
+	this->exponent = exponent;
+}
+
+
+/**
  * Returns a string representation of this constant.
  * e.g. "3 * pi" or "e ^ 2"
  */
 string Constant::toString()
 {
-	// If the coefficient is one, just return the constant name
-	if (this->getCoefficient()->getValue() == 1)
+	string output = "";
+	
+	// If the coefficient is not equal to one, include it in the output
+	if (this->getCoefficient()->getValue() != 1)
 	{
-		return this->getName();
+		output += this->getCoefficient()->toString() + " * ";
 	}
-	// Otherwise, return "coefficient * constant name"
-	else
+	
+	// Include the name
+	output += this->getName();
+	
+	// If the exponent is not equal to one, include it in the output
+	if (this->getExponent()->getValue() != 1)
 	{
-			return this->getCoefficient()->toString() + " * " + this->getName();
+		output += " ^ " + this->getExponent()->toString();
 	}
+	
+	return output;
 }
 
 

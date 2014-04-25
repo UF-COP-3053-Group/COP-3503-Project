@@ -44,10 +44,15 @@ public:
 	Expression* subtract(Constant* num);
 	
 	Expression* multiply(Number* num);
+	Expression* multiply(Constant *num);
 	
 	Expression* divide(Number* num);
+	Expression* divide(Constant* num);
 	
 	Number* getCoefficient();
+	Number* getExponent();
+	void setCoefficient(Number* coefficient);
+	void setExponent(Number* exponent);
 
 	string toString();
 
@@ -55,6 +60,7 @@ private:
 	string name;
     string type;
 	Number* coefficient;
+	Number* exponent;
 	
 };
 
