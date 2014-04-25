@@ -33,6 +33,7 @@ class Constant : public Number
 {
 public:
 	Constant(string name);
+	Constant(string name, Number* coefficient, Number* exponent);
 	bool isKnown(string name);
 	double getValue();
 	string getName();

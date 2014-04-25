@@ -38,9 +38,35 @@ Constant::Constant(string name)
 	// Set the name of the constant
 	this->name = name;
 	
-	// Set the coefficient to 1
+	// Set the coefficient and exponent to 1
 	this->coefficient = new Integer(1);
 	this->exponent = new Integer(1);
+}
+
+
+/**
+ * Constructor with coefficient and exponent arguements
+ * Args: <string> name: The name of the constant, e.g. pi or e
+ *       <Number *> coefficient: the coefficient to multiply this constant by
+ *       <Number *> exponent: the exponent to exponentiate this constant by
+ */
+Constant::Constant(string name, Number* coefficient, Number* exponent)
+{
+	// First, convert name string to lowercase
+	transform(name.begin(), name.end(), name.begin(), ::tolower);
+	
+	// If we don't know the constant, throw an exception
+	if (!isKnown(name))
+	{
+		throw invalid_argument(name + " is not a known constant.");
+	}
+	
+	// Set the name of the constant
+	this->name = name;
+	
+	// Set the coefficient and exponent
+	this->coefficient = coefficient;
+	this->exponent = exponent;
 }
 
 
@@ -67,22 +93,34 @@ bool Constant::isKnown(string name)
  */
 double Constant::getValue()
 {
+	double value;
 	/*
 	 C++ doesn't allow string switching, so a chain of if - else if is used instead.
 	 Each constant first trys to return the value as defined by the platform's math.h, 
 	 and if not found then reverts to the hard-coded 32-bit double definition at the top of this file.
 	 */
 	if (this->name == "pi")
-		return M_PI;
-
+	{
+		value = M_PI;
+	}
 	else if (this->name == "e")
-		return M_E;
-
+	{
+		value = M_E;
+	}
 	// Should never be encountered, as we check if the constant is known during construction
 	else
 	{
 		throw runtime_error("How did we get here? Error getting the value of constant: " + this->name);
 	}
+	
+	// Take the value, and exponentiate it
+	value = pow(value, this->getExponent()->getValue());
+	
+	// Now multiply the value by its coefficient
+	value = value * this->getCoefficient()->getValue();
+	
+	// Return the final value after the constant has been exponentiated and multiplied by its coefficient
+	return value;
 }
 
 /**
