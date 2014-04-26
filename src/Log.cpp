@@ -32,8 +32,8 @@ Log::Log(Number* b, Number* a){
 	}
 	this->argument = a;
 	cout<<"Created"<<endl;
-	if(!this->simplified())
-	this->simplify();
+	//if(!this->simplified())
+	//this->simplify();
     //argument = new Integer(3);
 }
 Log::Log(Integer *b, Integer *a)
