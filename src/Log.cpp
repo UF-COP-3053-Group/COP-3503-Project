@@ -112,12 +112,20 @@ Expression* Log::subtract(Number *num)
 }
 Expression* Log::add(Log *num)
 {
-
+	Parser theSnake = Parser();
+	int val;
+	ostringstream bad;
+	string blitzkin;
 	if(this->base->getValue()==num->getBase()->getValue())
 	{
-		//Integer* ti84 = dynamic_cast<Integer*>(ti84);
-		//Integer* tier1 = dynamic_cast<Integer*>(tier1);
-		//this->argument=argument->getValue()*num->getArgument()->getValue();//(Number)(ti84->getInt()*tier1->getInt());
+		for(int i=0;i<this->argument->getValue();i++)
+		{
+			val += (int)num->getArgument()->getValue();
+		}
+		bad<<val;
+		blitzkin=bad.str();
+		//blitzkin = blitzkin.substr(0,blitzkin.size()-1);
+		this->argument=theSnake.createNumber(blitzkin,blitzkin.at(0));//(Number)(ti84->getInt()*tier1->getInt());
 		return new Expression(this);
 	}
 	return new Expression(this);
@@ -226,7 +234,7 @@ Expression* Log::simplify()
 				ss<<factors[factors.size()-1];
 				str=ss.str();
 				str = str.substr(0,str.size()-1);
-				cout<<str<<endl;
+				//cout<<str<<endl;
 				fin+="log_";
 				fin+=base->toString();
 				fin+=":";
