@@ -133,9 +133,14 @@ Expression* Log::add(Log *num)
 
 Expression* Log::subtract(Log *num)
 {
-	//TODO
-	throw logic_error("No one has written this part of the method yet");;
-
+	Parser masterChief = Parser();
+	if(this->base->getValue()==num->getBase()->getValue())
+	{
+		Rational* cortana = new Rational(this->argument,num->getArgument());
+		this->argument=cortana;
+		return new Expression(this);
+	}
+	return new Expression(this);
 }
 
 Expression* Log::multiply(Number *num)
