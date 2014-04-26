@@ -246,9 +246,19 @@ Number* Parser::createNumber(string number, char first){
     }
     else if (first == 'l' && number.find("log_") != string::npos){
         //create a log
-        string base (number.find('_')+1, number.find(':'));
-        string arg (number.find(':')+1, -1);
-        result = new Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
+    	//cout<<number.find('_')+1<<endl;
+    	//cout<<number.find(':')<<endl;
+    	string base = number.substr(number.find('_')+1, number.find(':')-(number.find('_')+1));
+        string arg = number.substr(number.find(':')+1, number.find(' ')-(number.find(':')+1));
+        //cout<<arg<<endl;
+        //cout<<base<<endl;
+        Number* fuck = createNumber(base, base.front());
+        Number* that = createNumber(arg, arg.front());
+        //cout<<fuck->toString();
+        Number* test = new Log(fuck,that);
+        //cout<<test->toString();
+        result = test;// new Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
+        //cout<<"HERE"<<endl;
 	}
     //all numbers are created here
 

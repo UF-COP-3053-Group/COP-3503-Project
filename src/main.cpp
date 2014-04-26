@@ -296,12 +296,12 @@ void altMenu()
 	
 	// Create a caluclator object
 	Calculator calc = Calculator();
-	
+
 	cout << "Welcome to The Best Calculator You Will Ever Use." << endl;
 	cout << "(TBCYWEU, pronounced TibKeyWoo)" << endl;
 	cout << endl;
 	cout << "Please enter a space-seperated expression to evaluate.";
-	
+
 	// Start input loop
 	do
 	{

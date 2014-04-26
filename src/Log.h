@@ -11,28 +11,42 @@
 
 #include <iostream>
 #include "Number.h"
-
+#include "Calculator.h"
+#include "Integer.h"
+#include "Constant.h"
+#include "Radical.h"
+#include "Expression.h"
+//class Constant;
+class Integer;
 using namespace std;
 
 class Log : public Number
 {
 private:
-    string type;
-Number* base;
-Number* argument;
+Number *base;
+Number *argument;
     
 public:
 Log();
-    Log(Number* base, Number* argument);
+    Log(Number* b, Number* a);
+    Log(Integer* b, Integer* a);
+    //Log(Rational* base, Rational* argument);
+    //Log(int base, int argument);
+    //Log(Constant* base, Constant* argument);
+    virtual ~Log();
 double getValue();
 	string toString();
-
-
+Number* getBase();
+Number* getArgument();
+string getType();
 Expression* add(Number* num);
 Expression* subtract(Number* num);
 Expression* multiply(Number* num);
 Expression* divide(Number* num);
+Expression* divide(Log* num);
 Expression* exponentiate(Number* num);
+bool isPrime(int n);
+Expression* simplify();
 
 };
 
