@@ -42,12 +42,14 @@ Expression* add(Number* num);
 Expression* subtract(Number* num);
 Expression* multiply(Number* num);
 Expression* divide(Number* num);
+Expression* add(Log* num);
+Expression* subtract(Log* num);
 Expression* divide(Log* num);
 Expression* exponentiate(Number* num);
 bool isPrime(int n);
 bool simplified();
 Expression* simplify();
-
+Expression* toExpression(string exp);
 };
 
 #endif /* defined(__COP_3503_Project__Log__) */

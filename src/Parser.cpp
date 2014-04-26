@@ -252,10 +252,9 @@ Number* Parser::createNumber(string number, char first){
         string arg = number.substr(number.find(':')+1, number.find(' ')-(number.find(':')+1));
         //cout<<arg<<endl;
         //cout<<base<<endl;
-        Number* fuck = createNumber(base, base.front());
+        Number* schmis = createNumber(base, base.front());
         Number* that = createNumber(arg, arg.front());
-        //cout<<fuck->toString();
-        Number* test = new Log(fuck,that);
+        Number* test = new Log(schmis,that);
         //cout<<test->toString();
         result = test;// new Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
         //cout<<"HERE"<<endl;

@@ -31,7 +31,7 @@ Log::Log(Number* b, Number* a){
 		throw invalid_argument("Argument cannot be equal to less than zero");
 	}
 	this->argument = a;
-	cout<<"Created"<<endl;
+	//cout<<"Created"<<endl;
 	//if(!this->simplified())
 	//this->simplify();
     //argument = new Integer(3);
@@ -77,12 +77,53 @@ Number* Log::getArgument()
 }
 Expression* Log::add(Number *num)
 {
-	//TODO
-	throw logic_error("No one has written this part of the method yet");;
+	string bad;
+		if(num->getType()=="log")
+		{
+		Log* log = dynamic_cast<Log*>(num);
+		return this->add(log);
+		}
+		else
+		{
+			bad += this->toString();
+			bad +=" + ";
+			bad +=num->toString();
+			return this->toExpression(bad);
+		}
 
 }
 
 Expression* Log::subtract(Number *num)
+{
+	string bad;
+			if(num->getType()=="log")
+			{
+			Log* log = dynamic_cast<Log*>(num);
+			return this->subtract(log);
+			}
+			else
+			{
+				bad += this->toString();
+				bad +=" - ";
+				bad +=num->toString();
+				return this->toExpression(bad);
+			}
+
+}
+Expression* Log::add(Log *num)
+{
+
+	if(this->base->getValue()==num->getBase()->getValue())
+	{
+		//Integer* ti84 = dynamic_cast<Integer*>(ti84);
+		//Integer* tier1 = dynamic_cast<Integer*>(tier1);
+		//this->argument=argument->getValue()*num->getArgument()->getValue();//(Number)(ti84->getInt()*tier1->getInt());
+		return new Expression(this);
+	}
+	return new Expression(this);
+}
+
+Expression* Log::subtract(Log *num)
 {
 	//TODO
 	throw logic_error("No one has written this part of the method yet");;
@@ -98,8 +139,19 @@ Expression* Log::multiply(Number *num)
 
 Expression* Log::divide(Number *num)
 {
+	string bad;
+	if(num->getType()=="log")
+	{
 	Log* log = dynamic_cast<Log*>(num);
 	return this->divide(log);
+	}
+	else
+	{
+		bad += this->toString();
+		bad +=" / ";
+		bad +=num->toString();
+		return this->toExpression(bad);
+	}
 
 }
 Expression* Log::divide(Log *num)
@@ -136,20 +188,19 @@ string Log::toString()
 Expression* Log::simplify()
 {
 	int c=2;
-	Calculator calc = Calculator();
 			vector<int> factors;
 			//factors.clear();
 			//~calc();
 			string str="";
 			string fin="";
 			ostringstream ss;
-			cout<<"1"<<endl;
+			//cout<<"1"<<endl;
 			if (argument->getType()=="Integer")
 	{
 		Integer* bae = dynamic_cast<Integer*>(argument);
 		while(c<bae->getInt()||!(this->isPrime(bae->getInt())))
 				{
-			cout<<"2"<<endl;
+			//cout<<"2"<<endl;
 			if((0==bae->getInt()%c)&&this->isPrime(c))
 					{
 						factors.push_back(c);
@@ -160,7 +211,7 @@ Expression* Log::simplify()
 				c++;
 				}
 				}
-		cout<<"3"<<endl;
+		//cout<<"3"<<endl;
 				for(int i=0;i<factors.size();i++)
 				{
 					ss<<factors[i];
@@ -171,7 +222,7 @@ Expression* Log::simplify()
 					fin+=str;
 					fin+=" + ";
 				}
-				cout<<"4"<<endl;
+				//cout<<"4"<<endl;
 				ss<<factors[factors.size()-1];
 				str=ss.str();
 				str = str.substr(0,str.size()-1);
@@ -181,14 +232,19 @@ Expression* Log::simplify()
 				fin+=":";
 				fin+=str;
 				//Expression* done =calc.parseInput(fin);
-				cout<<fin<<endl;
-				cout<<"5"<<endl;
-				return calc.parseInput(fin);
+				//cout<<fin<<endl;
+				//cout<<"5"<<endl;
+				return toExpression(str);
 	}
 		//int base = (int)this->base->getValue();
 		//int argument = (int) this->argument->getValue();
 
 		return new Expression(this);
+}
+Expression* Log::toExpression(string exp)
+{
+	Calculator calc = Calculator();
+	return calc.parseInput(exp);
 }
 bool Log::isPrime(int n)
 {
