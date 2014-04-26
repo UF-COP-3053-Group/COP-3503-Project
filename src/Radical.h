@@ -27,7 +27,8 @@ Radical();
 
 double getValue();
 string toString();
-
+Number* getBase();
+Number* getRadicand();
 Expression* add(Number* num);
 Expression* subtract(Number* num);
 Expression* multiply(Number* num);

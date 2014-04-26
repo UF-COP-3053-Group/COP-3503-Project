@@ -22,11 +22,19 @@ Radical::Radical()
 
 Radical::Radical(Number* base, Number* radicand)
 {
-this->base = base;
+type = "rad";
+	this->base = base;
 this->radicand = radicand;
 }
 
-
+Number* Radical::getBase()
+{
+	return this->base;
+}
+Number* Radical::getRadicand()
+{
+	return this->radicand;
+}
 /**
 * Returns the numerical value of this object as a double
 */

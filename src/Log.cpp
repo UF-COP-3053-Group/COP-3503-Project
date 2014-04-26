@@ -145,9 +145,11 @@ Expression* Log::subtract(Log *num)
 
 Expression* Log::multiply(Number *num)
 {
-	//TODO
-	throw logic_error("No one has written this part of the method yet");;
-
+	string blaze;
+	blaze += this->toString();
+					blaze +=" * ";
+					blaze +=num->toString();
+					return this->toExpression(blaze);
 }
 
 Expression* Log::divide(Number *num)
@@ -179,7 +181,28 @@ Expression* Log::divide(Log *num)
  */
 Expression* Log::exponentiate(Number* num)
 {
-	throw logic_error("No one has written exponentiate for Log yet");
+	//Calculator ti84 = Calculator();
+	//Parser masterChief = Parser();
+	string bad;
+	ostringstream marcus;
+	if(num->getType()=="rad")
+	{
+		Radical* num = dynamic_cast<Radical*>(num);
+		marcus<<num->getRadicand();
+		marcus<<" * log_";
+		marcus<<this->base;
+		marcus<<":";
+		marcus<<num->getBase();
+		bad=marcus.str();
+		return this->toExpression(bad);
+	}
+	else
+	{
+		bad += this->toString();
+				//bad +=" / ";
+				//bad +=num->toString();
+				return this->toExpression(bad);
+	}
 }
 
 string Log::getType()
