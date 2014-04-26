@@ -10,3 +10,4 @@ pi / 2:
 
 
 General Program Errors:
+Memory Leaks, most notably in Expression where setting new nodes can't delete the old nodes reliably.
