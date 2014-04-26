@@ -31,7 +31,9 @@ Log::Log(Number* b, Number* a){
 		throw invalid_argument("Argument cannot be equal to less than zero");
 	}
 	this->argument = a;
-	//this->simplify();
+	cout<<"Created"<<endl;
+	if(!this->simplified())
+	this->simplify();
     //argument = new Integer(3);
 }
 Log::Log(Integer *b, Integer *a)
@@ -51,6 +53,7 @@ Log::Log(Integer *b, Integer *a)
 	    //this->simplify();
 
 }
+
 Log::~Log()
 {
 
@@ -132,41 +135,60 @@ string Log::toString()
 }
 Expression* Log::simplify()
 {
-	int base = (int)this->base->getValue();
-		int argument = (int) this->argument->getValue();
-		Calculator calc = Calculator();
-		vector<int> factors;
-		string str="";
-		string fin="";
-		ostringstream ss;
-		int c=2;
-		while(c<argument&&!(this->isPrime(argument)))
-		{
-			if((0==argument%c)&&this->isPrime(c))
-			{
-				factors.push_back(c);
-			}
-			c++;
-		}
-		for(int i=0;i<factors.size()-1;i++)
-		{
-			ss<<factors[i];
-			str=ss.str();
-			fin+="log_";
-			fin+=this->base->toString();
-			fin+=":";
-			fin+=str;
-			fin+=" ";
-		}
-		ss<<factors[factors.size()-1];
-		str=ss.str();
-		fin+="log_";
-		fin+=this->base->toString();
-		fin+=":";
-		fin+=str;
-		Expression* done =calc.parseInput(fin);
-		cout<<calc.toString(done);
-		return done;
+	int c=2;
+	Calculator calc = Calculator();
+			vector<int> factors;
+			//factors.clear();
+			//~calc();
+			string str="";
+			string fin="";
+			ostringstream ss;
+			cout<<"1"<<endl;
+			if (argument->getType()=="Integer")
+	{
+		Integer* bae = dynamic_cast<Integer*>(argument);
+		while(c<bae->getInt()||!(this->isPrime(bae->getInt())))
+				{
+			cout<<"2"<<endl;
+			if((0==bae->getInt()%c)&&this->isPrime(c))
+					{
+						factors.push_back(c);
+						bae=new Integer(bae->getInt()/c);
+					}
+			else
+				{
+				c++;
+				}
+				}
+		cout<<"3"<<endl;
+				for(int i=0;i<factors.size();i++)
+				{
+					ss<<factors[i];
+					str=ss.str();
+					fin+="log_";
+					fin+=base->toString();
+					fin+=":";
+					fin+=str;
+					fin+=" + ";
+				}
+				cout<<"4"<<endl;
+				ss<<factors[factors.size()-1];
+				str=ss.str();
+				str = str.substr(0,str.size()-1);
+				cout<<str<<endl;
+				fin+="log_";
+				fin+=base->toString();
+				fin+=":";
+				fin+=str;
+				//Expression* done =calc.parseInput(fin);
+				cout<<fin<<endl;
+				cout<<"5"<<endl;
+				return calc.parseInput(fin);
+	}
+		//int base = (int)this->base->getValue();
+		//int argument = (int) this->argument->getValue();
+
+		return new Expression(this);
 }
 bool Log::isPrime(int n)
 {
@@ -178,5 +200,22 @@ bool Log::isPrime(int n)
 				j++;
 			}
 	return true;
+}
+bool Log::simplified()
+{
+	if (argument->getType()=="Integer")
+	{
+		Integer* beach = dynamic_cast<Integer*>(argument);
+		if(this->isPrime(beach->getInt()))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+		return false;
 }
 

@@ -25,7 +25,6 @@ class Log : public Number
 private:
 Number *base;
 Number *argument;
-    
 public:
 Log();
     Log(Number* b, Number* a);
@@ -46,6 +45,7 @@ Expression* divide(Number* num);
 Expression* divide(Log* num);
 Expression* exponentiate(Number* num);
 bool isPrime(int n);
+bool simplified();
 Expression* simplify();
 
 };
