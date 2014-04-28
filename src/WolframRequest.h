@@ -24,8 +24,11 @@ using namespace std;
 
 class WolframRequest{
 public:
+    //Create a new request with a string. String can contain anything valid in Wolfram Alpha.
     WolframRequest(string input);
+    //Optionally, you can set decimal to true or false. Default is false.
     WolframRequest(string input, bool decimal);
+    //Use this to get the result of your query back as a string.
     string getResult();
     
 private:
