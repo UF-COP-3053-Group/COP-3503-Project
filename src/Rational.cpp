@@ -19,10 +19,13 @@ Rational::Rational(string decimalString){
     //create a rational from a decimal number
     type = "Rational";
     if(decimalString == "0" || decimalString == "0.0")	
-	throw "Division by zero is bad";
+        throw "Division by zero is bad";
+    unsigned long places = decimalString.size() - decimalString.find_first_of(".");
+    this -> den = new Integer(pow(10, places - 1));
     
+    decimalString.erase (remove(decimalString.begin(), decimalString.end(), '.'), decimalString.end());
 
-
+    this -> numerator = new Integer(atoi(decimalString.c_str()));
 }
 Rational::Rational(Number* num, Number* den){
     type = "Rational";
