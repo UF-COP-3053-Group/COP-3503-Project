@@ -148,10 +148,26 @@ int Rational::gcd(int c , int d)
 //assumes the Number type of numerator and demoniator work properly.
 string Rational::toString()
 {
-	string str;
-	str += this->numerator->toString();
-	str += " / ";
-	str += this->den->toString();
+	string strNum;
+    string strDen;
+    string str;
+    strNum = this->numerator->toString();
+	strDen = this->den->toString();
+    if (strNum == strDen) {
+        return "1";
+    }
+    else if (strDen == "1") {
+        return strNum;
+    }
+    else if (strDen == "-1"){
+        str += "-";
+        str += strDen;
+        return str;
+    }
+    
+    str += strNum;
+    str += " / ";
+    str += strDen;
 	return str;
 
 }
