@@ -20,8 +20,9 @@ Rational::Rational(string decimalString){
     type = "Rational";
     if(decimalString == "0" || decimalString == "0.0")	
         throw "Division by zero is bad";
-    unsigned long places = decimalString.size() - decimalString.find_first_of(".");
-    this -> den = new Integer(pow(10, places - 1));
+    decimalString.erase ( decimalString.find_last_not_of('0') + 1, std::string::npos );
+    unsigned long places = decimalString.size() - decimalString.find_first_of(".") - 1;
+    this -> den = new Integer(pow(10, places));
     
     decimalString.erase (remove(decimalString.begin(), decimalString.end(), '.'), decimalString.end());
 
