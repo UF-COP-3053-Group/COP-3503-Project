@@ -67,7 +67,6 @@ Expression* Radical::divide(Number* num)
     return new Expression(new Rational(this , num));
 }
 
-
 /**
  * Will exponentiate this radical by the passed Number* num
  */

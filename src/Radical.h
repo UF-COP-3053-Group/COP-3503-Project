@@ -13,29 +13,31 @@
 #include <algorithm>
 #include "Rational.h"
 #include "Number.h"
+#include "WolframRequest.h"
 
 using namespace std;
 
 class Radical : public Number
 {
-private:
-    string type;
-Number* base;
-Number* radicand;
+    private:
+        string type;
+        Number* base;
+        Number* radicand;
+        Integer* coefficient;
     
-public:
-Radical();
-    Radical(Number* base, Number* radicand);
+    public:
+        Radical();
+        Radical(Number* base, Number* radicand);
 
-double getValue();
-string toString();
-Number* getBase();
-Number* getRadicand();
-Expression* add(Number* num);
-Expression* subtract(Number* num);
-Expression* multiply(Number* num);
-Expression* divide(Number* num);
-Expression* exponentiate(Number* num);
+        double getValue();
+        string toString();
+        Number* getBase();
+        Number* getRadicand();
+        Expression* add(Number* num);
+        Expression* subtract(Number* num);
+        Expression* multiply(Number* num);
+        Expression* divide(Number* num);
+        Expression* exponentiate(Number* num);
 
 };
 
