@@ -131,7 +131,7 @@ Expression* Log::add(Log *num)
 	return new Expression(this);
 }
 
-Expression* Log::subtract(Log *num)
+Expression* Log::subtract(Log *num)//if same base then divide otherwise return expression
 {
 	Parser masterChief = Parser();
 	if(this->base->getValue()==num->getBase()->getValue())
@@ -143,7 +143,7 @@ Expression* Log::subtract(Log *num)
 	return new Expression(this);
 }
 
-Expression* Log::multiply(Number *num)
+Expression* Log::multiply(Number *num) //just return expression
 {
 	string blaze;
 	blaze += this->toUnsimpString();
@@ -152,7 +152,7 @@ Expression* Log::multiply(Number *num)
 					return this->toExpression(blaze);
 }
 
-Expression* Log::divide(Number *num)
+Expression* Log::divide(Number *num) //if its a log call log divide otherwise return expression
 {
 	string bad;
 	if(num->getType()=="log")
@@ -169,7 +169,7 @@ Expression* Log::divide(Number *num)
 	}
 
 }
-Expression* Log::divide(Log *num)
+Expression* Log::divide(Log *num)//this is change of base log_a:b/log_a:c = log_c:b
 {
 	if(this->base->getValue()==num->getBase()->getValue())
 	this->base =num->getArgument();
@@ -179,10 +179,11 @@ Expression* Log::divide(Log *num)
 /**
  * Will exponentiate this log by the passed Number* num
  */
-Expression* Log::exponentiate(Number* num)
+Expression* Log::exponentiate(Number* num)//return exponent * log
 {
 	//Calculator ti84 = Calculator();
 	//Parser masterChief = Parser();
+
 	string bad;
 	ostringstream marcus;
 
@@ -195,12 +196,12 @@ Expression* Log::exponentiate(Number* num)
 				return this->toExpression(bad);
 }
 
-string Log::getType()
+string Log::getType()//self explanitory
 {
 	return this->type;
 }
 
-string Log::toUnsimpString()
+string Log::toUnsimpString()//this is the toString method that is used within the class I originally had it as just toString but changed it laster so it isnt private
 {
 	string str;
 		str += "log_";
@@ -213,9 +214,13 @@ string Log::toUnsimpString()
 }
 string Log::toString()
 {
+	string shleep;
+	//ostringstream sheep;
 	Calculator calc = Calculator();
+	shleep=calc.toString(this->simplify());
+	Expression* sheep=calc.calculate(shleep);
 	//Expression* help = calc.simplifyNode(this->simplify());
-	return calc.toString(this->simplify());
+	return calc.toString(sheep);
 }
 Expression* Log::simplify()
 {
@@ -235,6 +240,11 @@ Expression* Log::simplify()
 		{
 			str="1";
 			return this->toExpression(str);
+		}
+		else if(argument->getValue()<base->getValue()&&argument->getType()=="Integer"&&base->getType()=="Integer")
+		{
+			//Integer* schmoot = dynamic_cast<Integer*>(argument);
+			//Integer* mushroom = dynamic_cast<Integer*>(argument);
 		}
 		else if (argument->getType()=="Integer")
 	{
