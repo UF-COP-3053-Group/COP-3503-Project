@@ -46,28 +46,24 @@ return pow(radicand->getValue(),(1/base->getValue()));
 Expression* Radical::add(Number* num)
 {
 //TODO
-throw logic_error("No one has built this method yet");
     return new Expression('+', new Expression(this), new Expression(num));
 }
 
 Expression* Radical::subtract(Number* num)
 {
 //TODO
-throw logic_error("No one has built this method yet");
     return new Expression('-', new Expression(this), new Expression(num));
 }
 
 Expression* Radical::multiply(Number* num)
 {
 //TODO
-throw logic_error("No one has built this method yet");
     return new Expression('*', new Expression(this), new Expression(num));
 }
 
 Expression* Radical::divide(Number* num)
 {
 //TODO
-throw logic_error("No one has built this method yet");
     return new Expression(new Rational(this , num));
 }
 

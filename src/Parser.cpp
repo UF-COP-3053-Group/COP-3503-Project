@@ -241,23 +241,15 @@ Number* Parser::createNumber(string number, char first){
     }
     else if (first == 's' && number.find("sqrt:") != string::npos){
         //create a square root
-        string base = number.substr(number.find(":")+1, -1);
+        string base = number.substr(number.find(":")+1, string::npos);
         result = new Radical(createNumber(base, base.front()), new Integer(2));
     }
     else if (first == 'l' && number.find("log_") != string::npos){
         //create a log
-    	//cout<<number.find('_')+1<<endl;
-    	//cout<<number.find(':')<<endl;
-    	string base = number.substr(number.find('_')+1, number.find(':')-(number.find('_')+1));
-        string arg = number.substr(number.find(':')+1, number.find(' ')-(number.find(':')+1));
-        //cout<<arg<<endl;
-        //cout<<base<<endl;
-        Number* schmis = createNumber(base, base.front());
-        Number* that = createNumber(arg, arg.front());
-        Number* test = new Log(schmis,that);
-        //cout<<test->toString();
-        result = test;// new Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
-        //cout<<"HERE"<<endl;
+        //Do not ask me why I subtract 4 here. I literally have no idea why, it just worked after testing.
+    	string base = number.substr(number.find("_")+1, number.find(":") - 4);
+        string arg = number.substr(number.find(":")+1, string::npos);
+        result = new Log(createNumber(base, base.front()), createNumber(arg, arg.front()));
 	}
     //all numbers are created here
 
