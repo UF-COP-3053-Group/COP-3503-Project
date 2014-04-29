@@ -47,24 +47,28 @@ Expression* Radical::add(Number* num)
 {
 //TODO
 throw logic_error("No one has built this method yet");
+    return new Expression('+', new Expression(this), new Expression(num));
 }
 
 Expression* Radical::subtract(Number* num)
 {
 //TODO
 throw logic_error("No one has built this method yet");
+    return new Expression('-', new Expression(this), new Expression(num));
 }
 
 Expression* Radical::multiply(Number* num)
 {
 //TODO
 throw logic_error("No one has built this method yet");
+    return new Expression('*', new Expression(this), new Expression(num));
 }
 
 Expression* Radical::divide(Number* num)
 {
 //TODO
 throw logic_error("No one has built this method yet");
+    return new Expression(new Rational(this , num));
 }
 
 
@@ -73,7 +77,11 @@ throw logic_error("No one has built this method yet");
  */
 Expression* Radical::exponentiate(Number* num)
 {
-	throw logic_error("No one has written exponentiate for Radical yet");
+	if (num->getValue() == this->radicand->getValue()) {
+        return new Expression(base);
+    }
+    else
+        return new Expression('^', new Expression(base), new Expression(new Rational(num, this->radicand)));
 }
 
 
