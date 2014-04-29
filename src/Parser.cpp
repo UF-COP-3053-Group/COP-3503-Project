@@ -227,8 +227,8 @@ Number* Parser::createNumber(string number, char first){
 
     //This is probably lazy/ bad, but it basically makes sure that theres no junk before the actual operation.
     if (first != 's' && number.find("rt:") != string::npos){
-        string base (number.find(':')+1, -1);
-        string radicand (0, number.find('r')-1);
+        string base = number.substr(number.find(':')+1, string::npos);
+        string radicand = number.substr(0, number.find("r"));
         result = new Radical(createNumber(base, base.front()), createNumber(radicand, radicand.front()));
     }
     else if (first=='p' && number.at(1) =='i' && number.length() == 2){
@@ -241,7 +241,7 @@ Number* Parser::createNumber(string number, char first){
     }
     else if (first == 's' && number.find("sqrt:") != string::npos){
         //create a square root
-        string base (number.find(':')+1, -1);
+        string base = number.substr(number.find(":")+1, -1);
         result = new Radical(createNumber(base, base.front()), new Integer(2));
     }
     else if (first == 'l' && number.find("log_") != string::npos){
@@ -272,7 +272,7 @@ Number* Parser::createNumber(string number, char first){
             }
             //create a rational
             string numerator (0, number.find('/')-1);
-            string denom ( number.find('/') + 1, -1);
+            string denom ( number.find('/') + 1, string::npos);
             result = new Rational(createNumber(numerator, numerator.front()), createNumber(denom, denom.front()));
         }
         else if(number.find_first_of('.') != string::npos){

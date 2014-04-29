@@ -24,7 +24,7 @@ Radical::Radical(Number* base, Number* radicand)
 {
 type = "rad";
 	this->base = base;
-this->radicand = radicand;
+    this->radicand = radicand;
 }
 
 Number* Radical::getBase()
@@ -79,7 +79,14 @@ Expression* Radical::exponentiate(Number* num)
 
 string Radical::toString()
 {
-	throw logic_error("No one has built this method yet");
+	string str;
+    if (this->radicand->getValue() == 2)
+        str += "sq";
+    else
+        str += radicand->toString();
+    str += "rt:";
+    str += this->base->toString();
+    return str;
 }
 
 
