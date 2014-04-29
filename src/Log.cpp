@@ -85,7 +85,7 @@ Expression* Log::add(Number *num)
 		}
 		else
 		{
-			bad += this->toString();
+			bad += this->toUnsimpString();
 			bad +=" + ";
 			bad +=num->toString();
 			return this->toExpression(bad);
@@ -103,7 +103,7 @@ Expression* Log::subtract(Number *num)
 			}
 			else
 			{
-				bad += this->toString();
+				bad += this->toUnsimpString();
 				bad +=" - ";
 				bad +=num->toString();
 				return this->toExpression(bad);
@@ -146,7 +146,7 @@ Expression* Log::subtract(Log *num)
 Expression* Log::multiply(Number *num)
 {
 	string blaze;
-	blaze += this->toString();
+	blaze += this->toUnsimpString();
 					blaze +=" * ";
 					blaze +=num->toString();
 					return this->toExpression(blaze);
@@ -162,7 +162,7 @@ Expression* Log::divide(Number *num)
 	}
 	else
 	{
-		bad += this->toString();
+		bad += this->toUnsimpString();
 		bad +=" / ";
 		bad +=num->toString();
 		return this->toExpression(bad);
@@ -185,24 +185,14 @@ Expression* Log::exponentiate(Number* num)
 	//Parser masterChief = Parser();
 	string bad;
 	ostringstream marcus;
-	if(num->getType()=="rad")
-	{
-		Radical* num = dynamic_cast<Radical*>(num);
-		marcus<<num->getRadicand();
-		marcus<<" * log_";
-		marcus<<this->base;
-		marcus<<":";
-		marcus<<num->getBase();
-		bad=marcus.str();
-		return this->toExpression(bad);
-	}
-	else
-	{
-		bad += this->toString();
+
+		marcus<<num->getValue();
+		bad+=marcus.str();
+		bad+=" * ";
+		bad += this->toUnsimpString();
 				//bad +=" / ";
 				//bad +=num->toString();
 				return this->toExpression(bad);
-	}
 }
 
 string Log::getType()
@@ -210,7 +200,7 @@ string Log::getType()
 	return this->type;
 }
 
-string Log::toString()
+string Log::toUnsimpString()
 {
 	string str;
 		str += "log_";
@@ -221,6 +211,12 @@ string Log::toString()
 	//throw logic_error("No one has built this method yet");
 	//return "Log"+this->base->toString()+"("+this->argument->toString()+")";
 }
+string Log::toString()
+{
+	Calculator calc = Calculator();
+	//Expression* help = calc.simplifyNode(this->simplify());
+	return calc.toString(this->simplify());
+}
 Expression* Log::simplify()
 {
 	int c=2;
@@ -230,8 +226,17 @@ Expression* Log::simplify()
 			string str="";
 			string fin="";
 			ostringstream ss;
+			str.clear();
+			fin.clear();
+			ss.clear();
+			factors.clear();
 			//cout<<"1"<<endl;
-			if (argument->getType()=="Integer")
+		if(base->getValue()==argument->getValue())
+		{
+			str="1";
+			return this->toExpression(str);
+		}
+		else if (argument->getType()=="Integer")
 	{
 		Integer* bae = dynamic_cast<Integer*>(argument);
 		while(c<bae->getInt()||!(this->isPrime(bae->getInt())))
@@ -267,15 +272,19 @@ Expression* Log::simplify()
 				fin+=base->toString();
 				fin+=":";
 				fin+=str;
+				//cout<<fin<<endl;
 				//Expression* done =calc.parseInput(fin);
 				//cout<<fin<<endl;
 				//cout<<"5"<<endl;
-				return toExpression(str);
+				return this->toExpression(fin);
 	}
 		//int base = (int)this->base->getValue();
 		//int argument = (int) this->argument->getValue();
+		else
+		{
+			return new Expression(this);
+		}
 
-		return new Expression(this);
 }
 Expression* Log::toExpression(string exp)
 {

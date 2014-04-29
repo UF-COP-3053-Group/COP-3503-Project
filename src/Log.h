@@ -35,6 +35,7 @@ Log();
     virtual ~Log();
 double getValue();
 	string toString();
+	string toUnsimpString();
 Number* getBase();
 Number* getArgument();
 string getType();
