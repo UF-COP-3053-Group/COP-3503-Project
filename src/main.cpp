@@ -11,6 +11,7 @@
 #include "Calculator.h"
 #include <stdlib.h>
 #include <fstream>
+#include "WolframRequest.h"
 
 // Test includes
 
@@ -293,6 +294,7 @@ void altMenu()
 	
 	// Keep track of the mode we're working in. Simplification mode is the default
 	bool doubleMode = false;
+    bool wolfMode = false;
 	
 	// Create a caluclator object
 	Calculator calc = Calculator();
@@ -306,7 +308,7 @@ void altMenu()
 	do
 	{
 		cout << endl << "Type an expression, 'h' for (h)elp, 'a' to list previous (a)nswers,";
-		cout << " 'm' to switch between simplification and double (m)ode, or 'q' to (q)uit." << endl << endl;
+		cout << " 'm' to switch between simplification and double (m)ode, 'w' to pass input to Wolfram Alpha, or 'q' to (q)uit." << endl << endl;
 		
 		cout << "Input: ";
 		// Get line, as cin >> input considers spaces as white space
@@ -327,6 +329,23 @@ void altMenu()
 		{
 			// Show answers
 			cout << calc.getPreviousAnswersAsString();
+		}
+        else if (input == "w" || input == "W")
+		{
+			// Switch the mode
+			// If the wolf mode is on, turn it off
+			if (wolfMode)
+			{
+				cout << "Switching to standard mode" << endl;
+				wolfMode = false;
+			}
+			// Else turn double mode on
+			else
+			{
+				cout << "GOD MODE ACITVATED!" << endl;
+                cout << "Use valid Wolfram Alpha/ Mathematica syntax only" << endl;
+				wolfMode = true;
+			}
 		}
 		else if (input == "m" || input == "M")
 		{
@@ -358,14 +377,20 @@ void altMenu()
 				cout << "Answer: ";
 				
 				// Calculate an answer from the input and print it directly
-				if(!doubleMode)
-				{
-					cout << calc.toString( calc.calculate(input) );
-				}
-				else
-				{
-					cout << calc.toDouble( calc.calculate(input) );
-				}
+                if (wolfMode) {
+                    WolframRequest request = *new WolframRequest(input, doubleMode);
+                    cout << request.getResult();
+                }
+                else{
+                    if(!doubleMode)
+                    {
+                        cout << calc.toString( calc.calculate(input) );
+                    }
+                    else
+                    {
+                        cout << calc.toDouble( calc.calculate(input) );
+                    }
+                }
 				
 			}
 			catch (invalid_argument)

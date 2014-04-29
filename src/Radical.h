@@ -13,7 +13,6 @@
 #include <algorithm>
 #include "Rational.h"
 #include "Number.h"
-#include "WolframRequest.h"
 
 using namespace std;
 

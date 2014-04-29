@@ -25,6 +25,7 @@ Radical::Radical(Number* base, Number* radicand)
 type = "rad";
 	this->base = base;
     this->radicand = radicand;
+    this->coefficient = new Integer(1);
 }
 
 Number* Radical::getBase()
@@ -58,7 +59,7 @@ Expression* Radical::subtract(Number* num)
 Expression* Radical::multiply(Number* num)
 {
 //TODO
-    return new Expression('*', new Expression(this), new Expression(num));
+    return new Expression('*', new Expression(this), new Expression(*num->multiply(coefficient)));
 }
 
 Expression* Radical::divide(Number* num)
@@ -83,6 +84,10 @@ Expression* Radical::exponentiate(Number* num)
 string Radical::toString()
 {
 	string str;
+    if (coefficient->getValue() != 1) {
+        str = coefficient->toString();
+        str += " ";
+    }
     if (this->radicand->getValue() == 2)
         str += "sq";
     else
