@@ -241,11 +241,6 @@ Expression* Log::simplify()
 			str="1";
 			return this->toExpression(str);
 		}
-		else if(argument->getValue()<base->getValue()&&argument->getType()=="Integer"&&base->getType()=="Integer")
-		{
-			//Integer* schmoot = dynamic_cast<Integer*>(argument);
-			//Integer* mushroom = dynamic_cast<Integer*>(argument);
-		}
 		else if (argument->getType()=="Integer")
 	{
 		Integer* bae = dynamic_cast<Integer*>(argument);
@@ -267,11 +262,16 @@ Expression* Log::simplify()
 				{
 					ss<<factors[i];
 					str=ss.str();
+					str = str.substr(0,str.size()-1);
 					fin+="log_";
 					fin+=base->toString();
 					fin+=":";
 					fin+=str;
 					fin+=" + ";
+				}
+				for(int i=0;i<factors.size();i++)
+				{
+					cout<<factors[i]<<endl;
 				}
 				//cout<<"4"<<endl;
 				ss<<factors[factors.size()-1];
@@ -282,6 +282,7 @@ Expression* Log::simplify()
 				fin+=base->toString();
 				fin+=":";
 				fin+=str;
+				//cout<<fin<<endl;
 				//cout<<fin<<endl;
 				//Expression* done =calc.parseInput(fin);
 				//cout<<fin<<endl;
@@ -299,6 +300,7 @@ Expression* Log::simplify()
 Expression* Log::toExpression(string exp)
 {
 	Calculator calc = Calculator();
+	//cout<<exp<<endl;
 	return calc.parseInput(exp);
 }
 bool Log::isPrime(int n)
