@@ -10,6 +10,8 @@
 #define __COP_3503_Project__Radical__
 
 #include <iostream>
+#include <algorithm>
+#include "Rational.h"
 #include "Number.h"
 
 using namespace std;
