@@ -10,7 +10,7 @@ BIN = calculator
 # Compile everything
 
 all:
-	$(CC) $(CFLAGS) $(EXFLAGS) $(SOURCES) -o $(BIN) 
+	$(CC) $(CFLAGS) $(EXFLAGS) $(SOURCES) -o $(BIN) -lcurl 
 
 
 
