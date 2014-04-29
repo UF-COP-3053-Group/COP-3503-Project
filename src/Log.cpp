@@ -193,6 +193,8 @@ Expression* Log::exponentiate(Number* num)//return exponent * log
 		bad += this->toUnsimpString();
 				//bad +=" / ";
 				//bad +=num->toString();
+
+
 				return this->toExpression(bad);
 }
 
@@ -262,17 +264,17 @@ Expression* Log::simplify()
 				{
 					ss<<factors[i];
 					str=ss.str();
-					str = str.substr(0,str.size()-1);
 					fin+="log_";
 					fin+=base->toString();
 					fin+=":";
 					fin+=str;
 					fin+=" + ";
+					str = str.substr(0,str.size()-1);
 				}
-				for(int i=0;i<factors.size();i++)
-				{
-					cout<<factors[i]<<endl;
-				}
+				//for(int i=0;i<factors.size();i++)
+				//{
+					//cout<<factors[i]<<endl;
+				//}
 				//cout<<"4"<<endl;
 				ss<<factors[factors.size()-1];
 				str=ss.str();
@@ -300,7 +302,6 @@ Expression* Log::simplify()
 Expression* Log::toExpression(string exp)
 {
 	Calculator calc = Calculator();
-	//cout<<exp<<endl;
 	return calc.parseInput(exp);
 }
 bool Log::isPrime(int n)
